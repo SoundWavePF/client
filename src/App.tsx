@@ -2,6 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router";
 import "./App.css";
 import Landing from './components/views/Landing/Landing'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import TestBootstrap from './components/TestBootstrap';
 
 function App() {
   return (
