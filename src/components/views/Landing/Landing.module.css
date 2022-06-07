@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'main-font';
+  src: url(../../../assets/DefaultFont/IBMPlexSans-Medium.ttf);
+}
+.containerBig{
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+h1{
+  margin-bottom: 60px;
+}
+.container{ 
+  grid-area: 2 / 2 / 3 / 3;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+  font-family: main-font, Arial;
+}
+.button{
+  background-color: #FFEE32;
+  max-width: fit-content;
+  padding: 7px 12px;
+  text-align: center;
+  border-radius: 4px;
+  margin: 0 auto;
+  text-decoration: none;
+}
