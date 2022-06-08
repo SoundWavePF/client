@@ -1,5 +1,9 @@
 import {useState} from 'react';
+import { Outlet } from 'react-router-dom';
 
+import style from './SearchBar.module.css';
+import searchIcon from '../../../assets/search_icon.png'
+import userIcon from '../../../assets/user_icon.png'
 
 const SearchBar = ()=>{
     const [input, setInput] = useState<string>('');
@@ -10,19 +14,30 @@ const SearchBar = ()=>{
             return target.value;
         }) 
     }
+    function handleSubmit(event: any): void {
+        event.preventDefault();
+        alert(input);
+    }
 
     return (
-        <nav className="navbar navbar-light bg-light">
-            <form className="form-inline">
-                <input 
-                    className="form-control mr-sm-2" 
-                    type="search" 
-                    placeholder="Search" 
-                    aria-label="Search" 
-                    onChange={handleChange}
-                />
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <nav className={`${style.navbar}`}>
+            <form className={style.form}>
+                <div className={style.search}>
+                    <img src={searchIcon} width='20px'/>
+                    <input 
+                        className={style.inputSearch} 
+                        type="search" 
+                        placeholder="Search" 
+                        aria-label="Search"
+                        value={input}
+                        onChange={handleChange}
+                    />
+                </div>
+                <input className="" value='buscar' onClick={handleSubmit} type="submit" />
             </form>
+            <div>
+                <img src={userIcon} width='30px'/>
+            </div>
         </nav>
     )
 }
