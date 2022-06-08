@@ -1,11 +1,3 @@
-@font-face {
-  font-family: 'main-font';
-  src: url(../../../assets/DefaultFont/IBMPlexSans-Medium.ttf);
-}
-@font-face {
-  font-family: main-light;
-  src: url(../../../assets/DefaultFont/IBMPlexSans-Light.ttf);
-}
 .containerBig{
   height: 100vh;
   width: 100vw;
@@ -16,7 +8,7 @@
   grid-row-gap: 0px;
 }
 .title{
-  font-family: main-font;
+  font-family: sw-medium;
   margin-bottom: 40px;
   color: black;
   font-size: 3em;
@@ -28,12 +20,12 @@
   text-align: center;
 }
 .p{
-  font-family: main-light;
+  font-family: sw-light;
   color: rgb(97, 97, 97);
 }
 .button{
-  font-family: main-font;
-  background-color: #FFEE32;
+  font-family: sw-medium;
+  background-color: var(--yellow-light);
   color: black;
   max-width: fit-content;
   padding: 7px 12px;
