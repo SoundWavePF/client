@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import m from'./SignUpForm.module.css'
 
 const SignUpForm = ()=>{
   const [form, setForm] = useState({
@@ -48,34 +48,37 @@ const SignUpForm = ()=>{
     if(error.password)return true
     return false
   }
-  const onSubmitSignUp = ()=>{
-    //e.prevent
+  const onSubmitSignUp = (e:React.FormEvent)=>{
+    e.preventDefault()
+    console.log(e)
+    console.log(form)
   }
   return(
-    <div>
-      <form onSubmit={(e)=>{onSubmitSignUp()}}>
-        <input 
+    <div >
+      <form className={m.container_w4s5} onSubmit={(e)=>{onSubmitSignUp(e)}}>
+        <input className={m.inputForm_7fv8} 
           type="email"
           placeholder="Put your email." 
           name='email' 
           value={form.email}
           onChange={(e)=>validateEmail(e.target.value)}   
       /> <label>{error.email}</label>
-      <input
+      <input className={m.inputForm_7fv8}
           type="text"
           placeholder="Put your username." 
           name='username' 
           value={form.username}
           onChange={(e)=>validateUsername(e.target.value)}   
       /> <label>{error.username}</label>
-      <input
+      <input className={m.inputForm_7fv8}
           type="password"
           placeholder="Create a password." 
           name='password' 
           value={form.password}
           onChange={(e)=>validatePassword(e.target.value)}   
       /> <label>{error.password}</label>
-      <button disabled={disabled()} type="submit">Register</button>
+      <button className={m.inputSubmit_yu79}
+        disabled={disabled()} type="submit">Register</button>
       </form>
     </div>
   )
