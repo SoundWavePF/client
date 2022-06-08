@@ -18,3 +18,9 @@
   border-radius: 4px;
   text-decoration: none;
 }
+.labelError{
+  font-family: sw-italic;
+  color: #333533;
+  font-size: 13px;
+  margin-top: 2px;
+}

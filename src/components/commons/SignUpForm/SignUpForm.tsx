@@ -62,21 +62,21 @@ const SignUpForm = ()=>{
           name='email' 
           value={form.email}
           onChange={(e)=>validateEmail(e.target.value)}   
-      /> <label>{error.email}</label>
+      /> <label className={m.labelError}>{error.email}</label>
       <input className={m.inputForm_7fv8}
           type="text"
           placeholder="Put your username." 
           name='username' 
           value={form.username}
           onChange={(e)=>validateUsername(e.target.value)}   
-      /> <label>{error.username}</label>
+      /> <label className={m.labelError}>{error.username}</label>
       <input className={m.inputForm_7fv8}
           type="password"
           placeholder="Create a password." 
           name='password' 
           value={form.password}
           onChange={(e)=>validatePassword(e.target.value)}   
-      /> <label>{error.password}</label>
+      /> <label className={m.labelError}>{error.password}</label>
       <button className={m.inputSubmit_yu79}
         disabled={disabled()} type="submit">Register</button>
       </form>
