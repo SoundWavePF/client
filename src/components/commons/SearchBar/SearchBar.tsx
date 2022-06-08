@@ -34,11 +34,11 @@ const SearchBar = ()=>{
                         onChange={handleChange}
                     />
                 </div>
-                <input className="" value='buscar' onClick={handleSubmit} type="submit" />
+                <input className={style.button} value='search' onClick={handleSubmit} type="submit" />
             </form>
             <div className={style.icons}>
-                <img className={style.userImg} src={userIcon} width='30px'/>
-                <img src={bellIcon} width='30px' />
+                <img className={style.userImg} src={userIcon} height='30px' width='30px'/>
+                <img src={bellIcon} height='30px' width='30px' />
             </div>
         </nav>
     )
