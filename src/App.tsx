@@ -17,7 +17,9 @@ function App() {
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/about" element={<About/>}/>
-        <Route path="/player"  element={<SearchBar/>}/>
+        <Route path="/home"  element={<SearchBar/>}>
+            <Route index  element={<h1>Ho3me Default child</h1>}/>
+        </Route>
       </Routes>
     </div>
   );
