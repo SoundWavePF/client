@@ -48,12 +48,14 @@ const SignUpForm = ()=>{
     if(error.password)return true
     return false
   }
-  const onSubmitSignUp = ()=>{
-    //e.prevent
+  const onSubmitSignUp = (e:React.FormEvent)=>{
+    e.preventDefault()
+    console.log(e)
+    console.log(form)
   }
   return(
     <div >
-      <form className={m.container_w4s5} onSubmit={(e)=>{onSubmitSignUp()}}>
+      <form className={m.container_w4s5} onSubmit={(e)=>{onSubmitSignUp(e)}}>
         <input className={m.inputForm_7fv8} 
           type="email"
           placeholder="Put your email." 
