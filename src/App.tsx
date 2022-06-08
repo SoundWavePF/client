@@ -3,7 +3,10 @@ import { Routes, Route } from "react-router";
 import "./App.css";
 import Landing from './components/views/Landing/Landing'
 import SearchBar from "./components/commons/SearchBar/SearchBar";
+import SignUp from "./components/views/SignUp/SignUp";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
@@ -11,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing/>}/>
           <Route path="/player"  element={<SearchBar/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
       </Routes>
     </div>
   );

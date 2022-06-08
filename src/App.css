@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+:root {
+  --black: #202020;
+  --gray-light: #d6d6d6;
+  --gray-dark: #333533;
+  --yellow-light: #ffee32;
+  --yellow-dark: #ffd100;
+}
+@font-face {
+  font-family: 'sw-light';
+  src: url(./assets/DefaultFont/IBMPlexSans-Light.ttf);
+}
+@font-face {
+  font-family: 'sw-medium';
+  src: url(./assets/DefaultFont/IBMPlexSans-Medium.ttf);
+}
+@font-face {
+  font-family: 'sw-bold';
+  src: url(./assets/DefaultFont/IBMPlexSans-Bold.ttf);
+}
+@font-face {
+  font-family: 'sw-italic';
+  src: url(./assets/DefaultFont/IBMPlexSans-Italic.ttf);
+}
