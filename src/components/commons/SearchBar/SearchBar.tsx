@@ -21,6 +21,7 @@ const SearchBar = ()=>{
     }
 
     return (
+        <>
         <nav className={`${style.navbar}`}>
             <form className={style.form}>
                 <div className={style.search}>
@@ -40,8 +41,9 @@ const SearchBar = ()=>{
                 <img className={style.userImg} src={userIcon} height='30px' width='30px'/>
                 <img src={bellIcon} height='30px' width='30px' />
             </div>
-            <Outlet />
         </nav>
+        <Outlet />
+        </>
     )
 }
 
