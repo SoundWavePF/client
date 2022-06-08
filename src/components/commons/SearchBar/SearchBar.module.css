@@ -1,8 +1,18 @@
 @import '../../../App.css';
 
 .navbar {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+
+    padding: 10px 20px;
+
     background-color: var(--gray-light);
     border: 1px solid red;
+}
+
+.navbar:nth-child(2) {
+  margin-inline-start: auto;
 }
 
 .form {
@@ -11,10 +21,28 @@
 }
 
 .search {
-    
+    background-color: rgba(0,0,0, 0.1); 
 }
 
 .search > input {
     border: none;
-    background-color: var(--black)
+    height: 35px;
+    background-color: transparent; 
+}
+
+.search > input:focus {
+    outline:none;
+    border-bottom: 1px solid var(--yellow-light); 
+    background-color: transparent; 
+}
+
+.userImg {
+    background: red;
+    border-radius: 50%;
+}
+
+.icons {
+    border: 1px solid red;
+    display: flex;
+    gap: 2rem;
 }

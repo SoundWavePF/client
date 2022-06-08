@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import style from './SearchBar.module.css';
 import searchIcon from '../../../assets/search_icon.png'
 import userIcon from '../../../assets/user_icon.png'
+import bellIcon  from '../../../assets/bell.png'
 
 const SearchBar = ()=>{
     const [input, setInput] = useState<string>('');
@@ -35,8 +36,9 @@ const SearchBar = ()=>{
                 </div>
                 <input className="" value='buscar' onClick={handleSubmit} type="submit" />
             </form>
-            <div>
-                <img src={userIcon} width='30px'/>
+            <div className={style.icons}>
+                <img className={style.userImg} src={userIcon} width='30px'/>
+                <img src={bellIcon} width='30px' />
             </div>
         </nav>
     )
