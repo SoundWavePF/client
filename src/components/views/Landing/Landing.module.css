@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'main-font';
+  src: url(../../../assets/DefaultFont/IBMPlexSans-Medium.ttf);
+}
+@font-face {
+  font-family: main-light;
+  src: url(../../../assets/DefaultFont/IBMPlexSans-Light.ttf);
+}
+.containerBig{
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.title{
+  font-family: main-font;
+  margin-bottom: 40px;
+  color: black;
+  font-size: 3em;
+}
+.container{ 
+  grid-area: 2 / 2 / 3 / 3;
+  width: fit-content;
+  margin: 0 auto;
+  text-align: center;
+}
+.p{
+  font-family: main-light;
+  color: rgb(97, 97, 97);
+}
+.button{
+  font-family: main-font;
+  background-color: #FFEE32;
+  color: black;
+  max-width: fit-content;
+  padding: 7px 12px;
+  text-align: center;
+  border-radius: 4px;
+  margin: 0 auto;
+  text-decoration: none;
+}

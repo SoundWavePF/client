@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'main-font';
+  src: url(../../../assets/DefaultFont/IBMPlexSans-Medium.ttf);
+}
+.container{
+  background-color: #fff;
+  /* box-shadow: 0 3px 10px 2px rgba(0, 0, 0, 0.1); */
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: main-font, Arial;
+}
+.areaNav{
+  font-size: 1.2rem;
+}
+.areaNav li a{
+  color: black;
+}
+.areaNav li a:hover{
+  color: #FFEE32;
+}
+.areaLogo {
+  height: 100%;
+}
+.areaLogo img{
+  height: 100%;
+}
+.areaButtons{
+  display: flex;
+  gap: 10px;
+}
+.areaButtons :first-child {
+  background-color: #FFEE32;
+  border-color: #FFEE32;
+  padding: 0.5rem 2.5rem;
+}
+.areaButtons :last-child {
+  color: black;
+  border-color: #FFEE32;
+  padding: 0.5rem 2.5rem;
+}
+.areaButtons :last-child:hover {
+  background-color: #FFEE32;
+  color: white
+}
