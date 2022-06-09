@@ -5,7 +5,7 @@
   grid-template-rows: 60px 1fr 90px;
 }
 
-.container > div:nth-child(1) {
+.container > nav:nth-child(1) {
   position: sticky;
   /* top: 0; */
   grid-column: 2 / 3;
