@@ -1,9 +1,9 @@
 import styles from "./HomeContent.module.css";
+import CardContainer from "../CardContainer/CardContainer";
 import genres from './genres.json'
-import CardItem from "../CardItem/CardItem";
+import albums from './albums.json'
 
 const HomeContent = () => {
-  let mockGenres = genres.data;
 
   return (
     <div className={styles.container}>
@@ -12,31 +12,11 @@ const HomeContent = () => {
       </div>
       <div className={styles.section}>
         <h1>Your favourites</h1>
-        <div className={styles.cardContainer}>
-          {
-            mockGenres.map((e, i) => {
-              console.log(e);
-              return (
-                <CardItem key={i} item={e} isGenre={true}/>
-              )
-            })
-          }
-        </div>
-
+        <CardContainer content={albums.data}/>
       </div>
       <div className={styles.section}>
         <h1>Genres</h1>
-        <div className={styles.cardContainer}>
-          {
-            mockGenres.map((e, i) => {
-              console.log(e);
-              return (
-                <CardItem key={i} item={e} isGenre={false}/>
-              )
-            })
-          }
-        </div>
-
+        <CardContainer content={genres.data}/>
       </div>
     </div>
   );

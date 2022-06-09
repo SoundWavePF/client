@@ -9,7 +9,6 @@ interface item {
 }
 interface myProps {
   item: item;
-  isGenre: boolean;
 }
 
 const CardItem: React.FC<myProps> = (props: myProps) => {
@@ -18,7 +17,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
   }
   
   return (
-    <div className={props.isGenre ? styles.alt : styles.default}>
+    <div className={props.item.type == 'genre' ? styles.alt : styles.default}>
       <Link to={`/${props.item.type}/${props.item.id}`}>
         <img src={props.item.picture_medium}/>
       </Link>
