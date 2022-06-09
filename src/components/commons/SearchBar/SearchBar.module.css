@@ -7,11 +7,9 @@
 
     padding: 10px 20px;
     box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
+    font-family: var(--sw-medium);
 }
 
-.navbar:nth-child(2) {
-  margin-inline-start: auto;
-}
 
 .form {
     display: flex;
