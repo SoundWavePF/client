@@ -1,15 +1,13 @@
 import { useState } from "react"
-import m from'./SignUpForm.module.css'
+import m from'./LoginForm.module.css'
 
-const SignUpForm = ()=>{
+const LoginForm = ()=>{
   const [form, setForm] = useState({
     email:'',
-    username: '',
     password:''
   })
   const [error,setError] = useState({
     email:'',
-    username: '',
     password:''
   })
   const validateEmail = (value:string):void =>{
@@ -21,15 +19,6 @@ const SignUpForm = ()=>{
     }
     setForm({...form, email:value})
   }  
-  const validateUsername = (value:string):void =>{
-    if(value.length<14){
-      setError({...error,username:''})
-    }
-    else{
-      setError({...error,username:'Your username must have a maximum of 13 characters'})
-    }
-    setForm({...form, username:value})
-  }
   const validatePassword = (value:string):void =>{
     if(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/.test(value)){
       setError({...error,password:''})
@@ -41,10 +30,8 @@ const SignUpForm = ()=>{
   }
   const disabled = ():boolean =>{
     if(!form.email)return true
-    if(!form.username)return true
     if(!form.password)return true
     if(error.email)return true
-    if(error.username)return true
     if(error.password)return true
     return false
   }
@@ -64,13 +51,6 @@ const SignUpForm = ()=>{
           onChange={(e)=>validateEmail(e.target.value)}   
       /> <label className={m.labelError}>{error.email}</label>
       <input className={m.inputForm_7fv8}
-          type="text"
-          placeholder="Put your username." 
-          name='username' 
-          value={form.username}
-          onChange={(e)=>validateUsername(e.target.value)}   
-      /> <label className={m.labelError}>{error.username}</label>
-      <input className={m.inputForm_7fv8}
           type="password"
           placeholder="Create a password." 
           name='password' 
@@ -83,4 +63,4 @@ const SignUpForm = ()=>{
     </div>
   )
 }
-export default SignUpForm
+export default LoginForm

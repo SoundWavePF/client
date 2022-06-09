@@ -1,0 +1,54 @@
+@import '../../../App.css';
+
+.navbar {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+
+    padding: 10px 20px;
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navbar:nth-child(2) {
+  margin-inline-start: auto;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.search {
+    background-color: rgba(0,0,0, 0.1); 
+    padding: 0 5px;
+}
+
+.search > input {
+    border: none;
+    height: 35px;
+    background-color: transparent; 
+}
+
+.search > input:focus {
+    outline:none;
+    border-bottom: 1px solid var(--yellow-light); 
+    background-color: transparent; 
+}
+
+.button {
+    background: var(--yellow-light);
+    border-radius: 4px;
+    border: 1px solid var(--yellow-dark);
+    padding: 0 20px;
+}
+
+.userImg {
+    background: var(--yellow-dark);
+    border-radius: 50%;
+}
+
+.icons {
+    display: flex;
+    gap: 2rem;
+}
