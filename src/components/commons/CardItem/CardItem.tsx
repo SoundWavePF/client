@@ -12,14 +12,12 @@ interface myProps {
 }
 
 const CardItem: React.FC<myProps> = (props: myProps) => {
-  const idLink = () =>{
-
-  }
+  //const idLink = () =>{}
   
   return (
-    <div className={props.item.type == 'genre' ? styles.alt : styles.default}>
+    <div className={props.item.type === 'genre' ? styles.alt : styles.default}>
       <Link to={`/${props.item.type}/${props.item.id}`}>
-        <img src={props.item.picture_medium}/>
+        <img src={props.item.picture_medium} alt={props.item.name}/>
       </Link>
       <h2>{props.item.name}</h2>
     </div>
