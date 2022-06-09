@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
-import * as b from "react-bootstrap";
 import m from './AdminPanel.module.css'
 import AdminSideBar from './../../commons/AdminSideBar/AdminSideBar';
 import UserCardAdmin from '../../commons/UserCardAdmin/UserCardAdmin';
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 interface user{
@@ -52,19 +50,11 @@ const data:user[] = [
   {id:'53',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
   {id:'63',type:'user',username:'jony',email:'jony@sw.com',songNumber:0}
 ]
-const adminOption = {home:true,user:false}
 const AdminPanel = ()=>{
-  //const adminOption = useSelector((state)=>state.adminOption)
-  //console.log(adminOption)
-  //const [page, setPage] = useState(true)
-  
-  // useEffect(()=>{
-
-  // },[adminOption])
+  const adminOption = useSelector((state:any)=>state.adminOption)
 
   if(adminOption.home===true){
-    return(
-  
+    return(  
       <div>
         <AdminSideBar/>
         <div className={m.container_as78}>

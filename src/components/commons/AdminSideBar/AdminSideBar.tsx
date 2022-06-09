@@ -4,20 +4,23 @@ import home from '../../../assets/home.png';
 import music from '../../../assets/music.png';
 import styles from './AdminSideBar.module.css';
 import { useDispatch } from 'react-redux';
-import { changeAdminOption } from '../../../redux/actions';
+import { bindActionCreators } from "redux";
+import * as actionCreator from '../../../redux/actions'
 
 export default function AdminSideBar(){
   const dispatch = useDispatch()
+  const {changeAdminOption} = bindActionCreators(actionCreator,dispatch)
+
   const onChange = (e:any)=>{ //React.MouseEvent<HTMLButtonElement, MouseEvent>
     let value = e.target.value
     if(value==='home'){
-    //  dispatch(changeAdminOption({home:true,user:false}))
+      changeAdminOption({home:true,user:false})
     }
     if(value==='users'){
-    //  dispatch(changeAdminOption({home:false,user:true}))
+      changeAdminOption({home:false,user:true})
     }
     if(value==='artist'){
-    //  dispatch(changeAdminOption({home:false,user:false}))
+      changeAdminOption({home:false,user:false})
     }
   }
   return(
