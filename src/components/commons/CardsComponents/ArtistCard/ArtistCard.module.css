@@ -1,0 +1,53 @@
+.itemListContainer {
+    display: flex;
+    align-items: center;
+    background-color: #D6D6D6;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 60vw;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.imageAndNameContainer {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.links{
+    text-decoration: none
+    ;
+}
+
+.controllerContainer {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-right: 10px;
+}
+
+
+.image {
+    width: 70px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 0.4rem rgba(0, 0, 0, 0.87)
+}
+
+.songPosition {
+    font-size: 20px;
+    margin-left: 10px;
+    color: #000000;
+    text-shadow: 2px 0 0 rgba(255, 255, 255, 0.364), -2px 0 0 rgba(255, 255, 255, 0.392), 0 2px 0 rgba(255, 255, 255, 0.398), 0 -2px 0 rgba(255, 255, 255, 0.358), 1px 1px rgba(255, 255, 255, 0.415), -1px -1px 0 rgba(255, 255, 255, 0.307), 1px -1px 0 rgba(255, 255, 255, 0.37), -1px 1px 0 rgba(255, 255, 255, 0.387);
+}
+
+
+.songName {
+    margin-left: 15px;
+    font-size: 20px;
+    font-family: 'sw-medium';
+    color: #000000;
+    text-shadow: 2px 0 0 rgba(255, 255, 255, 0.364), -2px 0 0 rgba(255, 255, 255, 0.392), 0 2px 0 rgba(255, 255, 255, 0.398), 0 -2px 0 rgba(255, 255, 255, 0.358), 1px 1px rgba(255, 255, 255, 0.415), -1px -1px 0 rgba(255, 255, 255, 0.307), 1px -1px 0 rgba(255, 255, 255, 0.37), -1px 1px 0 rgba(255, 255, 255, 0.387);
+}

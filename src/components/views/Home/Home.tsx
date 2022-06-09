@@ -4,6 +4,7 @@ import SideBar from "../../commons/SideBar/SideBar";
 import HomeContent from "../../commons/HomeContent/HomeContent";
 import Player from "../../commons/Player/Player";
 
+
 const Home = () => {
   return (
     <div className={styles.container}>
