@@ -11,15 +11,16 @@ import muteicon from '../../../assets/mute.png';
 import volume1 from '../../../assets/volume1.png';
 import volume2 from '../../../assets/volume2.png';
 import volume3 from '../../../assets/volume3.png';
+import like from '../../../assets/likefull.png';
 import styles from './Player.module.css';
 
 export default function Player(){
   let songs = ['https://cdns-preview-7.dzcdn.net/stream/c-752f8fed9d345e4a13f001d84b8b461f-8.mp3', 'https://cdns-preview-7.dzcdn.net/stream/c-72696f0555122535b8c162ca9ffff9b4-8.mp3', 'https://cdns-preview-1.dzcdn.net/stream/c-16dc9be33bbef44979cdf3706bec4ecf-8.mp3']
   const player = useRef();
-  // const song = useSelector(state => state.song)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [currentTime, setCurrentTime] = useState(0)
-  const [i, setI] = useState(0)
+  // const song = useSelector(state => state.song);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [i, setI] = useState(0);
   const [volume, setVolume] = useState('100');
   function prettyTime(time){
     let minutes = Math.floor(time / 60);
@@ -57,11 +58,13 @@ export default function Player(){
         volume={parseInt(volume)/100}
         progressInterval={500}
         onProgress={handleProgress}
+        height={0}
+        width={0}
       />
-      <div classname={styles.seek}>
-        <input type='range' value={currentTime} min='0' max={player.current?.getDuration()} onChange={e => handleSeek(e.target.value)}></input>
+      <div className={styles.seekbar}>
+        <input type='range' value={currentTime} min='0' max={player.current?.getDuration()} onChange={e => handleSeek(e.target.value)} className={styles.seek}></input>
       </div>
-      <div classname={styles.semicontainer}>
+      <div className={styles.semicontainer}>
         <div className={styles.audioCtrl}>
           <button onClick={prevSong} className={styles.btn} disabled={songs[i - 1] ? false : true}>{songs[i - 1] ? <img src={prev} className={styles.btnImg}/> : <img src={prevvoid} className={styles.btnImg}/>}</button>
           <button onClick={pausePlay} className={styles.btn}>{isPlaying ? <img src={pause} className={styles.btnImg}/> : <img src={play} className={styles.btnImg}/>}</button>
@@ -73,7 +76,7 @@ export default function Player(){
           <span>artist • album</span>
         </div>
         <div className={styles.volume}>
-          <button>corazon</button>
+          <button className={styles.btn}><img src={like} className={styles.btnImg}/></button>
           <button onClick={mute} className={styles.btn}><img src={parseInt(volume) === 0 ? muteicon : parseInt(volume) < 33 ? volume1 : parseInt(volume) < 66 ? volume2 : volume3} className={styles.btnImg}/></button>
           <input type='range' value={volume} min='0' max='100' onChange={e => setVolume(e.target.value)} className={styles.volumeR}/>
         </div>
