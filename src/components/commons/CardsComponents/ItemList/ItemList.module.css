@@ -1,0 +1,97 @@
+.itemListContainer {
+    display: flex;
+    align-items: center;
+    background-color: #D6D6D6;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 60vw;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.imageAndNameContainer {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.controllerContainer {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-right: 10px;
+}
+
+
+.image {
+    width: 70px;
+    border-radius: 50%;
+    box-shadow: 1px 1px 0.4rem rgba(0, 0, 0, 0.87)
+}
+
+.links{
+    text-decoration: none;
+}
+
+.songPosition {
+    font-size: 20px;
+    font-family: 'sw-medium';
+    margin-left: 10px;
+    color: #000000;
+    text-shadow: 2px 0 0 rgba(255, 255, 255, 0.364), -2px 0 0 rgba(255, 255, 255, 0.392), 0 2px 0 rgba(255, 255, 255, 0.398), 0 -2px 0 rgba(255, 255, 255, 0.358), 1px 1px rgba(255, 255, 255, 0.415), -1px -1px 0 rgba(255, 255, 255, 0.307), 1px -1px 0 rgba(255, 255, 255, 0.37), -1px 1px 0 rgba(255, 255, 255, 0.387);
+}
+
+
+.songName {
+    font-size: 20px;
+    font-family: 'sw-medium';
+    color: #000000;
+    text-shadow: 2px 0 0 rgba(255, 255, 255, 0.364), -2px 0 0 rgba(255, 255, 255, 0.392), 0 2px 0 rgba(255, 255, 255, 0.398), 0 -2px 0 rgba(255, 255, 255, 0.358), 1px 1px rgba(255, 255, 255, 0.415), -1px -1px 0 rgba(255, 255, 255, 0.307), 1px -1px 0 rgba(255, 255, 255, 0.37), -1px 1px 0 rgba(255, 255, 255, 0.387);
+}
+
+
+
+
+
+
+.likeImg {
+
+    width: 25px;
+    margin-left: 40px;
+    margin-right: 15px;
+}
+
+.likeImg:hover{
+    filter: opacity(0.4) drop-shadow(0 0 0 red); 
+    cursor: pointer;
+}
+
+.likeImgAlt{
+    filter: opacity(0.4) drop-shadow(0 0 0 red); 
+    width: 25px;
+    margin-left: 40px;
+    margin-right: 15px;
+    
+}
+
+.likeImgAlt:hover{
+    cursor: pointer;
+    filter: opacity(0.4) drop-shadow(0 0 0 red); 
+    width: 25px;
+    margin-left: 40px;
+}
+
+.duration {
+    font-size: 20px;
+
+    margin-left: 20px;
+}
+
+.timeImg {
+    width: 25px;
+    margin-left:4px;
+}
+
+

@@ -1,13 +1,9 @@
-@import '../../../App.css';
-
 .navbar {
     display: flex;
     flex-direction:row;
     justify-content: space-between;
 
-    padding: 10px 20px;
-    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.2);
-    font-family: var(--sw-medium);
+    padding: 8px 20px;
 }
 
 
@@ -15,23 +11,29 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
+    width: 100%;
 }
 
 .search {
-    background-color: rgba(0,0,0, 0.1); 
-    padding: 0 5px;
+    align-items: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    align-content: center;
+    padding-right: 20px;
 }
 
 .search > input {
     border: none;
     height: 35px;
+    height: 100%;
+    padding: 1rem;
     background-color: transparent; 
+    width: 100%;
 }
 
 .search > input:focus {
     outline:none;
-    border-bottom: 1px solid var(--yellow-light); 
-    background-color: transparent; 
 }
 
 .button {
@@ -44,9 +46,12 @@
 .userImg {
     background: var(--yellow-dark);
     border-radius: 50%;
+    height: 100%;
+    width: 100%;
 }
 
 .icons {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
