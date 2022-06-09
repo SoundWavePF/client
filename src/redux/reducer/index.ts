@@ -1,7 +1,7 @@
 import { ActionType } from "../actions/types";
 
 const initialState = {
-  genres: {},
+  genres: [],
   album: {},
 };
 
