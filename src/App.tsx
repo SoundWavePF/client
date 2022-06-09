@@ -11,6 +11,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./components/views/Login/Login";
 import About from "./components/views/about/About";
+import AdminPanel from "./components/views/AdminPanel/AdminPanel";
+
 
 function App() {
   return (
@@ -18,7 +20,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing/>}/>
         <Route path="/login" element={<Login/>}/>
+        <Route path="/adminpanel" element={<AdminPanel/>}/>
+
         <Route path="/signup" element={<SignUp/>}/>
+
         <Route path="/about" element={<About/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/favs" element={<h1>Favs</h1>}/>
