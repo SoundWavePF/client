@@ -15,7 +15,7 @@ const DropDownButton = () => {
                         id={`dropdown-button-drop-${direction}`}
                         drop={'end'}
                         variant="warning"
-                        title='+ Playlist'
+                        title='➕ Playlist'
                       >
                         <Dropdown.Item eventKey="1">Favorites</Dropdown.Item>
                         <Dropdown.Item eventKey="2">To dance</Dropdown.Item>

@@ -21,7 +21,6 @@ const SearchBar = ()=>{
     }
 
     return (
-        <>
         <nav className={`${style.navbar}`}>
             <form className={style.form}>
                 <div className={style.search}>
@@ -35,15 +34,12 @@ const SearchBar = ()=>{
                         onChange={handleChange}
                     />
                 </div>
-                <input className={style.button} value='search' onClick={handleSubmit} type="submit" />
+                {/* <input className={style.button} value='search' onClick={handleSubmit} type="submit" /> */}
             </form>
             <div className={style.icons}>
                 <img className={style.userImg} src={userIcon} height='30px' width='30px'/>
-                <img src={bellIcon} height='30px' width='30px' />
             </div>
         </nav>
-        <Outlet />
-        </>
     )
 }
 
