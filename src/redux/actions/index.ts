@@ -2,6 +2,7 @@ import { Dispatch } from "react";
 import { ActionType, Actions, userOption } from "./types";
 import genres from './hc_data/genres.json';
 import albums from './hc_data/albums.json';
+import axios from "axios";
 
 export const getMusic = ()=>{
   return(dispatch: Dispatch<Actions>)=>{
@@ -19,5 +20,33 @@ export const changeAdminOption = (userOption:userOption)=>{
       type: ActionType.CHANGE_ADMIN_OPTION,
       payload: userOption
     })
+  }
+}
+export const postSignUp = (form:any)=>{ //hasta que no halla back el axios queda comentado
+  return(dispatch: Dispatch<Actions>)=>{
+    // axios.post('',form)
+    // .then(response => dispatch({
+    //   type: ActionType.CHANGE_ADMIN_OPTION,
+    //   payload: response.data
+    // }))
+    // .catch((error)=>console.log(error))
+    dispatch({
+        type: ActionType.POST_SIGN_UP,
+        payload: form
+      })
+  }
+}
+export const postLogin = (form:any)=>{ //hasta que no halla back el axios queda comentado
+  return(dispatch: Dispatch<Actions>)=>{
+    // axios.post('',form)
+    // .then(response => dispatch({
+    //   type: ActionType.CHANGE_ADMIN_OPTION,
+    //   payload: response.data
+    // }))
+    // .catch((error)=>console.log(error))
+    dispatch({
+        type: ActionType.POST_LOGIN,
+        payload: form
+      })
   }
 }

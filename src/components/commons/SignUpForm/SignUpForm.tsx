@@ -1,7 +1,12 @@
 import { useState } from "react"
 import m from'./SignUpForm.module.css'
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from "redux";
+import * as actionCreator from '../../../redux/actions'
 
 const SignUpForm = ()=>{
+  const dispatch = useDispatch()
+  const {postSignUp} = bindActionCreators(actionCreator, dispatch)
   const [form, setForm] = useState({
     email:'',
     username: '',
@@ -50,8 +55,7 @@ const SignUpForm = ()=>{
   }
   const onSubmitSignUp = (e:React.FormEvent)=>{
     e.preventDefault()
-    console.log(e)
-    console.log(form)
+    postSignUp(form)
   }
   return(
     <div >
