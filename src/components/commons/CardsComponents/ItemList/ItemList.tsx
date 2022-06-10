@@ -6,58 +6,105 @@ import time from '../../../../assets/time.png'
 import DropDownButton from '../../DropDownButton/DropDownButton'
 import { Link } from 'react-router-dom'
 
-interface Item {
-    position: number;
-    image: string;
-    name: string;
-    timeLapse:string;
+// interface Item {
+//     position: number;
+//     image: string;
+//     name: string;
+//     timeLapse:string;
+//     cantidad?: string;
+// }
+
+interface myProps {
+  item: any;
 }
 
-const ItemList = ({ position, image, name, timeLapse }: Item) => {
+const ItemList: React.FC<myProps> = (props: myProps) => {
 
-    const formatDuration = (duration:string): string => {
-        let num = parseInt(duration);
-        let minutes: number = Math.floor(num / 60)
-        let seconds: number = num - (minutes * 60);
-        let minStr: string = minutes.toString();
-        let secStr: string = seconds.toString();
-        return `${minStr.length == 1 ? '0' + minStr : minStr}:${secStr.length == 1 ? '0' + secStr : secStr}`
-    }
+  const formatDuration = (duration: string): string => {
+    let num = parseInt(duration);
+    let minutes: number = Math.floor(num / 60)
+    let seconds: number = num - (minutes * 60);
+    let minStr: string = minutes.toString();
+    let secStr: string = seconds.toString();
+    return `${minStr.length == 1 ? '0' + minStr : minStr}:${secStr.length == 1 ? '0' + secStr : secStr}`
+  }
 
+  let tipo = props.item.type
 
-    return (
+  switch (tipo) {
+    case "track":
+      return (
         <div className={s.itemListContainer}>
-            <Link className={s.links} to={'/song/:id'}>
+          <Link className={s.links} to={'/song/:id'}>
             <div className={s.imageAndNameContainer}>
-                <div>
-                    <div><img className={s.image} src={image} alt="" /></div>
-                </div>
-                <div>
-                    <div className={s.songPosition}>{position}.</div>
-                </div>
-                <div>
-                    <div className={s.songName}>{name}</div>
-                </div>
+              <div>
+                <div><img className={s.image} src={props.item.album.image_small} alt="" /></div>
+              </div>
+              <div>
+                <div className={s.songName}>{props.item.title}</div>
+              </div>
             </div>
-            </Link>
+          </Link>
 
 
-            <div className={s.controllerContainer}>
-                <div >
-                    <img className={name.length > 15 ? s.likeImg : s.likeImgAlt} src={likefull} alt="like icon" />
-                </div>
-                <div>
-                    <DropDownButton />
-                </div>
-                <div>
-                    <div className={s.duration}>{formatDuration(timeLapse)}</div>
-                </div>
-                <div>
-                    <img className={s.timeImg} src={time} alt="time icon" />
-                </div>
+          <div className={s.controllerContainer}>
+            <div>
+              <DropDownButton />
             </div>
+            <div>
+              <div className={s.duration}>{formatDuration(props.item.duration)}</div>
+            </div>
+            <div>
+              <img className={s.timeImg} src={time} alt="time icon" />
+            </div>
+          </div>
         </div>
-    )
-}
+      )
+    case "album":
+      return (
+        <div className={s.itemListContainer}>
+          <Link className={s.links} to={'/album/:id'}>
+            <div className={s.imageAndNameContainer}>
+              <div>
+                <div><img className={s.image} src={props.item.image_small} alt="" /></div>
+              </div>
+              <div>
+                <div className={s.songName}>{props.item.title}</div>
+              </div>
+            </div>
+          </Link>
 
+
+          <div className={s.controllerContainer}>
+
+            <div className={s.dbTracks}>
+              {props.item.nb_tracks}
+            </div>
+          </div>
+        </div>
+      )
+    case "artist":
+      return (
+        <div className={s.itemListContainer}>
+          <Link className={s.links} to={'/artist/:id'}>
+            <div className={s.imageAndNameContainer}>
+              <div>
+                <div><img className={s.image} src={props.item.image_small} alt="" /></div>
+              </div>
+              <div>
+                <div className={s.songName}>{props.item.name}</div>
+              </div>
+            </div>
+          </Link>
+          <div className={s.controllerContainer}>
+          </div>
+        </div>
+      )
+
+    default:
+      return (
+        <></>
+      )
+  }
+}
 export default ItemList

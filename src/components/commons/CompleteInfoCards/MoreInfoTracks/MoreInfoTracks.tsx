@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const MoreInfoTracks = () => {
     return (
         <>
-            <div className={s.cardsContainer}>
+            {/* <div className={s.cardsContainer}>
                 {
                     
                     test.hasOwnProperty('tracks') && test.tracks[0] && 
@@ -21,7 +21,7 @@ const MoreInfoTracks = () => {
                         return <ItemList position={song.track_position} image={song.artist.picture} name={song.title} timeLapse={song.duration} />
                     })
                 }
-            </div>
+            </div> */}
         </>
     )
 }

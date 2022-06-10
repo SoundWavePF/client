@@ -1,3 +1,11 @@
+interface list {
+
+}
+
+interface card {
+  
+}
+
 interface swAlbum {
   id:                      string;
   dz_id:                   number;
@@ -56,9 +64,25 @@ interface swPlaylist {
   listening_time:          number;
 }
 
-//////no se si hace falta
-// interface SearchResult {
-//   artists:                 Artist[];
-//   albums:                  Album[];
-//   songs:                   Song[];
-// }
+interface swSearchResult {
+  artists:                 Artist[];
+  albums:                  Album[];
+  songs:                   Song[];
+}
+
+interface swAdminOption {
+  home: boolean;
+  user: boolean;
+}
+
+
+export type Action = {
+  swSearchResult,
+  swAdminOption,
+  swUser,
+  swGenre,
+  swPlaylist,
+  swSong,
+  swArtist,
+  swAlbum
+}

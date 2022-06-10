@@ -66,15 +66,17 @@ const SongsByGenre = () => {
 
 
     return (
-        <div className={s.containerCard}>
-            <div>
-                {
-                    info.map(song => {
-                        return <ItemList position={song.position} image={song.image} name={song.name} timeLapse={song.timeLapse} />
-                    })
-                }
-            </div>
-        </div>
+        <>
+        </>
+        // <div className={s.containerCard}>
+        //     <div>
+        //         {
+        //             info.map(song => {
+        //                 return <ItemList position={song.position} image={song.image} name={song.name} timeLapse={song.timeLapse} />
+        //             })
+        //         }
+        //     </div>
+        // </div>
     )
 }
 
