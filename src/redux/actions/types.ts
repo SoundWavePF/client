@@ -8,12 +8,7 @@ export enum ActionType{
   SEARCH_ALL = 'SEARCH_ALL'  
 }
 
-interface genre {
-  id: number;
-  name: string;
-  picture_medium: string;
-  type: string;
-}
+
 export interface userOption{ //opciones del componente AdminPanel
   home:boolean,
   user:boolean
@@ -21,15 +16,15 @@ export interface userOption{ //opciones del componente AdminPanel
 
 interface GetMusic{
   type: ActionType.GET_MUSIC;
-  payload?: genre[]
+  payload?: swGenre[]
 }
 interface GetAlbum{
   type:ActionType.GET_ALBUM;
-  payload: Object[]
+  payload: swAlbum[]
 }
 interface ChangeAdminOption{
   type: ActionType.CHANGE_ADMIN_OPTION;
-  payload: userOption 
+  payload?: any 
 }
 interface PostSignUp{
   type: ActionType.POST_SIGN_UP,
