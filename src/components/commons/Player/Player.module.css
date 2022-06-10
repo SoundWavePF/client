@@ -1,7 +1,7 @@
 .player{
   font-family: sw-medium;
   width: 100%;
-  background-color: var(--yellow-light);
+  background-color: var(--gray-light);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 3fr;
@@ -53,10 +53,36 @@
 .seek{
   width: 100%;
   background: var(--gray-light); 
-  outline: none; 
-  opacity: 0.9; 
-  height: 10px;
+  outline: none;
+  height: 4px;
+  -webkit-appearance: none;
+  overflow: hidden;
 }
+
+.seek::-webkit-slider-runnable-track {
+  background: var(--gray-light);
+  height: 4px;
+}
+.seek::-moz-range-track {
+  background: var(--gray-light);
+  height: 4px;
+}
+.seek::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  /* appearance: none; */
+  height: 20px;
+  width: 2px;
+  box-shadow: -100vw 0 0 100vw var(--gray-dark);
+}
+.seek::-moz-range-thumb {
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0; /*Removes default border-radius that FF applies*/
+  background-color: #5cd5eb;
+  height: 20px;
+  width: 2px;
+  box-shadow: -100vw 0 0 100vw var(--gray-dark);
+}
+
 .seek:hover{
   opacity: 1;
   cursor: pointer;
