@@ -13,6 +13,7 @@ interface State {
   album_playlist: object[],
   library_artist: object,
   queue: object[],
+  genres?: swGenre[]
 }
 
 const initialState: State = {
@@ -28,13 +29,14 @@ const initialState: State = {
     list: [], // favs   -  top       // track[]
     card: []  // playlist - albums   // album[]
   },
-  adminOption:{home:true,user:false},
+  genres: [],
+  //adminOption:{home:true,user:false},
 };
 
 
 const Reducer = (state: State = initialState, action: Actions) => {
   switch (action.type) {
-    case ActionType.GET_MUSIC:
+    case ActionType.GET_GENRES:
       return {
         ...state,
         genres: action.payload,

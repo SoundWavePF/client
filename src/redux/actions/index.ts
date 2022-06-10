@@ -7,15 +7,13 @@ import * as hc from './hc_data';
 // manden un console.log para ver los otros
 import axios from "axios";
 
-export const getMusic = ()=>{
+export const getGenres = ()=>{
   return(dispatch: Dispatch<Actions>)=>{
     dispatch({
-      type: ActionType.GET_MUSIC,
+      type: ActionType.GET_GENRES,
       payload: hc.genres      ////aquí envío los 5 generos por ej
     })
-
   }
-  
 }
 export const changeAdminOption = (userOption:any)=>{
   return(dispatch: Dispatch<Actions>)=>{
