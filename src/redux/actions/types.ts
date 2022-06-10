@@ -1,6 +1,8 @@
-export type Actions = GetMusic | GetAlbum | ChangeAdminOption | PostSignUp | PostLogin | SearchAll;
+
+export type Actions = GetGenres | GetAlbum | ChangeAdminOption | PostSignUp | PostLogin | SearchAll;
+
 export enum ActionType{
-  GET_MUSIC = 'GET_MUSIC',
+  GET_GENRES = 'GET_GENRES',
   GET_ALBUM = 'GET_ALBUM',
   CHANGE_ADMIN_OPTION = 'CHANGE_ADMIN_OPTION',
   POST_SIGN_UP = 'POST_SIGN_UP',
@@ -14,8 +16,8 @@ export interface userOption{ //opciones del componente AdminPanel
   user:boolean
 }
 
-interface GetMusic{
-  type: ActionType.GET_MUSIC;
+interface GetGenres{
+  type: ActionType.GET_GENRES;
   payload?: swGenre[]
 }
 interface GetAlbum{

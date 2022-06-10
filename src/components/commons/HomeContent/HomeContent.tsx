@@ -9,32 +9,27 @@ import * as actionCreator from '../../../redux/actions'
 
 const HomeContent = () => {
   const dispatch = useDispatch();
-  const  { getMusic } = bindActionCreators(actionCreator,dispatch);
+  const  { getGenres } = bindActionCreators(actionCreator,dispatch);
   const stateGenres = useSelector((state: any) => state.genres);
 
   useEffect(()=>{
-    //getMusic();
+    getGenres();
+    
   },[])
 
-  const stateTest = () => {
-    getMusic();
-  }
   return (
     <div className={styles.container}>
       <div className={styles.section}>
         <h1>Recently played</h1>
       </div>
       <div className={styles.section}>
-        <h1>Your favourites</h1>
+        <h1>Albums</h1>
         <CardContainer content={albums.data}/>
       </div>
       <div className={styles.section}>
         <h1>Genres</h1>
-        {
-          // stateGenres.length > 0 && <CardContainer content={stateGenres}/>
-        }
+        <CardContainer content={stateGenres}/>
       </div>
-      <button onClick={stateTest}>test state</button>
     </div>
   );
 };
