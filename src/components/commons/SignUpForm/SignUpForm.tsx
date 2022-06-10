@@ -31,7 +31,7 @@ const SignUpForm = ()=>{
       setError({...error,username:''})
     }
     else{
-      setError({...error,username:'Your username must have a maximum of 13 characters'})
+      setError({...error,username:'Your username must have a max of 13 characters'})
     }
     setForm({...form, username:value})
   }

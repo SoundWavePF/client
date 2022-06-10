@@ -13,18 +13,24 @@ export default function SideBar(){
         <span>SoundWave</span>
       </div>
       <div className={styles.btnContainer}>
-        <div className={styles.button}>
-          <img src={home} alt="Home" className={styles.img}/>
-          <Link to='/home' className={styles.link}>Home</Link>
-        </div>
-        <div className={styles.button}>
-          <img src={play} alt="Play" className={styles.img}/>
-          <Link to='/playlists' className={styles.link}>Playlists</Link>
-        </div>
-        <div className={styles.button}>
-          <img src={music} alt="Music" className={styles.img}/>
-          <Link to='/favorites' className={styles.link}>My favorites</Link>
-        </div>
+        <Link to='/home' className={styles.link}>
+          <div className={styles.button}>
+            <img src={home} alt="Home" className={styles.img}/>
+            Home
+          </div>
+        </Link>
+        <Link to='/playlists' className={styles.link}>
+          <div className={styles.button}>
+            <img src={play} alt="Play" className={styles.img}/>
+            Playlists
+          </div>
+        </Link>
+        <Link to='/favorites' className={styles.link}>
+          <div className={styles.button}>
+            <img src={music} alt="Music" className={styles.img}/>
+            My favorites
+          </div>
+        </Link>
       </div>
     </div>
   )

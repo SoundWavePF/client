@@ -1,5 +1,5 @@
-import { Actions, ActionType, userOption } from "../actions/types";
-
+import { Actions, ActionType } from "../actions/types";
+//import * as types from "../../consts/sw_types"
 
 //tengo que importar las interfaces de las propiedades dentro de los objetos del initial state
 
@@ -13,23 +13,21 @@ interface Home {
 }
 interface State {
   query: string,
-  searchResults: object,
-  album_playlist: object[],
+  searchResults: swSearchResult,
+  album_playlist: swPlaylist[],
   library_artist: object,
   queue: object[],
   home: Home,
-  adminOption: userOption
-
+  adminOption?: swAdminOption,
 }
 
 const initialState: State = {
   query: '',   //párametro de búsqueda : string
   queue: [],   //cola de reproduccion : track[]
   searchResults: {
-    songData: [],  //  track[]
-    albumData: [],   //  album[]
-    artistData: [],   //  artist[]
-    playlistData: [], // playlist
+    artists: [],  //  artist[]
+    albums: [],   //  album[]
+    songs: [],   //  track[]
   },
   album_playlist: [], // track[]
   library_artist: {
@@ -41,8 +39,7 @@ const initialState: State = {
     genres: [],
     chart: []
   },
-  adminOption:{home:true,user:false}, //opciones del componente AdminPanel
-
+  adminOption:{home:true,user:false},
 };
 
 
@@ -83,11 +80,6 @@ const Reducer = (state: State = initialState, action: Actions) => {
       console.log(action.payload) //hasta que no halla back solo consologea la info
       return{
         ...state
-      }
-    case ActionType.SEARCH_ALL:
-      return{
-        ...state,
-        searchResults:action.payload
       }
     default:
       return state;
