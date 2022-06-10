@@ -7,46 +7,48 @@ import s from './SearchResults.module.css'
 import test from './test.json'
 import { Link } from 'react-router-dom'
 import ItemList from '../../commons/CardsComponents/ItemList/ItemList'
-import { useSelector } from 'react-redux';
+import jsonsong from './songList.json'
+import jsonalbum from './albumList.json'
+import jsonartist from './artistList.json'
 
 
 const SearchResults = () => {
-  const {songData, albumData, artistData, playlistData} = useSelector((state:any)=>state.searchResults)
+
   return (
     <>
 
       {
-        songData.length && songData[4] &&
+        jsonsong.length>0 &&
         <Link className={s.links} to={'/moreinfotracks'}>
           <div className={s.sectionTitle}>{`Tracks >`}</div>
         </Link>
       }
 
       {
-        songData.length && test.tracks.slice(0, 4).map(song => {
-          return <ItemList position={song.track_position} image={song.artist.picture} name={song.title} timeLapse={song.duration} />
+        jsonsong.slice(0, 4).map(song => {
+          return <ItemList item={song}/>
         })
       }
       {
-        artistData.length && artistData[4] &&
+        jsonartist.length>0 &&
         <Link className={s.links} to={'/moreinfoartists'}>
           <div className={s.sectionTitle}>{`Artists >`}</div>
         </Link>
       }
       {
-        test.hasOwnProperty('artists') && test.artists[0] && test.artists.slice(0, 4).map(artist => {
-          return <ArtistCard image={artist.picture} name={artist.name} />
+        jsonartist.slice(0, 4).map(artist => {
+          return <ItemList item={artist}/>
         })
       }
       {
-        albumData.length && albumData[4] &&
+        jsonalbum.length>0 &&
         <Link className={s.links} to={'/moreinfoalbums'}>
           <div className={s.sectionTitle}>{`Albums >`}</div>
         </Link>
       }
       {
-        test.hasOwnProperty('albums') && test.albums[0] && test.albums.slice(0, 4).map(albums => {
-          return <AlbumCard image={albums.cover} name={albums.title} nb_tracks={albums.nb_tracks} />
+        jsonalbum.slice(0, 4).map(albums => {
+          return <ItemList item={albums}/>
         })
       }
     </>
