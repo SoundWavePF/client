@@ -7,28 +7,17 @@ export enum ActionType{
   POST_LOGIN = 'POST_LOGIN' 
 }
 
-interface genre {
-  id: number;
-  name: string;
-  picture_medium: string;
-  type: string;
-}
-export interface userOption{
-  home:boolean,
-  user:boolean
-}
-
 interface GetMusic{
   type: ActionType.GET_MUSIC;
-  payload?: genre[]
+  payload?: swGenre[]
 }
 interface GetAlbum{
   type:ActionType.GET_ALBUM;
-  payload: Object[]
+  payload: swAlbum[]
 }
 interface ChangeAdminOption{
   type: ActionType.CHANGE_ADMIN_OPTION;
-  payload: userOption 
+  payload?: any 
 }
 interface PostSignUp{
   type: ActionType.POST_SIGN_UP,

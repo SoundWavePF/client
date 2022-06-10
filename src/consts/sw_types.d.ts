@@ -9,9 +9,9 @@ interface swAlbum {
   release_date:            Date;
   artist:                  string;
   type:                    string;
-  artists:                 Artist[];
-  genres:                  Genre[];
-  songs:                   Song[];
+  artists:                 swArtist[];
+  genres:                  swGenre[];
+  songs?:                   swSong[];
 }
 interface swArtist {
   id:                      string;
@@ -28,22 +28,22 @@ interface swSong {
   title:                   string;
   duration:                string;
   preview:                 string;
-  image_small:             string;
-  image_medium:            string;
-  image_big:               string;
   artist:                  string;
   type:                    string;
-  artists:                 Artist[];
+  artists?:                 swArtist[];
+  album:                   swAlbum
 }
 interface swPlaylist {
   id:                      string;
   name:                    string;
-  type:                    string
+  nb_tracks:               number;
+  type:                    string;
+  songs?:                   swSong[];
 }
  interface swGenre {
-  id:                      number;
+  id:                      string;
   name:                    string;
-  picture:                 string;
+  image:                   string;
   type:                    string;
 }
  interface swUser {
