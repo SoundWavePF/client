@@ -5,7 +5,6 @@ import { bindActionCreators } from "redux";
 import * as actionCreator from '../../../redux/actions'
 //import ItemList from "../CardsComponents/ItemList/ItemList";
 import content from './album.json';
-import * as types from '../../../consts/sw_types'
 import { useParams } from "react-router";
 
 const ContentAlbumPlaylist = () => {
