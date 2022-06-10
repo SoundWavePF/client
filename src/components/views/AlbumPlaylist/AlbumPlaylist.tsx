@@ -1,18 +1,17 @@
-import styles from "./Home.module.css";
+import styles from "./AlbumPlaylist.module.css";
 import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";
-import HomeContent from "../../commons/HomeContent/HomeContent";
+import ContentAlbumPlaylist from "../../commons/ContentAlbumPlaylist/ContentAlbumPlaylist";
 import Player from "../../commons/Player/Player";
 
-
-const Home = () => {
+const AlbumPlaylist = () => {
   return (
     <div className={styles.container}>
       <SearchBar/>
       <SideBar/>
-      <HomeContent/>
+      <ContentAlbumPlaylist/>
       <Player />
     </div>
   );
 };
-export default Home;
+export default AlbumPlaylist;

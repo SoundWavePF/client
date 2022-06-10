@@ -1,5 +1,6 @@
 import { Actions, ActionType } from "../actions/types";
 
+
 //tengo que importar las interfaces de las propiedades dentro de los objetos del initial state
 
 //necesito los actions types para seguir agregando switch cases 
@@ -27,6 +28,7 @@ const initialState: State = {
     list: [], // favs   -  top       // track[]
     card: []  // playlist - albums   // album[]
   },
+  adminOption:{home:true,user:false},
 };
 
 
@@ -37,6 +39,21 @@ const Reducer = (state: State = initialState, action: Actions) => {
         ...state,
         genres: action.payload,
       };
+    case ActionType.CHANGE_ADMIN_OPTION:
+      return {
+        ...state,
+        adminOption: action.payload,
+      };
+    case ActionType.POST_SIGN_UP:
+      console.log(action.payload) //hasta que no halla back solo consologea la info
+      return{
+        ...state
+      }
+    case ActionType.POST_LOGIN:
+      console.log(action.payload) //hasta que no halla back solo consologea la info
+      return{
+        ...state
+      }
     default:
       return state;
   }
