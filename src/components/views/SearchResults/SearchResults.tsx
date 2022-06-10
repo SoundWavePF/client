@@ -7,26 +7,28 @@ import s from './SearchResults.module.css'
 import test from './test.json'
 import { Link } from 'react-router-dom'
 import ItemList from '../../commons/CardsComponents/ItemList/ItemList'
+import { useSelector } from 'react-redux';
+
 
 const SearchResults = () => {
-
+  const {songData, albumData, artistData, playlistData} = useSelector((state:any)=>state.searchResults)
   return (
     <>
 
       {
-        test.hasOwnProperty('tracks') && test.tracks[0] &&
+        songData.length && songData[4] &&
         <Link className={s.links} to={'/moreinfotracks'}>
           <div className={s.sectionTitle}>{`Tracks >`}</div>
         </Link>
       }
 
       {
-        test.hasOwnProperty('tracks') && test.tracks[0] && test.tracks.slice(0, 4).map(song => {
+        songData.length && test.tracks.slice(0, 4).map(song => {
           return <ItemList position={song.track_position} image={song.artist.picture} name={song.title} timeLapse={song.duration} />
         })
       }
       {
-        test.hasOwnProperty('artists') && test.artists[0] &&
+        artistData.length && artistData[4] &&
         <Link className={s.links} to={'/moreinfoartists'}>
           <div className={s.sectionTitle}>{`Artists >`}</div>
         </Link>
@@ -37,7 +39,7 @@ const SearchResults = () => {
         })
       }
       {
-        test.hasOwnProperty('albums') && test.albums[0] &&
+        albumData.length && albumData[4] &&
         <Link className={s.links} to={'/moreinfoalbums'}>
           <div className={s.sectionTitle}>{`Albums >`}</div>
         </Link>
