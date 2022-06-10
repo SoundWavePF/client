@@ -1,4 +1,4 @@
-interface Album {
+interface swAlbum {
   id:                      string;
   dz_id:                   number;
   title:                   string;
@@ -13,7 +13,7 @@ interface Album {
   genres:                  Genre[];
   songs:                   Song[];
 }
-interface Artist {
+interface swArtist {
   id:                      string;
   dz_id:                   number;
   name:                    string;
@@ -22,7 +22,7 @@ interface Artist {
   image_big:               string;
   type:                    string;
 }
-interface Song {
+interface swSong {
   id:                      string;
   dz_id:                   number;
   title:                   string;
@@ -35,18 +35,18 @@ interface Song {
   type:                    string;
   artists:                 Artist[];
 }
-interface Playlist {
+interface swPlaylist {
   id:                      string;
   name:                    string;
   type:                    string
 }
- interface Genre {
+ interface swGenre {
   id:                      number;
   name:                    string;
   picture:                 string;
   type:                    string;
 }
- interface User {
+ interface swUser {
   id:                      string;
   username:                string;
   password:                string;
@@ -57,23 +57,8 @@ interface Playlist {
 }
 
 //////no se si hace falta
-interface SearchResult {
-  artists:                 Artist[];
-  albums:                  Album[];
-  songs:                   Song[];
-}
-
-export type {
-  Album,
-  Artist,
-  Song,
-  Playlist,
-  Genre,
-  User,
-}
-
-//  importación:
-//  import * as types from '../../consts/sw_types'
-//  
-//  uso:
-//  let cancion : types.Song
+// interface SearchResult {
+//   artists:                 Artist[];
+//   albums:                  Album[];
+//   songs:                   Song[];
+// }
