@@ -4,10 +4,7 @@ import m from './Login.module.css'
 import LoginForm from './../../commons/LoginForm/LoginForm';
 
 const Login = ()=>{
-  
-  const responseGoogle = (response:any)=>{
-    console.log(response)
-  }
+
   return(
     <div>
       <NavBar />

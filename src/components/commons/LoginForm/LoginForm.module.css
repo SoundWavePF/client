@@ -18,6 +18,9 @@
   border-radius: 4px;
   text-decoration: none;
 }
+.inputSubmit_yu79:hover{
+  filter: brightness(1.04);
+}
 .labelError{
   font-family: sw-italic;
   color: #333533;
