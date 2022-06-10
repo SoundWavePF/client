@@ -24,6 +24,9 @@
   border-radius: 4px;
   text-decoration: none;
 }
+.inputGoogle_7fv8:hover{
+  filter: brightness(1.04);
+}
 .button{
   font-family: main-font;
   background-color: #FFEE32;
@@ -34,6 +37,9 @@
   border-radius: 4px;
   margin: 0 auto;
   text-decoration: none;
+}
+.button:hover{
+  filter: brightness(1.04);
 }
 .h2SignUp_f8h3{
   font-size: 50px;
