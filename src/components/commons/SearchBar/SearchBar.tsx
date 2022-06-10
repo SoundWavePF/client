@@ -1,5 +1,7 @@
 import {useState} from 'react';
-import { Outlet } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actionCreator from '../../../redux/actions'
 
 import style from './SearchBar.module.css';
 import searchIcon from '../../../assets/search_icon.png'
@@ -8,16 +10,11 @@ import bellIcon  from '../../../assets/bell.png'
 
 const SearchBar = ()=>{
     const [input, setInput] = useState<string>('');
-
+    const dispatch = useDispatch();
+    const {searchAll} = bindActionCreators(actionCreator,dispatch)
     function handleChange({target}: {target: any}): void {
-        setInput(()=>{
-            console.log(target.value);
-            return target.value;
-        }) 
-    }
-    function handleSubmit(event: any): void {
-        event.preventDefault();
-        alert(input);
+        searchAll(target.value)
+        setInput(()=>{return target.value;}) 
     }
 
     return (
@@ -34,7 +31,6 @@ const SearchBar = ()=>{
                         onChange={handleChange}
                     />
                 </div>
-                {/* <input className={style.button} value='search' onClick={handleSubmit} type="submit" /> */}
             </form>
             <div className={style.icons}>
                 <img className={style.userImg} src={userIcon} height='30px' width='30px'/>
