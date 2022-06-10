@@ -6,11 +6,10 @@ import SearchBar from "./components/commons/SearchBar/SearchBar";
 import SignUp from "./components/views/SignUp/SignUp";
 import Home from "./components/views/Home/Home";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./components/views/Login/Login";
 import About from "./components/views/about/About";
+import AdminPanel from "./components/views/AdminPanel/AdminPanel";
+import AlbumPlaylist from "./components/views/AlbumPlaylist/AlbumPlaylist";
 
 function App() {
   return (
@@ -19,16 +18,18 @@ function App() {
         <Route path="/" element={<Landing/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/signup" element={<SignUp/>}/>
+
         <Route path="/about" element={<About/>}/>
         <Route path="/home" element={<Home/>}/>
         <Route path="/favs" element={<h1>Favs</h1>}/>
         <Route path="/artist/:id" element={<h1>Artist</h1>}/>
-        <Route path="/album/:id" element={<h1>Album</h1>}/>
-        <Route path="/playlist/:id" element={<h1>Playlists</h1>}/>
+        <Route path="/album/:id" element={<AlbumPlaylist/>}/>
+        <Route path="/playlist/:id" element={<AlbumPlaylist/>}/>
 
         <Route path="/settings" element={<h1>Settings</h1>}/>
         <Route path="/panel_artist" element={<h1>Panel</h1>}/>
-        <Route path="/admin" element={<h1>Admin</h1>}/>
+        <Route path="/admin" element={<AdminPanel/>}/>
+
 
         <Route path="/*" element={<h1>  404  </h1>}/>
       </Routes>
