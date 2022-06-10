@@ -68,15 +68,15 @@
   height: 4px;
 }
 .seek::-webkit-slider-thumb {
-  -webkit-appearance: none; /* Override default look */
+  -webkit-appearance: none;
   /* appearance: none; */
   height: 20px;
   width: 2px;
   box-shadow: -100vw 0 0 100vw var(--gray-dark);
 }
 .seek::-moz-range-thumb {
-  border: none; /*Removes extra border that FF applies*/
-  border-radius: 0; /*Removes default border-radius that FF applies*/
+  border: none;
+  border-radius: 0;
   background-color: #5cd5eb;
   height: 20px;
   width: 2px;
