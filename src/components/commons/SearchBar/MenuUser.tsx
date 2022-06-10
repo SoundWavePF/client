@@ -5,7 +5,6 @@ import style from './MenuUser.module.css';
 import userIcon from '../../../assets/user_icon.png'
 import likeFull from '../../../assets/likefull.png'
 
-const options: string[] = ['one', 'dos', 'three'];
 
 interface props  {
     children?: React.ReactNode,
