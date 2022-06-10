@@ -13,7 +13,9 @@ interface State {
   album_playlist: object[],
   library_artist: object,
   queue: object[],
+  genres?: swGenre[]
   adminOption: userOption
+
 }
 
 const initialState: State = {
@@ -30,13 +32,15 @@ const initialState: State = {
     list: [], // favs   -  top       // track[]
     card: []  // playlist - albums   // album[]
   },
+  genres: [],
   adminOption:{home:true,user:false}, //opciones del componente AdminPanel
+
 };
 
 
 const Reducer = (state: State = initialState, action: Actions) => {
   switch (action.type) {
-    case ActionType.GET_MUSIC:
+    case ActionType.GET_GENRES:
       return {
         ...state,
         genres: action.payload,
