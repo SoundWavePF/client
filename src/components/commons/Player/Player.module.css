@@ -9,13 +9,10 @@
   grid-row-gap: 0px; 
 }
 .seekbar{
-  grid-area: 1 / 1 / 2 / 2;
+    grid-area: 1 / 1 / 2 / 2;
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-.seek{
-  width: 98vw;
 }
 .semicontainer{
   grid-area: 2 / 1 / 3 / 2;
@@ -45,3 +42,38 @@
   background-color: transparent;
   border: none;
 }
+.cover{
+  width: 60px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+.songInfo{
+  display: flex;
+}
+.seek{
+  width: 100%;
+  background: var(--gray-light); 
+  outline: none; 
+  opacity: 0.9; 
+  height: 10px;
+}
+.seek:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+/* .seek::-webkit-slider-thumb{
+  background: var(--yellow-light);
+  cursor: pointer; 
+}
+.seek::-moz-range-thumb{
+  border: 1px solid;
+  border-radius: 50%;
+  background: var(--yellow-light);
+  cursor: pointer; 
+}
+.seek::-ms-thumb{
+  border: 1px solid;
+  border-radius: 50%;
+  background: var(--yellow-light);
+  cursor: pointer; 
+} */
