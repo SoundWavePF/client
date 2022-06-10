@@ -15,6 +15,22 @@ export const getGenres = ()=>{
     })
   }
 }
+export const getChart = ()=>{
+  return(dispatch: Dispatch<any>)=>{
+    dispatch({
+      type: ActionType.GET_CHART,
+      payload: hc.songList
+    })
+  }
+}
+export const getLastSongs = ()=>{
+  return(dispatch: Dispatch<any>)=>{
+    dispatch({
+      type: ActionType.GET_LAST_SONGS,
+      payload: hc.songList
+    })
+  }
+}
 export const changeAdminOption = (userOption:any)=>{
   return(dispatch: Dispatch<Actions>)=>{
     dispatch({

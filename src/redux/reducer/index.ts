@@ -6,14 +6,18 @@ import { Actions, ActionType, userOption } from "../actions/types";
 //necesito los actions types para seguir agregando switch cases 
 
 
-
+interface Home {
+  last?: swSong[],
+  genres?: swGenre[],
+  chart?: swSong[],
+}
 interface State {
   query: string,
   searchResults: object,
   album_playlist: object[],
   library_artist: object,
   queue: object[],
-  genres?: swGenre[]
+  home: Home,
   adminOption: userOption
 
 }
@@ -32,7 +36,11 @@ const initialState: State = {
     list: [], // favs   -  top       // track[]
     card: []  // playlist - albums   // album[]
   },
-  genres: [],
+  home: {
+    last: [],
+    genres: [],
+    chart: []
+  },
   adminOption:{home:true,user:false}, //opciones del componente AdminPanel
 
 };
@@ -43,7 +51,23 @@ const Reducer = (state: State = initialState, action: Actions) => {
     case ActionType.GET_GENRES:
       return {
         ...state,
-        genres: action.payload,
+        home: {
+          ...state.home, genres: action.payload,
+        }
+      };
+    case ActionType.GET_LAST_SONGS:
+      return {
+        ...state,
+        home: {
+          ...state.home, last: action.payload,
+        }
+      };
+    case ActionType.GET_CHART:
+      return {
+        ...state,
+        home: {
+          ...state.home, chart: action.payload,
+        }
       };
     case ActionType.CHANGE_ADMIN_OPTION:
       return {
