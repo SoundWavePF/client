@@ -6,6 +6,8 @@ import searchIcon from '../../../assets/search_icon.png'
 import userIcon from '../../../assets/user_icon.png'
 import bellIcon  from '../../../assets/bell.png'
 
+import MenuUser from './MenuUser'
+
 const SearchBar = ()=>{
     const [input, setInput] = useState<string>('');
 
@@ -34,10 +36,9 @@ const SearchBar = ()=>{
                         onChange={handleChange}
                     />
                 </div>
-                {/* <input className={style.button} value='search' onClick={handleSubmit} type="submit" /> */}
             </form>
             <div className={style.icons}>
-                <img className={style.userImg} src={userIcon} height='30px' width='30px'/>
+                <MenuUser username={'username'} />
             </div>
         </nav>
     )
