@@ -51,3 +51,14 @@ export const postLogin = (form:any)=>{ //hasta que no halla back el axios queda 
       })
   }
 }
+export const searchAll = (input:string)=>{ //hasta que no halla back el axios queda comentado
+  return(dispatch: Dispatch<Actions>)=>{
+    axios.get(`http://localhost:3001/search?all=${input}`)
+    .then(response => dispatch({
+      type: ActionType.SEARCH_ALL,
+      payload: response.data
+    })
+    )
+    .catch((error)=>console.log(error))
+  }
+}
