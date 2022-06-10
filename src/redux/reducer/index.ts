@@ -1,4 +1,4 @@
-import { Actions, ActionType } from "../actions/types";
+import { Actions, ActionType, userOption } from "../actions/types";
 
 
 //tengo que importar las interfaces de las propiedades dentro de los objetos del initial state
@@ -13,22 +13,24 @@ interface State {
   album_playlist: object[],
   library_artist: object,
   queue: object[],
+  adminOption: userOption
 }
 
 const initialState: State = {
   query: '',   //párametro de búsqueda : string
   queue: [],   //cola de reproduccion : track[]
   searchResults: {
-    artists: [],  //  artist[]
-    albums: [],   //  album[]
-    tracks: [],   //  track[]
+    songData: [],  //  track[]
+    albumData: [],   //  album[]
+    artistData: [],   //  artist[]
+    playlistData: [], // playlist
   },
   album_playlist: [], // track[]
   library_artist: {
     list: [], // favs   -  top       // track[]
     card: []  // playlist - albums   // album[]
   },
-  adminOption:{home:true,user:false},
+  adminOption:{home:true,user:false}, //opciones del componente AdminPanel
 };
 
 
@@ -53,6 +55,11 @@ const Reducer = (state: State = initialState, action: Actions) => {
       console.log(action.payload) //hasta que no halla back solo consologea la info
       return{
         ...state
+      }
+    case ActionType.SEARCH_ALL:
+      return{
+        ...state,
+        searchResults:action.payload
       }
     default:
       return state;
