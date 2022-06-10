@@ -31,7 +31,7 @@ const HomeContent = () => {
       <div className={styles.section}>
         <h1>Genres</h1>
         {
-          stateGenres.length > 0 && <CardContainer content={stateGenres}/>
+          // stateGenres.length > 0 && <CardContainer content={stateGenres}/>
         }
       </div>
       <button onClick={stateTest}>test state</button>
