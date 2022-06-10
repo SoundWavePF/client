@@ -30,6 +30,7 @@ function App() {
         <Route path="/panel_artist" element={<h1>Panel</h1>}/>
         <Route path="/admin" element={<AdminPanel/>}/>
 
+
         <Route path="/*" element={<h1>  404  </h1>}/>
       </Routes>
     </div>
