@@ -1,13 +1,18 @@
-
 import * as types from "../../consts/sw_types"
-export type Actions = GetGenres | GetAlbum | ChangeAdminOption | PostSignUp | PostLogin | SearchAll;
+export type Actions = GetGenres | GetAlbum | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue;
+
 export enum ActionType{
   GET_GENRES = 'GET_GENRES',
+  GET_CHART = 'GET_CHART',
+  GET_LAST_SONGS = 'GET_LAST_SONGS',
   GET_ALBUM = 'GET_ALBUM',
   CHANGE_ADMIN_OPTION = 'CHANGE_ADMIN_OPTION',
   POST_SIGN_UP = 'POST_SIGN_UP',
   POST_LOGIN = 'POST_LOGIN',
-  SEARCH_ALL = 'SEARCH_ALL'  
+  SEARCH_ALL = 'SEARCH_ALL',
+  SEND_PREV_PLAY = 'SEND_PREV_PLAY',
+  PLAY_SONG = 'PLAY_SONG',
+  ADD_TO_QUEUE = 'ADD_TO_QUEUE'
 }
 
 
@@ -19,6 +24,14 @@ export interface userOption{ //opciones del componente AdminPanel
 interface GetGenres{
   type: ActionType.GET_GENRES;
   payload?: types.swGenre[]
+}
+interface GetChart{
+  type:ActionType.GET_CHART;
+  payload?: swSong[]
+}
+interface GetLastSongs{
+  type:ActionType.GET_LAST_SONGS;
+  payload?: swSong[]
 }
 interface GetAlbum{
   type:ActionType.GET_ALBUM;
@@ -39,4 +52,16 @@ interface PostLogin{
 interface SearchAll{
   type: ActionType.SEARCH_ALL,
   payload: Object[]
+}
+interface SendPrevPlay{
+  type: ActionType.SEND_PREV_PLAY,
+  payload: object
+}
+interface PlaySong{
+  type: ActionType.PLAY_SONG
+  payload: object
+}
+interface AddToQueue{
+  type: ActionType.ADD_TO_QUEUE,
+  payload: object
 }
