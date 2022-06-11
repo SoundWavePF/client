@@ -19,6 +19,7 @@ interface State {
   queue: object[],
   home: Home,
   adminOption?: swAdminOption,
+  prevPlay: object
 }
 
 const initialState: State = {
@@ -40,6 +41,7 @@ const initialState: State = {
     chart: []
   },
   adminOption:{home:true,user:false},
+  prevPlay: {}
 };
 
 
@@ -80,6 +82,21 @@ const Reducer = (state: State = initialState, action: Actions) => {
       console.log(action.payload) //hasta que no halla back solo consologea la info
       return{
         ...state
+      }
+    case ActionType.SEND_PREV_PLAY:
+      return{
+        ...state,
+        prevPlay: action.payload
+      }
+    case ActionType.PLAY_SONG:
+      return{
+        ...state,
+        queue: [action.payload]
+      }
+    case ActionType.ADD_TO_QUEUE:
+      return{
+        ...state,
+        queue: [...state.queue, action.payload]
       }
     default:
       return state;
