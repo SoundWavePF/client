@@ -3,6 +3,7 @@ import m from './AdminPanel.module.css'
 import AdminSideBar from './../../commons/AdminSideBar/AdminSideBar';
 import UserCardAdmin from '../../commons/UserCardAdmin/UserCardAdmin';
 import { useSelector } from 'react-redux';
+import NavAdmin from '../../commons/NavAdmin/NavAdmin';
 
 interface user{
   id:string,
@@ -73,6 +74,7 @@ const AdminPanel = ()=>{
     return(
       <div>
         <AdminSideBar/>
+        <NavAdmin/>
         <div className={m.containerCards}>
           <ul className={m.ul}>
             {data.map(user=>{
