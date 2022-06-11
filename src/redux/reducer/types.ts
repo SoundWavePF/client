@@ -1,11 +1,12 @@
 export interface SearchResult {
-  artists:                 swArtist[];
-  albums:                  swAlbum[];
-  songs:                   swSong[];
+  artistData:                 swArtist[];
+  albumData:                  swAlbum[];
+  songData:                   swSong[];
+  playlistData?:              swPlaylist[]
 }
 export interface LibraryArtist {
   list:                    swSong[];
-  card:                    swAlbum[] | swPlaylist[];
+  card:                   any;
 }
 export interface AdminOption {
   home: boolean;

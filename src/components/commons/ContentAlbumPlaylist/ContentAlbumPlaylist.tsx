@@ -2,7 +2,7 @@ import styles from "./ContentAlbumPlaylist.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { bindActionCreators } from "redux";
-import * as actionCreator from '../../../redux/actions'
+import * as actionCreator from '../../../redux/actions/action_player'
 //import ItemList from "../CardsComponents/ItemList/ItemList";
 import content from './album.json';
 import { useParams } from "react-router";

@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actionCreator from '../../../redux/actions'
+import * as actionCreator from '../../../redux/actions/action_player'
 
 import style from './SearchBar.module.css';
 import searchIcon from '../../../assets/search_icon.png'
@@ -16,6 +16,7 @@ const SearchBar = ()=>{
     const {searchAll} = bindActionCreators(actionCreator,dispatch)
     function handleChange({target}: {target: any}): void {
         searchAll(target.value)
+        console.log(target.value)
         setInput(()=>{return target.value;}) 
     }
 

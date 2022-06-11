@@ -3,7 +3,7 @@ import CardContainer from "../CardContainer/CardContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { bindActionCreators } from "redux";
-import * as actionCreator from "../../../redux/actions";
+import * as actionCreator from "../../../redux/actions/action_player";
 
 const HomeContent = () => {
   const dispatch = useDispatch();

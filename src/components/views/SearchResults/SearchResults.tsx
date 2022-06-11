@@ -4,54 +4,52 @@ import ArtistCard from '../../commons/CardsComponents/ArtistCard/ArtistCard'
 import AlbumCard from '../../commons/CardsComponents/AlbumCard/AlbumCard'
 import s from './SearchResults.module.css'
 
-import test from './test.json'
 import { Link } from 'react-router-dom'
-import ItemList from '../../commons/CardsComponents/ItemList/ItemList'
-import jsonsong from './songList.json'
-import jsonalbum from './albumList.json'
-import jsonartist from './artistList.json'
+import ItemList from '../../commons/CardsComponents/ItemList/ItemList';
+import { useSelector } from 'react-redux'
 
 
 const SearchResults = () => {
+  const { songData, artistData, albumData} = useSelector((state: any) => state.searchResults)
 
   return (
-    <>
+    <div>
 
       {
-        jsonsong.length>0 &&
+        songData.length>0 &&
         <Link className={s.links} to={'/moreinfotracks'}>
           <div className={s.sectionTitle}>{`Tracks >`}</div>
         </Link>
       }
 
       {
-        jsonsong.slice(0, 4).map(song => {
+        songData.slice(0, 4).map((song: any) => {
           return <ItemList item={song}/>
         })
       }
       {
-        jsonartist.length>0 &&
+        artistData.length>0 &&
         <Link className={s.links} to={'/moreinfoartists'}>
           <div className={s.sectionTitle}>{`Artists >`}</div>
         </Link>
       }
       {
-        jsonartist.slice(0, 4).map(artist => {
+        artistData.slice(0, 4).map((artist: any) => {
           return <ItemList item={artist}/>
         })
       }
       {
-        jsonalbum.length>0 &&
+        albumData.length>0 &&
         <Link className={s.links} to={'/moreinfoalbums'}>
           <div className={s.sectionTitle}>{`Albums >`}</div>
         </Link>
       }
       {
-        jsonalbum.slice(0, 4).map(albums => {
+        albumData.slice(0, 4).map((albums: any) => {
           return <ItemList item={albums}/>
         })
       }
-    </>
+    </div>
   )
 }
 
