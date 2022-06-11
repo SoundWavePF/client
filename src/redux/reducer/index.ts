@@ -11,8 +11,8 @@ interface State {
   query: string,
   searchResults: types.swSearchResult,
   album_playlist: types.swPlaylist[],
-  library_artist: object,
-  queue: object[],
+  library_artist: types.library_artist,
+  queue: types.swSong[],
   adminOption: types.swAdminOption,
 }
 

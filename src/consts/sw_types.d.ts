@@ -1,11 +1,3 @@
-interface list {
-
-}
-
-interface card {
-  
-}
-
 interface swAlbum {
   id:                      string;
   dz_id:                   number;
@@ -19,7 +11,7 @@ interface swAlbum {
   type:                    string;
   artists:                 swArtist[];
   genres:                  swGenre[];
-  songs?:                   swSong[];
+  songs?:                  swSong[];
 }
 interface swArtist {
   id:                      string;
@@ -38,7 +30,7 @@ interface swSong {
   preview:                 string;
   artist:                  string;
   type:                    string;
-  artists?:                 swArtist[];
+  artists?:                swArtist[];
   album:                   swAlbum
 }
 interface swPlaylist {
@@ -46,7 +38,7 @@ interface swPlaylist {
   name:                    string;
   nb_tracks:               number;
   type:                    string;
-  songs?:                   swSong[];
+  songs?:                  swSong[];
 }
  interface swGenre {
   id:                      string;
@@ -65,9 +57,14 @@ interface swPlaylist {
 }
 
 interface swSearchResult {
-  artists:                 Artist[];
-  albums:                  Album[];
-  songs:                   Song[];
+  artists:                 swArtist[];
+  albums:                  swAlbum[];
+  songs:                   swSong[];
+}
+
+interface library_artist {
+  list:                    swSong[];
+  card:                    swAlbum[] | swPlaylist[];
 }
 
 interface swAdminOption {
@@ -75,8 +72,8 @@ interface swAdminOption {
   user: boolean;
 }
 
-
 export type Action = {
+  library_artist,
   swSearchResult,
   swAdminOption,
   swUser,
