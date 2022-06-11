@@ -15,7 +15,7 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
   return (
     <div className={styles.container}>
       {
-        props.content.map((e, i) => {
+        props.content?.map((e, i) => {
           console.log(e);
           return <CardItem key={i} item={e}/>;
         })
