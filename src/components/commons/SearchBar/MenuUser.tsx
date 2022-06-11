@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import style from './MenuUser.module.css';
@@ -14,6 +14,7 @@ interface props  {
 
 const Menu: React.FunctionComponent<props> = (props)=>{
     const [open, setOpen] = useState<boolean>(false);
+    const refContainer = useRef(null);
     const navigate = useNavigate();
 
     function toggle(): void{
