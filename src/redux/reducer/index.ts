@@ -13,13 +13,15 @@ interface Home {
 }
 interface State {
   query: string,
-  searchResults: swSearchResult,
-  album_playlist: swPlaylist[],
-  library_artist: object,
-  queue: object[],
+
+  searchResults: types.swSearchResult,
+  album_playlist: types.swPlaylist[],
+  library_artist: types.library_artist,
+  queue: types.swSong[],
   home: Home,
-  adminOption?: swAdminOption,
+  adminOption: types.swAdminOption,
   prevPlay: object
+
 }
 
 const initialState: State = {
