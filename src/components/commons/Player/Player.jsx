@@ -29,11 +29,13 @@ export default function Player(){
   }, [])
   useEffect(() => updatePos(), [queue]);
   useEffect(() => {
-    return () => dispatch(sendPrevPlay(pos, volume));
-  }, [isPlaying, currentTime, pos, volume])
+    return () => dispatch(sendPrevPlay(isPlaying, currentTime, pos, volume));
+  }, [volume, currentTime])
   function chargeState(){
-    if (prevPlay.pos !== undefined)setPos(prevPlay.pos);
-    if (prevPlay.volume !== undefined)setVolume(prevPlay.volume);
+    if (prevPlay.pos !== undefined) setPos(prevPlay.pos);
+    if (prevPlay.volume !== undefined) setVolume(prevPlay.volume);
+    if (prevPlay.currentTime !== undefined) setCurrentTime(prevPlay.currentTime);
+    if (prevPlay.isPlaying !== undefined) setIsPlaying(prevPlay.isPlaying);
   }
   function updatePos(){
     if(pos > queue.length){
@@ -56,14 +58,14 @@ export default function Player(){
   }
   function prevSong(){
     if(queue[pos - 1]){
-      setPos(pos - 1);
       setCurrentTime(0);
+      setPos(pos - 1);
     }
   }
   function nextSong(){
     if(queue[pos + 1]){
-      setPos(pos + 1);
       setCurrentTime(0);
+      setPos(pos + 1);
     }
   }
   function mute(){
