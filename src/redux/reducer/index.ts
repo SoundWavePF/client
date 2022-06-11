@@ -1,19 +1,24 @@
 import { Actions, ActionType } from "../actions/types";
-import * as types from "../../consts/sw_types"
+//import * as types from "../../consts/sw_types"
 
 //tengo que importar las interfaces de las propiedades dentro de los objetos del initial state
 
 //necesito los actions types para seguir agregando switch cases 
 
 
-
+interface Home {
+  last?: swSong[],
+  genres?: swGenre[],
+  chart?: swSong[],
+}
 interface State {
   query: string,
-  searchResults: types.swSearchResult,
-  album_playlist: types.swPlaylist[],
+  searchResults: swSearchResult,
+  album_playlist: swPlaylist[],
   library_artist: object,
   queue: object[],
-  adminOption: types.swAdminOption,
+  home: Home,
+  adminOption?: swAdminOption,
 }
 
 const initialState: State = {
@@ -29,6 +34,11 @@ const initialState: State = {
     list: [], // favs   -  top       // track[]
     card: []  // playlist - albums   // album[]
   },
+  home: {
+    last: [],
+    genres: [],
+    chart: []
+  },
   adminOption:{home:true,user:false},
 };
 
@@ -38,7 +48,23 @@ const Reducer = (state: State = initialState, action: Actions) => {
     case ActionType.GET_GENRES:
       return {
         ...state,
-        genres: action.payload,
+        home: {
+          ...state.home, genres: action.payload,
+        }
+      };
+    case ActionType.GET_LAST_SONGS:
+      return {
+        ...state,
+        home: {
+          ...state.home, last: action.payload,
+        }
+      };
+    case ActionType.GET_CHART:
+      return {
+        ...state,
+        home: {
+          ...state.home, chart: action.payload,
+        }
       };
     case ActionType.CHANGE_ADMIN_OPTION:
       return {

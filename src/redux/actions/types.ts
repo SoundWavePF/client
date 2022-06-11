@@ -1,8 +1,10 @@
-
 import * as types from "../../consts/sw_types"
-export type Actions = GetGenres | GetAlbum | ChangeAdminOption | PostSignUp | PostLogin | SearchAll;
+export type Actions = GetGenres | GetAlbum | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs;
+
 export enum ActionType{
   GET_GENRES = 'GET_GENRES',
+  GET_CHART = 'GET_CHART',
+  GET_LAST_SONGS = 'GET_LAST_SONGS',
   GET_ALBUM = 'GET_ALBUM',
   CHANGE_ADMIN_OPTION = 'CHANGE_ADMIN_OPTION',
   POST_SIGN_UP = 'POST_SIGN_UP',
@@ -19,6 +21,14 @@ export interface userOption{ //opciones del componente AdminPanel
 interface GetGenres{
   type: ActionType.GET_GENRES;
   payload?: types.swGenre[]
+}
+interface GetChart{
+  type:ActionType.GET_CHART;
+  payload?: swSong[]
+}
+interface GetLastSongs{
+  type:ActionType.GET_LAST_SONGS;
+  payload?: swSong[]
 }
 interface GetAlbum{
   type:ActionType.GET_ALBUM;

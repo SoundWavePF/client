@@ -8,22 +8,22 @@ interface card {
 
 interface swAlbum {
   id:                      string;
-  dz_id:                   number;
+  dz_id:                   string;
   title:                   string;
   image_small:             string;
   image_medium:            string;
   image_big:               string;
   nb_tracks:               number;
-  release_date:            Date;
+  release_date:            string;
   artist:                  string;
   type:                    string;
-  artists:                 swArtist[];
-  genres:                  swGenre[];
+  artists?:                 swArtist[];
+  genres?:                  swGenre[];
   songs?:                   swSong[];
 }
 interface swArtist {
   id:                      string;
-  dz_id:                   number;
+  dz_id:                   string;
   name:                    string;
   image_small:             string;
   image_medium:            string;
@@ -32,14 +32,14 @@ interface swArtist {
 }
 interface swSong {
   id:                      string;
-  dz_id:                   number;
+  dz_id:                   string;
   title:                   string;
   duration:                string;
   preview:                 string;
   artist:                  string;
   type:                    string;
-  artists?:                 swArtist[];
-  album:                   swAlbum
+  artists?:                swArtist[];
+  album?:                   swAlbum
 }
 interface swPlaylist {
   id:                      string;
