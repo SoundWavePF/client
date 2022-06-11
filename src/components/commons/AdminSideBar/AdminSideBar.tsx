@@ -5,7 +5,7 @@ import music from '../../../assets/music.png';
 import styles from './AdminSideBar.module.css';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from "redux";
-import * as actionCreator from '../../../redux/actions'
+import * as actionCreator from '../../../redux/actions/action_admin'
 
 export default function AdminSideBar(){
   const dispatch = useDispatch()

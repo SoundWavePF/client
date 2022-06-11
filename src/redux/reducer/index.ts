@@ -21,9 +21,10 @@ const initialState: State = {
   query: '',   //párametro de búsqueda : string
   queue: [],   //cola de reproduccion : track[]
   searchResults: {
-    artists: [],  //  artist[]
-    albums: [],   //  album[]
-    songs: [],   //  track[]
+    artistData: [],  //  artist[]
+    albumData: [],   //  album[]
+    songData: [],   //  track[]
+    playlistData: []
   },
   album_playlist: [], // track[]
   library_artist: {
@@ -39,8 +40,7 @@ const initialState: State = {
   prevPlay: {}
 };
 
-
-const Reducer = (state: State = initialState, action: Actions) => {
+const Reducer = (state: any = initialState, action: Actions) => {
   switch (action.type) {
     case ActionType.GET_GENRES:
       return {
@@ -92,6 +92,12 @@ const Reducer = (state: State = initialState, action: Actions) => {
       return{
         ...state,
         queue: [...state.queue, action.payload]
+      }
+    case ActionType.SEARCH_ALL:
+      return {
+        ...state,
+        query: action.payload.query,
+        searchResults: action.payload.data
       }
     default:
       return state;

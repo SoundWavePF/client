@@ -13,7 +13,7 @@ import volume2 from '../../../assets/volume2.png';
 import volume3 from '../../../assets/volume3.png';
 import like from '../../../assets/likefull.png';
 import styles from './Player.module.css';
-import { sendPrevPlay, addToQueue } from '../../../redux/actions';
+import { sendPrevPlay, addToQueue } from '../../../redux/actions/action_player';
 
 export default function Player(){
   const player = useRef();

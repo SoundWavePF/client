@@ -1,4 +1,3 @@
-import * as types from "../../consts/sw_types"
 export type Actions = GetGenres | GetAlbum | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue;
 
 export enum ActionType{
@@ -23,7 +22,7 @@ export interface userOption{ //opciones del componente AdminPanel
 
 interface GetGenres{
   type: ActionType.GET_GENRES;
-  payload?: types.swGenre[]
+  payload?: swGenre[]
 }
 interface GetChart{
   type:ActionType.GET_CHART;
@@ -35,7 +34,7 @@ interface GetLastSongs{
 }
 interface GetAlbum{
   type:ActionType.GET_ALBUM;
-  payload: types.swAlbum[]
+  payload: swAlbum[]
 }
 interface ChangeAdminOption{
   type: ActionType.CHANGE_ADMIN_OPTION;
@@ -51,7 +50,7 @@ interface PostLogin{
 }
 interface SearchAll{
   type: ActionType.SEARCH_ALL,
-  payload: Object[]
+  payload: {data: Object, query: string}
 }
 interface SendPrevPlay{
   type: ActionType.SEND_PREV_PLAY,
