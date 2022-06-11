@@ -1,25 +1,18 @@
 import { Actions, ActionType } from "../actions/types";
-//import * as types from "../../consts/sw_types"
+import * as types from "./types"  //tipos del state   NO BORRAR
 
 //tengo que importar las interfaces de las propiedades dentro de los objetos del initial state
 
 //necesito los actions types para seguir agregando switch cases 
 
-
-interface Home {
-  last?: swSong[],
-  genres?: swGenre[],
-  chart?: swSong[],
-}
 interface State {
   query: string,
-
-  searchResults: types.swSearchResult,
-  album_playlist: types.swPlaylist[],
-  library_artist: types.library_artist,
-  queue: types.swSong[],
-  home: Home,
-  adminOption: types.swAdminOption,
+  searchResults: types.SearchResult,
+  album_playlist: swPlaylist[],
+  library_artist: types.LibraryArtist,
+  queue: swSong[],
+  home: types.Home,
+  adminOption: types.AdminOption,
   prevPlay: object
 
 }

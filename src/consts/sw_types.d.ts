@@ -59,31 +59,3 @@ interface swPlaylist {
   role:                    string;
   listening_time:          number;
 }
-
-interface swSearchResult {
-  artists:                 swArtist[];
-  albums:                  swAlbum[];
-  songs:                   swSong[];
-}
-
-interface library_artist {
-  list:                    swSong[];
-  card:                    swAlbum[] | swPlaylist[];
-}
-
-interface swAdminOption {
-  home: boolean;
-  user: boolean;
-}
-
-export type Action = {
-  library_artist,
-  swSearchResult,
-  swAdminOption,
-  swUser,
-  swGenre,
-  swPlaylist,
-  swSong,
-  swArtist,
-  swAlbum
-}
