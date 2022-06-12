@@ -5,6 +5,8 @@
     margin-top: 20px;
     margin-left: 20px;
     color: rgb(0, 0, 0);
+    border: none;
+    background-color: transparent;
 }
 
 .sectionTitle:hover{
@@ -31,4 +33,15 @@
     flex-direction: column;
     width: 85vw;
     height: 95vh;
+}
+.divContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 33px;
+}
+.divText{
+    width: 60vw;
+    display: flex;
+    padding: 5px;
 }
