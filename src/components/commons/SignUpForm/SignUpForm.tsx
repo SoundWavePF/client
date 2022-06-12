@@ -3,6 +3,7 @@ import m from'./SignUpForm.module.css'
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from "redux";
 import * as actionCreator from '../../../redux/actions/action_settings'
+import Swal from 'sweetalert2'
 
 const SignUpForm = ()=>{
   const dispatch = useDispatch()
@@ -40,7 +41,7 @@ const SignUpForm = ()=>{
       setError({...error,password:''})
     }
     else{
-      setError({...error,password:'You have entered an invalid password'})
+      setError({...error,password:'Should contain at least one digit, one lower case and one upper case. Should contain at least 8 characters'})
     }
     setForm({...form, password:value})
   }
@@ -56,25 +57,35 @@ const SignUpForm = ()=>{
   const onSubmitSignUp = (e:React.FormEvent)=>{
     e.preventDefault()
     postSignUp(form)
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops... Todavia no hay back',
+      text: 'pa la proxima pa!',
+      footer: '<a href="https://youtu.be/9itt0OgPUN4?t=13">Mientras tanto escucha este temazo</a>',
+      confirmButtonColor: '#ffee32'
+    })
   }
   return(
     <div >
       <form className={m.container_w4s5} onSubmit={(e)=>{onSubmitSignUp(e)}}>
-        <input className={m.inputForm_7fv8} 
+        <label className={m.label}>What is your email?</label>
+        <input className={error.email.length>0? m.inputFormError : m.inputForm_7fv8} 
           type="email"
           placeholder="Put your email." 
           name='email' 
           value={form.email}
           onChange={(e)=>validateEmail(e.target.value)}   
       /> <label className={m.labelError}>{error.email}</label>
-      <input className={m.inputForm_7fv8}
+      <label className={m.label}>Create a nickname</label>
+      <input className={error.username.length>0? m.inputFormError : m.inputForm_7fv8}
           type="text"
           placeholder="Put your username." 
           name='username' 
           value={form.username}
           onChange={(e)=>validateUsername(e.target.value)}   
       /> <label className={m.labelError}>{error.username}</label>
-      <input className={m.inputForm_7fv8}
+      <label className={m.label}>Create a password</label>
+      <input className={error.password.length>0? m.inputFormError : m.inputForm_7fv8}
           type="password"
           placeholder="Create a password." 
           name='password' 
