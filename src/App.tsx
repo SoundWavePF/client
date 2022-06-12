@@ -10,6 +10,7 @@ import Login from "./components/views/Login/Login";
 import About from "./components/views/about/About";
 import AdminPanel from "./components/views/AdminPanel/AdminPanel";
 import AlbumPlaylist from "./components/views/AlbumPlaylist/AlbumPlaylist";
+import Error404 from "./components/views/error404/error404";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
         <Route path="/admin" element={<AdminPanel/>}/>
 
 
-        <Route path="/*" element={<h1>  404  </h1>}/>
+        <Route path="/*" element={<Error404/>}/>
       </Routes>
     </div>
   );
