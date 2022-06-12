@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux'
 
 const SearchResults = () => {
   const { songData, artistData, albumData} = useSelector((state: any) => state.searchResults)
-
+  console.log(songData)
   return (
     <div>
 

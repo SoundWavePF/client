@@ -7,7 +7,7 @@ import * as types from "./types"  //tipos del state   NO BORRAR
 
 interface State {
   query: string,
-  searchResults: types.SearchResult,
+  searchResults: any,
   album_playlist: swPlaylist[],
   library_artist: types.LibraryArtist,
   queue: swSong[],
@@ -20,12 +20,13 @@ interface State {
 const initialState: State = {
   query: '',   //párametro de búsqueda : string
   queue: [],   //cola de reproduccion : track[]
-  searchResults: {
-    artistData: [],  //  artist[]
-    albumData: [],   //  album[]
-    songData: [],   //  track[]
-    playlistData: []
-  },
+  searchResults:{}, 
+  // {
+  //   artistData: [],  //  artist[]
+  //   albumData: [],   //  album[]
+  //   songData: [],   //  track[]
+  //   playlistData: []
+  // },
   album_playlist: [], // track[]
   library_artist: {
     list: [], // favs   -  top       // track[]
@@ -94,7 +95,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
         queue: [...state.queue, action.payload]
       }
     case ActionType.SEARCH_ALL:
-      return {
+    return {
         ...state,
         query: action.payload.query,
         searchResults: action.payload.data

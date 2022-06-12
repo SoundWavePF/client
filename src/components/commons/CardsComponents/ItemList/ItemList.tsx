@@ -19,7 +19,7 @@ interface myProps {
 }
 
 const ItemList: React.FC<myProps> = (props: myProps) => {
-
+  console.log(props)
   const formatDuration = (duration: string): string => {
     let num = parseInt(duration);
     let minutes: number = Math.floor(num / 60)
@@ -103,7 +103,7 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
 
     default:
       return (
-        <></>
+        <>nada</>
       )
   }
 }
