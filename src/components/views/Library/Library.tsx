@@ -8,7 +8,6 @@ import { useLocation } from "react-router";
 
 
 const Library = () => {
-  const location =useLocation()
   return (
     <div className={styles.container}>
       <SearchBar/>
