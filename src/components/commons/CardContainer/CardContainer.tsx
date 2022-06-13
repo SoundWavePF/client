@@ -1,5 +1,5 @@
 import styles from "./CardContainer.module.css";
-import CardItem from '../CardItem/CardItem';
+import CardItem from './CardItem';
 
 interface item {
   id: number;

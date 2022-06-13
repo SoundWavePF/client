@@ -2,17 +2,51 @@
   border-radius: 5px;
   width: 100%;
   border: 1px solid lightgray;
+  cursor: pointer;
 }
 .default > a :first-child:hover{
   opacity: 90%; 
   transition-duration: .25s;
+  position: relative;
 }
-.default > h2{
+.default > p{
   font-family: sw-light;
-  font-size: 1.5rem;
   font-size: max(1rem, 1.1vw);
   margin-top: .5rem;
 }
+
+.song figure {
+  border-radius: 5px;
+  background: var(--gray-light) no-repeat center/40% url('../../../assets/play.png');
+}
+.song > figure > img{
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid lightgray;
+  cursor: pointer;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.song > figure > img:hover{
+  opacity: 40%;
+  -webkit-filter: blur(1px);
+	filter: blur(1px);
+}
+.song > p{
+  font-family: sw-light;
+  font-size: max(1rem, 1.1vw);
+  margin: 0;
+}
+.song > a{
+  font-family: sw-medium;
+  font-size: max(0.7rem, .9vw);
+  text-decoration: none;
+  color: black;
+}
+.song > a:hover{
+  color: black;
+}
+
 .alt{
   display: grid;
   cursor: pointer;
@@ -34,7 +68,7 @@
   object-fit: cover;
   width: 100%;
 }
-.alt > h2{
+.alt > p{
   font-family: sw-bold;
   color: white;
   font-size: 2rem;

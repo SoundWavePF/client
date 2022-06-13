@@ -4,7 +4,7 @@ import { useParams } from 'react-router'
 import { useLocation } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import CardItem from '../CardItem/CardItem'
+import CardItem from '../CardContainer/CardItem'
 import ItemList from '../CardsComponents/ItemList/ItemList'
 import Styled from '../ContainerLibrary/ContainerLibrary.module.css'
 import  M from "../../../redux/actions/hc_data/playlistSongs.json";
