@@ -5,6 +5,8 @@ export interface SearchResult {
   playlistData?:              swPlaylist[]
 }
 export interface LibraryArtist {
+  dos:any
+  uno:any
   list:                    swSong[];
   card:                   any;
 }

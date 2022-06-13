@@ -22,3 +22,28 @@
   background-color: azure;
   height: 500px;
 }
+.Column{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2em;
+  margin-left:1em ;
+}
+
+.ContainerFavorite div{
+  width: auto;
+}
+
+.ContainerLibrary{
+  margin-left: 2em;
+  margin-right: 2em;
+
+}
+.ContainerInfo{
+  display: flex;
+margin: 1vh;
+}
+.ContainerInfo h1{
+  display: flex;
+  align-items: center;
+}

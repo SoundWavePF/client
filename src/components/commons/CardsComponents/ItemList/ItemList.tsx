@@ -38,7 +38,9 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
           <Link className={s.links} to={'/song/:id'}>
             <div className={s.imageAndNameContainer}>
               <div>
-                <div><img className={s.image} src={props.item.image_small} alt="" /></div>
+
+                <div ><img className={s.image} src={props.item.image_small} alt="" /><div className={s.Play}>{'>'}</div></div>
+
               </div>
               <div>
                 <div className={s.songName}>{props.item.title}</div>

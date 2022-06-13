@@ -1,0 +1,119 @@
+.ContainerLibrary{
+    margin-left: 2em;
+    margin-right: 2em;
+
+}
+.ItemSpace{
+    margin-left: 1em;
+    max-width: 100%;
+    
+}
+.ItemSpace div{
+    width:auto;
+}
+
+
+
+
+
+.Column{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2em;
+    margin-left:1em ;
+}
+
+.ToolBar{
+   
+
+    display: flex;
+    justify-content: start;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.509);
+    margin-bottom:1em ;
+    margin-top:1em ;
+
+    max-height: 37px;
+    
+}
+
+.ToolBar h4{
+    margin-left: 1.5em;
+    padding-bottom: 7px;
+    cursor: pointer;
+}
+
+.ToolBar a{
+    text-decoration: none;
+    color: black;
+
+}
+
+.actived{
+    color: var(--yellow-dark);
+    border-bottom: 1px solid var(--yellow-dark);
+
+}
+
+.ContainerFavorite div{
+    width: auto;
+}
+
+
+
+
+
+
+
+
+.ToolBar :link{
+    color: red;
+    background-color: red;
+
+}
+
+
+.ToolBar h4:hover{
+    color: var(--yellow-dark);
+
+
+    border-bottom: 1px solid var(--yellow-dark);
+}
+
+
+
+.ContainerPlaylist{
+    overflow: hidden;
+    height: 89%;
+    width: 100%;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+
+    
+}
+
+.ContainerPlaylist div{
+    background-color: beige;
+    position: relative;
+    height: 15em;
+    width: 15em;
+}
+
+.User img{
+    width: 15vw;
+    height: 100%;
+}
+
+.User{
+    width: 50%;
+    height: 30vh;
+
+    display: flex;
+}
+.User h1{
+    margin-left: 1em;
+    display: flex;
+    align-items: center;
+
+}

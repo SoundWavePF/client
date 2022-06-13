@@ -4,13 +4,13 @@ import { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import * as actionCreator from '../../../redux/actions/action_player'
 //import ItemList from "../CardsComponents/ItemList/ItemList";
-import content from './album.json';
 import { useParams } from "react-router";
+import ItemList from "../CardsComponents/ItemList/ItemList";
 
 const ContentAlbumPlaylist = () => {
   const dispatch = useDispatch();
 //  const  { getContent } = bindActionCreators(actionCreator,dispatch);
-  const { content } = useSelector((state: any) => state);
+  const { library_artist } = useSelector((state: any) => state);
   const { id } = useParams();
   
   useEffect(()=>{
@@ -18,26 +18,26 @@ const ContentAlbumPlaylist = () => {
   },[])
   let image = 'https://e-cdns-images.dzcdn.net/images/misc/db7a604d9e7634a67d45cfc86b48370a/250x250-000000-80-0-0.jpg'
   return (
-    <div className={styles.container}>
-      <div>
-        <img src={image} alt="album" />
-        <h1>{`Album ${id}`}</h1>
+    <div className={styles.ContainerLibrary}>
+      <div className={styles.ContainerInfo}>
+      <img src={library_artist.card.image_medium} alt="album" />
+        <h1>{`Album ${library_artist.card.name}`}</h1>
+
       </div>
+
+
       <div>
-        <div className={styles.header}>
-          <p>Name</p>
-          <p>Album</p>
-          <p>Artist</p>
-          <p>Duration</p>
-        </div>
+      <div className={styles.Column}>
+          <h4>Name</h4>
+          <h4>Duration</h4>
+
+          </div>
+
         <div className={styles.list}>
-          {
-            // content.map((e, i: number) => {
-            //   return (
-            //     <ItemList key={i} Item={e}/>
-            //   )
-            // })
-          }
+
+      {library_artist.card.Songs && library_artist.card.Songs.map((s:any)=>(  <div  className={styles.ContainerFavorite}>  <ItemList item={s}></ItemList></div>    ) )}
+
+          
         </div>
       </div>
     </div>
