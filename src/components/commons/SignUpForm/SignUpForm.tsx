@@ -2,11 +2,14 @@ import { useState } from "react"
 import m from'./SignUpForm.module.css'
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from "redux";
+import { useNavigate } from "react-router-dom";
 import * as actionCreator from '../../../redux/actions/action_settings'
 import Swal from 'sweetalert2'
+import axios from 'axios';
 
 const SignUpForm = ()=>{
   const dispatch = useDispatch()
+  let navigate = useNavigate();
   const {postSignUp} = bindActionCreators(actionCreator, dispatch)
   const [form, setForm] = useState({
     email:'',
@@ -54,16 +57,21 @@ const SignUpForm = ()=>{
     if(error.password)return true
     return false
   }
-  const onSubmitSignUp = (e:React.FormEvent)=>{
+  const onSubmitSignUp = async (e:React.FormEvent)=>{
     e.preventDefault()
-    postSignUp(form)
     Swal.fire({
-      icon: 'error',
-      title: 'Oops... Todavia no hay back',
-      text: 'pa la proxima pa!',
-      footer: '<a href="https://youtu.be/9itt0OgPUN4?t=13">Mientras tanto escucha este temazo</a>',
-      confirmButtonColor: '#ffee32'
+      icon: 'success',
+      title: `Successfully registered`,
+      showConfirmButton: false,
     })
+    const {data} = await axios.post(`http://localhost:3001/register`, form)
+    console.log(data)
+    if(data.message === 'success'){
+      localStorage.setItem('sw-token', data.token)
+      postSignUp(form)
+      Swal.close()
+      navigate("/home", { replace: true });
+    }
   }
   return(
     <div >

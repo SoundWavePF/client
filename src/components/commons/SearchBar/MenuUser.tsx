@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
-
+import jwt_decode from "jwt-decode";
 import style from './MenuUser.module.css';
 import userIcon from '../../../assets/user_icon.png'
 import likeFull from '../../../assets/likefull.png'
@@ -27,6 +27,20 @@ const Menu: React.FunctionComponent<props> = (props)=>{
         } 
     }
 
+    const [username, setUsername] = useState('')
+
+    useEffect(() => {
+      const token = localStorage.getItem('sw-token') || '{}';
+      if (token !== '{}') {
+        const decoded:any = jwt_decode(token);
+        setUsername(decoded.username);
+        console.log(decoded);
+      } else{
+        setUsername('Unregistered')
+      }
+    }, []);
+  
+
     useEffect( ()=>{
         document.body.addEventListener('click', click);
         return ()=>{
@@ -39,9 +53,18 @@ const Menu: React.FunctionComponent<props> = (props)=>{
         console.log(event)
     }
 
-    function handleLogout(): void{
-        alert('user log out')
+    function handleLogout():void{
+        localStorage.removeItem('sw-token')
+        navigate('/')
+    }
+    
+    function handleLogIn():void{
+        localStorage.removeItem('sw-token')
         navigate('/login')
+    }
+
+    function handleSignUp(): void{
+        navigate('/signup')
     }
 
     function handleClick():void{
@@ -60,9 +83,19 @@ const Menu: React.FunctionComponent<props> = (props)=>{
                     <img className={style.img} src={userIcon} />
                 </div>
                 <div className={style.textContainer}>
-                    <span>username</span>
-                    <button onClick={handleClick} className={style.btn}>Settings</button>
-                    <button onClick={handleLogout} className={style.btnPrimary}>Logout</button>
+                    <span>{username}</span>
+                    {username !== 'Unregistered' && 
+                        <div style={{display: 'flex', flexDirection:'column'}}>
+                            <button onClick={handleClick} className={style.btn}>Settings</button>
+                            <button onClick={handleLogout} className={style.btnPrimary}>Logout</button>
+                        </div>
+                    }
+                    {username === 'Unregistered' &&
+                        <div style={{display: 'flex', flexDirection:'column'}}>
+                            <button onClick={handleLogIn} className={style.btnPrimary}>Log In</button>
+                            <button onClick={handleSignUp} className={style.btn}>Sign Up</button>
+                        </div>
+                    }
                 </div>
             </div>
         }
