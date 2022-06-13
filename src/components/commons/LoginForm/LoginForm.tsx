@@ -65,6 +65,7 @@ const LoginForm = ()=>{
       Swal.fire({
         icon:'error',
         title: 'Please verify your data',
+        timer: 1000,
         showConfirmButton: false,
       })
     }
