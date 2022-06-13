@@ -102,8 +102,8 @@ const Reducer = (state: any = initialState, action: Actions) => {
       }
 
       case ActionType.GET_LIBRARY:
-        // de prueba para agregar al user
-        let playlist=action.payload.dos
+      console.log(action.payload)
+      let playlist=action.payload.dos
         playlist.type='album'
         playlist.image_medium='https://i.pravatar.cc/150?u=nombre';
         
