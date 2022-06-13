@@ -17,6 +17,35 @@
     align-items: center;
 }
 
+
+.Play  {
+    left: 25px;
+    top: 10px;
+    font-weight: bolder;
+    font-size: xx-large;
+    position: absolute;
+    display: none;
+
+}
+
+.imageAndNameContainer:hover .Play{
+    left: 25px;
+    top: 10px;
+    font-weight: bolder;
+    font-size: xx-large;
+    position: absolute;
+    display: block;
+    color: #0f0f0f;
+
+}
+.imageAndNameContainer:hover .image{
+    color: #0f0f0f;
+  filter: opacity(70%);
+}
+
+
+
+
 .controllerContainer {
     display: flex;
     position: relative;
@@ -45,6 +74,7 @@
 
 
 .songName {
+    margin-left: 0.7em;
     font-size: 20px;
     font-family: 'sw-medium';
     color: #000000;

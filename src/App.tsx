@@ -10,6 +10,7 @@ import Login from "./components/views/Login/Login";
 import About from "./components/views/about/About";
 import AdminPanel from "./components/views/AdminPanel/AdminPanel";
 import AlbumPlaylist from "./components/views/AlbumPlaylist/AlbumPlaylist";
+import Library from "./components/views/Library/Library";
 
 function App() {
   return (
@@ -21,7 +22,11 @@ function App() {
 
         <Route path="/about" element={<About/>}/>
         <Route path="/home" element={<Home/>}/>
-        <Route path="/favs" element={<h1>Favs</h1>}/>
+        <Route path="/playlists" element={<Library></Library>}/>
+        <Route path="/favorites" element={<Library></Library>}/>
+
+
+
         <Route path="/artist/:id" element={<h1>Artist</h1>}/>
         <Route path="/album/:id" element={<AlbumPlaylist/>}/>
         <Route path="/playlist/:id" element={<AlbumPlaylist/>}/>

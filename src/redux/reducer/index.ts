@@ -9,7 +9,7 @@ interface State {
   query: string,
   searchResults: types.SearchResult,
   album_playlist: swPlaylist[],
-  library_artist: types.LibraryArtist,
+  library_artist: types.LibraryArtist | any,
   queue: swSong[],
   home: types.Home,
   adminOption: types.AdminOption,
@@ -99,6 +99,21 @@ const Reducer = (state: any = initialState, action: Actions) => {
         query: action.payload.query,
         searchResults: action.payload.data
       }
+
+      case ActionType.GET_LIBRARY:
+        // de prueba para agregar al user
+        let playlist=action.payload.dos
+        playlist.type='album'
+        playlist.image_medium='https://i.pravatar.cc/150?u=nombre';
+        
+        return {
+          ...state,
+          library_artist:{
+            list:action.payload.uno,
+            card:playlist
+          }
+        }
+
     default:
       return state;
   }
