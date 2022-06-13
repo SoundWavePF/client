@@ -3,6 +3,7 @@ import m from'./LoginForm.module.css'
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from "redux";
 import * as actionCreator from '../../../redux/actions/action_settings'
+import Swal from 'sweetalert2'
 
 
 const LoginForm = ()=>{
@@ -30,7 +31,7 @@ const LoginForm = ()=>{
       setError({...error,password:''})
     }
     else{
-      setError({...error,password:'You have entered an invalid password'})
+      setError({...error,password:'Should contain at least one digit, one lower case and one upper case. Should contain at least 8 characters'})
     }
     setForm({...form, password:value})
   }
@@ -44,26 +45,34 @@ const LoginForm = ()=>{
   const onSubmitSignUp = (e:React.FormEvent)=>{
     e.preventDefault()
     postLogin(form)
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops... Todavia no hay back',
+      text: 'pa la proxima pa!',
+      footer: '<a href="https://youtu.be/9itt0OgPUN4?t=13">Mientras tanto escucha este temazo</a>'
+    })
   }
   return(
     <div >
       <form className={m.container_w4s5} onSubmit={(e)=>{onSubmitSignUp(e)}}>
-        <input className={m.inputForm_7fv8} 
+        <label className={m.label}>What is your email?</label>
+        <input className={error.email.length>0? m.inputFormError : m.inputForm_7fv8} 
           type="email"
           placeholder="Put your email." 
           name='email' 
           value={form.email}
           onChange={(e)=>validateEmail(e.target.value)}   
       /> <label className={m.labelError}>{error.email}</label>
-      <input className={m.inputForm_7fv8}
+      <label className={m.label}>Put your password.</label>
+      <input className={error.password.length>0? m.inputFormError : m.inputForm_7fv8}
           type="password"
-          placeholder="Create a password." 
+          placeholder="Put your password." 
           name='password' 
           value={form.password}
           onChange={(e)=>validatePassword(e.target.value)}   
       /> <label className={m.labelError}>{error.password}</label>
       <button className={m.inputSubmit_yu79}
-        disabled={disabled()} type="submit">Register</button>
+        disabled={disabled()} type="submit">Login</button>
       </form>
     </div>
   )

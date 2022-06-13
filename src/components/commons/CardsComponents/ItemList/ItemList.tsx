@@ -19,7 +19,7 @@ interface myProps {
 }
 
 const ItemList: React.FC<myProps> = (props: myProps) => {
-
+  console.log(props)
   const formatDuration = (duration: string): string => {
     let num = parseInt(duration);
     let minutes: number = Math.floor(num / 60)
@@ -38,10 +38,13 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
           <Link className={s.links} to={'/song/:id'}>
             <div className={s.imageAndNameContainer}>
               <div>
+
                 <div ><img className={s.image} src={props.item.image_small} alt="" /><div className={s.Play}>{'>'}</div></div>
+
               </div>
               <div>
                 <div className={s.songName}>{props.item.title}</div>
+                <span className={s.spanArtistName}>{props.item.artist}</span>
               </div>
             </div>
           </Link>
@@ -69,7 +72,7 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
                 <div><img className={s.image} src={props.item.image_small} alt="" /></div>
               </div>
               <div>
-                <div className={s.songName}>{props.item.title}</div>
+                <div className={s.songName}>{props.item.name}</div>
               </div>
             </div>
           </Link>
@@ -103,7 +106,7 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
 
     default:
       return (
-        <></>
+        <>nada</>
       )
   }
 }
