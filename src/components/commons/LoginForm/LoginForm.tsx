@@ -48,18 +48,27 @@ const LoginForm = ()=>{
   const onSubmitSignUp = async (e:React.FormEvent)=>{
     e.preventDefault()
     Swal.fire({
-      icon: 'success',
-      title: `Welcome to Soundwave`,
+      title: 'Hold on a moment',
       showConfirmButton: false,
     })
-    const {data} = await axios.post(`http://localhost:3001/login`, form)
-    console.log(data)
-    if(data.token){
-      localStorage.setItem('sw-token', data.token)
-      postLogin(form)
+    try{
+      const {data} = await axios.post(`http://localhost:3001/login`, form)
+      console.log(data)
+      if(data.token){
+        localStorage.setItem('sw-token', data.token)
+        postLogin(form)
+        Swal.close()
+        navigate("/home", { replace: true });
+      }
+    } catch (e){
       Swal.close()
-      navigate("/home", { replace: true });
+      Swal.fire({
+        icon:'error',
+        title: 'Please verify your data',
+        showConfirmButton: false,
+      })
     }
+
   }
   return(
     <div >

@@ -36,7 +36,7 @@ const Menu: React.FunctionComponent<props> = (props)=>{
         setUsername(decoded.username);
         console.log(decoded);
       } else{
-        setUsername('Visitante')
+        setUsername('Unregistered')
       }
     }, []);
   
@@ -57,9 +57,14 @@ const Menu: React.FunctionComponent<props> = (props)=>{
         localStorage.removeItem('sw-token')
         navigate('/')
     }
+    
+    function handleLogIn():void{
+        localStorage.removeItem('sw-token')
+        navigate('/login')
+    }
 
     function handleSignUp(): void{
-        navigate('/login')
+        navigate('/signup')
     }
 
     function handleClick():void{
@@ -79,14 +84,17 @@ const Menu: React.FunctionComponent<props> = (props)=>{
                 </div>
                 <div className={style.textContainer}>
                     <span>{username}</span>
-                    {username !== 'Visitante' && 
-                    <div style={{display: 'flex', flexDirection:'column'}}>
-                        <button onClick={handleClick} className={style.btn}>Settings</button>
-                        <button onClick={handleLogout} className={style.btnPrimary}>Logout</button>
-                    </div>
+                    {username !== 'Unregistered' && 
+                        <div style={{display: 'flex', flexDirection:'column'}}>
+                            <button onClick={handleClick} className={style.btn}>Settings</button>
+                            <button onClick={handleLogout} className={style.btnPrimary}>Logout</button>
+                        </div>
                     }
-                    {username === 'Visitante' &&
-                        <button onClick={handleSignUp} className={style.btnPrimary}>Sign Up</button>
+                    {username === 'Unregistered' &&
+                        <div style={{display: 'flex', flexDirection:'column'}}>
+                            <button onClick={handleLogIn} className={style.btnPrimary}>Log In</button>
+                            <button onClick={handleSignUp} className={style.btn}>Sign Up</button>
+                        </div>
                     }
                 </div>
             </div>

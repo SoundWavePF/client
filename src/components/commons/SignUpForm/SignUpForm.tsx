@@ -61,7 +61,7 @@ const SignUpForm = ()=>{
     e.preventDefault()
     Swal.fire({
       icon: 'success',
-      title: `Registrado exitosamente`,
+      title: `Successfully registered`,
       showConfirmButton: false,
     })
     const {data} = await axios.post(`http://localhost:3001/register`, form)
