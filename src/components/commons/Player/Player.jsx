@@ -13,14 +13,14 @@ import volume2 from '../../../assets/volume2.png';
 import volume3 from '../../../assets/volume3.png';
 import like from '../../../assets/likefull.png';
 import styles from './Player.module.css';
-import { sendPrevPlay, addToQueue } from '../../../redux/actions/action_player';
+import { sendPrevPlay } from '../../../redux/actions/action_player';
 
 export default function Player(){
   const player = useRef();
   const dispatch = useDispatch();
   const queue = useSelector(state => state.queue);
   const prevPlay = useSelector(state => state.prevPlay)
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [pos, setPos] = useState(0);
   const [volume, setVolume] = useState('100');
@@ -77,7 +77,6 @@ export default function Player(){
   }
   return(
     <div className={styles.player}>
-      <button onClick={() => dispatch(addToQueue())}>PLAY</button>
       <ReactPlayer
         url={queue[pos]?.preview}
         playing={isPlaying}
@@ -100,10 +99,10 @@ export default function Player(){
           {prettyTime(currentTime)}/{player.current !== undefined ? prettyTime(player.current.getDuration()) : '0:00'}
         </div>
         <div className={styles.songInfo}>
-          {queue[pos] ? <img src={queue[pos].album.image_medium} className={styles.cover}/> : null}
+          {queue[pos] ? <img src={queue[pos].image_medium} className={styles.cover}/> : null}
           <div>
             <h3>{queue[pos]?.title}</h3>
-            <span>{queue[pos] ? queue[pos].artist + ' • ' + queue[pos].album.title : null}</span>
+            <span>{queue[pos] ? queue[pos].artist + ' • ' + queue[pos].album : null}</span>
           </div>
         </div>
         <div className={styles.volume}>
