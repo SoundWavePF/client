@@ -29,7 +29,7 @@ var config = {
 export const getLibrary = ()=>{ //hasta que no halla back el axios queda comentado
     return(dispatch: Dispatch<Actions>)=>{
     const favorite=  axios.get( 'http://localhost:3001/favorite')
-     const playlist=  axios.get( 'http://localhost:3001/playlist/f224a6e4-c151-4301-96d0-ce79e11e56c1')
+    const playlist=  axios.get( 'http://localhost:3001/playlist/04bb097e-779c-4610-8bfd-e03c875c683b')
       
 
       Promise.all([favorite,playlist])
@@ -38,7 +38,7 @@ export const getLibrary = ()=>{ //hasta que no halla back el axios queda comenta
       .then(response =>
         dispatch({
         type: ActionType.GET_LIBRARY,
-        payload: {"uno":response[0].data, "dos": response[1].data} as any
+        payload: {uno:response[0].data, dos: response[1].data} as any
       })
       )
       .catch((error)=>console.log(error))

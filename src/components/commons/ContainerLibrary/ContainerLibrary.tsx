@@ -165,7 +165,7 @@ switch (location.pathname) {
   
   <div  className={Styled.User} >
     <img src="https://cdn.discordapp.com/attachments/974053763335716884/985759356895260713/token_1_3.png" alt="" />
-    <h1>{state.library_artist.card.User.username && state.library_artist.card.User.username}</h1>
+    {/* <h1>{state.library_artist.card.User.username && state.library_artist.card.User.username}</h1> */}
     
      </div>
   
@@ -199,7 +199,7 @@ switch (location.pathname) {
 
 <div  className={Styled.User} >
     <img src="https://cdn.discordapp.com/attachments/974053763335716884/985759356895260713/token_1_3.png" alt="" />
-    <h1>{state.library_artist.card.User.username && state.library_artist.card.User.username}</h1>
+    {/* <h1>{state.library_artist.card.User.username && state.library_artist.card.User.username}</h1> */}
     
      </div>
 
@@ -212,14 +212,7 @@ switch (location.pathname) {
 
       <div className={Styled.ContainerPlaylist}>
 
-      
       {state.library_artist.card && <CardItem  item={state.library_artist.card}></CardItem> }
-      {state.library_artist.card && <CardItem  item={state.library_artist.card}></CardItem> }
-      {state.library_artist.card && <CardItem  item={state.library_artist.card}></CardItem> }
-      {state.library_artist.card && <CardItem  item={state.library_artist.card}></CardItem> }
-      {state.library_artist.card && <CardItem  item={state.library_artist.card}></CardItem> }
-      {state.library_artist.card && <CardItem  item={state.library_artist.card}></CardItem> }
-
     </div>
 
     </div>

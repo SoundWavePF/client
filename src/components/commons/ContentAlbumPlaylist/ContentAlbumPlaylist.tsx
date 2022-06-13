@@ -21,7 +21,7 @@ const ContentAlbumPlaylist = () => {
     <div className={styles.ContainerLibrary}>
       <div className={styles.ContainerInfo}>
       <img src={library_artist.card.image_medium} alt="album" />
-        <h1>{`Album ${library_artist.card.name}`}</h1>
+        <h1>{`Playlist: ${library_artist.card.name}`}</h1>
 
       </div>
 

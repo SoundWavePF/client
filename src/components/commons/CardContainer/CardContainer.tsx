@@ -6,17 +6,16 @@ interface item {
   name: string;
   picture_medium: string;
   type: string;
-  Songs:any
 }
 interface myProps {
-  content: any;
+  content: item[];
 }
 
 const CardContainer: React.FC<myProps> = (props: myProps) => {
   return (
     <div className={styles.container}>
       {
-        props.content.Songs?.map((e:any, i:any) => {
+        props.content?.map((e:any, i:any) => {
           console.log(e);
           return <CardItem key={i} item={e}/>;
         })
