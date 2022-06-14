@@ -1,5 +1,5 @@
 import styles from "./CardContainer.module.css";
-import CardItem from '../CardItem/CardItem';
+import CardItem from './CardItem';
 
 interface item {
   id: number;
@@ -16,7 +16,6 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
     <div className={styles.container}>
       {
         props.content?.map((e:any, i:any) => {
-          console.log(e);
           return <CardItem key={i} item={e}/>;
         })
       }
