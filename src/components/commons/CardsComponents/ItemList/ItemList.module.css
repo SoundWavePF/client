@@ -29,7 +29,10 @@
 }
 
 .imageAndNameContainer:hover .Play{
-    left: 25px;
+    display: flex;
+    justify-content: center;
+    height: 1.5em;
+    left: 15px;
     top: 10px;
     font-weight: bolder;
     font-size: xx-large;

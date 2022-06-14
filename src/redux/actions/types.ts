@@ -1,6 +1,7 @@
 import { LibraryArtist } from "../reducer/types";
 
-export type Actions = GetGenres | GetAlbum | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | GetGenre | CleanGenre;
+export type Actions = GetGenres | GetAlbum | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre;
+
 
 export enum ActionType{
   CLEAN_GENRE = 'CLEAN_GENRE',
@@ -16,7 +17,9 @@ export enum ActionType{
   SEND_PREV_PLAY = 'SEND_PREV_PLAY',
   PLAY_SONG = 'PLAY_SONG',
   ADD_TO_QUEUE = 'ADD_TO_QUEUE',
-  GET_LIBRARY = 'GET_LIBRARY'
+  GET_LIBRARY = 'GET_LIBRARY',
+  GET_PlaylistForId = 'GET_PlaylistForId'
+
 }
 
 
@@ -75,9 +78,12 @@ interface AddToQueue{
   type: ActionType.ADD_TO_QUEUE,
   payload: swSong
 }
-
-
 interface getLibrary{
   type: ActionType.GET_LIBRARY,
   payload: LibraryArtist
 }
+interface get_PlaylistForId{
+  type:ActionType.GET_PlaylistForId,
+  payload:any
+}
+

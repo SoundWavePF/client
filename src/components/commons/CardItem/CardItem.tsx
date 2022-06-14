@@ -1,5 +1,7 @@
 import styles from "./CardItem.module.css";
 import { Link } from "react-router-dom";
+import DefaultBackground from "../../../assets/backgroundDefaultPlaylist.png";
+import play from '../../../assets/play.png'
 import { useDispatch } from 'react-redux';
 import * as actionCreator from '../../../redux/actions/action_player';
 import { bindActionCreators } from "redux";
@@ -34,20 +36,20 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
     case 'album':
       return(
         <div className={styles.default}>
-          <Link to={`/album/${props.item.id}`}>
-            <img src={props.item.image_medium} alt={props.item.title}/>
+          <Link to={`/album/${props.item.id}`} >
+            <img src={props.item.image_medium} alt={props.item.title} />
           </Link>
           <p>{props.item.title}</p>
         </div>
       )
     case 'playlist':
       return(
-        <div className={styles.default}>
-          <Link to={`/playlist/${props.item.id}`}>
-            <img src={props.item.image_medium} alt={props.item.name}/>
-          </Link>
-          <p>{props.item.name}</p>
-        </div>
+                <div className={styles.default}>
+        <Link to={`/album/${props.item.id}`}>
+          <img src={props.item.image_playlist?props.item.image_playlist:DefaultBackground} alt={props.item.name}/>
+        </Link>
+        <h2>{props.item.name}</h2>
+      </div>
       )
     case 'track':
         return(
@@ -70,7 +72,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
         </div>
         )
     default:
-      return <></>
+      return <>d</>
   }
 };
 export default CardItem;

@@ -42,6 +42,13 @@
 .ContainerInfo{
   display: flex;
 margin: 1vh;
+height: 20em;
+width: 80%;
+}
+.ContainerInfo img{
+  height: 15em;
+  width: 15em;
+  margin-right: 1em;
 }
 .ContainerInfo h1{
   display: flex;

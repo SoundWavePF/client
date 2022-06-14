@@ -113,18 +113,22 @@ const Reducer = (state: any = initialState, action: Actions) => {
       }
 
       case ActionType.GET_LIBRARY:
-      console.log(action.payload)
-      let playlist=action.payload.dos
-        playlist.type='album'
-        playlist.image_medium='https://i.pravatar.cc/150?u=nombre';
-        
+    
         return {
           ...state,
           library_artist:{
-            list:action.payload.uno,
-            card:playlist
+            list:action.payload.favorite,
+            card:action.payload.playlist
           }
         }
+
+        case ActionType.GET_PlaylistForId:
+            
+            return {
+              ...state,
+              album_playlist:action.payload
+            }
+        
 
     default:
       return state;
