@@ -27,6 +27,7 @@ export default function Player(){
   useEffect(() => {
     chargeState();
   }, [])
+  useEffect(() => setIsPlaying(true), [queue[0]])
   useEffect(() => updatePos(), [queue]);
   useEffect(() => {
     return () => dispatch(sendPrevPlay(isPlaying, currentTime, pos, volume));
@@ -38,7 +39,7 @@ export default function Player(){
     if (prevPlay.isPlaying !== undefined) setIsPlaying(prevPlay.isPlaying);
   }
   function updatePos(){
-    if(pos > queue.length){
+    if(pos + 1 > queue.length){
       setPos(0);
       setCurrentTime(0);
     }
@@ -67,6 +68,7 @@ export default function Player(){
       setCurrentTime(0);
       setPos(pos + 1);
     }
+    else setIsPlaying(false);
   }
   function mute(){
     if(volume === '0') setVolume('50');
