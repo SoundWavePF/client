@@ -63,11 +63,11 @@ interface SendPrevPlay{
 }
 interface PlaySong{
   type: ActionType.PLAY_SONG
-  payload: object
+  payload: swSong
 }
 interface AddToQueue{
   type: ActionType.ADD_TO_QUEUE,
-  payload: object
+  payload: swSong
 }
 
 

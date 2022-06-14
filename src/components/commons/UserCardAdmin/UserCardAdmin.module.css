@@ -17,6 +17,43 @@
 .button:hover{
   background-color: #fff79c;
 }
+.buttonUsername{
+  display: flex;
+  align-items: center;
+  background-color: #ffee32;
+  border: none;
+  border: 1px solid black;
+  width: 220px;
+}
+.buttonUsername:hover{
+  background-color: #fff79c;
+}
+.buttonEmail{
+  display: flex;
+  align-items: center;
+  background-color: #ffee32;
+  border: none;
+  border: 1px solid black;
+  width: 400px;  
+}
+.buttonEmail:hover{
+  background-color: #fff79c;
+}
+.buttonRequestTrue{
+  background-color: #ffee32;
+  border: none;
+  border: 1px solid black;
+  width: 60px;
+}
+.buttonRequest{
+  background-color: #ffffff;
+  border: none;
+  border: 1px solid black;
+  width: 60px;
+}
+.buttonRequestTrue:hover{
+  background-color: #fff79c;
+}
 .img{
   width: 20px;
   height: 20px;
@@ -44,15 +81,7 @@
 .divId:hover{
   background-color: #fff79c;
 }
-.divUsername{
-  display: flex;
-  padding: 4px;
-  width: 220px;
-  border: 1px solid black;
-}
-.divUsername:hover{
-  background-color: #fff79c;
-}
+
 .divEmail{
   display: flex;
   padding: 4px;
