@@ -26,7 +26,7 @@ var config = {
   body: {s:"searchRecord"},
 };
 
-export const getLibrary = ()=>{ //hasta que no halla back el axios queda comentado
+export const getLibrary = ()=>{ 
     return(dispatch: Dispatch<Actions>)=>{
     const favorite=  axios.get( 'http://localhost:3001/favorite')
     const playlist=  axios.get( 'http://localhost:3001/playlist/04bb097e-779c-4610-8bfd-e03c875c683b')
