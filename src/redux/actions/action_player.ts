@@ -43,31 +43,27 @@ export const searchAll = (input:string)=>{ //hasta que no halla back el axios qu
     .catch((error)=>console.log(error))
   }
 }
-export const sendPrevPlay = (pos: number, volume: string) => {
+export const sendPrevPlay = (isPlaying: boolean, currentTime: number, pos: number, volume: string) => {
   return(dispatch: Dispatch<Actions>) => {
     dispatch({
       type: ActionType.SEND_PREV_PLAY,
-      payload: {pos, volume}
+      payload: {isPlaying, currentTime, pos, volume}
     })
   }
 }
-export const playSong = (id: string) => {
+export const playSong = (data: swSong) => {
   return(dispatch: Dispatch<Actions>) => {
-    // axios.get(`localhost:3001/`)
-    // .then(response => dispatch({
     dispatch({
       type: ActionType.PLAY_SONG,
-      payload: hc.song
+      payload: data
     })
   }
 }
-export const addToQueue = (id: string) => {
+export const addToQueue = (data: swSong) => {
   return(dispatch: Dispatch<Actions>) => {
-    // axios.get(`localhost:3001/`)
-    // .then(response => dispatch ({
     dispatch({
       type: ActionType.ADD_TO_QUEUE,
-      payload: hc.song
+      payload: data
     })
   }
 }
