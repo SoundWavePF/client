@@ -45,3 +45,6 @@
   align-self: center;
   justify-self: center;
 }
+.title:hover{
+  cursor: pointer
+}
