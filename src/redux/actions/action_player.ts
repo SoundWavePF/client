@@ -15,22 +15,59 @@ export const getGenres = ()=>{
     })
   }
 }
+// export const getChart = ()=>{
+//   return(dispatch: Dispatch<any>)=>{
+//     dispatch({
+//       type: ActionType.GET_CHART,
+//       payload: hc.songList
+//     })
+//   }
+// }
+
+// export const getChart = ()=>{
+//   return(dispatch: Dispatch<any>)=>{
+//     axios.get('http://localhost:3001/top')
+//     .then(response => 
+//       dispatch({
+//         type: ActionType.GET_CHART,
+//         payload: response.data
+//       })
+//       )
+//   }
+// }
 export const getChart = ()=>{
   return(dispatch: Dispatch<any>)=>{
-    dispatch({
-      type: ActionType.GET_CHART,
-      payload: hc.songList
-    })
+    axios.get('http://localhost:3001/top')
+    .then(response => 
+      dispatch({
+        type: ActionType.GET_CHART,
+        payload: response.data
+      })
+      )
   }
 }
+
+// export const getLastSongs = ()=>{
+//   return(dispatch: Dispatch<any>)=>{
+//     dispatch({
+//       type: ActionType.GET_LAST_SONGS,
+//       payload: hc.songList
+//     })
+//   }
+// }
+
 export const getLastSongs = ()=>{
   return(dispatch: Dispatch<any>)=>{
-    dispatch({
-      type: ActionType.GET_LAST_SONGS,
-      payload: hc.songList
-    })
+    axios.get('http://localhost:3001/top')
+    .then(response => 
+      dispatch({
+        type: ActionType.GET_LAST_SONGS,
+        payload: response.data.reverse()
+      })
+      )
   }
 }
+
 export const searchAll = (input:string)=>{ //hasta que no halla back el axios queda comentado
   return(dispatch: Dispatch<Actions>)=>{
     axios.get(`http://localhost:3001/search?all=${input}`)
