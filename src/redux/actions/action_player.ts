@@ -7,17 +7,23 @@ import * as hc from "./hc_data";
 //ej    hc.userList     un arreglo con 100 usuarios para el panel admin
 // manden un console.log para ver los otros
 
-export const getGenres = () => {
-  return (dispatch: Dispatch<Actions>) => {
-    dispatch({
-      type: ActionType.GET_GENRES,
-      payload: hc.genres, ////aquí envío los 5 generos por ej
-    });
-  };
-};
-export const getChart = () => {
-  return (dispatch: Dispatch<any>) => {
-    axios.get("http://localhost:3001/top").then((response) =>
+
+
+export const getGenres = ()=>{
+  return(dispatch: Dispatch<any>)=>{
+    axios.get('http://localhost:3001/genre/all')
+    .then(response => 
+      dispatch({
+        type: ActionType.GET_GENRES,
+        payload: response.data
+      })
+      )
+  }
+}
+export const getChart = ()=>{
+  return(dispatch: Dispatch<any>)=>{
+    axios.get('http://localhost:3001/top')
+    .then(response => 
       dispatch({
         type: ActionType.GET_CHART,
         payload: response.data,
@@ -87,4 +93,24 @@ export const addToPlaylist = (playlistId: string, songId: string) => {
       payload: response.data
     }))
   }
-};
+}
+export const getGenre = (id:any)=>{ // obtiene un genero para la ruta /genre/:id
+  return(dispatch: Dispatch<any>)=>{
+    axios.get('http://localhost:3001/genre/'+id)
+    .then(response => 
+      dispatch({
+        type: ActionType.GET_GENRE,
+        payload: response.data
+      })
+      )
+  }
+}
+
+export const cleanGenre = ()=>{
+  return(dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.CLEAN_GENRE
+    })
+  }
+}
+

@@ -1,0 +1,12 @@
+.container{
+  padding: 30px;
+}
+.section{
+  margin-bottom: 3rem;
+}
+.section > h1 {
+  color: var(--gray-black);
+  margin-bottom: 1.5rem;
+  font-family: sw-medium;
+  font-size: min(30px, 3vw);
+}
