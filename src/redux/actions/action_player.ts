@@ -7,30 +7,43 @@ import * as hc from './hc_data';
 //ej    hc.userList     un arreglo con 100 usuarios para el panel admin
 // manden un console.log para ver los otros
 
+
 export const getGenres = ()=>{
-  return(dispatch: Dispatch<Actions>)=>{
-    dispatch({
-      type: ActionType.GET_GENRES,
-      payload: hc.genres      ////aquí envío los 5 generos por ej
-    })
+  return(dispatch: Dispatch<any>)=>{
+    axios.get('http://localhost:3001/genre/all')
+    .then(response => 
+      dispatch({
+        type: ActionType.GET_GENRES,
+        payload: response.data
+      })
+      )
   }
 }
 export const getChart = ()=>{
   return(dispatch: Dispatch<any>)=>{
-    dispatch({
-      type: ActionType.GET_CHART,
-      payload: hc.songList
-    })
+    axios.get('http://localhost:3001/top')
+    .then(response => 
+      dispatch({
+        type: ActionType.GET_CHART,
+        payload: response.data
+      })
+      )
   }
 }
+
 export const getLastSongs = ()=>{
   return(dispatch: Dispatch<any>)=>{
-    dispatch({
-      type: ActionType.GET_LAST_SONGS,
-      payload: hc.songList
-    })
+    axios.get('http://localhost:3001/top')
+    .then(response => 
+      dispatch({
+        type: ActionType.GET_LAST_SONGS,
+        payload: response.data.reverse()
+      })
+      )
   }
 }
+
+
 export const searchAll = (input:string)=>{ //hasta que no halla back el axios queda comentado
   return(dispatch: Dispatch<Actions>)=>{
     axios.get(`http://localhost:3001/search?all=${input}`)
@@ -43,31 +56,46 @@ export const searchAll = (input:string)=>{ //hasta que no halla back el axios qu
     .catch((error)=>console.log(error))
   }
 }
-export const sendPrevPlay = (pos: number, volume: string) => {
+export const sendPrevPlay = (isPlaying: boolean, currentTime: number, pos: number, volume: string) => {
   return(dispatch: Dispatch<Actions>) => {
     dispatch({
       type: ActionType.SEND_PREV_PLAY,
-      payload: {pos, volume}
+      payload: {isPlaying, currentTime, pos, volume}
     })
   }
 }
-export const playSong = (id: string) => {
+export const playSong = (data: swSong) => {
   return(dispatch: Dispatch<Actions>) => {
-    // axios.get(`localhost:3001/`)
-    // .then(response => dispatch({
     dispatch({
       type: ActionType.PLAY_SONG,
-      payload: hc.song
+      payload: data
     })
   }
 }
-export const addToQueue = (id: string) => {
+export const addToQueue = (data: swSong) => {
   return(dispatch: Dispatch<Actions>) => {
-    // axios.get(`localhost:3001/`)
-    // .then(response => dispatch ({
     dispatch({
       type: ActionType.ADD_TO_QUEUE,
-      payload: hc.song
+      payload: data
+    })
+  }
+}
+export const getGenre = (id:any)=>{ // obtiene un genero para la ruta /genre/:id
+  return(dispatch: Dispatch<any>)=>{
+    axios.get('http://localhost:3001/genre/'+id)
+    .then(response => 
+      dispatch({
+        type: ActionType.GET_GENRE,
+        payload: response.data
+      })
+      )
+  }
+}
+
+export const cleanGenre = ()=>{
+  return(dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.CLEAN_GENRE
     })
   }
 }

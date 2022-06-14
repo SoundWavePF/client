@@ -14,7 +14,7 @@ interface State {
   home: types.Home,
   adminOption: types.AdminOption,
   prevPlay: object
-
+  genre: any
 }
 
 const initialState: State = {
@@ -38,11 +38,22 @@ const initialState: State = {
     chart: []
   },
   adminOption:{home:true,user:false},
-  prevPlay: {}
+  prevPlay: {},
+  genre: []
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
   switch (action.type) {
+    case ActionType.CLEAN_GENRE:
+      return {
+        ...state,
+        genre: []
+      };
+    case ActionType.GET_GENRE:
+      return {
+        ...state,
+        genre: action.payload
+      };
     case ActionType.GET_GENRES:
       return {
         ...state,
@@ -102,18 +113,22 @@ const Reducer = (state: any = initialState, action: Actions) => {
       }
 
       case ActionType.GET_LIBRARY:
-      console.log(action.payload)
-      let playlist=action.payload.dos
-        playlist.type='album'
-        playlist.image_medium='https://i.pravatar.cc/150?u=nombre';
-        
+    
         return {
           ...state,
           library_artist:{
-            list:action.payload.uno,
-            card:playlist
+            list:action.payload.favorite,
+            card:action.payload.playlist
           }
         }
+
+        case ActionType.GET_PlaylistForId:
+            
+            return {
+              ...state,
+              album_playlist:action.payload
+            }
+        
 
     default:
       return state;
