@@ -9,12 +9,17 @@ interface myProps {
 }
 
 const CardItem: React.FC<myProps> = (props: myProps) => {
+
+  //const dispatch = useDispatch();
+  //const { playSong } = bindActionCreators(actionCreator, dispatch)
+
   let IType = props.item.type;
-  const dispatch = useDispatch();
-  const { playSong } = bindActionCreators(
-    actionCreator,
-    dispatch
-  );
+  let playSong: any
+  //const dispatch = useDispatch();
+  //const { playSong } = bindActionCreators(
+  //  actionCreator,
+  //  dispatch
+  //);
   switch (IType) {
     case 'genre':
       return(
