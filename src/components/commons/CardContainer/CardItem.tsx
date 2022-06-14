@@ -18,11 +18,11 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
   switch (IType) {
     case 'genre':
       return(
-        <div className={styles.alt}>
-          <Link to={`/genre/${props.item.id}`}>
+        <div>
+          <Link to={`/genre/${props.item.id}`} className={styles.alt}>
+            <p>{props.item.name}</p>
             <img src={props.item.image} alt={props.item.name}/>
           </Link>
-          <p>{props.item.name}</p>
         </div>
       )
     case 'album':
