@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import NavAdmin from '../../commons/NavAdmin/NavAdmin';
 
 interface user{
+  request:boolean,
   id:string,
   type:string,
   username:string,
@@ -14,50 +15,51 @@ interface user{
 }
 
 const data:user[] = [
-  {id:'1',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
-  {id:'2',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
-  {id:'3',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
-  {id:'4',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
-  {id:'5',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
-  {id:'6',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
-  {id:'12',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
-  {id:'22',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
-  {id:'32',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
-  {id:'42',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
-  {id:'52',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
-  {id:'62',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
-  {id:'13',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
-  {id:'23',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
-  {id:'33',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
-  {id:'43',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
-  {id:'53',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
-  {id:'63',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
-  {id:'1',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
-  {id:'2',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
-  {id:'3',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
-  {id:'4',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
-  {id:'5',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
-  {id:'6',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
-  {id:'12',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
-  {id:'22',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
-  {id:'32',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
-  {id:'42',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
-  {id:'52',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
-  {id:'62',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
-  {id:'13',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
-  {id:'23',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
-  {id:'33',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
-  {id:'43',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
-  {id:'53',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
-  {id:'63',type:'user',username:'jony',email:'jony@sw.com',songNumber:0}
+  {request:false,id:'1',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
+  {request:false,id:'2',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
+  {request:false,id:'3',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
+  {request:true,id:'4',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
+  {request:false,id:'5',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
+  {request:false,id:'6',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
+  {request:false,id:'12',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
+  {request:false,id:'22',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
+  {request:false,id:'32',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
+  {request:true,id:'42',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
+  {request:false,id:'52',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
+  {request:false,id:'62',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
+  {request:false,id:'13',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
+  {request:false,id:'23',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
+  {request:false,id:'33',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
+  {request:false,id:'43',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
+  {request:false,id:'53',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
+  {request:false,id:'63',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
+  {request:false,id:'1',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
+  {request:false,id:'2',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
+  {request:false,id:'3',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
+  {request:true,id:'4',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
+  {request:false,id:'5',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
+  {request:false,id:'6',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
+  {request:false,id:'12',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
+  {request:false,id:'22',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
+  {request:false,id:'32',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
+  {request:false,id:'42',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
+  {request:false,id:'52',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
+  {request:false,id:'62',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
+  {request:false,id:'13',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
+  {request:false,id:'23',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
+  {request:false,id:'33',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
+  {request:false,id:'43',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
+  {request:false,id:'53',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
+  {request:false,id:'63',type:'user',username:'jony',email:'jony@sw.com',songNumber:0}
 ]
 const AdminPanel = ()=>{
   const adminOption = useSelector((state:any)=>state.adminOption)
-
+  const top='top'
   if(adminOption.home===true){
     return(  
       <div>
         <AdminSideBar/>
+        <NavAdmin option={true}/>
         <div className={m.container_as78}>
           <div>
             
@@ -74,7 +76,7 @@ const AdminPanel = ()=>{
     return(
       <div>
         <AdminSideBar/>
-        <NavAdmin/>
+        <NavAdmin option={false}/>
         <div className={m.containerCards}>
           <ul className={m.ul}>
             {data.map(user=>{
