@@ -3,4 +3,13 @@
   margin-left: 250px;
   padding: 50px;
   display: flex;
+  flex-direction: column;
+}
+.divOption{
+  display: flex;
+  justify-content: space-evenly;
+}
+.b{
+  font-size: 70px;
+  margin-bottom: 20px;
 }
