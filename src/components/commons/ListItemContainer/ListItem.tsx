@@ -48,7 +48,7 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
 
           <div className={s.controllerContainer}>
             <div>
-              <DropDownButton />
+              {/* <DropDownButton /> */}
             </div>
             <div>
               <div className={s.duration}>
