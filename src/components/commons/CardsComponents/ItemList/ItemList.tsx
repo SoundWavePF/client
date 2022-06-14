@@ -1,10 +1,10 @@
 import React from 'react'
 import s from './ItemList.module.css'
-import like from '../../../assets/like.png'
 import likefull from '../../../../assets/likefull.png'
 import time from '../../../../assets/time.png'
 import DropDownButton from '../../DropDownButton/DropDownButton'
 import { Link } from 'react-router-dom'
+import play from '../../../../assets/play.png'
 
 // interface Item {
 //     position: number;
@@ -39,7 +39,7 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
             <div className={s.imageAndNameContainer}>
               <div>
 
-                <div ><img className={s.image} src={props.item.image_small} alt="" /><div className={s.Play}>{'>'}</div></div>
+                <div ><img className={s.image} src={props.item.image_small} alt="" /><img src={play} className={s.Play} /> </div>
 
               </div>
               <div>
@@ -51,6 +51,7 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
 
 
           <div className={s.controllerContainer}>
+            <img className={s.likeImg} src={likefull} alt="" />
             <div>
               <DropDownButton />
             </div>
