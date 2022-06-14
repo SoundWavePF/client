@@ -117,7 +117,16 @@ const Reducer = (state: any = initialState, action: Actions) => {
               ...state,
               album_playlist:action.payload
             }
-        
+        case ActionType.ADD_TO_PLAYLIST:
+          console.log(action.payload)
+          return{
+            ...state
+          }
+        case ActionType.NEW_PLAYLIST:
+          console.log(action.payload)
+          return{
+            ...state
+          }
 
     default:
       return state;
