@@ -14,7 +14,7 @@ interface State {
   home: types.Home,
   adminOption: types.AdminOption,
   prevPlay: object
-
+  genre: any
 }
 
 const initialState: State = {
@@ -38,11 +38,22 @@ const initialState: State = {
     chart: []
   },
   adminOption:{home:true,user:false},
-  prevPlay: {}
+  prevPlay: {},
+  genre: []
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
   switch (action.type) {
+    case ActionType.CLEAN_GENRE:
+      return {
+        ...state,
+        genre: []
+      };
+    case ActionType.GET_GENRE:
+      return {
+        ...state,
+        genre: action.payload
+      };
     case ActionType.GET_GENRES:
       return {
         ...state,

@@ -1,8 +1,11 @@
 import { LibraryArtist } from "../reducer/types";
 
-export type Actions = GetGenres | GetAlbum | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId;
+export type Actions = GetGenres | GetAlbum | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre;
+
 
 export enum ActionType{
+  CLEAN_GENRE = 'CLEAN_GENRE',
+  GET_GENRE = 'GET_GENRE',
   GET_GENRES = 'GET_GENRES',
   GET_CHART = 'GET_CHART',
   GET_LAST_SONGS = 'GET_LAST_SONGS',
@@ -24,7 +27,13 @@ export interface userOption{ //opciones del componente AdminPanel
   home:boolean,
   user:boolean
 }
-
+interface CleanGenre{
+  type: ActionType.CLEAN_GENRE;
+}
+interface GetGenre{
+  type: ActionType.GET_GENRE;
+  payload?: any
+}
 interface GetGenres{
   type: ActionType.GET_GENRES;
   payload?: swGenre[]
@@ -69,15 +78,12 @@ interface AddToQueue{
   type: ActionType.ADD_TO_QUEUE,
   payload: swSong
 }
-
-
 interface getLibrary{
   type: ActionType.GET_LIBRARY,
   payload: LibraryArtist
 }
-
 interface get_PlaylistForId{
-
   type:ActionType.GET_PlaylistForId,
   payload:any
 }
+

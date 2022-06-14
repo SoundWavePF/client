@@ -12,6 +12,7 @@ import AdminPanel from "./components/views/AdminPanel/AdminPanel";
 import AlbumPlaylist from "./components/views/AlbumPlaylist/AlbumPlaylist";
 import Library from "./components/views/Library/Library";
 import Error404 from "./components/views/error404/error404";
+import Genre from "./components/views/Genre/Genre";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/artist/:id" element={<h1>Artist</h1>}/>
         <Route path="/album/:id" element={<AlbumPlaylist/>}/>
         <Route path="/playlist/:id" element={<AlbumPlaylist/>}/>
+        <Route path="/genre/:id" element={<Genre/>}/>
 
         <Route path="/settings" element={<h1>Settings</h1>}/>
         <Route path="/panel_artist" element={<h1>Panel</h1>}/>
