@@ -14,7 +14,8 @@ interface State {
   home: types.Home,
   adminOption: types.AdminOption,
   prevPlay: object,
-  genre: any
+  genre: any,
+  top:any
 }
 
 const initialState: State = {
@@ -39,7 +40,8 @@ const initialState: State = {
   },
   adminOption:{home:true,user:false},
   prevPlay: {},
-  genre: []
+  genre: [],
+  top: []
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -129,22 +131,27 @@ const Reducer = (state: any = initialState, action: Actions) => {
           album_playlist: action.payload
         }
 
-        case ActionType.GET_PlaylistForId:
-            
-            return {
-              ...state,
-              album_playlist:action.payload
-            }
-        case ActionType.ADD_TO_PLAYLIST:
-          console.log(action.payload)
-          return{
-            ...state
+      case ActionType.GET_PlaylistForId:
+          
+          return {
+            ...state,
+            album_playlist:action.payload
           }
-        case ActionType.NEW_PLAYLIST:
-          console.log(action.payload)
-          return{
-            ...state
-          }
+      case ActionType.ADD_TO_PLAYLIST:
+        console.log(action.payload)
+        return{
+          ...state
+        }
+      case ActionType.NEW_PLAYLIST:
+        console.log(action.payload)
+        return{
+          ...state
+        }
+      case ActionType.GET_TOP:
+        return{
+          ...state,
+          top:action.payload
+        }
     default:
       return state;
   }
