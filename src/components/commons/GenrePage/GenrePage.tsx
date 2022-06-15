@@ -12,19 +12,19 @@ const GenrePage = () => {
   const dispatch = useDispatch();
   const { getGenre, cleanGenre } = bindActionCreators(actionCreator,dispatch);
   const genre = useSelector((state: any) => state.genre);
-
+  
   useEffect(():any => {
     getGenre(id);
     return cleanGenre()
   }, []);
 
-  if(genre.Albums){
+  if(genre.albums){
     return (
         <div className={styles.container}>
-          { genre.Albums.length > 0 &&
+          <h1>{genre.name}</h1>
+          { genre.albums.length > 0 &&
             <div className={styles.section}>
-              <h1>{genre.name}</h1>
-              <CardContainer content={genre.Albums} />
+              <CardContainer content={genre.albums} />
             </div>
           }
         </div>
@@ -32,8 +32,8 @@ const GenrePage = () => {
   } else{
     return(
       <div className={styles.container}>
-            <div className={styles.section}>
-              <h1>Loading...</h1>
+            <div className={styles.sectionLoading}>
+              <div className="spinner-border"  role="status"></div>
             </div>
         </div>
     )
