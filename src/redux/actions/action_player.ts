@@ -76,3 +76,14 @@ export const addToQueue = (data: swSong) => {
     })
   }
 }
+export const getAlbumPlaylist = (id:any, type:string)=>{
+  return(dispatch: Dispatch<any>)=>{
+    axios.get(`http://localhost:3001/${type}/${id}`)
+    .then(response => 
+      dispatch({
+        type: ActionType.GET_ALBUM_PLAYLIST,
+        payload: response.data
+      })
+      )
+  }
+}

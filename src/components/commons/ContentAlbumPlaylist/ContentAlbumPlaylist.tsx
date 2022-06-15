@@ -2,45 +2,32 @@ import styles from "./ContentAlbumPlaylist.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { bindActionCreators } from "redux";
+import { useParams, useLocation } from "react-router";
 import * as actionCreator from '../../../redux/actions/action_player'
-//import ItemList from "../CardsComponents/ItemList/ItemList";
-import { useParams } from "react-router";
-import ItemList from "../CardsComponents/ItemList/ItemList";
+import ListItemContainer from "../ListItemContainer/ListItemContainer";
 
 const ContentAlbumPlaylist = () => {
   const dispatch = useDispatch();
-//  const  { getContent } = bindActionCreators(actionCreator,dispatch);
-  const { library_artist } = useSelector((state: any) => state);
+  const  { getAlbumPlaylist } = bindActionCreators(actionCreator,dispatch);
+  const item = useSelector((state: any) => state.album_playlist);
   const { id } = useParams();
-  
+  const path = useLocation().pathname;
   useEffect(()=>{
-    //getContent();
-  },[])
-  let image = 'https://e-cdns-images.dzcdn.net/images/misc/db7a604d9e7634a67d45cfc86b48370a/250x250-000000-80-0-0.jpg'
+    path.includes('album') ?
+    getAlbumPlaylist(id, 'album'):
+    getAlbumPlaylist(id, 'playlist')
+  },[]);
   return (
-    <div className={styles.ContainerLibrary}>
-      <div className={styles.ContainerInfo}>
-      <img src={library_artist.card.image_medium} alt="album" />
-        <h1>{`Playlist: ${library_artist.card.name}`}</h1>
-
-      </div>
-
-
-      <div>
-      <div className={styles.Column}>
-          <h4>Name</h4>
-          <h4>Duration</h4>
-
-          </div>
-
-        <div className={styles.list}>
-
-      {library_artist.card.Songs && library_artist.card.Songs.map((s:any)=>(  <div  className={styles.ContainerFavorite}>  <ItemList item={s}></ItemList></div>    ) )}
-
-          
+    item &&
+      <div className={styles.container}>
+        <div className={styles.details}>
+          <img src={item.image_medium} alt={item.name} />
+          <span>{item.name}</span>
+          <span>{item.Artists && item.Artists[0].name}</span>
+          <button >Play all</button>
         </div>
+        <ListItemContainer content={item.Songs} header={true} cover={item.image_medium} nb={true}/>
       </div>
-    </div>
   );
 };
 export default ContentAlbumPlaylist;
