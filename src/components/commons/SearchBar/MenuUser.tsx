@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 import style from './MenuUser.module.css';
 import userIcon from '../../../assets/user_icon.png'
 import likeFull from '../../../assets/likefull.png'
+import { useAuth0 } from "@auth0/auth0-react";
 
 interface node {
     contains?: (arg: any)=> any
@@ -16,6 +17,7 @@ interface props  {
 }
 
 const Menu: React.FunctionComponent<props> = (props)=>{
+    const {logout} = useAuth0();
     const [open, setOpen] = useState<boolean>(false);
     const container = useRef(document.getElementsByTagName('div')[0]); // obtiene da un nodo html como valor inicial 
                                                                      //para que no de error cuando la referencia intente usar  el  metodo contains
@@ -84,18 +86,18 @@ const Menu: React.FunctionComponent<props> = (props)=>{
                 </div>
                 <div className={style.textContainer}>
                     <span>{username}</span>
-                    {username !== 'Unregistered' && 
+                    {/* {username !== 'Unregistered' &&  */}
                         <div style={{display: 'flex', flexDirection:'column'}}>
                             <button onClick={handleClick} className={style.btn}>Settings</button>
-                            <button onClick={handleLogout} className={style.btnPrimary}>Logout</button>
+                            <button onClick={()=> logout({returnTo: window.location.origin})} className={style.btnPrimary}>Logout</button>
                         </div>
-                    }
-                    {username === 'Unregistered' &&
+                    
+                    {/* {username === 'Unregistered' &&
                         <div style={{display: 'flex', flexDirection:'column'}}>
                             <button onClick={handleLogIn} className={style.btnPrimary}>Log In</button>
                             <button onClick={handleSignUp} className={style.btn}>Sign Up</button>
                         </div>
-                    }
+                    } */}
                 </div>
             </div>
         }

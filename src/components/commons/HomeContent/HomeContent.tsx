@@ -24,19 +24,19 @@ const HomeContent = () => {
       { last.length > 0 &&
         <div className={styles.section}>
           <h1>Recently played</h1>
-          <CardContainer content={last.slice(0, 5)} />
+          {/* <CardContainer content={last.slice(0, 5)} /> */}
         </div>
       }
       { genres.length > 0 &&
         <div className={styles.section}>
           <h1>Genres</h1>
-          <CardContainer content={genres} />
+          {/* <CardContainer content={genres} /> */}
         </div>
       }
       { chart.length > 0 &&
         <div className={styles.section}>
           <h1>Most popular</h1>
-          <CardContainer content={chart.slice(0, 5)} />
+          {/* <CardContainer content={chart.slice(0, 5)} /> */}
         </div>
       }
     </div>
