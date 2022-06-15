@@ -21,8 +21,7 @@ const UserSettings = () => {
 
   let handleModal: any = (e: any) => {
     console.log(modal);
-    // console.log(e.target.name);
-
+    
     switch (e.target.name) {
 
       case "modalArtist":
@@ -62,7 +61,6 @@ const UserSettings = () => {
         })
 
       default:
-        console.log("no funciona")
         return modal
 
     }
@@ -133,7 +131,7 @@ const UserSettings = () => {
 
       <Player />
       {modal.modalArtist === true ?
-        <Modal handleModal={handleModal} type={"text"} header={"Ready to become an artist?"} description={"Please complete the following information"} label={"¿info?: "} contentButton={"confirm"} />
+        <Modal handleModal={handleModal} setpass={"Put your password"} inputArtistType={"password"} artistName={"Set your artist name"} type={"text"} header={"Ready to become an artist?"} description={"Please complete the following information"} label={"Set your description: "} contentButton={"confirm"} />
         : null
       }
       {modal.modalUsername === true ?

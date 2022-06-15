@@ -1,11 +1,11 @@
-import styles from "./HomeContent.module.css";
+import styles from "./ContentHome.module.css";
 import CardContainer from "../CardContainer/CardContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_player";
 
-const HomeContent = () => {
+const ContentHome = () => {
   const dispatch = useDispatch();
   const { getGenres, getLastSongs, getChart } = bindActionCreators(
     actionCreator,
@@ -42,4 +42,4 @@ const HomeContent = () => {
     </div>
   );
 };
-export default HomeContent;
+export default ContentHome;

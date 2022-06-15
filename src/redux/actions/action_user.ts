@@ -1,16 +1,17 @@
 import { Dispatch } from "react";
 import { ActionType, Actions } from "./types";
 import axios from "axios";
+import useAuth0 from '@auth0/auth0-react';
 
 let PonerID = "882f59cd-9e4e-4f11-87e9-0f24eb1fca75";
 
 export const getLibrary = () => {
   //hay que poner el id del usuario creado hasta que se pueda haceder a el
   return (dispatch: Dispatch<Actions>) => {
-    const favorite = axios.post("http://localhost:3001/favorite", {
+    const favorite = axios.post("http://143.198.158.238:3001/favorite", {
       userId: PonerID,
     });
-    const playlist = axios.post("http://localhost:3001/playlist", {
+    const playlist = axios.post("http://143.198.158.238:3001/playlist", {
       userId: PonerID,
     });
     Promise.all([favorite, playlist])
@@ -28,7 +29,7 @@ export const getLibrary = () => {
 };
 export const getPlaylist = (id: any) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.get(`http://localhost:3001/playlist/${id}`)
+    axios.get(`http://143.198.158.238:3001/playlist/${id}`)
     .then((response) =>
       dispatch({
         type: ActionType.GET_PlaylistForId,
@@ -40,7 +41,7 @@ export const getPlaylist = (id: any) => {
 };
 export const newPlaylist = (userId: string, playlistName: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post('http://localhost:3001/playlist/create', {userId: userId, playlistName: playlistName})
+    axios.post('http://143.198.158.238:3001/playlist/create', {userId: userId, playlistName: playlistName})
     .then(response => dispatch({
       type: ActionType.NEW_PLAYLIST,
       payload: response.data

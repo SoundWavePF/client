@@ -1,24 +1,57 @@
 .container{
-  display: grid;
+  display: flex;
+  flex-direction: column;
   padding: 30px;
   gap: 30px;
+  height: auto;
 }
-.container > div:first-child {
-  background-color: lightcyan;
+.details {
+  /* background-color: lightcyan; */
   display: grid;
   grid-template-columns: auto auto;
+  /* height: auto; */
+  grid-template-columns: 250px auto;
+  grid-template-rows: 3.5rem 3.5rem auto;
+  gap: 1.2rem;
+  font-family: var(--sw-medium);
 }
+.details > img{
+  grid-area: 1 / 1 / 4 / 2;
+  border-radius: 5px;
+}
+.details > span:nth-child(2){
+  grid-area: 1 / 2 / 2 / 3;
+  align-self: start;
+  font-size: 2.8rem;
+  /* margin-top: .5rem; */
+}
+.details > span:nth-child(3){
+  grid-area: 2 / 2 / 3 / 3;
+  align-self: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: fit-content;
+}
+.details > button:last-child{
+  grid-area: 3 / 2 / 4 / 3;
+  width: 150px;
+  height: 35px;
+  background-color: var(--yellow-light);
+  border-radius: 4px;
+  border: none;
+	margin-left: 2rem;
+	transition: .2s ease-in-out;
+}
+.details > button:last-child:hover{
+  background-color: var(--yellow-dark);
+}
+
 .container > div:last-child {
-  border: 1px solid gray;
+  /* border: 1px solid gray; */
   display: block;
 }
 
-.header{
-  background-color: aquamarine;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-.list{
+/* .list{
   background-color: azure;
   height: 500px;
 }
@@ -53,4 +86,4 @@ width: 80%;
 .ContainerInfo h1{
   display: flex;
   align-items: center;
-}
+} */
