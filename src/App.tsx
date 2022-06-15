@@ -14,6 +14,7 @@ import Library from "./components/views/Library/Library";
 import Error404 from "./components/views/error404/error404";
 import UserSettings from "./components/views/UserSettings/UserSettings";
 import Genre from "./components/views/Genre/Genre";
+import FileUpload from "./components/views/FileUpload/FileUpload";
 
 
 
@@ -21,28 +22,29 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Landing/>}/>
-        <Route path="/login" element={<Login/>}/>
-        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
 
-        <Route path="/about" element={<About/>}/>
-        <Route path="/home" element={<Home/>}/>
-        <Route path="/playlists" element={<Library></Library>}/>
-        <Route path="/favorites" element={<Library></Library>}/>
-
-
-
-        <Route path="/artist/:id" element={<h1>Artist</h1>}/>
-        <Route path="/album/:id" element={<AlbumPlaylist/>}/>
-        <Route path="/playlist/:id" element={<AlbumPlaylist/>}/>
-        <Route path="/genre/:id" element={<Genre/>}/>
-
-        <Route path="/settings" element={<UserSettings/>}/>
-        <Route path="/panel_artist" element={<h1>Panel</h1>}/>
-        <Route path="/admin" element={<AdminPanel/>}/>
+        <Route path="/about" element={<About />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/playlists" element={<Library></Library>} />
+        <Route path="/favorites" element={<Library></Library>} />
 
 
-        <Route path="/*" element={<Error404/>}/>
+
+        <Route path="/artist/:id" element={<h1>Artist</h1>} />
+        <Route path="/album/:id" element={<AlbumPlaylist />} />
+        <Route path="/playlist/:id" element={<AlbumPlaylist />} />
+        <Route path="/genre/:id" element={<Genre />} />
+
+        <Route path="/settings" element={<UserSettings />} />
+        <Route path="/panel_artist" element={<h1>Panel</h1>} />
+        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/file" element={<FileUpload />} />
+
+
+        <Route path="/*" element={<Error404 />} />
       </Routes>
     </div>
   );
