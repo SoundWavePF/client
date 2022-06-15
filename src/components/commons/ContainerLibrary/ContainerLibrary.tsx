@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import { NavLink } from 'react-router-dom'
-import CardItem from '../CardItem/CardItem'
 import { Link } from 'react-router-dom'
 import CardItem from '../CardContainer/CardItem'
 import ItemList from '../CardsComponents/ItemList/ItemList'
