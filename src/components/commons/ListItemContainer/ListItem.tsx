@@ -1,16 +1,24 @@
-import React from "react";
-import s from "./ItemList.module.css";
+import React, { useState } from "react";
+import s from "./ListItem.module.css";
 import like from "../../../assets/like.png";
-import likefull from "../../../../assets/likefull.png";
-import time from "../../../../assets/time.png";
+import likefull from "../../../../src/assets/likefull.png";
+import time from "../../../../src/assets/time.png";
 import DropDownButton from "../DropDownButton/DropDownButton";
 import { Link } from "react-router-dom";
+import * as actionCreator from "../../../redux/actions/action_player";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
 
 interface myProps {
   item: any;
+  cover?: string;
+  nb?: number;
 }
 
 const ItemList: React.FC<myProps> = (props: myProps) => {
+  const [fav, setFav] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  const { playSong } = bindActionCreators(actionCreator, dispatch);
   const formatDuration = (duration: string): string => {
     let num = parseInt(duration);
     let minutes: number = Math.floor(num / 60);
@@ -26,38 +34,18 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
   switch (tipo) {
     case "track":
       return (
-        <div className={s.itemListContainer}>
-          <Link className={s.links} to={"/song/:id"}>
-            <div className={s.imageAndNameContainer}>
-              <div>
-                <div>
-                  <img
-                    className={s.image}
-                    src={props.item.image_small}
-                    alt=""
-                  />
-                  <div className={s.Play}>{">"}</div>
-                </div>
-              </div>
-              <div>
-                <div className={s.songName}>{props.item.title}</div>
-                <span className={s.spanArtistName}>{props.item.artist}</span>
-              </div>
-            </div>
-          </Link>
-
-          <div className={s.controllerContainer}>
-            <div>
-              {/* <DropDownButton /> */}
-            </div>
-            <div>
-              <div className={s.duration}>
-                {formatDuration(props.item.duration)}
-              </div>
-            </div>
-            <div>
-              <img className={s.timeImg} src={time} alt="time icon" />
-            </div>
+        <div className={s.container}>
+          <div>
+            <img src={props.cover} alt={'cover'} onClick={()=>playSong(props.item)}/>
+            <span onClick={()=>playSong(props.item)}>{props.nb ? `${props.nb}. ${props.item.title}`: props.item.title}</span>
+          </div>
+          <span>{props.item.artist}</span>
+          {/* <p>{props.item.album}</p> */}
+          <div>
+            <img className={!fav ? s.noFav : ''} src={likefull} alt="like icon" onClick={fav?()=>setFav(false):()=>setFav(true)}/>
+            <DropDownButton item={props.item}/>
+            <span>{formatDuration(props.item.duration)}</span>
+            <img src={time} alt="time icon" />
           </div>
         </div>
       );

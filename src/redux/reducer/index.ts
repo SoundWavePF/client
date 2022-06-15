@@ -1,41 +1,41 @@
 import { Actions, ActionType } from "../actions/types";
-import * as types from "./types"  //tipos del state   NO BORRAR
+import * as types from "./types"; //tipos del state   NO BORRAR
 
 //tengo que importar las interfaces de las propiedades dentro de los objetos del initial state
 
-//necesito los actions types para seguir agregando switch cases 
+//necesito los actions types para seguir agregando switch cases
 
 interface State {
   query: string,
   searchResults: any,
-  album_playlist: swPlaylist[],
+  album_playlist: swAlbum | swPlaylist | any,
   library_artist: types.LibraryArtist | any,
   queue: swSong[],
   home: types.Home,
   adminOption: types.AdminOption,
-  prevPlay: object
+  prevPlay: object,
   genre: any
 }
 
 const initialState: State = {
-  query: '',   //párametro de búsqueda : string
-  queue: [],   //cola de reproduccion : track[]
-  searchResults:{}, 
+  query: "", //párametro de búsqueda : string
+  queue: [], //cola de reproduccion : track[]
+  searchResults: {},
   // {
   //   artistData: [],  //  artist[]
   //   albumData: [],   //  album[]
   //   songData: [],   //  track[]
   //   playlistData: []
   // },
-  album_playlist: [], // track[]
+  album_playlist: {},
   library_artist: {
     list: [], // favs   -  top       // track[]
-    card: []  // playlist - albums   // album[]
+    card: [], // playlist - albums   // album[]
   },
   home: {
     last: [],
     genres: [],
-    chart: []
+    chart: [],
   },
   adminOption:{home:true,user:false},
   prevPlay: {},
@@ -58,22 +58,25 @@ const Reducer = (state: any = initialState, action: Actions) => {
       return {
         ...state,
         home: {
-          ...state.home, genres: action.payload,
-        }
+          ...state.home,
+          genres: action.payload,
+        },
       };
     case ActionType.GET_LAST_SONGS:
       return {
         ...state,
         home: {
-          ...state.home, last: action.payload,
-        }
+          ...state.home,
+          last: action.payload,
+        },
       };
     case ActionType.GET_CHART:
       return {
         ...state,
         home: {
-          ...state.home, chart: action.payload,
-        }
+          ...state.home,
+          chart: action.payload,
+        },
       };
     case ActionType.CHANGE_ADMIN_OPTION:
       return {
@@ -81,37 +84,36 @@ const Reducer = (state: any = initialState, action: Actions) => {
         adminOption: action.payload,
       };
     case ActionType.POST_SIGN_UP:
-      console.log(action.payload) //hasta que no halla back solo consologea la info
-      return{
-        ...state
-      }
+      console.log(action.payload); //hasta que no halla back solo consologea la info
+      return {
+        ...state,
+      };
     case ActionType.POST_LOGIN:
-      console.log(action.payload) //hasta que no halla back solo consologea la info
-      return{
-        ...state
-      }
+      console.log(action.payload); //hasta que no halla back solo consologea la info
+      return {
+        ...state,
+      };
     case ActionType.SEND_PREV_PLAY:
-      return{
+      return {
         ...state,
-        prevPlay: action.payload
-      }
+        prevPlay: action.payload,
+      };
     case ActionType.PLAY_SONG:
-      return{
+      return {
         ...state,
-        queue: [action.payload]
-      }
+        queue: [action.payload],
+      };
     case ActionType.ADD_TO_QUEUE:
-      return{
+      return {
         ...state,
-        queue: [...state.queue, action.payload]
-      }
+        queue: [...state.queue, action.payload],
+      };
     case ActionType.SEARCH_ALL:
-    return {
+      return {
         ...state,
         query: action.payload.query,
-        searchResults: action.payload.data
-      }
-
+        searchResults: action.payload.data,
+      };
       case ActionType.GET_LIBRARY:
     
         return {
@@ -120,6 +122,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
             list:action.payload.favorite,
             card:action.payload.playlist
           }
+        }
+      case ActionType.GET_ALBUM_PLAYLIST:
+        return {
+          ...state,
+          album_playlist: action.payload
         }
 
         case ActionType.GET_PlaylistForId:
@@ -138,7 +145,6 @@ const Reducer = (state: any = initialState, action: Actions) => {
           return{
             ...state
           }
-
     default:
       return state;
   }
