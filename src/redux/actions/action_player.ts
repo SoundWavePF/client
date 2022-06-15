@@ -11,7 +11,7 @@ import * as hc from "./hc_data";
 
 export const getGenres = ()=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.get('http://localhost:3001/genre/all')
+    axios.get('http://143.198.158.238:3001/genre/all')
     .then(response => 
       dispatch({
         type: ActionType.GET_GENRES,
@@ -22,7 +22,7 @@ export const getGenres = ()=>{
 }
 export const getChart = ()=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.get('http://localhost:3001/top')
+    axios.get('http://143.198.158.238:3001/top')
     .then(response => 
       dispatch({
         type: ActionType.GET_CHART,
@@ -34,7 +34,7 @@ export const getChart = ()=>{
 
 export const getLastSongs = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get("http://localhost:3001/top").then((response) =>
+    axios.get("http://143.198.158.238:3001/top").then((response) =>
       dispatch({
         type: ActionType.GET_LAST_SONGS,
         payload: response.data.reverse(),
@@ -46,7 +46,7 @@ export const getLastSongs = () => {
 export const searchAll = (input: string) => {
   //hasta que no halla back el axios queda comentado
   return (dispatch: Dispatch<Actions>) => {
-    axios.get(`http://localhost:3001/search?all=${input}`)
+    axios.get(`http://143.198.158.238:3001/search?all=${input}`)
       .then((response) =>
         dispatch({
           type: ActionType.SEARCH_ALL,
@@ -87,7 +87,7 @@ export const addToQueue = (data: swSong) => {
 };
 export const addToPlaylist = (playlistId: string, songId: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post('http://localhost:3001/playlist/add', {playlistId: playlistId, songId: songId})
+    axios.post('http://143.198.158.238:3001/playlist/add', {playlistId: playlistId, songId: songId})
     .then(response => dispatch({
       type: ActionType.ADD_TO_PLAYLIST,
       payload: response.data
@@ -96,7 +96,7 @@ export const addToPlaylist = (playlistId: string, songId: string) => {
 }
 export const getGenre = (id:any)=>{ // obtiene un genero para la ruta /genre/:id
   return(dispatch: Dispatch<any>)=>{
-    axios.get('http://localhost:3001/genre/'+id)
+    axios.get('http://143.198.158.238:3001/genre/'+id)
     .then(response => 
       dispatch({
         type: ActionType.GET_GENRE,
