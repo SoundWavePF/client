@@ -5,6 +5,9 @@ import { bindActionCreators } from 'redux';
 import * as actionCreator from '../../../redux/actions/action_player';
 import * as actionCreatorUser from '../../../redux/actions/action_user';
 import Swal from 'sweetalert2';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Link } from 'react-router-dom';
+import styles from './DropDownButton.module.css';
 
 interface myProps {
   item: any
@@ -12,27 +15,28 @@ interface myProps {
 
 const DropDownButton: React.FC<myProps> = (props: myProps) => {
   const playlists = useSelector((state: any) => state.library_artist.card)
-  const userId = useSelector((state: any) => state.library_artist.list.id)
+  const { user } = useAuth0();
+  const userId: string | undefined = user?.sub?.slice(6);
   const dispatch = useDispatch();
   const { addToQueue, addToPlaylist } = bindActionCreators(actionCreator, dispatch);
   const { newPlaylist } = bindActionCreators(actionCreatorUser, dispatch)
   async function addPlaylist(){
-    const { value: playlistName } = await Swal.fire({
+    if(userId !== undefined) {const { value: playlistName } = await Swal.fire({
       title: 'New Playlist',
       input: 'text'
     })
     if(playlistName){
       Swal.fire('Playlist created!');
       newPlaylist(userId, playlistName);
-    }
+    }}
   }
   return (
     <div>
         <DropdownButton id="dropdown-basic-button" variant="warning" title="">
-                <Dropdown.Item href={props.item.Artists ? `/artist/${props.item.Artists[0].id}` : undefined}>Go to Artist</Dropdown.Item>
-                <Dropdown.Item href={`/album/albumid`}>Go to Album</Dropdown.Item>
+                <Dropdown.Item ><Link className={styles.link} to={`/artist/${props.item.artists[0].id}`}>Go to Artist</Link></Dropdown.Item>
+                <Dropdown.Item ><Link className={styles.link} to={`/album/${props.item.albumId}`}>Go to Album</Link></Dropdown.Item>
                 <Dropdown.Item onClick={() => addToQueue(props.item)}>Add to queue</Dropdown.Item>
-                {
+                  { userId &&
                     <div>
                     {['end'].map((direction) => (
                       <SplitButton

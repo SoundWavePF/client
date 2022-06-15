@@ -145,6 +145,10 @@ const Reducer = (state: any = initialState, action: Actions) => {
           return{
             ...state
           }
+        case ActionType.LIKE_SONG:
+          return{
+            ...state
+          }
     default:
       return state;
   }
