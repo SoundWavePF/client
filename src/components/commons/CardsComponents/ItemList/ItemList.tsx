@@ -8,6 +8,7 @@ import play from '../../../../assets/play.png'
 import * as actionCreator from '../../../../redux/actions/action_player'
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { useAuth0 } from '@auth0/auth0-react'
 
 // interface Item {
 //     position: number;
@@ -32,7 +33,9 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
     return `${minStr.length == 1 ? '0' + minStr : minStr}:${secStr.length == 1 ? '0' + secStr : secStr}`
   }
   const dispatch = useDispatch();
-  const { playSong } = bindActionCreators(actionCreator, dispatch)
+  const { playSong, likeSong } = bindActionCreators(actionCreator, dispatch);
+  const { user } = useAuth0();
+  const userId: string | undefined = user?.sub?.slice(6);
   let tipo = props.item.type
 
   switch (tipo) {
@@ -48,14 +51,14 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
               </div>
               <div>
                 <div onClick={() => playSong(props.item)} className={s.songName}>{props.item.name}</div>
-                <span className={s.spanArtistName}>{props.item.artists[0].name}</span>
+                <span className={s.spanArtistName}>{props.item.artists[0].name}</span> 
               </div>
             </div>
           {/* </Link> */}
 
 
           <div className={s.controllerContainer}>
-            <img className={s.likeImg} src={likefull} alt="" />
+            {userId && <button className={s.likeBtn} onClick={() => likeSong(props.item.id, userId)}><img className={s.likeImg} src={likefull} alt="" /></button>}
             <div>
               <DropDownButton item={props.item}/>
             </div>
