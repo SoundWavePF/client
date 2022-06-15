@@ -124,6 +124,7 @@ export const getAlbumPlaylist = (id:any, type:string)=>{
       )
   }
 }
+
 export const getTop = () => {
   return (dispatch: Dispatch<any>) => {
     axios.get("http://143.198.158.238:3001/top").then((response) =>
@@ -134,3 +135,14 @@ export const getTop = () => {
     );
   };
 };
+
+export const likeSong = (songId: string, userId: string) => {
+  return(dispatch: Dispatch<Actions>) => {
+    axios.post(`http://143.198.158.238:3001/favorite/add/${songId}`, {userId: userId})
+    .then(response => dispatch({
+      type: ActionType.LIKE_SONG,
+      payload: response.data
+    }))
+  }
+}
+

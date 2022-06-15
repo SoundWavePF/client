@@ -1,6 +1,8 @@
 import { LibraryArtist } from "../reducer/types";
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | GetTop;
+
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop;
+
 
 
 export enum ActionType{
@@ -22,6 +24,7 @@ export enum ActionType{
   ADD_TO_PLAYLIST = 'ADD_TO_PLAYLIST',
   NEW_PLAYLIST = 'NEW_PLAYLIST',
   GET_TOP = 'GET_TOP'
+  LIKE_SONG= 'LIKE_SONG'
 }
 
 
@@ -100,3 +103,8 @@ interface GetTop{
   type: ActionType.GET_TOP,
   payload: any
 }
+interface LikeSong{
+  type: ActionType.LIKE_SONG,
+  payload: any
+}
+
