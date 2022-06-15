@@ -20,7 +20,7 @@ export default function Player(){
   const dispatch = useDispatch();
   const queue = useSelector(state => state.queue);
   const prevPlay = useSelector(state => state.prevPlay)
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(prevPlay.isPlaying || true);
   const [currentTime, setCurrentTime] = useState(0);
   const [pos, setPos] = useState(0);
   const [volume, setVolume] = useState('100');

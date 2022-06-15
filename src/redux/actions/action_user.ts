@@ -2,46 +2,48 @@ import { Dispatch } from "react";
 import { ActionType, Actions } from "./types";
 import axios from "axios";
 
-const se= {
-  method: 'get',
-  url: 'http://localhost:3001/favorite',
-  data: {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
+let PonerID = "882f59cd-9e4e-4f11-87e9-0f24eb1fca75";
+
+export const getLibrary = () => {
+  //hay que poner el id del usuario creado hasta que se pueda haceder a el
+  return (dispatch: Dispatch<Actions>) => {
+    const favorite = axios.post("http://localhost:3001/favorite", {
+      userId: PonerID,
+    });
+    const playlist = axios.post("http://localhost:3001/playlist", {
+      userId: PonerID,
+    });
+    Promise.all([favorite, playlist])
+    .then((response) =>
+      dispatch({
+        type: ActionType.GET_LIBRARY,
+        payload: {
+          favorite: response[0].data,
+          playlist: response[1].data,
+        } as any,
+      })
+    )
+    .catch((error) => console.log(error));
+  };
+};
+export const getPlaylist = (id: any) => {
+  return (dispatch: Dispatch<Actions>) => {
+    axios.get(`http://localhost:3001/playlist/${id}`)
+    .then((response) =>
+      dispatch({
+        type: ActionType.GET_PlaylistForId,
+        payload: response.data,
+      })
+    )
+    .catch((error) => console.log(error));
+  };
+};
+export const newPlaylist = (userId: string, playlistName: string) => {
+  return (dispatch: Dispatch<Actions>) => {
+    axios.post('http://localhost:3001/playlist/create', {userId: userId, playlistName: playlistName})
+    .then(response => dispatch({
+      type: ActionType.NEW_PLAYLIST,
+      payload: response.data
+    }))
   }
 }
-
-
-var searchRecord = {
-  owner: 'wxTWH8zqSwaIXPAVsjZoRCkvjx73',
-  date: '2021-09-02',
-};
-
-var config = {
-  method: 'get',
-  url: 'http://localhost:3001/favorite',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: {s:"searchRecord"},
-};
-
-export const getLibrary = ()=>{ //hasta que no halla back el axios queda comentado
-    return(dispatch: Dispatch<Actions>)=>{
-    const favorite=  axios.get( 'http://localhost:3001/favorite')
-    const playlist=  axios.get( 'http://localhost:3001/playlist/04bb097e-779c-4610-8bfd-e03c875c683b')
-      
-
-      Promise.all([favorite,playlist])
-
-
-      .then(response =>
-        dispatch({
-        type: ActionType.GET_LIBRARY,
-        payload: {uno:response[0].data, dos: response[1].data} as any
-      })
-      )
-      .catch((error)=>console.log(error))
-    }
-  }
- 

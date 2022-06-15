@@ -6,14 +6,15 @@ import * as types from "./types"; //tipos del state   NO BORRAR
 //necesito los actions types para seguir agregando switch cases
 
 interface State {
-  query: string;
-  searchResults: any;
-  album_playlist: swAlbum | swPlaylist | any;
-  library_artist: types.LibraryArtist | any;
-  queue: swSong[];
-  home: types.Home;
-  adminOption: types.AdminOption;
-  prevPlay: object;
+  query: string,
+  searchResults: any,
+  album_playlist: swAlbum | swPlaylist | any,
+  library_artist: types.LibraryArtist | any,
+  queue: swSong[],
+  home: types.Home,
+  adminOption: types.AdminOption,
+  prevPlay: object,
+  genre: any
 }
 
 const initialState: State = {
@@ -36,12 +37,23 @@ const initialState: State = {
     genres: [],
     chart: [],
   },
-  adminOption: { home: true, user: false },
+  adminOption:{home:true,user:false},
   prevPlay: {},
+  genre: []
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
   switch (action.type) {
+    case ActionType.CLEAN_GENRE:
+      return {
+        ...state,
+        genre: []
+      };
+    case ActionType.GET_GENRE:
+      return {
+        ...state,
+        genre: action.payload
+      };
     case ActionType.GET_GENRES:
       return {
         ...state,
@@ -102,25 +114,37 @@ const Reducer = (state: any = initialState, action: Actions) => {
         query: action.payload.query,
         searchResults: action.payload.data,
       };
+      case ActionType.GET_LIBRARY:
+    
+        return {
+          ...state,
+          library_artist:{
+            list:action.payload.favorite,
+            card:action.payload.playlist
+          }
+        }
+      case ActionType.GET_ALBUM_PLAYLIST:
+        return {
+          ...state,
+          album_playlist: action.payload
+        }
 
-    case ActionType.GET_LIBRARY:
-      console.log(action.payload);
-      let playlist = action.payload.dos;
-      playlist.type = "album";
-      playlist.image_medium = "https://i.pravatar.cc/150?u=nombre";
-
-      return {
-        ...state,
-        library_artist: {
-          list: action.payload.uno,
-          card: playlist,
-        },
-      };
-    case ActionType.GET_ALBUM_PLAYLIST:
-      return {
-        ...state,
-        album_playlist: action.payload
-      }
+        case ActionType.GET_PlaylistForId:
+            
+            return {
+              ...state,
+              album_playlist:action.payload
+            }
+        case ActionType.ADD_TO_PLAYLIST:
+          console.log(action.payload)
+          return{
+            ...state
+          }
+        case ActionType.NEW_PLAYLIST:
+          console.log(action.payload)
+          return{
+            ...state
+          }
     default:
       return state;
   }
