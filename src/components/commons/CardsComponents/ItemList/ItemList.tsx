@@ -18,7 +18,7 @@ import { bindActionCreators } from 'redux'
 // }
 
 interface myProps {
-  item: any;
+  item?: any;
 }
 
 const ItemList: React.FC<myProps> = (props: myProps) => {
@@ -108,6 +108,38 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
           </div>
         </div>
       )
+      case "track-artist-view":
+        return (
+          <div className={s.itemListContainer}>
+            {/* <Link className={s.links} to={'/song/:id'}> */}
+              <div className={s.imageAndNameContainer}>
+                <div>
+  
+                  <div ><img className={s.image} src={props.item.image_small} alt="" /><img src={play} className={s.Play} /> </div>
+  
+                </div>
+                <div>
+                  <div onClick={() => playSong(props.item)} className={s.songName}>{props.item.name}</div>
+                  <span className={s.spanArtistName}>{props.item.artists[0].name}</span>
+                </div>
+              </div>
+            {/* </Link> */}
+  
+  
+            <div className={s.controllerContainer}>
+              <img className={s.likeImg} src={likefull} alt="" />
+              <div>
+                {/* <DropDownButton item={props.item}/> */}
+              </div>
+              <div>
+                <div className={s.duration}>{formatDuration(props.item.duration)}</div>
+              </div>
+              <div>
+                <img className={s.timeImg} src={time} alt="time icon" />
+              </div>
+            </div>
+          </div>
+        )
 
     default:
       return (

@@ -14,7 +14,8 @@ import Library from "./components/views/Library/Library";
 import Error404 from "./components/views/error404/error404";
 import UserSettings from "./components/views/UserSettings/UserSettings";
 import Genre from "./components/views/Genre/Genre";
-import FileUpload from "./components/views/FileUpload/FileUpload";
+import FileUpload from "./components/views/FileUpload/FileUpload"; 
+import ArtistProfile from './components/commons/ArtistProfile/ArtistProfile'
 
 
 
@@ -39,7 +40,7 @@ function App() {
         <Route path="/genre/:id" element={<Genre />} />
 
         <Route path="/settings" element={<UserSettings />} />
-        <Route path="/panel_artist" element={<h1>Panel</h1>} />
+        <Route path="/panel_artist" element={< ArtistProfile/>} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/file" element={<FileUpload />} />
 
