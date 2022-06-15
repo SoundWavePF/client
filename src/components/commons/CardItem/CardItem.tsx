@@ -54,7 +54,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
     case 'track':
         return(
           <div className={styles.song}>
-            <figure><img src={props.item.album.image_medium ?props.item.album.image_medium :props.item.image_medium}
+            <figure><img src={props.item.album.image_medium ?props.item.album?.image_medium :props.item?.image_medium}
               alt={props.item.title}
               onClick={() => playSong(props.item.id)}
             /></figure>
