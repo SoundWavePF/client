@@ -33,12 +33,12 @@
 	filter: blur(1px);
 }
 .song > p{
-  font-family: sw-light;
+  font-family: sw-medium;
   font-size: max(1rem, 1.1vw);
   margin: 0;
 }
 .song > a{
-  font-family: sw-medium;
+  font-family: sw-light;
   font-size: max(0.7rem, .9vw);
   text-decoration: none;
   color: black;
