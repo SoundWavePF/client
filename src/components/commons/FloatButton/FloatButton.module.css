@@ -1,0 +1,134 @@
+.floatButtonContainer {
+    position: fixed;
+    right: 15px;
+    bottom: 100px;
+    background-size: 50%;
+    background-color: #f6ff0037;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+
+
+.secondBackground {
+    position: fixed;
+    right: 15px;
+    bottom: 100px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffd000;
+    z-index: 1;
+    
+}
+.firstBackground{
+    position: fixed;
+    right: 23px;
+    bottom: 110px;
+    width: 82px;
+    height: 80px;
+    border-radius: 50%;
+    
+    z-index: 1;
+}
+
+.modalContainer {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evently;
+    width: 160px;
+    height: 210px;
+    position: fixed;
+    right: 110px;
+    bottom: 180px;
+    background-image: url('../../../assets/textureYellow.svg');
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.421);
+}
+
+.titleModal {
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: 'sw-bold';
+}
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    /* background-color: red; */
+    height: 100px;
+    margin-top: 20px;
+}
+
+.buttonsContainer button {
+    border: 1px solid #0000006a;
+    border-radius: 10px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.692);
+}
+
+.buttonsContainer button:hover {
+    border: 1px solid #0000006a;
+    border-radius: 10px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 0.452);
+    color: white;
+}
+
+.buttonOpenModal {
+    position: fixed;
+    right: 15px;
+    bottom: 100px;
+    background: none;
+    border-radius: 20px;
+    border: none;
+    /* border-radius: 50%; */
+    background-image: url('../../../assets/plusMusic.png');
+    background-position: center;
+    background-size: cover;
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+}
+
+.containerCreates{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: ease-in 1s;
+    background-color: rgba(0, 0, 0, 0.717);
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.modalExistingAlbum{
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 800px;
+    height: 90%
+}
+
+.modalCreateAlbum{
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 800px;
+    height: 90%
+}
+
+.buttonClose{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+

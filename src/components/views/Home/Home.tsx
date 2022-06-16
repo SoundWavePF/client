@@ -4,6 +4,7 @@ import SideBar from "../../commons/SideBar/SideBar";
 import ContentHome from "../../commons/ContentHome/ContentHome";
 import SearchResults from "../SearchResults/SearchResults";
 import { useSelector } from "react-redux";
+import FloatButton from "../../commons/FloatButton/FloatButton";
 
 const Home = () => {
   const searchString = useSelector((state: any) => state.query)
@@ -18,6 +19,8 @@ const Home = () => {
         :
         <SearchResults/>
       }
+      <FloatButton/>
+      
     </div>
   );
 };
