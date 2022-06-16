@@ -3,6 +3,7 @@ import logo from '../../../assets/logo.png';
 import home from '../../../assets/home.png';
 import play from '../../../assets/play.png';
 import music from '../../../assets/music.png';
+import fire from '../../../assets/fire.png'
 import styles from './SideBar.module.css';
 
 export default function SideBar(){
@@ -17,6 +18,12 @@ export default function SideBar(){
           <div className={styles.button}>
             <img src={home} alt="Home" className={styles.img}/>
             Home
+          </div>
+        </Link>
+        <Link to='/top' className={styles.link}>
+          <div className={styles.button}>
+            <img src={fire} alt="top10" className={styles.img}/>
+            Top 10
           </div>
         </Link>
         <Link to='/playlists' className={styles.link}>

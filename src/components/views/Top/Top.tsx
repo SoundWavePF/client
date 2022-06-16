@@ -1,14 +1,15 @@
-import styles from "./Home.module.css";
+import styles from "../Home/Home.module.css";
 import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";
-import ContentHome from "../../commons/ContentHome/ContentHome";
 import SearchResults from "../SearchResults/SearchResults";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import * as actionCreator from "../../../redux/actions/action_player";
+import GenrePage from '../../commons/GenrePage/GenrePage';
+import TopPage from "../../commons/TopPage/TopPage";
 import { bindActionCreators } from "redux";
+import { useEffect } from "react";
+import * as actionCreator from '../../../redux/actions/action_player';
 
-const Home = () => {
+const Top = () => {
   const searchString = useSelector((state: any) => state.query)
   const dispatch = useDispatch();
   const { setQuery } = bindActionCreators(actionCreator, dispatch)
@@ -21,11 +22,11 @@ const Home = () => {
       <SideBar/>
       {
         !searchString ?
-        <ContentHome/>
+        <TopPage />
         :
         <SearchResults/>
       }
     </div>
   );
 };
-export default Home;
+export default Top;

@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_player";
@@ -10,22 +10,15 @@ import bellIcon from "../../../assets/bell.png";
 import MenuUser from "./MenuUser";
 import { useAuth0 } from "@auth0/auth0-react";
 
-
-
 const SearchBar = () => {
-  const [input, setInput] = React.useState("")
-
+  const [input, setInput] = useState("")
   const dispatch = useDispatch();
-
   const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0()
-  const { searchAll } = bindActionCreators(actionCreator, dispatch);
-
-  React.useEffect(() => {
+  const { searchAll, setQuery } = bindActionCreators(actionCreator, dispatch);
+  useEffect(() => {
   if ( input ) searchAll(input);
-  console.log(input)
+  setQuery(input);
   }, [input]);
-
-
   function handleChange(e: any): void {
     setInput(e.target.value);
   }
