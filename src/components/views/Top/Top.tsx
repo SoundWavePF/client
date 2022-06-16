@@ -1,11 +1,12 @@
-import styles from "./Home.module.css";
+import styles from "../Home/Home.module.css";
 import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";
-import ContentHome from "../../commons/ContentHome/ContentHome";
 import SearchResults from "../SearchResults/SearchResults";
 import { useSelector } from "react-redux";
+import GenrePage from '../../commons/GenrePage/GenrePage';
+import TopPage from "../../commons/TopPage/TopPage";
 
-const Home = () => {
+const Top = () => {
   const searchString = useSelector((state: any) => state.query)
 
   return (
@@ -14,11 +15,11 @@ const Home = () => {
       <SideBar/>
       {
         !searchString ?
-        <ContentHome/>
+        <TopPage />
         :
         <SearchResults/>
       }
     </div>
   );
 };
-export default Home;
+export default Top;
