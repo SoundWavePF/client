@@ -20,7 +20,7 @@ const SearchBar = () => {
   }
   return (
     <nav className={`${style.navbar}`}>
-      <form className={style.form}>
+      <form className={style.form} onSubmit={(event)=>event.preventDefault()>
         <div className={style.search}>
           <img src={searchIcon} width="20px" />
           <input
