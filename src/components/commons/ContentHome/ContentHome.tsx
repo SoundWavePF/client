@@ -12,7 +12,7 @@ const ContentHome = () => {
     dispatch
   );
   const { last, genres, chart } = useSelector((state: any) => state.home);
-
+  
   useEffect(() => {
     getGenres();
     getLastSongs();
@@ -30,7 +30,7 @@ const ContentHome = () => {
       { genres.length > 0 &&
         <div className={styles.section}>
           <h1>Genres</h1>
-          <CardContainer content={genres} />
+          <CardContainer content={genres.slice(0,11).filter((genre:any)=>genre.name!=='Bolero')} />
         </div>
       }
       { chart.length > 0 &&

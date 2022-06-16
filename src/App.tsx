@@ -15,6 +15,7 @@ import UserSettings from "./components/views/UserSettings/UserSettings";
 import Genre from "./components/views/Genre/Genre";
 import FileUpload from "./components/views/FileUpload/FileUpload";
 import Player from "./components/commons/Player/Player";
+import Top from "./components/views/Top/Top";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/home" element={<><Home/><Player/></>}/>
         <Route path="/playlists" element={<><Library/><Player/></>}/>
         <Route path="/favorites" element={<><Library/><Player/></>}/>
+        <Route path="/top" element={<><Top/><Player/></>} />
 
         <Route path="/artist/:id" element={<h1>Artist</h1>} />
         <Route path="/album/:id" element={<><AlbumPlaylist /><Player/></>} />
@@ -36,7 +38,7 @@ function App() {
         <Route path="/genre/:id" element={<><Genre /><Player/></>} />
 
         <Route path="/settings" element={<UserSettings />} />
-        <Route path="/panel_artist" element={<h1>Panel</h1>} />
+        <Route path="/panel_artist" element={<>Panel</>} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/file" element={<FileUpload />} />
 

@@ -1,0 +1,55 @@
+.card{
+  display: grid;
+  grid-template-columns: repeat(2, 10%) 70% 10%;
+  grid-template-rows: 1fr;
+  /* grid-column-gap: 0px;
+  grid-row-gap: 0px; */
+  font-family: 'sw-medium';
+  border-bottom: 1px solid var(--gray-light);
+}
+.card:hover{
+  background-color: var(--gray-light);
+}
+.div1 { 
+  grid-area: 1 / 1 / 2 / 2; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cover {
+  grid-area: 1 / 2 / 2 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cover > img{
+  margin-top: 16px;
+  width: 100px;
+  height: 100px;
+}
+.divNames { 
+  grid-area: 1 / 3 / 2 / 4; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none ;
+}
+.divNames > p {
+  font-size: x-large;
+}
+.artistName{
+  font-family: 'sw-light';
+  margin-right: 7px;
+  text-decoration: none;
+  color: black;
+}
+.likeIcon { 
+  grid-area: 1 / 4 / 2 / 5; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.likeIcon > img{
+  width: 60px;
+  height: 60px;
+}
