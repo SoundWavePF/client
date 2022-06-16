@@ -1,5 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from './Modal.module.css'
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch } from 'react-redux';
+import * as actionCreator from '../../../redux/actions/action_user'
+import { bindActionCreators } from 'redux';
+
+interface inputs {
+    id: string
+    oldData: string
+    newData: string
+    field: any
+}
 
 interface Modal {
     handleModal: any
@@ -11,16 +22,42 @@ interface Modal {
     contentButton: string
     type: string
     setpass?: string
-    inputArtistType?:string
+    inputArtistType?: string
+    field?: string
 }
 
 const Modal = (props: Modal) => {
+    const dispatch = useDispatch()
+    
+    const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+    const { sub }: any = user
+    let miId = sub.slice(6)
+    
+    const { updateUser } = bindActionCreators(actionCreator, dispatch)
+
+    let [input, setInput] = useState<inputs>({
+        id: miId,
+        oldData: "",
+        newData: "",
+        field: props.field,
+    })
+    const handleOnChange = (e: any) => {
+        setInput({
+            ...input,
+            [e.target.name]: e.target.value
+        })
+    }
+    
+    function onSubmitHandle(e: any) {
+        e.preventDefault()
+        updateUser(input)
+    }
     return (
         <div className={style.modalContainer}>
             <div className={style.modal}>
 
 
-                <div className={style.parent}>
+                <form className={style.parent} onSubmit={(e) => onSubmitHandle(e)}>
                     <div className={style.div1}><h1>{props.header}</h1></div>
                     <div className={style.div2}><button onClick={(e) => props.handleModal(e)} name="all">X</button></div>
                     <div className={style.div3}><h3>{props.description}</h3></div>
@@ -29,7 +66,7 @@ const Modal = (props: Modal) => {
                             props.oldData ?
                                 <div><label>{props.oldData}</label></div>
                                 : null
-                                
+
                         }
                         {
                             props.artistName ?
@@ -40,12 +77,12 @@ const Modal = (props: Modal) => {
                     <div className={style.div5}>
                         {
                             props.oldData ?
-                                <input type={props.type} />
+                                <input onChange={(e) => handleOnChange(e)} value={input.oldData} name={"oldData"} type={props.type} />
                                 : null
                         }
                         {
                             props.artistName ?
-                                <input type={props.inputArtistType} />
+                                <input onChange={(e) => handleOnChange(e)} value={input.oldData} name={"oldData"} type={props.inputArtistType} />
                                 : null
                         }
                     </div>
@@ -59,15 +96,15 @@ const Modal = (props: Modal) => {
                     <div className={style.div7}>
                         {
                             props.artistName ?
-                                <div><input type={props.type} /></div>
+                                <div><input onChange={(e) => handleOnChange(e)} value={input.newData} name={"newData"} type={props.type} /></div>
                                 : null
 
                         }
                     </div>
                     <div className={style.div8}><label>{props.label}</label></div>
-                    <div className={style.div9}><input type={props.type} /></div>
-                    <div className={style.div10}><button>{props.contentButton}</button></div>
-                </div>
+                    <div className={style.div9}><input onChange={(e) => handleOnChange(e)} value={input.newData} name={"newData"} type={props.type} /></div>
+                    <div className={style.div10}><button type='submit'>{props.contentButton}</button></div>
+                </form>
 
 
             </div>

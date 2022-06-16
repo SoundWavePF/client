@@ -20,7 +20,8 @@ export enum ActionType{
   GET_LIBRARY = 'GET_LIBRARY',
   GET_PlaylistForId = 'GET_PlaylistForId',
   ADD_TO_PLAYLIST = 'ADD_TO_PLAYLIST',
-  NEW_PLAYLIST = 'NEW_PLAYLIST'
+  NEW_PLAYLIST = 'NEW_PLAYLIST',
+  UPDATE_USER = 'UPDATE_USER'
 }
 
 
