@@ -6,8 +6,13 @@ import searchIcon from "../../../assets/search_icon.png";
 import userIcon from "../../../assets/user_icon.png";
 import bellIcon from "../../../assets/bell.png";
 import MenuUser from "./MenuUser";
+import { useAuth0 } from "@auth0/auth0-react";
+
+
 
 const SearchBar = () => {
+
+  const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0()
   const dispatch = useDispatch();
   const { searchAll } = bindActionCreators(actionCreator, dispatch);
   function handleChange(e: any): void {
@@ -28,7 +33,10 @@ const SearchBar = () => {
         </div>
       </form>
       <div className={style.icons}>
-        <MenuUser username={"username"} />
+        {isAuthenticated ? (<MenuUser username={"username"} />) :
+          (<button onClick={() => loginWithRedirect()}
+            className="btn btn-outline-warning" >Log In</button>)
+        }
       </div>
     </nav>
   );

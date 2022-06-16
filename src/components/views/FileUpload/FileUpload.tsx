@@ -7,7 +7,7 @@ const FileUpload = (props: any) => {
     const [sound, setSound] = React.useState('');
     const [loading, setLoading] = React.useState(false);
 
-    const uploadImage = async (e: any) => {
+    const uploadSound = async (e: any) => {
         const files = e.target.files;
         console.log(files)
         const data = new FormData();
@@ -54,7 +54,7 @@ const FileUpload = (props: any) => {
                 <input
                     type="file"
                     name="file"
-                    onChange={uploadImage}
+                    onChange={uploadSound}
                     multiple
                 />
                 {loading ? (<h3>Loading sound...</h3>) : (<audio src={sound} controls></audio>)}

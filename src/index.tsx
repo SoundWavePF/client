@@ -11,7 +11,11 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <Auth0Provider domain="dev-vriepxa7.us.auth0.com" clientId="bTUr2RqUnLhNxgw7zhqhcqCw6H80Jifs" redirectUri={window.location.origin}>
+  <Auth0Provider
+    domain="dev-pcc2s4en.us.auth0.com"
+    clientId="YKG0kkMcog95jcErN1Kk45Z0FONMbjtg"
+    redirectUri={window.location.origin}
+  >
     <Provider store={Store}>
       <BrowserRouter>
         <App />
