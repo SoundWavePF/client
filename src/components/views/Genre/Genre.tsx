@@ -1,7 +1,6 @@
-import styles from "./Genre.module.css";
+import styles from "../Home/Home.module.css";
 import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";
-import Player from "../../commons/Player/Player";
 import SearchResults from "../SearchResults/SearchResults";
 import { useSelector } from "react-redux";
 import GenrePage from '../../commons/GenrePage/GenrePage';
@@ -19,7 +18,6 @@ const Genre = () => {
         :
         <SearchResults/>
       }
-      <Player />
     </div>
   );
 };

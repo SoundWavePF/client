@@ -12,15 +12,18 @@ import volume1 from '../../../assets/volume1.png';
 import volume2 from '../../../assets/volume2.png';
 import volume3 from '../../../assets/volume3.png';
 import like from '../../../assets/likefull.png';
+import { likeSong } from '../../../redux/actions/action_player';
+import { useAuth0 } from '@auth0/auth0-react';
 import styles from './Player.module.css';
-import { sendPrevPlay } from '../../../redux/actions/action_player';
 
 export default function Player(){
   const player = useRef();
   const dispatch = useDispatch();
+  const { user } = useAuth0();
+  const userId = user?.sub?.slice(6);
   const queue = useSelector(state => state.queue);
   const prevPlay = useSelector(state => state.prevPlay)
-  const [isPlaying, setIsPlaying] = useState(prevPlay.isPlaying || true);
+  const [isPlaying, setIsPlaying] = useState(prevPlay.isPlaying || false);
   const [currentTime, setCurrentTime] = useState(0);
   const [pos, setPos] = useState(0);
   const [volume, setVolume] = useState('100');
@@ -29,9 +32,9 @@ export default function Player(){
   }, [])
   useEffect(() => setIsPlaying(true), [queue[0]])
   useEffect(() => updatePos(), [queue]);
-  useEffect(() => {
-    return () => dispatch(sendPrevPlay(isPlaying, currentTime, pos, volume));
-  }, [volume, currentTime])
+  function Like(song, user){
+    dispatch(likeSong(song, user))
+  }
   function chargeState(){
     if (prevPlay.pos !== undefined) setPos(prevPlay.pos);
     if (prevPlay.volume !== undefined) setVolume(prevPlay.volume);
@@ -103,12 +106,12 @@ export default function Player(){
         <div className={styles.songInfo}>
           {queue[pos] ? <img src={queue[pos].image_medium} className={styles.cover}/> : null}
           <div>
-            <h3>{queue[pos]?.title}</h3>
-            <span>{queue[pos] ? queue[pos].artist + ' • ' + queue[pos].album : null}</span>
+            <h3>{queue[pos]?.name}</h3>
+            <span>{queue[pos] ? queue[pos].artists[0].name + ' • ' + queue[pos].album.name : null}</span>
           </div>
         </div>
         <div className={styles.volume}>
-          <button className={styles.btn}><img src={like} className={styles.btnImg}/></button>
+          {queue[pos] && userId && <button className={styles.btn} onClick={() => Like(queue[pos].id, userId)}><img src={like} className={styles.btnImg}/></button>}
           <button onClick={mute} className={styles.btn}><img src={parseInt(volume) === 0 ? muteicon : parseInt(volume) < 33 ? volume1 : parseInt(volume) < 66 ? volume2 : volume3} className={styles.btnImg}/></button>
           <input type='range' value={volume} min='0' max='100' onChange={e => setVolume(e.target.value)} className={styles.volumeR}/>
         </div>

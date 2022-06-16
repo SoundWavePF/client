@@ -23,10 +23,10 @@ const ContentAlbumPlaylist = () => {
         <div className={styles.details}>
           <img src={item.image_medium} alt={item.name} />
           <span>{item.name}</span>
-          <span>{item.Artists && item.Artists[0].name}</span>
+          <span>{item.artists && item.artists[0].name}</span>
           <button >Play all</button>
         </div>
-        <ListItemContainer content={item.Songs} header={true} cover={item.image_medium} nb={true}/>
+        <ListItemContainer content={item.songs} header={true} cover={item.image_medium} nb={true}/>
       </div>
   );
 };

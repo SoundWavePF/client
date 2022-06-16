@@ -1,32 +1,34 @@
-import styles from "./GenrePage.module.css";
+import styles from "./TopPage.module.css";
 import CardContainer from "../CardContainer/CardContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_player";
 import { useParams } from "react-router";
+import TopCard from "./TopCard";
 
-const GenrePage = () => {
+const TopPage = () => {
   const {id} = useParams()
   console.log(id)
   const dispatch = useDispatch();
-  const { getGenre, cleanGenre } = bindActionCreators(actionCreator,dispatch);
-  const genre = useSelector((state: any) => state.genre);
-  
+  const { getTop } = bindActionCreators(actionCreator,dispatch);
+  const top = useSelector((state: any) => state.top);
+  const topTen = top.slice(0,10).reverse()
   useEffect(():any => {
-    getGenre(id);
-    return cleanGenre()
+    getTop();
   }, []);
 
-  if(genre.albums){
+  if(topTen.length>0){
     return (
         <div className={styles.container}>
-          <h1>{genre.name}</h1>
-          { genre.albums.length > 0 &&
+          { topTen.length > 0 &&
             <div className={styles.section}>
-              <CardContainer content={genre.albums} />
+              <h1 >TOP 10</h1>
             </div>
           }
+          <div className={styles.cardContainer}>
+            {topTen.map((song:any)=><TopCard props={song}/>)}
+          </div>
         </div>
     );
   } else{
@@ -39,4 +41,4 @@ const GenrePage = () => {
     )
   }
 };
-export default GenrePage;
+export default TopPage;
