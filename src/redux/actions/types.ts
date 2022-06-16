@@ -23,7 +23,7 @@ export enum ActionType{
   GET_PlaylistForId = 'GET_PlaylistForId',
   ADD_TO_PLAYLIST = 'ADD_TO_PLAYLIST',
   NEW_PLAYLIST = 'NEW_PLAYLIST',
-  GET_TOP = 'GET_TOP'
+  GET_TOP = 'GET_TOP',
   LIKE_SONG= 'LIKE_SONG'
 }
 

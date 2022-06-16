@@ -16,9 +16,56 @@
 
 .title {
     font-family: sw-bold;
-    font-family: sw-medium;
+    font-size: 13px;
+    font-family: sw-light;
+}
+
+.value {
+    font-size: 16px;
 }
 
 .profileImg {
     margin: 2rem 1rem;
+}
+
+.profile {
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+
+
+/* Song */
+
+.card {
+    /* display: flex;
+    flex-direction: row;
+    border: 1px solid red;
+
+    padding: 7px; */
+}
+.name {
+    display: flex;
+    flex-direction: row;
+}
+.info {
+    padding: 0px 10px;
+    border: 1px solid magenta;
+    text-align: center;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table > tr {
+    border: 2px solid greenyellow; 
+} 
+
+.table > tr > td{
+    border: 1px dashed magenta; 
+}
+
+.songsContainer {
+   border: 1px dashed green;
 }
