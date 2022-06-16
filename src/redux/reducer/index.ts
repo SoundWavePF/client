@@ -6,16 +6,15 @@ import * as types from "./types"; //tipos del state   NO BORRAR
 //necesito los actions types para seguir agregando switch cases
 
 interface State {
-  query: string,
-  searchResults: any,
-  album_playlist: swAlbum | swPlaylist | any,
-  library_artist: types.LibraryArtist | any,
-  queue: swSong[],
-  home: types.Home,
-  adminOption: types.AdminOption,
-  prevPlay: object,
-  genre: any,
-  top:any
+  query: string;
+  searchResults: any;
+  album_playlist: swAlbum | swPlaylist | any;
+  library_artist: types.LibraryArtist | any;
+  queue: swSong[];
+  home: types.Home;
+  adminOption: types.AdminOption;
+  genre: any;
+  top: any;
 }
 
 const initialState: State = {
@@ -38,10 +37,9 @@ const initialState: State = {
     genres: [],
     chart: [],
   },
-  adminOption:{home:true,user:false},
-  prevPlay: {},
+  adminOption: { home: true, user: false },
   genre: [],
-  top: []
+  top: [],
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -49,12 +47,12 @@ const Reducer = (state: any = initialState, action: Actions) => {
     case ActionType.CLEAN_GENRE:
       return {
         ...state,
-        genre: []
+        genre: [],
       };
     case ActionType.GET_GENRE:
       return {
         ...state,
-        genre: action.payload
+        genre: action.payload,
       };
     case ActionType.GET_GENRES:
       return {
@@ -95,11 +93,6 @@ const Reducer = (state: any = initialState, action: Actions) => {
       return {
         ...state,
       };
-    case ActionType.SEND_PREV_PLAY:
-      return {
-        ...state,
-        prevPlay: action.payload,
-      };
     case ActionType.PLAY_SONG:
       return {
         ...state,
@@ -113,49 +106,50 @@ const Reducer = (state: any = initialState, action: Actions) => {
     case ActionType.SEARCH_ALL:
       return {
         ...state,
-        query: action.payload.query,
-        searchResults: action.payload.data,
+        searchResults: action.payload,
       };
-      case ActionType.GET_LIBRARY:
-    
-        return {
-          ...state,
-          library_artist:{
-            list:action.payload.favorite,
-            card:action.payload.playlist
-          }
-        }
-      case ActionType.GET_ALBUM_PLAYLIST:
-        return {
-          ...state,
-          album_playlist: action.payload
-        }
-
-      case ActionType.GET_PlaylistForId:
-          
-          return {
-            ...state,
-            album_playlist:action.payload
-          }
-      case ActionType.ADD_TO_PLAYLIST:
-        console.log(action.payload)
-        return{
-          ...state
-        }
-      case ActionType.NEW_PLAYLIST:
-        console.log(action.payload)
-        return{
-          ...state
-        }
-      case ActionType.GET_TOP:
-        return{
-          ...state,
-          top:action.payload
-        }
-        case ActionType.LIKE_SONG:
-          return{
-            ...state
-          }
+    case ActionType.GET_LIBRARY:
+      return {
+        ...state,
+        library_artist: {
+          list: action.payload.favorite,
+          card: action.payload.playlist,
+        },
+      };
+    case ActionType.GET_ALBUM_PLAYLIST:
+      return {
+        ...state,
+        album_playlist: action.payload,
+      };
+    case ActionType.GET_PlaylistForId:
+      return {
+        ...state,
+        album_playlist: action.payload,
+      };
+    case ActionType.ADD_TO_PLAYLIST:
+      console.log(action.payload);
+      return {
+        ...state,
+      };
+    case ActionType.NEW_PLAYLIST:
+      console.log(action.payload);
+      return {
+        ...state,
+      };
+    case ActionType.GET_TOP:
+      return {
+        ...state,
+        top: action.payload,
+      };
+    case ActionType.LIKE_SONG:
+      return {
+        ...state,
+      };
+    case ActionType.SET_QUERY:
+      return {
+        ...state,
+        query: action.payload,
+      };
     default:
       return state;
   }
