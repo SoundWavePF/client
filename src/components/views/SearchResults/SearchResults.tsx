@@ -24,7 +24,7 @@ const SearchResults = () => {
       showMore.albums? setShowMore({...showMore, albums:false}) : setShowMore({...showMore, albums:true})
     }
   }
-
+  if(songData || artistData || albumData)
   return (
     <div className={s.divContainer}>
       {
@@ -65,6 +65,11 @@ const SearchResults = () => {
         albumData.slice(0, 10).map((album: any) =><ItemList item={album}/>) :
         albumData.slice(0, 3).map((album: any) =><ItemList item={album}/>)
       }
+    </div>
+  )
+  else return(
+    <div className={s.divContainer}>
+      <div className={s.sectionTitle}>Loading...</div>
     </div>
   )
 }

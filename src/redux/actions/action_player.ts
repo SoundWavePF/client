@@ -50,23 +50,10 @@ export const searchAll = (input: string) => {
       .then((response) =>
         dispatch({
           type: ActionType.SEARCH_ALL,
-          payload: { data: response.data, query: input },
+          payload: response.data
         })
       )
       .catch((error) => console.log(error));
-  };
-};
-export const sendPrevPlay = (
-  isPlaying: boolean,
-  currentTime: number,
-  pos: number,
-  volume: string
-) => {
-  return (dispatch: Dispatch<Actions>) => {
-    dispatch({
-      type: ActionType.SEND_PREV_PLAY,
-      payload: { isPlaying, currentTime, pos, volume },
-    });
   };
 };
 export const playSong = (data: swSong) => {
@@ -105,7 +92,6 @@ export const getGenre = (id:any)=>{ // obtiene un genero para la ruta /genre/:id
       )
   }
 }
-
 export const cleanGenre = ()=>{
   return(dispatch: Dispatch<Actions>) => {
     dispatch({
@@ -124,7 +110,6 @@ export const getAlbumPlaylist = (id:any, type:string)=>{
       )
   }
 }
-
 export const getTop = () => {
   return (dispatch: Dispatch<any>) => {
     axios.get("http://143.198.158.238:3001/top").then((response) =>
@@ -135,7 +120,6 @@ export const getTop = () => {
     );
   };
 };
-
 export const likeSong = (songId: string, userId: string) => {
   return(dispatch: Dispatch<Actions>) => {
     axios.post(`http://143.198.158.238:3001/favorite/add/${songId}`, {userId: userId})
@@ -145,4 +129,11 @@ export const likeSong = (songId: string, userId: string) => {
     }))
   }
 }
-
+export const setQuery = (query: string) => {
+  return(dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.SET_QUERY,
+      payload: query
+    })
+  }
+}
