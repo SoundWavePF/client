@@ -1,8 +1,7 @@
-import styles from "./AlbumPlaylist.module.css";
+import styles from "../Home/Home.module.css";
 import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";
 import ContentAlbumPlaylist from "../../commons/ContentAlbumPlaylist/ContentAlbumPlaylist";
-import Player from "../../commons/Player/Player";
 
 const AlbumPlaylist = () => {
   return (
@@ -10,7 +9,6 @@ const AlbumPlaylist = () => {
       <SearchBar/>
       <SideBar/>
       <ContentAlbumPlaylist/>
-      <Player />
     </div>
   );
 };

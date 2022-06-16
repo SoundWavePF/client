@@ -37,13 +37,16 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
         <div className={s.container}>
           <div>
             <img src={props.cover} alt={'cover'} onClick={()=>playSong(props.item)}/>
-            <span onClick={()=>playSong(props.item)}>{props.nb ? `${props.nb}. ${props.item.title}`: props.item.title}</span>
+            <span onClick={()=>playSong(props.item)}>{props.nb ? `${props.nb}. ${props.item.name}`: props.item.name}</span>
           </div>
           <span>{props.item.artist}</span>
           {/* <p>{props.item.album}</p> */}
           <div>
             <img className={!fav ? s.noFav : ''} src={likefull} alt="like icon" onClick={fav?()=>setFav(false):()=>setFav(true)}/>
-            <DropDownButton item={props.item}/>
+            {
+              // props.item &&
+              // <DropDownButton item={props.item}/>
+            }
             <span>{formatDuration(props.item.duration)}</span>
             <img src={time} alt="time icon" />
           </div>

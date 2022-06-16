@@ -12,7 +12,7 @@ import volume1 from '../../../assets/volume1.png';
 import volume2 from '../../../assets/volume2.png';
 import volume3 from '../../../assets/volume3.png';
 import like from '../../../assets/likefull.png';
-import { sendPrevPlay, likeSong } from '../../../redux/actions/action_player';
+import { likeSong } from '../../../redux/actions/action_player';
 import { useAuth0 } from '@auth0/auth0-react';
 import styles from './Player.module.css';
 
@@ -32,9 +32,6 @@ export default function Player(){
   }, [])
   useEffect(() => setIsPlaying(true), [queue[0]])
   useEffect(() => updatePos(), [queue]);
-  useEffect(() => {
-    return () => dispatch(sendPrevPlay(isPlaying, currentTime, pos, volume));
-  }, [volume, currentTime])
   function Like(song, user){
     dispatch(likeSong(song, user))
   }
