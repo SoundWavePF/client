@@ -22,24 +22,14 @@ export default function Player(){
   const { user } = useAuth0();
   const userId = user?.sub?.slice(6);
   const queue = useSelector(state => state.queue);
-  const prevPlay = useSelector(state => state.prevPlay)
-  const [isPlaying, setIsPlaying] = useState(prevPlay.isPlaying || false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [pos, setPos] = useState(0);
   const [volume, setVolume] = useState('100');
-  useEffect(() => {
-    chargeState();
-  }, [])
   useEffect(() => setIsPlaying(true), [queue[0]])
   useEffect(() => updatePos(), [queue]);
   function Like(song, user){
     dispatch(likeSong(song, user))
-  }
-  function chargeState(){
-    if (prevPlay.pos !== undefined) setPos(prevPlay.pos);
-    if (prevPlay.volume !== undefined) setVolume(prevPlay.volume);
-    if (prevPlay.currentTime !== undefined) setCurrentTime(prevPlay.currentTime);
-    if (prevPlay.isPlaying !== undefined) setIsPlaying(prevPlay.isPlaying);
   }
   function updatePos(){
     if(pos + 1 > queue.length){

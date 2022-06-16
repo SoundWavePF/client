@@ -14,9 +14,10 @@ const SearchBar = () => {
 
   const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0()
   const dispatch = useDispatch();
-  const { searchAll } = bindActionCreators(actionCreator, dispatch);
+  const { searchAll, setQuery } = bindActionCreators(actionCreator, dispatch);
   function handleChange(e: any): void {
     searchAll(e.target.value);
+    setQuery(e.target.value);
   }
   return (
     <nav className={`${style.navbar}`}>
