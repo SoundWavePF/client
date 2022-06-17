@@ -7,7 +7,6 @@ import GenrePage from '../../commons/GenrePage/GenrePage';
 
 const Genre = () => {
   const searchString = useSelector((state: any) => state.query)
-
   return (
     <div className={styles.container}>
       <SearchBar/>
