@@ -9,6 +9,7 @@
   grid-row-gap: 0px;
   height: 90px;
   position: fixed;
+  z-index: 11;
   bottom: 0;
 }
 .seekbar{
@@ -16,6 +17,9 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  border: 1px solid rgb(12, 3, 36);
+  background-color: #5cd5eb;
 }
 .semicontainer{
   grid-area: 2 / 1 / 3 / 2;
@@ -30,6 +34,8 @@
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
+
+  border: 1px solid red;
 }
 .volumeR{
   opacity: 0.000001;
@@ -52,6 +58,8 @@
 }
 .songInfo{
   display: flex;
+
+  border: 1px solid red;
 }
 .seek{
   width: 100%;
@@ -60,6 +68,8 @@
   height: 4px;
   -webkit-appearance: none;
   overflow: hidden;
+
+  border: 1px solid red;
 }
 
 .seek::-webkit-slider-runnable-track {

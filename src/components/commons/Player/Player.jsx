@@ -15,6 +15,7 @@ import like from '../../../assets/likefull.png';
 import { likeSong } from '../../../redux/actions/action_player';
 import { useAuth0 } from '@auth0/auth0-react';
 import styles from './Player.module.css';
+import QueuePanel from './QueuePanel';
 
 export default function Player(){
   const player = useRef();
@@ -101,6 +102,7 @@ export default function Player(){
           </div>
         </div>
         <div className={styles.volume}>
+          <QueuePanel/>
           {queue[pos] && userId && <button className={styles.btn} onClick={() => Like(queue[pos].id, userId)}><img src={like} className={styles.btnImg}/></button>}
           <button onClick={mute} className={styles.btn}><img src={parseInt(volume) === 0 ? muteicon : parseInt(volume) < 33 ? volume1 : parseInt(volume) < 66 ? volume2 : volume3} className={styles.btnImg}/></button>
           <input type='range' value={volume} min='0' max='100' onChange={e => setVolume(e.target.value)} className={styles.volumeR}/>
