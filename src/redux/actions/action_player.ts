@@ -120,9 +120,9 @@ export const getTop = () => {
     );
   };
 };
-export const likeSong = (songId: any, email: any) => {
+export const likeSong = (songId: string, email: string) => {
   return(dispatch: Dispatch<Actions>) => {
-    axios.post(`http://143.198.158.238:3001/favorite/add/${songId}`)
+    axios.post(`http://143.198.158.238:3001/favorite/add/${songId}`, {email: email})
     .then(response => dispatch({
       type: ActionType.LIKE_SONG,
       payload: response.data
@@ -130,9 +130,9 @@ export const likeSong = (songId: any, email: any) => {
   }
 }
 
-export const dislikeSong = (songId: any, email: any) => {
+export const dislikeSong = (songId: string, email: string) => {
   return(dispatch: Dispatch<Actions>) => {
-    axios.delete(`http://143.198.158.238:3001/favorite/remove/${songId}`)
+    axios.post(`http://143.198.158.238:3001/favorite/remove/${songId}`, {email: email})
     .then(response => dispatch({
       type: ActionType.DISLIKE_SONG,
       payload: response.data
@@ -148,11 +148,21 @@ export const setQuery = (query: string) => {
     })
   }
 }
+
 export const updatePlaylist = (playlist: any) => {
   return (dispatch: Dispatch<Actions>) => {
     dispatch({
       type: ActionType.UPDATE_PLAYLIST,
       payload: playlist,
     })
+  };
+};
+
+export const playAll = (data: swSong[]) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.PLAY_ALL,
+      payload: data,
+    });
   };
 };

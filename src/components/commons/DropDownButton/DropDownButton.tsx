@@ -15,19 +15,19 @@ interface myProps {
 
 const DropDownButton: React.FC<myProps> = (props: myProps) => {
   const playlists = useSelector((state: any) => state.library_artist.card)
-  const { user } = useAuth0();
-  const userId: string | undefined = user?.sub?.slice(6);
+  const { user, isAuthenticated } = useAuth0();
+  const email: string | undefined = user?.email;
   const dispatch = useDispatch();
   const { addToQueue, addToPlaylist } = bindActionCreators(actionCreator, dispatch);
   const { newPlaylist } = bindActionCreators(actionCreatorUser, dispatch)
   async function addPlaylist(){
-    if(userId !== undefined) {const { value: playlistName } = await Swal.fire({
+    if(email !== undefined) {const { value: playlistName } = await Swal.fire({
       title: 'New Playlist',
       input: 'text'
     })
     if(playlistName){
       Swal.fire('Playlist created!');
-      newPlaylist(userId, playlistName);
+      newPlaylist(email, playlistName);
     }}
   }
   return (
@@ -36,7 +36,7 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
                 <Dropdown.Item ><Link className={styles.link} to={`/artist/${props.item.artists[0].id}`}>Go to Artist</Link></Dropdown.Item>
                 <Dropdown.Item ><Link className={styles.link} to={`/album/${props.item.albumId}`}>Go to Album</Link></Dropdown.Item>
                 <Dropdown.Item onClick={() => addToQueue(props.item)}>Add to queue</Dropdown.Item>
-                  { userId &&
+                  { isAuthenticated &&
                     <div>
                     {['end'].map((direction) => (
                       <SplitButton
@@ -46,7 +46,7 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
                         variant="warning"
                         title='➕ Playlist'
                       >
-                        {/* {playlists.length ? playlists.map((p: any) => {return <Dropdown.Item onClick={() => addToPlaylist(p.id, props.item.id)}>{p.name}</Dropdown.Item>}) : null} */}
+                        {playlists.length ? playlists.map((p: any) => {return <Dropdown.Item onClick={() => addToPlaylist(p.id, props.item.id)}>{p.name}</Dropdown.Item>}) : null}
                         <Dropdown.Item onClick={addPlaylist}>New Playlist</Dropdown.Item>
                       </SplitButton>
                     ))}

@@ -5,16 +5,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from 'axios'
 
 export default function Landing() {
-  // const { loginWithRedirect, logout } = useAuth0();
-  // const useAuth: any = useAuth0();
-  const { user, isAuthenticated, isLoading } = useAuth0()
-  // const newUser: any = user
-  // console.log('user', user)
-  // console.log('autenti', isAuthenticated)
-  // console.log('loding', isLoading)
-  // console.log(user?.picture)
+
+  const { user, isAuthenticated } = useAuth0()
+
   function userLogin() {
-    console.log('cristian')
     axios.post("http://143.198.158.238:3001/login/userRegister", {
       name: user?.name,
       username: user?.nickname,
