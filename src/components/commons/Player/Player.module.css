@@ -36,7 +36,6 @@
 }
 .volume:hover .volumeR{
   display: flex;
-  z-index: 1;
   opacity: 1;
 }
 .btnImg{
