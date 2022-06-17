@@ -16,6 +16,7 @@ import Genre from "./components/views/Genre/Genre";
 import FileUpload from "./components/views/FileUpload/FileUpload";
 import Player from "./components/commons/Player/Player";
 import Top from "./components/views/Top/Top";
+import ArtistProfile from './components/commons/ArtistProfile/ArtistProfile'
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
         <Route path="/genre/:id" element={<><Genre /><Player/></>} />
 
         <Route path="/settings" element={<UserSettings />} />
-        <Route path="/panel_artist" element={<>Panel</>} />
+        <Route path="/panel_artist" element={< ArtistProfile/>} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/file" element={<FileUpload />} />
 
