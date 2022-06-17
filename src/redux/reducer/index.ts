@@ -171,6 +171,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         users: action.payload,
       };
+    case ActionType.PLAY_ALL:
+      return{
+        ...state,
+        queue: action.payload
+      }
     default:
       return state;
   }
