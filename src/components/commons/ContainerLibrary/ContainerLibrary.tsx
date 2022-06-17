@@ -19,8 +19,8 @@ export const ContainerLibrary = () => {
   const dispatch = useDispatch();
   const { getLibrary } = bindActionCreators(actionCreator, dispatch);
   useEffect(() => {
-    if(email !== undefined) getLibrary(email);
-  }, []);
+    if (email) getLibrary(email);
+  }, [isAuthenticated]);
 
   if (isAuthenticated) {
     switch (location.pathname) {
@@ -109,7 +109,7 @@ export const ContainerLibrary = () => {
             </div>
 
             <div className={Styled.ContainerPlaylist}>
-              {state.library_artist.card ? state.library_artist.card.map((e:any)=> (<CardItem  item={e }></CardItem>)   ):null}
+              {state.library_artist.card ? state.library_artist.card.map((e: any) => (<CardItem item={e}></CardItem>)) : null}
             </div>
           </div>
         );
