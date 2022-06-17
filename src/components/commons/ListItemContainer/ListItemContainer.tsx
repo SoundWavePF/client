@@ -1,26 +1,30 @@
 import styles from "./ListItemContainer.module.css";
 import ListItem from './ListItem';
 import { ReactSortable } from "react-sortablejs";
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useState } from "react";
+import * as actionCreator from "../../../redux/actions/action_player";
+import { bindActionCreators } from "redux";
+import { useDispatch } from "react-redux";
 
 interface myProps {
   content: any;
   header?: boolean;
   artist?: boolean;
   nb?: boolean;
-  playlist?: boolean;
+  sort?: boolean;
 }
 
-const ListItemContainer: React.FC<myProps> = ({ content, header=false, artist, nb, playlist}: myProps) => {
-  const [state, setState] = useState<any>([...content]);
-  // useEffect(()=>{
-  //   setState(content)
-  // },[]);
-  // useEffect(()=>{
-    
-  //   console.log('_Updated')
-  // },[state])
+const ListItemContainer: React.FC<myProps> = ({ content, header=false, artist, nb, sort=false}: myProps) => {
+  const [state, setState] = useState<any>([...content]);;
+  const dispatch = useDispatch();
+  const { updatePlaylist } = bindActionCreators(
+    actionCreator,
+    dispatch
+  );
+  const updateLocal = (playlist: any) => {
+    updatePlaylist(playlist);
+    console.log('_update_');
+  }
 
   return (
     <div>
@@ -42,8 +46,9 @@ const ListItemContainer: React.FC<myProps> = ({ content, header=false, artist, n
           }
         </div>
       :
-        <ReactSortable list={state} setList={setState} className={styles.list} 
-        chosenClass={styles.red}>
+        <ReactSortable list={state} setList={setState} className={sort ? styles.listSort : styles.list}
+          chosenClass={styles.choose} disabled={!sort} onUpdate={() => updateLocal(state)}
+        >
           {
             state?.map((e:any, i:any) => {
               return <ListItem key={i} item={e} nb={nb?i+1:undefined}/>;
