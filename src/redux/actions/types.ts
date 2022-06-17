@@ -1,6 +1,6 @@
 import { LibraryArtist } from "../reducer/types";
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery |  GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll;
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery |  GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll | UpdatePlaylist;
 
 export enum ActionType{
   CLEAN_GENRE = 'CLEAN_GENRE',
@@ -20,6 +20,7 @@ export enum ActionType{
   GET_PlaylistForId = 'GET_PlaylistForId',
   ADD_TO_PLAYLIST = 'ADD_TO_PLAYLIST',
   NEW_PLAYLIST = 'NEW_PLAYLIST',
+  UPDATE_PLAYLIST = 'UPDATE_PLAYLIST',
   UPDATE_USER = 'UPDATE_USER',
   GET_TOP = 'GET_TOP',
   LIKE_SONG= 'LIKE_SONG',
@@ -112,6 +113,10 @@ interface AddToPlaylist{
 }
 interface NewPlaylist{
   type: ActionType.NEW_PLAYLIST,
+  payload: any
+}
+interface UpdatePlaylist{
+  type: ActionType.UPDATE_PLAYLIST,
   payload: any
 }
 interface GetTop{
