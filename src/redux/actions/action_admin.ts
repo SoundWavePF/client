@@ -10,3 +10,14 @@ export const changeAdminOption = (userOption:any)=>{
     })
   }
 }
+export const getAllUsers = (id:string)=>{
+  return(dispatch: Dispatch<any>)=>{
+    axios.post('http://143.198.158.238:3001/admin/users',{adminId:id})
+    .then(response => 
+      dispatch({
+        type: ActionType.GET_ALL_USERS,
+        payload: response.data,
+      })
+    );
+  };
+};

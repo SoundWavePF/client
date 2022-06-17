@@ -4,6 +4,11 @@ import AdminSideBar from './../../commons/AdminSideBar/AdminSideBar';
 import UserCardAdmin from '../../commons/UserCardAdmin/UserCardAdmin';
 import { useSelector } from 'react-redux';
 import NavAdmin from '../../commons/NavAdmin/NavAdmin';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from "redux";
+import * as actionCreator from '../../../redux/actions/action_admin'
 
 interface user{
   request:boolean,
@@ -53,8 +58,16 @@ const data:user[] = [
   {request:false,id:'63',type:'user',username:'jony',email:'jony@sw.com',songNumber:0}
 ]
 const AdminPanel = ()=>{
+  const dispatch = useDispatch()
+  const {getAllUsers} = bindActionCreators(actionCreator,dispatch)
+  const users = useSelector((state:any)=>state.users)
   const adminOption = useSelector((state:any)=>state.adminOption)
-  const top='top'
+  const ADMIN_ID = 'c0e634a0-09ac-42f4-9a05-41f77cba6996'
+  // const {user, isAuthenticated} = useAuth0()
+  // console.log(isAuthenticated)
+  useEffect(()=>{
+    getAllUsers(ADMIN_ID)
+  },[])
   if(adminOption.home===true){
     return(  
       <div>
@@ -79,11 +92,11 @@ const AdminPanel = ()=>{
         <NavAdmin option={false}/>
         <div className={m.containerCards}>
           <ul className={m.ul}>
-            {data.map(user=>{
-              if(adminOption.user && user.type==='user'){
+            {users.map((user:any)=>{
+              if(adminOption.user && user.rol==='user'){
                 return <li className={m.li}><UserCardAdmin {...user}/></li>
               }
-              if(!adminOption.user && user.type==='artist'){
+              if(!adminOption.user && user.rol==='artist'){
                 return <li className={m.li}><UserCardAdmin {...user}/></li>
               }
             }
