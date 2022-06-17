@@ -16,6 +16,8 @@ interface State {
   genre: any;
   top: any;
   users: any;
+  artist: any;
+  artistTop: any
 }
 
 const initialState: State = {
@@ -41,11 +43,23 @@ const initialState: State = {
   adminOption: { home: true, user: false },
   genre: [],
   top: [],
-  users: []
+  users: [],
+  artist:{},
+  artistTop:{}
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
   switch (action.type) {
+    case ActionType.GET_ARTIST_TOP:
+      return {
+        ...state,
+        artistTop: action.payload,
+      };
+    case ActionType.GET_ARTIST:
+      return {
+        ...state,
+        artist: action.payload,
+      };
     case ActionType.CLEAN_GENRE:
       return {
         ...state,
