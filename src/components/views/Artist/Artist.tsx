@@ -1,11 +1,12 @@
 import styles from "../Home/Home.module.css";
 import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";
-import SearchResults from "../SearchResults/SearchResults";
+import { ArtistPage } from "../../commons/ArtistPage/ArtistPage";
 import { useSelector } from "react-redux";
-import GenrePage from '../../commons/GenrePage/GenrePage';
+import SearchResults from "../SearchResults/SearchResults";
 
-const Genre = () => {
+
+const Artist = () => {
   const searchString = useSelector((state: any) => state.query)
   return (
     <div className={styles.container}>
@@ -13,11 +14,11 @@ const Genre = () => {
       <SideBar/>
       {
         !searchString ?
-        <GenrePage />
+        <ArtistPage/>
         :
         <SearchResults/>
       }
     </div>
   );
 };
-export default Genre;
+export default Artist;

@@ -1,9 +1,6 @@
 import { LibraryArtist } from "../reducer/types";
 
-
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery|  GetAllUsers | DislikeSong;
-
-
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery |  GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll;
 
 export enum ActionType{
   CLEAN_GENRE = 'CLEAN_GENRE',
@@ -28,14 +25,24 @@ export enum ActionType{
   LIKE_SONG= 'LIKE_SONG',
   DISLIKE_SONG= 'DISLIKE_SONG',
   SET_QUERY = 'SET_QUERY',
-  GET_ALL_USERS = 'GET_ALL_USERS'
+  GET_ALL_USERS = 'GET_ALL_USERS',
+  GET_ARTIST = 'GET_ARTIST',
+  GET_ARTIST_TOP = 'GET_ARTIST_TOP',
+  PLAY_ALL = 'PLAY_ALL'
 }
 
+export interface GetArtistTop{
+  type: ActionType.GET_ARTIST_TOP;
+  payload:any
+}
+export interface GetArtist{
+  type: ActionType.GET_ARTIST;
+  payload:any
+}
 export interface GetAllUsers{
   type: ActionType.GET_ALL_USERS;
   payload:any
 }
-
 export interface userOption{ //opciones del componente AdminPanel
   home:boolean,
   user:boolean
@@ -119,8 +126,11 @@ interface SetQuery{
   type: ActionType.SET_QUERY,
   payload: string
 }
-
 interface DislikeSong{
   type:ActionType.DISLIKE_SONG,
   payload:any
+}
+interface PlayAll{
+  type: ActionType.PLAY_ALL,
+  payload: swSong[]
 } 
