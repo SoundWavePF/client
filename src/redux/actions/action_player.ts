@@ -120,15 +120,26 @@ export const getTop = () => {
     );
   };
 };
-export const likeSong = (songId: string, userId: string) => {
+export const likeSong = (songId: any, email: any) => {
   return(dispatch: Dispatch<Actions>) => {
-    axios.post(`http://143.198.158.238:3001/favorite/add/${songId}`, {userId: userId})
+    axios.post(`http://143.198.158.238:3001/favorite/add/${songId}`)
     .then(response => dispatch({
       type: ActionType.LIKE_SONG,
       payload: response.data
     }))
   }
 }
+
+export const dislikeSong = (songId: any, email: any) => {
+  return(dispatch: Dispatch<Actions>) => {
+    axios.delete(`http://143.198.158.238:3001/favorite/remove/${songId}`)
+    .then(response => dispatch({
+      type: ActionType.DISLIKE_SONG,
+      payload: response.data
+    }))
+  }
+}
+
 export const setQuery = (query: string) => {
   return(dispatch: Dispatch<Actions>) => {
     dispatch({

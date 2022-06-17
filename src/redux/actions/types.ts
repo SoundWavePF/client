@@ -1,7 +1,7 @@
 import { LibraryArtist } from "../reducer/types";
 
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery|  GetAllUsers;
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery|  GetAllUsers | DislikeSong;
 
 
 
@@ -26,6 +26,7 @@ export enum ActionType{
   UPDATE_USER = 'UPDATE_USER',
   GET_TOP = 'GET_TOP',
   LIKE_SONG= 'LIKE_SONG',
+  DISLIKE_SONG= 'DISLIKE_SONG',
   SET_QUERY = 'SET_QUERY',
   GET_ALL_USERS = 'GET_ALL_USERS'
 }
@@ -118,3 +119,8 @@ interface SetQuery{
   type: ActionType.SET_QUERY,
   payload: string
 }
+
+interface DislikeSong{
+  type:ActionType.DISLIKE_SONG,
+  payload:any
+} 
