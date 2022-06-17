@@ -15,6 +15,7 @@ interface State {
   adminOption: types.AdminOption;
   genre: any;
   top: any;
+  users: any;
 }
 
 const initialState: State = {
@@ -40,6 +41,7 @@ const initialState: State = {
   adminOption: { home: true, user: false },
   genre: [],
   top: [],
+  users: []
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -149,6 +151,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
       return {
         ...state,
         query: action.payload,
+      };
+    case ActionType.GET_ALL_USERS:
+      return {
+        ...state,
+        users: action.payload,
       };
     default:
       return state;
