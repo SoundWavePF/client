@@ -1,7 +1,8 @@
 import { LibraryArtist } from "../reducer/types";
 
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery|  GetAllUsers;
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist 
+| LikeSong | GetTop | SetQuery|  GetAllUsers | GetArtist | GetArtistTop;
 
 
 
@@ -27,14 +28,23 @@ export enum ActionType{
   GET_TOP = 'GET_TOP',
   LIKE_SONG= 'LIKE_SONG',
   SET_QUERY = 'SET_QUERY',
-  GET_ALL_USERS = 'GET_ALL_USERS'
+  GET_ALL_USERS = 'GET_ALL_USERS',
+  GET_ARTIST = 'GET_ARTIST',
+  GET_ARTIST_TOP = 'GET_ARTIST_TOP'
 }
 
+export interface GetArtistTop{
+  type: ActionType.GET_ARTIST_TOP;
+  payload:any
+}
+export interface GetArtist{
+  type: ActionType.GET_ARTIST;
+  payload:any
+}
 export interface GetAllUsers{
   type: ActionType.GET_ALL_USERS;
   payload:any
 }
-
 export interface userOption{ //opciones del componente AdminPanel
   home:boolean,
   user:boolean
