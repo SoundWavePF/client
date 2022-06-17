@@ -2,18 +2,18 @@ import m from './UserCardAdmin.module.css'
 import Swal from 'sweetalert2'
 
 
-interface user{
-  request:boolean,
-  id:string,
-  type:string,
-  username:string,
-  email:string,
-  songNumber:number
-}
+// interface user{
+//   request:boolean,
+//   id:string,
+//   type:string,
+//   username:string,
+//   email:string,
+//   songNumber:number
+// }
 
 
 
-const UserCardAdmin = (user:user)=>{
+const UserCardAdmin = (user:any)=>{
   const deleteUser = ()=>{
     Swal.fire({
       title: 'Are you sure?',
@@ -92,17 +92,17 @@ const UserCardAdmin = (user:user)=>{
       <div className={m.container}>
         <div className={m.infoContainer}>
             <div className={m.divType}>
-              <span>{user.type}</span>
+              <span>{user.rol}</span>
             </div>
-            <button onClick={user.request? ()=>changeRole():undefined} className={user.request? m.buttonRequestTrue : m.buttonRequest}>{user.request.toString()}</button>
+            {/* <button onClick={user.request? ()=>changeRole():undefined} className={user.request? m.buttonRequestTrue : m.buttonRequest}>{user.request.toString()}</button> */}
             <div className={m.divId}>
               <span className={m.span}>Id: {user.id}</span>
             </div>
             <button onClick={setUsername} className={m.buttonUsername}>Username: {user.username}</button>
             <button onClick={setEmail} className={m.buttonEmail}>Email: {user.email}</button>
-            <div className={m.divSong}>
+            {/* <div className={m.divSong}>
               <span className={m.span}>Songs number: {user.songNumber}</span>
-            </div>
+            </div> */}
             <button onClick={deleteUser} className={m.button}><img className={m.img} src="https://cdn-icons.flaticon.com/png/512/542/premium/542724.png?token=exp=1654784155~hmac=6cbdff0d6916b7b638a797e3a99baeae" alt="delete" /></button>
         </div>
       </div>

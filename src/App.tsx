@@ -16,6 +16,7 @@ import Genre from "./components/views/Genre/Genre";
 import FileUpload from "./components/views/FileUpload/FileUpload";
 import Player from "./components/commons/Player/Player";
 import Top from "./components/views/Top/Top";
+import About2 from "./components/views/about/About2";
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About2 />} />
         <Route path="/home" element={<><Home/><Player/></>}/>
         <Route path="/playlists" element={<><Library/><Player/></>}/>
         <Route path="/favorites" element={<><Library/><Player/></>}/>
