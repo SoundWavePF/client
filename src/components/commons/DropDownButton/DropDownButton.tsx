@@ -17,7 +17,6 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
   const playlists = useSelector((state: any) => state.library_artist.card)
   const { user, isAuthenticated } = useAuth0();
   const email: string | undefined = user?.email;
-  console.log(email)
   const dispatch = useDispatch();
   const { addToQueue, addToPlaylist } = bindActionCreators(actionCreator, dispatch);
   const { newPlaylist } = bindActionCreators(actionCreatorUser, dispatch)
