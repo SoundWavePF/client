@@ -5,14 +5,14 @@ import useAuth0 from '@auth0/auth0-react';
 
 let PonerID = "882f59cd-9e4e-4f11-87e9-0f24eb1fca75";
 
-export const getLibrary = () => {
+export const getLibrary = (email:any) => {
   //hay que poner el id del usuario creado hasta que se pueda haceder a el
   return (dispatch: Dispatch<Actions>) => {
     const favorite = axios.post("http://143.198.158.238:3001/favorite", {
-      userId: PonerID,
+      email: email,
     });
     const playlist = axios.post("http://143.198.158.238:3001/playlist", {
-      userId: PonerID,
+      email: email,
     });
     Promise.all([favorite, playlist])
       .then((response) =>

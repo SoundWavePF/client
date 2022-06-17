@@ -117,3 +117,18 @@
     align-items: center;
 
 }
+
+.Registerto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    
+
+}
+.Registerto p{
+    font-weight: bolder;
+    background-color: var(--yellow-light);
+    padding: 1em;
+    border-radius: 1em;
+}
