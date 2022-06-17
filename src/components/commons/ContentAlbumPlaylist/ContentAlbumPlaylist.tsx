@@ -25,6 +25,7 @@ const ContentAlbumPlaylist = () => {
     if (edit) {
       if (newPlaylist.length === 0){
         Swal.fire("No changes!");
+        setEdit(false);
         return
       } else {
         //newPlaylist al back
