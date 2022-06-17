@@ -8,7 +8,7 @@ import ListItemContainer from "../ListItemContainer/ListItemContainer";
 
 const ContentAlbumPlaylist = () => {
   const dispatch = useDispatch();
-  const  { getAlbumPlaylist } = bindActionCreators(actionCreator,dispatch);
+  const  { getAlbumPlaylist, playAll } = bindActionCreators(actionCreator,dispatch);
   const item = useSelector((state: any) => state.album_playlist);
   const { id } = useParams();
   const path = useLocation().pathname;
@@ -25,7 +25,7 @@ const ContentAlbumPlaylist = () => {
           <img src={item.image_medium} alt={item.name} />
           <span>{item.name}</span>
           <span>{item.artists && item.artists[0].name}</span>
-          <button >Play all</button>
+          <button onClick={() => playAll(item.songs)}>Play all</button>
         </div>
         {
           item.songs && 

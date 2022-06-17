@@ -148,3 +148,12 @@ export const setQuery = (query: string) => {
     })
   }
 }
+
+export const playAll = (data: swSong[]) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.PLAY_ALL,
+      payload: data,
+    });
+  };
+};

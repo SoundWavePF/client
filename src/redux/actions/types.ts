@@ -1,6 +1,6 @@
 import { LibraryArtist } from "../reducer/types";
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery |  GetAllUsers | GetArtist | GetArtistTop | DislikeSong;
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery |  GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll;
 
 export enum ActionType{
   CLEAN_GENRE = 'CLEAN_GENRE',
@@ -27,7 +27,8 @@ export enum ActionType{
   SET_QUERY = 'SET_QUERY',
   GET_ALL_USERS = 'GET_ALL_USERS',
   GET_ARTIST = 'GET_ARTIST',
-  GET_ARTIST_TOP = 'GET_ARTIST_TOP'
+  GET_ARTIST_TOP = 'GET_ARTIST_TOP',
+  PLAY_ALL = 'PLAY_ALL'
 }
 
 export interface GetArtistTop{
@@ -125,8 +126,11 @@ interface SetQuery{
   type: ActionType.SET_QUERY,
   payload: string
 }
-
 interface DislikeSong{
   type:ActionType.DISLIKE_SONG,
   payload:any
+}
+interface PlayAll{
+  type: ActionType.PLAY_ALL,
+  payload: swSong[]
 } 
