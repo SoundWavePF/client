@@ -11,7 +11,6 @@ import { bindActionCreators } from "redux";
 
 interface myProps {
   item: any;
-  cover?: string;
   nb?: number;
 }
 
@@ -36,7 +35,7 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
       return (
         <div className={s.container}>
           <div>
-            <img src={props.cover} alt={'cover'} onClick={()=>playSong(props.item)}/>
+            <img src={props.item.image_small} alt={'cover'} onClick={()=>playSong(props.item)}/>
             <span onClick={()=>playSong(props.item)}>{props.nb ? `${props.nb}. ${props.item.name}`: props.item.name}</span>
           </div>
           <span>{props.item.artist}</span>

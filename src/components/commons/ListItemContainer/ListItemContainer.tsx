@@ -1,15 +1,27 @@
 import styles from "./ListItemContainer.module.css";
 import ListItem from './ListItem';
+import { ReactSortable } from "react-sortablejs";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 
 interface myProps {
   content: any;
   header?: boolean;
   artist?: boolean;
-  cover?: string;
   nb?: boolean;
+  playlist?: boolean;
 }
 
-const ListItemContainer: React.FC<myProps> = ({ content, header=false, artist, cover, nb}: myProps) => {
+const ListItemContainer: React.FC<myProps> = ({ content, header=false, artist, nb, playlist}: myProps) => {
+  const [state, setState] = useState<any>([...content]);
+  // useEffect(()=>{
+  //   setState(content)
+  // },[]);
+  // useEffect(()=>{
+    
+  //   console.log('_Updated')
+  // },[state])
+
   return (
     <div>
       {
@@ -21,13 +33,25 @@ const ListItemContainer: React.FC<myProps> = ({ content, header=false, artist, c
           <span>Duration</span>
         </div>
       }
-      <div className={styles.list}>
-        {
-          content?.map((e:any, i:any) => {
-            return <ListItem key={i} item={e} cover={cover?cover:undefined} nb={nb?i+1:undefined}/>;
-          })
-        }
-      </div>
+      { false && state.length > 0 ?
+        <div className={styles.list}>
+          {
+            content?.map((e:any, i:any) => {
+              return <ListItem key={i} item={e} nb={nb?i+1:undefined}/>;
+            })
+          }
+        </div>
+      :
+        <ReactSortable list={state} setList={setState} className={styles.list} 
+        chosenClass={styles.red}>
+          {
+            state?.map((e:any, i:any) => {
+              return <ListItem key={i} item={e} nb={nb?i+1:undefined}/>;
+            })
+          }
+        </ReactSortable>
+      }
+
     </div>
   );
 };
