@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 const ContentAlbumPlaylist = () => {
   const [edit, setEdit] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const { getAlbumPlaylist, updatePlaylist } = bindActionCreators(actionCreator, dispatch);
+  const { getAlbumPlaylist, updatePlaylist, playAll } = bindActionCreators(actionCreator, dispatch);
   const item = useSelector((state: any) => state.album_playlist);
   const newPlaylist = useSelector((state: any) => state.playlist_update);
   const { id } = useParams();
@@ -43,7 +43,7 @@ const ContentAlbumPlaylist = () => {
           <img src={item.image_medium} alt={item.name} />
           <span>{item.name}</span>
           <span>{item.artists && item.artists[0].name}</span>
-          <button className={styles.btn}>Play all</button>
+          <button onClick={() => playAll(item.songs)} className={styles.btn}>Play all</button>
           {!isPlaylist && (
             <button
               className={edit ? `${styles.edit} ${styles.save}` : styles.edit}

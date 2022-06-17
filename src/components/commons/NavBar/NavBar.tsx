@@ -54,8 +54,8 @@ const NavBar = () => {
       <div>
         <button onClick={() => loginWithRedirect()}
           className="btn btn-outline-warning" >Log In</button>
-        {isAuthenticated ? (<button
-          onClick={() => logout({ returnTo: window.location.origin })}>logout</button>) :
+        {isAuthenticated ? (<button className="btn btn-outline-warning"
+          onClick={() => logout({ returnTo: window.location.origin })}>Logout</button>) :
           null}
       </div>
 

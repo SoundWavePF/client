@@ -3,9 +3,8 @@ import { ActionType, Actions } from "./types";
 import axios from "axios";
 import useAuth0 from '@auth0/auth0-react';
 
-let PonerID = "882f59cd-9e4e-4f11-87e9-0f24eb1fca75";
 
-export const getLibrary = (email:any) => {
+export const getLibrary = (email: string) => {
   //hay que poner el id del usuario creado hasta que se pueda haceder a el
   return (dispatch: Dispatch<Actions>) => {
     const favorite = axios.post("http://143.198.158.238:3001/favorite", {
@@ -39,9 +38,9 @@ export const getPlaylist = (id: any) => {
       .catch((error) => console.log(error));
   };
 };
-export const newPlaylist = (userId: string, playlistName: string) => {
+export const newPlaylist = (email: string, playlistName: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post('http://143.198.158.238:3001/playlist/create', { userId: userId, playlistName: playlistName })
+    axios.post('http://143.198.158.238:3001/playlist/create', { email: email, playlistName: playlistName })
       .then(response => dispatch({
         type: ActionType.NEW_PLAYLIST,
         payload: response.data

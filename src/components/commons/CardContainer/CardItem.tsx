@@ -56,7 +56,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
               onClick={() => playSong(props.item)}
             /></figure>
             <p>{props.item.name}</p>
-            <a href={`/artist/${props.item.id}`}>{props.item.artists[0].name}</a>
+            <a href={`/artist/${props.item.artists[0].id}`}>{props.item.artists[0].name}</a>
           </div>
         )
     default:
