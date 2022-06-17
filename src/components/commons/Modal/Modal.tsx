@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 
 interface inputs {
     id: string
-    oldData: string
+    oldData?: string
     newData: string
     field: any
 }

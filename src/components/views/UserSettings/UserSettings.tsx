@@ -108,7 +108,8 @@ const UserSettings = () => {
 
     }
   }
-  let ejemplo = "jonathan"
+
+  let ejemplo = "userName," + " "
   return (
     <div className={styles.container}>
       <SearchBar />
@@ -122,7 +123,7 @@ const UserSettings = () => {
           <form className={style.father} onSubmit={(e) => onSubmitHandle(e)}>
             <img src={picture} alt="image" className={style.userImage} />
             <input type="file" onChange={(e)=>handleOnChange(e)} value={input.newData} name={"newData"} className={style.input} />
-          <button type='submit'>envia la foto por favor</button>
+          <button type='submit'>boton de prueba</button>
           </form>
 
 
