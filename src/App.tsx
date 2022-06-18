@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as actionCreator from "./redux/actions/action_user";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Landing from './components/views/Landing/Landing'
@@ -18,10 +22,18 @@ import Player from "./components/commons/Player/Player";
 import Top from "./components/views/Top/Top";
 import About2 from "./components/views/about/About2";
 import ArtistProfile from './components/commons/ArtistProfile/ArtistProfile'
+import Artist from "./components/views/Artist/Artist";
 
 
 
 function App() {
+  const { user, isAuthenticated } = useAuth0();
+  const email = user?.email;
+  const dispatch = useDispatch();
+  const { getUserInfo } = bindActionCreators(actionCreator, dispatch);
+  useEffect(() => {
+    email && getUserInfo(email);
+  }, [isAuthenticated]);
   return (
     <div>
       <Routes>
@@ -35,7 +47,7 @@ function App() {
         <Route path="/favorites" element={<><Library/><Player/></>}/>
         <Route path="/top" element={<><Top/><Player/></>} />
 
-        <Route path="/artist/:id" element={<h1>Artist</h1>} />
+        <Route path="/artist/:id" element={<><Artist/><Player/></>} />
         <Route path="/album/:id" element={<><AlbumPlaylist /><Player/></>} />
         <Route path="/playlist/:id" element={<><AlbumPlaylist /><Player/></>} />
         <Route path="/genre/:id" element={<><Genre /><Player/></>} />

@@ -12,11 +12,36 @@
 }
 
 .imageAndNameContainer {
-    display: flex;
-    position: relative;
-    align-items: center;
+  display: flex;
+  position: relative;
+  align-items: center;
 }
 
+.Play {
+  left: 25px;
+  top: 10px;
+  font-weight: bolder;
+  font-size: xx-large;
+  position: absolute;
+  display: none;
+}
+
+.imageAndNameContainer:hover .Play {
+  display: flex;
+  justify-content: center;
+  height: 1.5em;
+  left: 15px;
+  top: 10px;
+  font-weight: bolder;
+  font-size: xx-large;
+  position: absolute;
+  display: block;
+  color: #0f0f0f;
+}
+.imageAndNameContainer:hover .image {
+  color: #0f0f0f;
+  filter: opacity(70%);
+}
 .Play {
     left: 25px;
     top: 10px;
@@ -132,12 +157,13 @@
 }
 
 .duration {
-    font-size: 20px;
+  font-size: 20px;
 
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .timeImg {
     width: 25px;
     margin-left: 4px;
 }
+

@@ -1,28 +1,33 @@
-.container_as78{
+.containerStats{
+  font-family: 'sw-medium';
+  margin-left: 203px;
   display: flex;
-  align-content: center;
-  padding-top: 7%;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: 'sw-medium';
+  padding: 50px;
 }
 .containerform_98ajz{
   display: flex;
   flex-direction: column;
-  margin: 10px;
   align-items: center;
   justify-content: center;
-  margin-left: 100px;
+  /* margin-left: 100px; */
 }
-.inputGoogle_7fv8{
-  margin-top: 20px;
+.buttonBack{
+  margin: 50px;
   width: 300px;
   background-color: #ffee32;
   color: black;
   padding: 7px 12px;
   text-align: center;
   border-radius: 4px;
+  border: 2px solid black;
   text-decoration: none;
+}
+.buttonBack:hover{
+  background-color: #fff7a0;
+  color: black;
 }
 .button{
   font-family: main-font;
@@ -45,6 +50,8 @@
 }
 .containerCards{
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 0px;
   padding-bottom: 7%;
@@ -55,9 +62,32 @@
   display: flex;
   flex-direction: column;
   margin: 0px;
+  margin-top: 50px;
 }
 .li{
   margin: 0px;
   margin-left: 15px;
   list-style: none;
+}
+.divRow{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.divRow > div{
+  padding: 25px;
+  border: 1px solid #d6d6d6;
+  margin: 25px;
+  border-radius: 5px;
+  min-width: 380px;
+}
+.divRow > div:hover{
+  border: none;
+  background-color: #ffee32;
+}
+.cardContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

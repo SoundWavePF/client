@@ -1,9 +1,10 @@
 
 .navbar{
   margin-left: 250px;
-  padding: 50px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid #d6d6d6;
 }
 .divOption{
   display: flex;

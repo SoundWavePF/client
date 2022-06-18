@@ -76,6 +76,22 @@ export const addToQueue = (data: swSong) => {
     });
   };
 };
+export const deleteFromQueue = (id: string) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.DELETE_FROM_QUEUE,
+      payload: id,
+    });
+  };
+} 
+export const sortQueue = (data: swSong[]) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.SORT_QUEUE,
+      payload: data
+    });
+  };
+};
 export const addToPlaylist = (playlistId: string, songId: string) => {
   return (dispatch: Dispatch<Actions>) => {
     axios.post('http://143.198.158.238:3001/playlist/add', { playlistId: playlistId, songId: songId })
@@ -104,14 +120,22 @@ export const cleanGenre = () => {
   }
 }
 export const getAlbumPlaylist = (id: any, type: string) => {
-  return (dispatch: Dispatch<any>) => {
-    axios.get(`http://143.198.158.238:3001/${type}/${id}`)
-      .then(response =>
+  if (id === 'clean') {
+    return(dispatch: Dispatch<Actions>) => {
         dispatch({
-          type: ActionType.GET_ALBUM_PLAYLIST,
-          payload: response.data
+          type: ActionType.CLEAN_ALBUM_PLAYLIST
         })
-      )
+      }
+  } else {
+    return (dispatch: Dispatch<any>) => {
+      axios.get(`http://143.198.158.238:3001/${type}/${id}`)
+        .then(response =>
+          dispatch({
+            type: ActionType.GET_ALBUM_PLAYLIST,
+            payload: response.data
+          })
+        )
+    }
   }
 }
 export const getTop = () => {
@@ -169,3 +193,22 @@ export const updateLike = (likeSong: any[]) => {
     })
   }
 }
+
+export const updatePlaylist = (playlist: any) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.UPDATE_PLAYLIST,
+      payload: playlist,
+    })
+  };
+};
+
+export const playAll = (data: swSong[]) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.PLAY_ALL,
+      payload: data,
+    });
+  };
+};
+

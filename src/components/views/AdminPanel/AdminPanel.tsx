@@ -9,6 +9,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from "redux";
 import * as actionCreator from '../../../redux/actions/action_admin'
+import Error404 from '../error404/error404';
+
 
 interface user{
   request:boolean,
@@ -19,91 +21,95 @@ interface user{
   songNumber:number
 }
 
-const data:user[] = [
-  {request:false,id:'1',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
-  {request:false,id:'2',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
-  {request:false,id:'3',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
-  {request:true,id:'4',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
-  {request:false,id:'5',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
-  {request:false,id:'6',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
-  {request:false,id:'12',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
-  {request:false,id:'22',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
-  {request:false,id:'32',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
-  {request:true,id:'42',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
-  {request:false,id:'52',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
-  {request:false,id:'62',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
-  {request:false,id:'13',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
-  {request:false,id:'23',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
-  {request:false,id:'33',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
-  {request:false,id:'43',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
-  {request:false,id:'53',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
-  {request:false,id:'63',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
-  {request:false,id:'1',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
-  {request:false,id:'2',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
-  {request:false,id:'3',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
-  {request:true,id:'4',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
-  {request:false,id:'5',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
-  {request:false,id:'6',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
-  {request:false,id:'12',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
-  {request:false,id:'22',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
-  {request:false,id:'32',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
-  {request:false,id:'42',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
-  {request:false,id:'52',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
-  {request:false,id:'62',type:'user',username:'jony',email:'jony@sw.com',songNumber:0},
-  {request:false,id:'13',type:'artist',username:'fran',email:'fran@sw.com',songNumber:2},
-  {request:false,id:'23',type:'artist',username:'david',email:'deivid@sw.com',songNumber:2},
-  {request:false,id:'33',type:'artist',username:'nano',email:'nano@sw.com',songNumber:3},
-  {request:false,id:'43',type:'user',username:'javier',email:'javie@sw.com',songNumber:0},
-  {request:false,id:'53',type:'user',username:'gaston',email:'gaston@sw.com',songNumber:0},
-  {request:false,id:'63',type:'user',username:'jony',email:'jony@sw.com',songNumber:0}
-]
 const AdminPanel = ()=>{
   const dispatch = useDispatch()
-  const {getAllUsers} = bindActionCreators(actionCreator,dispatch)
+  const {getAllUsers, getStats} = bindActionCreators(actionCreator,dispatch)
   const users = useSelector((state:any)=>state.users)
   const adminOption = useSelector((state:any)=>state.adminOption)
-  const ADMIN_ID = 'c0e634a0-09ac-42f4-9a05-41f77cba6996'
-  // const {user, isAuthenticated} = useAuth0()
-  // console.log(isAuthenticated)
+  const pageStats = useSelector((state:any)=>state.pageStats)
+  const userAdmin = useSelector((state:any)=>state.userAdmin)
+  const {user, isAuthenticated} = useAuth0()
+  const ADMIN_EMAIL = user?.email
+  console.log(user)
   useEffect(()=>{
-    getAllUsers(ADMIN_ID)
+    getAllUsers(ADMIN_EMAIL)
+    getStats(ADMIN_EMAIL)
   },[])
-  if(adminOption.home===true){
-    return(  
-      <div>
-        <AdminSideBar/>
-        <NavAdmin option={true}/>
-        <div className={m.container_as78}>
-          <div>
-            
-          </div>
-          <div className={m.containerform_98ajz}>
-            <Link className={m.linkTolanding_h8z6} to='/'>back to landing</Link>
-            <h2 className={m.h2SignUp_f8h3}>Cosas de panel de administrador :b</h2>
-            <button className={m.inputGoogle_7fv8 }  >un boton cualquiera</button>
+  if(userAdmin){
+    if(adminOption.home===true){
+      return(  
+        <div>
+          <AdminSideBar/>
+          <NavAdmin option={true}/>
+          <div className={m.containerStats}>
+              { pageStats.totalsongs?
+                <div className={m.cardContainer}>
+                  <div className={m.divRow}>
+                    <div>
+                      <h2>Total Songs: {pageStats.totalsongs}</h2>
+                    </div>
+                    <div>
+                      <h2>Total Admin Users: {pageStats.totaladminusers}</h2>
+                    </div>
+                    <div>
+                      <h2>Total Regular Users: {pageStats.totalregularusers}</h2>
+                    </div>
+                  </div>
+                  <div className={m.divRow}>
+                    <div>
+                      <h2>Total Users: {pageStats.totalusers}</h2>
+                    </div>
+                    <div>
+                      <h2>Total Albums: {pageStats.totalalbums}</h2>
+                    </div>
+                    <div>
+                      <h2>Total Artists: {pageStats.totalartists}</h2>
+                    </div>
+                  </div>
+                  <div className={m.divRow}>
+                    <div>
+                      <h2>Total Genres: {pageStats.totalgenres}</h2>
+                    </div>
+                    <div>
+                      <h2>Total Playlists: {pageStats.totalplaylists}</h2>
+                    </div>
+                    <div>
+                      <h2>Play Count: {pageStats.totalplaycount}</h2>
+                    </div>
+                  </div>
+                </div> 
+                :
+                <h2>Loading...</h2>
+              }
+            <Link className={m.buttonBack} to='/'>Back to Landing</Link>
+            </div>
+        </div>
+      )
+    } else {
+      return(
+        <div>
+          <AdminSideBar/>
+          <NavAdmin option={false}/>
+          <div className={m.containerCards}>
+            <ul className={m.ul}>
+              {users.length>0 && users.map((user:any)=>{
+                if(adminOption.user && user.rol==='user'){
+                  return <li className={m.li}><UserCardAdmin user={user} admin={ADMIN_EMAIL}/></li>
+                }
+                if(!adminOption.user && user.rol==='artist'){
+                  return <li className={m.li}><UserCardAdmin user={user} admin={ADMIN_EMAIL}/></li>
+                }
+              }
+              )}
+            </ul>
+            <Link className={m.buttonBack} to='/'>Back to Landing</Link>
           </div>
         </div>
-      </div>
-    )
-  } else {
+      )
+    }
+  } else{
     return(
-      <div>
-        <AdminSideBar/>
-        <NavAdmin option={false}/>
-        <div className={m.containerCards}>
-          <ul className={m.ul}>
-            {users.map((user:any)=>{
-              if(adminOption.user && user.rol==='user'){
-                return <li className={m.li}><UserCardAdmin {...user}/></li>
-              }
-              if(!adminOption.user && user.rol==='artist'){
-                return <li className={m.li}><UserCardAdmin {...user}/></li>
-              }
-            }
-            )}
-          </ul>
-        </div>
-      </div>
+      <Error404 />
     )
   }
 }

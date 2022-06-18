@@ -9,6 +9,7 @@ interface State {
   query: string;
   searchResults: any;
   album_playlist: swAlbum | swPlaylist | any;
+  playlist_update: any;
   library_artist: types.LibraryArtist | any;
   queue: swSong[];
   home: types.Home;
@@ -17,6 +18,11 @@ interface State {
   top: any;
   users: any;
   loading: boolean;
+  artist: any;
+  artistTop: any,
+  pageStats: any,
+  user_info: any,
+  userAdmin: boolean
 }
 
 const initialState: State = {
@@ -30,6 +36,7 @@ const initialState: State = {
   //   playlistData: []
   // },
   album_playlist: {},
+  playlist_update: [],
   library_artist: {
     list: [], // favs   -  top       // track[]
     card: [], // playlist - albums   // album[]
@@ -44,10 +51,35 @@ const initialState: State = {
   top: [],
   users: [],
   loading: false,
+  artist:{},
+  artistTop:{},
+  pageStats:{},
+  user_info: {},
+  userAdmin: false,
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
   switch (action.type) {
+    case ActionType.USER_ADMIN:
+      return {
+        ...state,
+        userAdmin: action.payload,
+      };
+    case ActionType.GET_STATS:
+      return {
+        ...state,
+        pageStats: action.payload,
+      };
+    case ActionType.GET_ARTIST_TOP:
+      return {
+        ...state,
+        artistTop: action.payload,
+      };
+    case ActionType.GET_ARTIST:
+      return {
+        ...state,
+        artist: action.payload,
+      };
     case ActionType.CLEAN_GENRE:
       return {
         ...state,
@@ -107,6 +139,16 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         queue: [...state.queue, action.payload],
       };
+    case ActionType.DELETE_FROM_QUEUE:
+        return {
+          ...state,
+          queue: state.queue.filter((song: any)=> song.id !== action.payload)
+        };
+    case ActionType.SORT_QUEUE:
+        return {
+          ...state,
+          queue: [...action.payload],
+        };
     case ActionType.SEARCH_ALL:
       return {
         ...state,
@@ -125,6 +167,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         album_playlist: action.payload,
       };
+    case ActionType.CLEAN_ALBUM_PLAYLIST:
+      return {
+        ...state,
+        album_playlist: {},
+      };
     case ActionType.GET_PlaylistForId:
       return {
         ...state,
@@ -139,6 +186,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
       console.log(action.payload);
       return {
         ...state,
+      };
+    case ActionType.UPDATE_PLAYLIST:
+      return {
+        ...state,
+        playlist_update: action.payload,
       };
     case ActionType.GET_TOP:
       return {
@@ -174,6 +226,15 @@ const Reducer = (state: any = initialState, action: Actions) => {
             liked_songs: action.payload
           },
         },
+    case ActionType.PLAY_ALL:
+      return{
+        ...state,
+        queue: action.payload
+      }
+    case ActionType.GET_USER_INFO:
+      return {
+        ...state,
+        user_info: action.payload,
       };
     default:
       return state;

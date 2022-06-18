@@ -9,6 +9,7 @@
   grid-row-gap: 0px;
   height: 90px;
   position: fixed;
+  z-index: 11;
   bottom: 0;
 }
 .seekbar{

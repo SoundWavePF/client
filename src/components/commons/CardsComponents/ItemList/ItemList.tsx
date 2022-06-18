@@ -124,7 +124,7 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
     case "artist":
       return (
         <div className={s.itemListContainer}>
-          <Link className={s.links} to={"/artist/:id"}>
+          <Link className={s.links} to={"/artist/" + props.item.id}>
             <div className={s.imageAndNameContainer}>
               <div>
                 <div>

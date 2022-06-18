@@ -13,7 +13,7 @@
   grid-template-columns: 250px auto;
   grid-template-rows: 3.5rem 3.5rem auto;
   gap: 1.2rem;
-  font-family: var(--sw-medium);
+  font-family: var(sw-medium);
 }
 .details > img{
   grid-area: 1 / 1 / 4 / 2;
@@ -22,17 +22,20 @@
 .details > span:nth-child(2){
   grid-area: 1 / 2 / 2 / 3;
   align-self: start;
-  font-size: 2.8rem;
+  font-size: 2.2rem;
+  font-family: var(sw-bold);
   /* margin-top: .5rem; */
 }
-.details > span:nth-child(3){
+.details > a:nth-child(3){
   grid-area: 2 / 2 / 3 / 3;
   align-self: center;
   font-size: 1.5rem;
   cursor: pointer;
   width: fit-content;
+  text-decoration: none;
+  color: black;
 }
-.details > button:last-child{
+.btn{
   grid-area: 3 / 2 / 4 / 3;
   width: 150px;
   height: 35px;
@@ -42,48 +45,39 @@
 	margin-left: 2rem;
 	transition: .2s ease-in-out;
 }
-.details > button:last-child:hover{
+.btn:hover{
   background-color: var(--yellow-dark);
+}
+.edit{
+  position: fixed;
+  bottom: 100px;
+  right: 10px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--yellow-light);
+  border-radius: 100%;
+  border: none;
+	transition: .2s ease-in-out;
+}
+.edit:hover{
+  background-color: var(--yellow-dark);
+}
+.save{
+  background-color: #46de00;
+  color: white;
+}
+.save:hover{
+  background-color: #008e00;
 }
 
 .container > div:last-child {
   /* border: 1px solid gray; */
   display: block;
 }
-
-/* .list{
-  background-color: azure;
-  height: 500px;
+.loading {
+  align-self: center;
+  justify-self: center;
+  size: 100%;
+  width: 5rem;
+  height: 5rem;
 }
-.Column{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 2em;
-  margin-left:1em ;
-}
-
-.ContainerFavorite div{
-  width: auto;
-}
-
-.ContainerLibrary{
-  margin-left: 2em;
-  margin-right: 2em;
-
-}
-.ContainerInfo{
-  display: flex;
-margin: 1vh;
-height: 20em;
-width: 80%;
-}
-.ContainerInfo img{
-  height: 15em;
-  width: 15em;
-  margin-right: 1em;
-}
-.ContainerInfo h1{
-  display: flex;
-  align-items: center;
-} */
