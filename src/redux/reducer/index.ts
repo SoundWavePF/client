@@ -19,7 +19,8 @@ interface State {
   users: any;
   loading: boolean;
   artist: any;
-  artistTop: any
+  artistTop: any,
+  pageStats: any
 }
 
 const initialState: State = {
@@ -49,11 +50,17 @@ const initialState: State = {
   users: [],
   loading: false,
   artist:{},
-  artistTop:{}
+  artistTop:{},
+  pageStats:{},
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
   switch (action.type) {
+    case ActionType.GET_STATS:
+      return {
+        ...state,
+        pageStats: action.payload,
+      };
     case ActionType.GET_ARTIST_TOP:
       return {
         ...state,

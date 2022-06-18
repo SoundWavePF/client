@@ -23,7 +23,7 @@ const ArtistCardContainer = ({props}:any)=>{
     case 'Singles':
       return(
         <div>
-          {artist.songs.length>0? artist.songs.map((song:any)=><div className={style.listDiv} ><ListItem item={song}/></div>) : <h1>cargando</h1>} 
+          {artist.songs.length>0? artist.songs.map((song:any)=><div className={style.listDiv} ><ListItem item={song} /></div>) : <h1>cargando</h1>} 
         </div>
       )
     case 'Description':

@@ -14,8 +14,8 @@ const NavAdmin = ({option}:any)=>{
     if(e.target.value==='Ascendent') return true // en ves de null va la action de sort
     if(e.target.value==='Descendent') return true // en ves de null va la action de sort
   }
-  console.log(option)
-  if(option){
+  // console.log(option)
+  if(true){
     return (
       <div className={style.navbar}>
         <div className={style.divOption}>
