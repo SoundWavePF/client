@@ -31,9 +31,8 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
     let seconds: number = num - minutes * 60;
     let minStr: string = minutes.toString();
     let secStr: string = seconds.toString();
-    return `${minStr.length == 1 ? "0" + minStr : minStr}:${
-      secStr.length == 1 ? "0" + secStr : secStr
-    }`;
+    return `${minStr.length == 1 ? "0" + minStr : minStr}:${secStr.length == 1 ? "0" + secStr : secStr
+      }`;
   };
   const dispatch = useDispatch();
   const { playSong, likeSong, dislikeSong } = bindActionCreators(actionCreator, dispatch);
@@ -43,9 +42,9 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
   const state = useSelector((state: any) => state);
   const [estado, setEstado] = useState<any>();
   const [buttonLike, setButtonLike] = useState<any>(false);
-  const { getLibrary } = bindActionCreators(actionCreatorUser, dispatch);
+  // const { getLibrary } = bindActionCreators(actionCreatorUser, dispatch);
   useEffect(() => {
-    if(email !== undefined) getLibrary(email);
+    // if(email !== undefined) getLibrary(email);
     state.library_artist.list.liked_songs && setEstado(state.library_artist.list.liked_songs.map((e: any) => e.id));
   }, []);
 

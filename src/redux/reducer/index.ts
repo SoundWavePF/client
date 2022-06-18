@@ -16,6 +16,7 @@ interface State {
   genre: any;
   top: any;
   users: any;
+  loading: boolean;
 }
 
 const initialState: State = {
@@ -41,7 +42,8 @@ const initialState: State = {
   adminOption: { home: true, user: false },
   genre: [],
   top: [],
-  users: []
+  users: [],
+  loading: false,
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -156,6 +158,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
       return {
         ...state,
         users: action.payload,
+      };
+    case ActionType.LOADING:
+      return {
+        ...state,
+        loading: action.payload,
       };
     default:
       return state;

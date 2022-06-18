@@ -9,26 +9,26 @@ import * as hc from "./hc_data";
 
 
 
-export const getGenres = ()=>{
-  return(dispatch: Dispatch<any>)=>{
+export const getGenres = () => {
+  return (dispatch: Dispatch<any>) => {
     axios.get('http://143.198.158.238:3001/genre/all')
-    .then(response => 
-      dispatch({
-        type: ActionType.GET_GENRES,
-        payload: response.data
-      })
+      .then(response =>
+        dispatch({
+          type: ActionType.GET_GENRES,
+          payload: response.data
+        })
       )
   }
 }
-export const getChart = ()=>{
-  return(dispatch: Dispatch<any>)=>{
+export const getChart = () => {
+  return (dispatch: Dispatch<any>) => {
     axios.get('http://143.198.158.238:3001/top')
-    .then(response => 
-      dispatch({
-        type: ActionType.GET_CHART,
-        payload: response.data,
-      })
-    );
+      .then(response =>
+        dispatch({
+          type: ActionType.GET_CHART,
+          payload: response.data,
+        })
+      );
   };
 };
 
@@ -74,39 +74,39 @@ export const addToQueue = (data: swSong) => {
 };
 export const addToPlaylist = (playlistId: string, songId: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post('http://143.198.158.238:3001/playlist/add', {playlistId: playlistId, songId: songId})
-    .then(response => dispatch({
-      type: ActionType.ADD_TO_PLAYLIST,
-      payload: response.data
-    }))
+    axios.post('http://143.198.158.238:3001/playlist/add', { playlistId: playlistId, songId: songId })
+      .then(response => dispatch({
+        type: ActionType.ADD_TO_PLAYLIST,
+        payload: response.data
+      }))
   }
 }
-export const getGenre = (id:any)=>{ // obtiene un genero para la ruta /genre/:id
-  return(dispatch: Dispatch<any>)=>{
-    axios.get('http://143.198.158.238:3001/genre/'+id)
-    .then(response => 
-      dispatch({
-        type: ActionType.GET_GENRE,
-        payload: response.data
-      })
+export const getGenre = (id: any) => { // obtiene un genero para la ruta /genre/:id
+  return (dispatch: Dispatch<any>) => {
+    axios.get('http://143.198.158.238:3001/genre/' + id)
+      .then(response =>
+        dispatch({
+          type: ActionType.GET_GENRE,
+          payload: response.data
+        })
       )
   }
 }
-export const cleanGenre = ()=>{
-  return(dispatch: Dispatch<Actions>) => {
+export const cleanGenre = () => {
+  return (dispatch: Dispatch<Actions>) => {
     dispatch({
       type: ActionType.CLEAN_GENRE
     })
   }
 }
-export const getAlbumPlaylist = (id:any, type:string)=>{
-  return(dispatch: Dispatch<any>)=>{
+export const getAlbumPlaylist = (id: any, type: string) => {
+  return (dispatch: Dispatch<any>) => {
     axios.get(`http://143.198.158.238:3001/${type}/${id}`)
-    .then(response => 
-      dispatch({
-        type: ActionType.GET_ALBUM_PLAYLIST,
-        payload: response.data
-      })
+      .then(response =>
+        dispatch({
+          type: ActionType.GET_ALBUM_PLAYLIST,
+          payload: response.data
+        })
       )
   }
 }
@@ -121,30 +121,38 @@ export const getTop = () => {
   };
 };
 export const likeSong = (songId: string, email: string) => {
-  return(dispatch: Dispatch<Actions>) => {
-    axios.post(`http://143.198.158.238:3001/favorite/add/${songId}`, {email: email})
-    .then(response => dispatch({
-      type: ActionType.LIKE_SONG,
-      payload: response.data
-    }))
+  return (dispatch: Dispatch<Actions>) => {
+    axios.post(`http://143.198.158.238:3001/favorite/add/${songId}`, { email: email })
+      .then(response => dispatch({
+        type: ActionType.LIKE_SONG,
+        payload: response.data
+      }))
   }
 }
 
 export const dislikeSong = (songId: string, email: string) => {
-  return(dispatch: Dispatch<Actions>) => {
-    axios.post(`http://143.198.158.238:3001/favorite/remove/${songId}`, {email: email})
-    .then(response => dispatch({
-      type: ActionType.DISLIKE_SONG,
-      payload: response.data
-    }))
+  return (dispatch: Dispatch<Actions>) => {
+    axios.post(`http://143.198.158.238:3001/favorite/remove/${songId}`, { email: email })
+      .then(response => dispatch({
+        type: ActionType.DISLIKE_SONG,
+        payload: response.data
+      }))
   }
 }
 
 export const setQuery = (query: string) => {
-  return(dispatch: Dispatch<Actions>) => {
+  return (dispatch: Dispatch<Actions>) => {
     dispatch({
       type: ActionType.SET_QUERY,
       payload: query
+    })
+  }
+}
+export const loading = (value: boolean) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.LOADING,
+      payload: value
     })
   }
 }
