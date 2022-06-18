@@ -78,8 +78,8 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
                 className={s.likeBtn}
                 onClick={() => likeSongUser.find((e: any) => e.id === props.item.id) ? dislike(props.item.id) : like(props.item)}
               >
-                {likeSongUser.find((e: any) => e.id === props.item.id) ? <p className={s.likeImgInclude}>♥</p> :
-                  <p className={s.likeImg}> ♥ </p>}
+                {likeSongUser.find((e: any) => e.id === props.item.id) ? <img className={s.likeImgInclude} src={likefull} alt='like button' /> :
+                  <img className={s.likeImg} src={likefull} alt='like button' />}
               </button>
             )}
             <div>

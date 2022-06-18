@@ -1,7 +1,7 @@
 .itemListContainer {
     display: flex;
     align-items: center;
-    background-color: #D6D6D6;
+    background-color: #d6d6d6;
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
     border-top-right-radius: 5px;
@@ -17,18 +17,16 @@
     align-items: center;
 }
 
-
-.Play  {
+.Play {
     left: 25px;
     top: 10px;
     font-weight: bolder;
     font-size: xx-large;
     position: absolute;
     display: none;
-
 }
 
-.imageAndNameContainer:hover .Play{
+.imageAndNameContainer:hover .Play {
     display: flex;
     justify-content: center;
     height: 1.5em;
@@ -39,15 +37,12 @@
     position: absolute;
     display: block;
     color: #0f0f0f;
-
 }
-.imageAndNameContainer:hover .image{
+
+.imageAndNameContainer:hover .image {
     color: #0f0f0f;
-  filter: opacity(70%);
+    filter: opacity(70%);
 }
-
-
-
 
 .controllerContainer {
     display: flex;
@@ -56,89 +51,82 @@
     margin-right: 10px;
 }
 
-
 .image {
     width: 70px;
     border-radius: 50%;
     box-shadow: 1px 1px 0.4rem rgba(0, 0, 0, 0.87);
 }
 
-.links{
+.links {
     text-decoration: none;
 }
 
 .songPosition {
     font-size: 20px;
-    font-family: 'sw-medium';
+    font-family: "sw-medium";
     margin-left: 10px;
     color: #000000;
-    text-shadow: 2px 0 0 rgba(255, 255, 255, 0.364), -2px 0 0 rgba(255, 255, 255, 0.392), 0 2px 0 rgba(255, 255, 255, 0.398), 0 -2px 0 rgba(255, 255, 255, 0.358), 1px 1px rgba(255, 255, 255, 0.415), -1px -1px 0 rgba(255, 255, 255, 0.307), 1px -1px 0 rgba(255, 255, 255, 0.37), -1px 1px 0 rgba(255, 255, 255, 0.387);
+    text-shadow: 2px 0 0 rgba(255, 255, 255, 0.364),
+        -2px 0 0 rgba(255, 255, 255, 0.392), 0 2px 0 rgba(255, 255, 255, 0.398),
+        0 -2px 0 rgba(255, 255, 255, 0.358), 1px 1px rgba(255, 255, 255, 0.415),
+        -1px -1px 0 rgba(255, 255, 255, 0.307), 1px -1px 0 rgba(255, 255, 255, 0.37),
+        -1px 1px 0 rgba(255, 255, 255, 0.387);
 }
-
 
 .songName {
     /* margin-left: 0.7em; */
     font-size: 20px;
-    font-family: 'sw-medium';
+    font-family: "sw-medium";
     color: #000000;
     /* text-shadow: 2px 0 0 rgba(255, 255, 255, 0.364), -2px 0 0 rgba(255, 255, 255, 0.392), 0 2px 0 rgba(255, 255, 255, 0.398), 0 -2px 0 rgba(255, 255, 255, 0.358), 1px 1px rgba(255, 255, 255, 0.415), -1px -1px 0 rgba(255, 255, 255, 0.307), 1px -1px 0 rgba(255, 255, 255, 0.37), -1px 1px 0 rgba(255, 255, 255, 0.387); */
     padding-left: 12px;
 }
-.songName:hover{
-    cursor: pointer
+
+.songName:hover {
+    cursor: pointer;
 }
-.spanArtistName{
+
+.spanArtistName {
     color: #1a1a1a;
     padding-left: 12px;
 }
 
-
-.likeBtn{
+.likeBtn {
     background-color: transparent;
     width: 25px;
     margin-left: 40px;
     margin-right: 15px;
     border: none;
-    }
+}
 
+.likeImg {
+    width: 30px;
+    color: black;
+}
 
+.likeImgInclude {
+    width: 30px;
+    color: rgb(223, 19, 19);
+    filter: invert(14%) sepia(99%) saturate(4977%) hue-rotate(358deg) brightness(92%) contrast(90%);
+}
 
-    .likeImg {
-        width: 30px;
-    
-        font-size: 3em;
-        color: black;
-    }
-    
-    
-    .likeImgInclude {
-        width: 30px;
-        font-size: 3em;
-        color: rgb(223, 19, 19);
-      
-    }
-    
-    
-    .likeImg:hover{
-        width: 30px;
-        font-size: 3em;
-    
-    
-        color: rgb(174, 51, 51);
-    }
-    
+.likeImg:hover {
+    width: 30px;
+    font-size: 3em;
 
-.likeImgAlt{
-    filter: opacity(0.4) drop-shadow(0 0 0 red); 
+    color: rgb(174, 51, 51);
+}
+
+.likeImgAlt {
+    filter: opacity(0.4) drop-shadow(0 0 0 red);
     width: 25px;
     margin-left: 40px;
     margin-right: 15px;
-    
 }
 
-.likeImgAlt:hover{
+.likeImgAlt:hover {
     cursor: pointer;
-    filter: opacity(0.4) drop-shadow(0 0 0 red); 
+    filter: opacity(0.4) drop-shadow(0 0 0 red);
     width: 25px;
     margin-left: 40px;
 }
@@ -151,7 +139,5 @@
 
 .timeImg {
     width: 25px;
-    margin-left:4px;
+    margin-left: 4px;
 }
-
-
