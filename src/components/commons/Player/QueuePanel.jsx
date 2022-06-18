@@ -5,19 +5,21 @@ import {ReactSortable} from "react-sortablejs";
 import * as actionCreator from '../../../redux/actions/action_player';
 import { bindActionCreators } from "redux";
 
+import playlist from '../../../assets/playlist.png'
+import bintrash from '../../../assets/bintrash.png'
 
 import style from './QueuePanel.module.css';
 
-/* 
-image_small
-name
-*/
+
 const Song = (props)=>{
     const dispatch = useDispatch()
-    const {playSong}  = bindActionCreators(actionCreator, dispatch);
+    const {playSong, deleteFromQueue}  = bindActionCreators(actionCreator, dispatch);
 
     function handleClick(){
-        playSong(props.item)
+        //playSong(props.item)
+    }
+    function handleDelete (){
+        deleteFromQueue(props.item.id)
     }
 
     return (
@@ -27,7 +29,7 @@ const Song = (props)=>{
                 <img className={style.image} src={props.item.image_small} alt="" /> 
                 {props.index}. {props.item.name}
             </div>
-            <div className={style.info}><img width={'20px'} src={'https://cdn-icons.flaticon.com/png/512/3405/premium/3405244.png?token=exp=1655499956~hmac=b249cc39a084dc454c2b40090aea3340'}/> </div>
+            <div onClick={handleDelete} className={style.info}><img width={'22px'} src={bintrash}/> </div>
         </div>
     )
 }
@@ -70,7 +72,7 @@ const QueuePanel = ()=>{
     <div ref={container}>
         <div onClick={toggle}>
             <div className={style.notification} >{queue.length}</div>
-            <img className={style.queueIcon} src={'https://prints.ultracoloringpages.com/e5522d83b1dff43a54152150fc1c1a01.png'} height='60px' width='60px' />
+            <img className={style.queueIcon} src={playlist} height='60px' width='60px' />
         </div>
         {
             !open ? null :

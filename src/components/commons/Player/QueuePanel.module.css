@@ -23,13 +23,13 @@
     position: relative;
 }
 
-.name:hover {
+/* .name:hover {
     background-color: aqua;
-}
+} */
 
-.image:hover {
+/* .image:hover {
     background-color: aquamarine;
-}
+} */
 
 .notification {
     position: absolute;
@@ -41,7 +41,7 @@
     height: 20px;
     text-align: center;
     border-radius: 50%;
-    background-color: aqua;
+    background-color: var(--yellow-light);
 }
 
 .name {

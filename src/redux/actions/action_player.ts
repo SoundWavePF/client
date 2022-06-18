@@ -72,6 +72,14 @@ export const addToQueue = (data: swSong) => {
     });
   };
 };
+export const deleteFromQueue = (id: string) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.DELETE_FROM_QUEUE,
+      payload: id,
+    });
+  };
+} 
 export const sortQueue = (data: swSong[]) => {
   return (dispatch: Dispatch<Actions>) => {
     dispatch({

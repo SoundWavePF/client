@@ -121,6 +121,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         queue: [...state.queue, action.payload],
       };
+    case ActionType.DELETE_FROM_QUEUE:
+        return {
+          ...state,
+          queue: state.queue.filter((song: any)=> song.id !== action.payload)
+        };
     case ActionType.SORT_QUEUE:
         return {
           ...state,
