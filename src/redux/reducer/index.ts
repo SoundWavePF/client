@@ -9,6 +9,7 @@ interface State {
   query: string;
   searchResults: any;
   album_playlist: swAlbum | swPlaylist | any;
+  playlist_update: any;
   library_artist: types.LibraryArtist | any;
   queue: swSong[];
   home: types.Home;
@@ -32,6 +33,7 @@ const initialState: State = {
   //   playlistData: []
   // },
   album_playlist: {},
+  playlist_update: [],
   library_artist: {
     list: [], // favs   -  top       // track[]
     card: [], // playlist - albums   // album[]
@@ -158,6 +160,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
       console.log(action.payload);
       return {
         ...state,
+      };
+    case ActionType.UPDATE_PLAYLIST:
+      return {
+        ...state,
+        playlist_update: action.payload,
       };
     case ActionType.GET_TOP:
       return {

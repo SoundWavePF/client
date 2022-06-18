@@ -73,18 +73,8 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
                 className={s.likeBtn}
                 onClick={() => estado?.includes(props.item.id) ? dislikeSong(props.item.id, email) : likeSong(props.item.id, email)}
               >
-                <p
-                  onClick={() => {
-                    setButtonLike(!buttonLike);
-                  }}
-                  className={
-                    estado?.includes(props.item.id) | buttonLike
-                      ? s.likeImgInclude
-                      : s.likeImg
-                  }
-                >
-                  ♥
-                </p>
+                <img
+                  src={likefull} alt='like button' onClick={() => {setButtonLike(!buttonLike);}}className={estado?.includes(props.item.id) | buttonLike ? s.likeImgInclude : s.likeImg}/>
               </button>
             )}
             <div>
@@ -129,7 +119,7 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
     case "artist":
       return (
         <div className={s.itemListContainer}>
-          <Link className={s.links} to={"/artist/"+props.item.id}>
+          <Link className={s.links} to={"/artist/" + props.item.id}>
             <div className={s.imageAndNameContainer}>
               <div>
                 <div>

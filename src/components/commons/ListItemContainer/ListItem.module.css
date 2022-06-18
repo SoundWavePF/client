@@ -87,31 +87,24 @@
 }
 
 .likeImg {
+    width: 30px;
+    color: black;
+  }
+  
+  .likeImgInclude {
+    width: 30px;
+    color: rgb(223, 19, 19);
+    filter: invert(14%) sepia(99%) saturate(4977%) hue-rotate(358deg)
+      brightness(92%) contrast(90%);
+  }
 
+  .likeBtn {
+    background-color: transparent;
     width: 25px;
     margin-left: 40px;
     margin-right: 15px;
-}
-
-.likeImg:hover{
-    filter: opacity(0.4) drop-shadow(0 0 0 red); 
-    cursor: pointer;
-}
-
-.likeImgAlt{
-    filter: opacity(0.4) drop-shadow(0 0 0 red); 
-    width: 25px;
-    margin-left: 40px;
-    margin-right: 15px;
-    
-}
-
-.likeImgAlt:hover{
-    cursor: pointer;
-    filter: opacity(0.4) drop-shadow(0 0 0 red); 
-    width: 25px;
-    margin-left: 40px;
-}
+    border: none;
+  }
 
 .duration {
     font-size: 20px;
@@ -138,12 +131,14 @@
     align-items: center;
     padding-right: 1rem;
     /* overflow: hidden; */
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-
+.container:hover {
+    background-color: var(--gray-light);
+}
 .container > div:first-child{
     display: flex;
     height: 100%;
