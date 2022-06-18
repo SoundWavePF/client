@@ -11,6 +11,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import * as actionCreator from "../../../redux/actions/action_player";
 import * as actionCreator2 from "../../../redux/actions/action_user";
+import * as actionCreator3 from "../../../redux/actions/action_admin";
+
 import { bindActionCreators } from "redux";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -22,7 +24,11 @@ const Home = () => {
   const email: string | undefined = user?.email;
   const { setQuery } = bindActionCreators(actionCreator, dispatch)
   const { getLibrary } = bindActionCreators(actionCreator2, dispatch)
+  const { userAdmin } = bindActionCreators(actionCreator3, dispatch)
+
+  //console.log(user)
   useEffect(() => {
+    if (email) userAdmin(email)
     if (email) getLibrary(email)
   }, [isLoading])
   useEffect(() => {
