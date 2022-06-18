@@ -1,6 +1,6 @@
 import { LibraryArtist } from "../reducer/types";
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery |  GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll | UpdatePlaylist;
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery |  GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll | UpdatePlaylist| sortQueue;
 
 export enum ActionType{
   CLEAN_GENRE = 'CLEAN_GENRE',
@@ -29,7 +29,8 @@ export enum ActionType{
   GET_ALL_USERS = 'GET_ALL_USERS',
   GET_ARTIST = 'GET_ARTIST',
   GET_ARTIST_TOP = 'GET_ARTIST_TOP',
-  PLAY_ALL = 'PLAY_ALL'
+  PLAY_ALL = 'PLAY_ALL',
+  SORT_QUEUE = 'SORT_QUEUE'
 }
 
 export interface GetArtistTop{
@@ -98,6 +99,10 @@ interface PlaySong{
 interface AddToQueue{
   type: ActionType.ADD_TO_QUEUE,
   payload: swSong
+}
+ interface sortQueue{
+  type: ActionType.SORT_QUEUE,
+  payload: swSong[]
 }
 interface getLibrary{
   type: ActionType.GET_LIBRARY,

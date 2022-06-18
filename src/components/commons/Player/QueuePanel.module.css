@@ -6,6 +6,7 @@
 
     overflow: scroll;
     padding: 10px;
+    max-height: 300px;
 
     border: 1px solid var(--gray-light);
     border-radius: 5px;
@@ -69,4 +70,14 @@
 
     justify-content: space-between;
     border-bottom: 1px solid var(--gray-light);
+}
+
+.currentSong {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+
+    justify-content: space-between;
+    border-bottom: 1px solid var(--gray-light);
+    background-color: var(--yello-light);
 }

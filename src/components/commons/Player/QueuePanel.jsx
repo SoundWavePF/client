@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import {useSelector} from 'react-redux';
-import {ReactSortable} from "react-sortablejs"
+import {useSelector, useDispatch} from 'react-redux';
+import {ReactSortable} from "react-sortablejs";
+
+import * as actionCreator from '../../../redux/actions/action_player';
+import { bindActionCreators } from "redux";
+
 
 import style from './QueuePanel.module.css';
 
@@ -9,16 +13,19 @@ image_small
 name
 */
 const Song = (props)=>{
+    const dispatch = useDispatch()
+    const {playSong}  = bindActionCreators(actionCreator, dispatch);
 
     function handleClick(){
-        alert('play')
+        playSong(props.item)
     }
 
     return (
         <div className={style.song } >
             <div className={style.name}  onClick={handleClick}>
+                =
                 <img className={style.image} src={props.item.image_small} alt="" /> 
-                {props.index} {props.item.name}
+                {props.index}. {props.item.name}
             </div>
             <div className={style.info}><img width={'20px'} src={'https://cdn-icons.flaticon.com/png/512/3405/premium/3405244.png?token=exp=1655499956~hmac=b249cc39a084dc454c2b40090aea3340'}/> </div>
         </div>
@@ -27,10 +34,11 @@ const Song = (props)=>{
 
 const QueuePanel = ()=>{
     const [open, setOpen] = useState(false);
-    const queue = useSelector(state=>state.queue)
-    const [state, setState] = useState(queue);
+    const queue = useSelector(state=>state.queue);
+    const dispatch = useDispatch()
+   
+    const {sortQueue}  = bindActionCreators(actionCreator, dispatch)
     
-    console.log('state', state)
     console.log('queue', queue)
 
     const container = useRef(null); 
@@ -69,11 +77,9 @@ const QueuePanel = ()=>{
                 <div className={style.box}>
                     <h4>Queue</h4>
                     <hr/>
-                    <ReactSortable list={state} setList={setState}>
-                        {state.map((song) => {
-                            console.log('state', state)
-                            return <Song item={song} index={1} />
-                        } )}
+                    <ReactSortable list={queue} setList={sortQueue} sort={true}>
+                        {queue.map((song, index) => <Song key={index} item={song} index={index+1}  />
+                        )}
                     </ReactSortable>
                 </div>
         }
