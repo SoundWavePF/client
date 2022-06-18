@@ -20,7 +20,8 @@ interface State {
   loading: boolean;
   artist: any;
   artistTop: any,
-  pageStats: any
+  pageStats: any,
+  user_info: any,
 }
 
 const initialState: State = {
@@ -52,6 +53,7 @@ const initialState: State = {
   artist:{},
   artistTop:{},
   pageStats:{},
+  user_info: {},
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -212,6 +214,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         queue: action.payload
       }
+    case ActionType.GET_USER_INFO:
+      return {
+        ...state,
+        user_info: action.payload,
+      };
     default:
       return state;
   }
