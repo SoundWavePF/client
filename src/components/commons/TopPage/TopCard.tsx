@@ -40,7 +40,7 @@ const TopCard = (props: any) => {
             <img className={!fav ? styles.noFav : ''} src={likefull} alt="like icon"
               onClick={fav ? () => setFav(false) : () => {
                 setFav(true)
-                if (email) likeSong(song.id, email)
+                // if (email) likeSong(song.id, email)
               }
               } />
             {/* <img  src="https://cdn-icons.flaticon.com/png/512/2589/premium/2589175.png?token=exp=1655324803~hmac=7f8869b901470cca74d785d11ebd8eeb" alt="corazonATR" /> */}

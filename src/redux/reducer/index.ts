@@ -164,6 +164,17 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         loading: action.payload,
       };
+    case ActionType.UPDATE_LIKE:
+      return {
+        ...state,
+        library_artist: {
+          ...state.library_artist,
+          list: {
+            ...state.library_artist.list,
+            liked_songs: action.payload
+          },
+        },
+      };
     default:
       return state;
   }

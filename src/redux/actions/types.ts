@@ -1,7 +1,7 @@
 import { LibraryArtist } from "../reducer/types";
 
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery | GetAllUsers | DislikeSong | loading;
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery | GetAllUsers | DislikeSong | loading | updateLike;
 
 
 
@@ -29,7 +29,8 @@ export enum ActionType {
   DISLIKE_SONG = 'DISLIKE_SONG',
   SET_QUERY = 'SET_QUERY',
   GET_ALL_USERS = 'GET_ALL_USERS',
-  LOADING = 'LOADING'
+  LOADING = 'LOADING',
+  UPDATE_LIKE = 'UPDATE_LIKE'
 }
 
 export interface GetAllUsers {
@@ -128,4 +129,8 @@ interface DislikeSong {
 interface loading {
   type: ActionType.LOADING,
   payload: boolean
+}
+interface updateLike {
+  type: ActionType.UPDATE_LIKE,
+  payload: any[]
 } 
