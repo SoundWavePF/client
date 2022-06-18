@@ -23,7 +23,7 @@
   background-color: #ffee32;
   border: none;
   border: 1px solid black;
-  width: 220px;
+  width: 270px;
 }
 .buttonUsername:hover{
   background-color: #fff79c;
@@ -75,7 +75,7 @@
 .divId{
   display: flex;
   padding: 4px;
-  width: 300px;
+  width: 400px;
   border: 1px solid black;
 }
 .divId:hover{

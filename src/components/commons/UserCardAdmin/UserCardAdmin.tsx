@@ -1,20 +1,16 @@
 import m from './UserCardAdmin.module.css'
 import Swal from 'sweetalert2'
-
-
-// interface user{
-//   request:boolean,
-//   id:string,
-//   type:string,
-//   username:string,
-//   email:string,
-//   songNumber:number
-// }
-
+import axios from 'axios'
+import { useDispatch } from 'react-redux';
+import { bindActionCreators } from "redux";
+import * as actionCreator from '../../../redux/actions/action_admin'
 
 
 const UserCardAdmin = (user:any)=>{
-  const deleteUser = ()=>{
+  const dispatch = useDispatch()
+  const {getAllUsers} = bindActionCreators(actionCreator,dispatch)
+  const ADMIN_EMAIL='franciscomansilla1999@gmail.com'
+  const deleteUser = (userC:any)=>{
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -25,15 +21,28 @@ const UserCardAdmin = (user:any)=>{
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
+        let data = {
+          adminEmail:ADMIN_EMAIL,
+          userEmail:userC.email,
+        }
+        axios.post('http://143.198.158.238:3001/admin/deactivate',data)
+        .then(r=>{
+        console.log(r.data)
+        getAllUsers(ADMIN_EMAIL)
         Swal.fire(
           'Deleted!',
           'This user was deleted.',
           'success'
         )
+        })
+        .catch(error=>{
+          console.log(error)
+          Swal.fire('Error paso algo :(')
+        })
       }
     })
   }
-  const changeRole = async()=>{
+  const changeRole = async(userC:any)=>{
     const { value: fruit } = await Swal.fire({
       title: 'Select field validation',
       input: 'select',
@@ -46,8 +55,23 @@ const UserCardAdmin = (user:any)=>{
       inputValidator: (value) => {
         return new Promise((resolve) => {
           if (value === 'Aprobar') {
+            let data = {
+              adminEmail:ADMIN_EMAIL,
+              userEmail:userC.email,
+            }
+            axios.post('http://143.198.158.238:3001/admin/accept',data)
+            .then(r=>{
+            console.log(r.data)
+            getAllUsers(ADMIN_EMAIL)
+            Swal.fire('Aprobado!')
+            })
+            .catch(error=>{
+              console.log(error)
+              Swal.fire('Error paso algo :(')
+            })
             resolve('aprobar')
           } else {
+            Swal.fire('Desaprobado!')
             resolve('Denegar')
           }
         })
@@ -58,7 +82,7 @@ const UserCardAdmin = (user:any)=>{
       Swal.fire(`You selected: ${fruit}`)
     }
   }
-  const setUsername = async()=>{
+  const setUsername = async(userC:any)=>{
     const { value: text } = await Swal.fire({
       input: 'textarea',
       inputLabel: 'Set new username',
@@ -68,9 +92,23 @@ const UserCardAdmin = (user:any)=>{
       },
       showCancelButton: true
     })
-    
     if (text.length<13) {
-      Swal.fire('The user was successfully changed to "'+text+'"')
+      let data = {
+        adminEmail:ADMIN_EMAIL,
+        userEmail:userC.email, 
+        field:'username', 
+        newData:text 
+      }
+      axios.post('http://143.198.158.238:3001/admin/update',data)
+      .then(r=>{
+        console.log(r.data)
+        getAllUsers(ADMIN_EMAIL)
+        Swal.fire('The user was successfully changed to "'+text+'"')
+      })
+      .catch(error=>{
+        console.log(error)
+        Swal.fire('Error paso algo :(')
+      })
     }else{
       Swal.fire('The username must have a max of 13 characters')
     }
@@ -84,7 +122,22 @@ const UserCardAdmin = (user:any)=>{
     })
     
     if (email) {
-      Swal.fire(`The email was successfully changed to: ${email}`)
+      let data = {
+        adminEmail:ADMIN_EMAIL,
+        userEmail:user.email, 
+        field:'email', 
+        newData:email 
+      }
+      axios.post('http://143.198.158.238:3001/admin/update',data)
+      .then(r=>{
+        console.log(r.data)
+        getAllUsers(ADMIN_EMAIL)
+        Swal.fire(`The email was successfully changed to: ${email}`)
+      })
+      .catch(error=>{
+        console.log(error)
+        Swal.fire('Error paso algo :(')
+      })
     }
   }
 
@@ -94,16 +147,16 @@ const UserCardAdmin = (user:any)=>{
             <div className={m.divType}>
               <span>{user.rol}</span>
             </div>
-            {/* <button onClick={user.request? ()=>changeRole():undefined} className={user.request? m.buttonRequestTrue : m.buttonRequest}>{user.request.toString()}</button> */}
+            <button onClick={user.requested_artist? ()=>changeRole(user):undefined} className={user.requested_artist? m.buttonRequestTrue : m.buttonRequest}>{user.requested_artist.toString()}</button>
             <div className={m.divId}>
               <span className={m.span}>Id: {user.id}</span>
             </div>
-            <button onClick={setUsername} className={m.buttonUsername}>Username: {user.username}</button>
+            <button onClick={()=>setUsername(user)} className={m.buttonUsername}>Username: {user.username}</button>
             <button onClick={setEmail} className={m.buttonEmail}>Email: {user.email}</button>
             {/* <div className={m.divSong}>
               <span className={m.span}>Songs number: {user.songNumber}</span>
             </div> */}
-            <button onClick={deleteUser} className={m.button}><img className={m.img} src="https://cdn-icons.flaticon.com/png/512/542/premium/542724.png?token=exp=1654784155~hmac=6cbdff0d6916b7b638a797e3a99baeae" alt="delete" /></button>
+            <button onClick={user.deactivated? undefined:()=>deleteUser(user)} className={m.button}>{user.deactivated.toString()}</button>
         </div>
       </div>
     )
