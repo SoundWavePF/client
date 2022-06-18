@@ -6,6 +6,7 @@ import { useParams, useLocation } from "react-router";
 import * as actionCreator from "../../../redux/actions/action_player";
 import ListItemContainer from "../ListItemContainer/ListItemContainer";
 import Swal from "sweetalert2";
+import imgPlaylist from '../../../assets/coverPl.jpg'
 
 const ContentAlbumPlaylist = () => {
   const [edit, setEdit] = useState<boolean>(false);
@@ -20,6 +21,9 @@ const ContentAlbumPlaylist = () => {
     isPlaylist
       ? getAlbumPlaylist(id, "playlist")
       : getAlbumPlaylist(id, "album");
+      return () => {
+        getAlbumPlaylist('clean', '');
+      };
   }, []);
   const toggleEdit = () => {
     if (edit) {
@@ -38,14 +42,15 @@ const ContentAlbumPlaylist = () => {
     }
   };
   return (
-    item && (
+    Object.keys(item).length > 0 ?
       <div className={styles.container}>
         <div className={styles.details}>
-          <img src={item.image_medium} alt={item.name} />
+          <img src={isPlaylist ? imgPlaylist : item.image_medium} alt={item.name} />
           <span>{item.name}</span>
-          <span>{item.artists && item.artists[0].name}</span>
+          {item.artists && <a href={`/artist/${item.artists[0].id}`}>{item.artists[0].name}</a>}
+          {/* <span>{item.artists && item.artists[0].name}</span> */}
           <button onClick={() => playAll(item.songs)} className={styles.btn}>Play all</button>
-          {!isPlaylist && (
+          {isPlaylist && (
             <button
               className={edit ? `${styles.edit} ${styles.save}` : styles.edit}
               onClick={toggleEdit}
@@ -63,7 +68,8 @@ const ContentAlbumPlaylist = () => {
           />
         )}
       </div>
-    )
+    :
+    <div className={`spinner-border ${styles.loading}`}  role="status"></div>
   );
 };
 export default ContentAlbumPlaylist;
