@@ -76,6 +76,22 @@ export const addToQueue = (data: swSong) => {
     });
   };
 };
+export const deleteFromQueue = (id: string) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.DELETE_FROM_QUEUE,
+      payload: id,
+    });
+  };
+} 
+export const sortQueue = (data: swSong[]) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.SORT_QUEUE,
+      payload: data
+    });
+  };
+};
 export const addToPlaylist = (playlistId: string, songId: string) => {
   return (dispatch: Dispatch<Actions>) => {
     axios.post('http://143.198.158.238:3001/playlist/add', { playlistId: playlistId, songId: songId })

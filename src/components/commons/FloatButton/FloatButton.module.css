@@ -111,8 +111,10 @@
 }
 
 .modalExistingAlbum{
+    display: flex;
+    position: relative;
     padding: 10px;
-    background-color: #fff;
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/726/954/546/honeycomb-wallpaper-preview.jpg');
     border-radius: 10px;
     width: 800px;
     height: 90%
@@ -127,8 +129,21 @@
 }
 
 .buttonClose{
-    width: 30px;
-    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 33px;
+    top: 10px;
+    padding: 0px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.577);
+    background-color: rgba(0, 0, 0, 0.262);
+    font-size: 19px;
 }
 
+.buttonClose:hover{
+background-color: rgba(255, 0, 0, 0.395);
+}
