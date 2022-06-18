@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.titleContainer img {
+    position: absolute;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.titleContainer img:hover {
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+}
+.title{
+    font-size: 50px;
+}
+
+.uploadContainer {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    border: 3px solid rgba(255, 255, 255, 0.577);
+    background-color: rgba(0, 0, 0, 0.262);
+    padding: 10px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.uploadContainer label {
+    font-family: 'sw-bold';
+    margin-right: 10px;
+    font-size: 20px;
+
+}
+
+.component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.formCont {
+    padding: 10px;
+    margin-top: 30px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid rgba(255, 255, 255, 0.577);
+    background-color: rgba(0, 0, 0, 0.262);
+    border-radius: 10px;
+}
