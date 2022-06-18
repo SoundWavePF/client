@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./ListItem.module.css";
 import like from "../../../assets/like.png";
 import likefull from "../../../../src/assets/likefull.png";
@@ -6,8 +6,11 @@ import time from "../../../../src/assets/time.png";
 import DropDownButton from "../DropDownButton/DropDownButton";
 import { Link } from "react-router-dom";
 import * as actionCreator from "../../../redux/actions/action_player";
-import { useDispatch } from "react-redux";
+import * as actionCreatorUser from "../../../redux/actions/action_user";
+import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
+import { useAuth0 } from '@auth0/auth0-react';
+
 
 interface myProps {
   item: any;
@@ -15,9 +18,14 @@ interface myProps {
 }
 
 const ItemList: React.FC<myProps> = (props: myProps) => {
-  const [fav, setFav] = useState<boolean>(false);
+  const state = useSelector((state: any) => state);
+  const [estado, setEstado] = useState<any>();
+  const [buttonLike, setButtonLike] = useState<any>(false);
+  const { user } = useAuth0();
+  const email: string | undefined = user?.email;
   const dispatch = useDispatch();
-  const { playSong } = bindActionCreators(actionCreator, dispatch);
+  const { playSong, likeSong, dislikeSong } = bindActionCreators(actionCreator, dispatch);
+  const { getLibrary } = bindActionCreators(actionCreatorUser, dispatch);
   const formatDuration = (duration: string): string => {
     let num = parseInt(duration);
     let minutes: number = Math.floor(num / 60);
@@ -28,6 +36,10 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
       secStr.length == 1 ? "0" + secStr : secStr
     }`;
   };
+  useEffect(() => {
+    if(email !== undefined) getLibrary(email);
+    state.library_artist.list.liked_songs && setEstado(state.library_artist.list.liked_songs.map((e: any) => e.id));
+  }, [])
   let tipo = props.item.type;
 
   switch (tipo) {
@@ -41,7 +53,13 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
           <span>{props.item.artist}</span>
           {/* <p>{props.item.album}</p> */}
           <div>
-            <img className={!fav ? s.noFav : ''} src={likefull} alt="like icon" onClick={fav?()=>setFav(false):()=>setFav(true)}/>
+          {email && <button
+            className={s.likeBtn}
+            onClick={() => estado?.includes(props.item.id) ? dislikeSong(props.item.id, email) : likeSong(props.item.id, email)}
+          >
+            <img
+              src={likefull} alt='like button' onClick={() => {setButtonLike(!buttonLike);}}className={estado?.includes(props.item.id) | buttonLike ? s.likeImgInclude : s.likeImg}/>
+          </button>}
             {
               // props.item &&
               // <DropDownButton item={props.item}/>
