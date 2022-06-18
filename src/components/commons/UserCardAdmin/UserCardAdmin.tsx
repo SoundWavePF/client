@@ -10,7 +10,6 @@ const UserCardAdmin = (userP:any)=>{
   const dispatch = useDispatch()
   const {getAllUsers} = bindActionCreators(actionCreator,dispatch)
   // console.log(admin)
-  console.log(userP)
   const user = userP.user
   const ADMIN_EMAIL=userP.admin
   const deleteUser = (userC:any)=>{
@@ -46,44 +45,35 @@ const UserCardAdmin = (userP:any)=>{
     })
   }
   const changeRole = async(userC:any)=>{
-    const { value: fruit } = await Swal.fire({
-      title: 'Select field validation',
-      input: 'select',
-      inputOptions:{
-          aprobar: 'Aprobar',
-          denegar: 'Denegar'
-        },
-      inputPlaceholder: 'Select',
+
+    Swal.fire({
+      title: 'quieres aceptar su solicitud para ser artista?',
+      showDenyButton: true,
       showCancelButton: true,
-      inputValidator: (value) => {
-        return new Promise((resolve) => {
-          if (value === 'Aprobar') {
-            let data = {
-              adminEmail:ADMIN_EMAIL,
-              userEmail:userC.email,
-            }
-            axios.post('http://143.198.158.238:3001/admin/accept',data)
-            .then(r=>{
-            console.log(r.data)
-            getAllUsers(ADMIN_EMAIL)
-            Swal.fire('Aprobado!')
-            })
-            .catch(error=>{
-              console.log(error)
-              Swal.fire('Error paso algo :(')
-            })
-            resolve('aprobar')
-          } else {
-            Swal.fire('Desaprobado!')
-            resolve('Denegar')
-          }
+      confirmButtonText: 'SI',
+      denyButtonText: `NO`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        let data = {
+          adminEmail:ADMIN_EMAIL,
+          userEmail:userC.email,
+        }
+        axios.post('http://143.198.158.238:3001/admin/accept',data)
+        .then(r=>{
+          console.log(r.data,'BIENNNNN')
+          getAllUsers(ADMIN_EMAIL)
+          Swal.fire('Aprobado!')
         })
+        .catch(error=>{
+          console.log(error)
+          Swal.fire('Error paso algo :(')
+        })
+        // Swal.fire('Saved!', '', 'success')
+      } else if (result.isDenied) {
+        Swal.fire('Desaprobado')
       }
     })
-    
-    if (fruit) {
-      Swal.fire(`You selected: ${fruit}`)
-    }
   }
   const setUsername = async(userC:any)=>{
     const { value: text } = await Swal.fire({
