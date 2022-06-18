@@ -4,14 +4,17 @@ import home from '../../../assets/home.png';
 import play from '../../../assets/play.png';
 import music from '../../../assets/music.png';
 import fire from '../../../assets/fire.png'
+import admin from '../../../assets/admin.png'
 import styles from './SideBar.module.css';
 import * as actionCreator from '../../../redux/actions/action_player';
 import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export default function SideBar(){
   const dispatch = useDispatch();
   const { setQuery } = bindActionCreators(actionCreator, dispatch)
+  const userAdmin = useSelector((state:any)=>state.userAdmin)
   function handleClick(){
     setQuery('')
   }
@@ -22,6 +25,13 @@ export default function SideBar(){
         <span>SoundWave</span>
       </div>
       <div className={styles.btnContainer}>
+        {userAdmin &&
+        <Link to='/admin' className={styles.link}>
+          <div className={styles.button} onClick={handleClick}>
+            <img src={admin} alt="Home" className={styles.img} />
+            Admin Panel
+          </div>
+        </Link>}
         <Link to='/home' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
             <img src={home} alt="Home" className={styles.img} />

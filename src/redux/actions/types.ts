@@ -1,6 +1,6 @@
 import { LibraryArtist } from "../reducer/types";
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery |  GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll | UpdatePlaylist| sortQueue | deleteFromQueue | loading | GetStats;
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery |  GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll | UpdatePlaylist| sortQueue | deleteFromQueue | loading | GetStats | UserAdmin;
 
 
 export enum ActionType {
@@ -35,6 +35,7 @@ export enum ActionType {
   GET_STATS = 'GET_STATS',
   SORT_QUEUE = 'SORT_QUEUE',
   DELETE_FROM_QUEUE = 'DELETE_FROM_QUEUE',
+  USER_ADMIN = 'USER_ADMIN',
   CLEAN_ALBUM_PLAYLIST = 'CLEAN_ALBUM_PLAYLIST',
 }
 
@@ -162,3 +163,7 @@ interface PlayAll{
   type: ActionType.PLAY_ALL,
   payload: swSong[]
 } 
+interface UserAdmin{
+  type: ActionType.USER_ADMIN,
+  payload: any
+}
