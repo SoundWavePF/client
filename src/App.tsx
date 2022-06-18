@@ -18,6 +18,7 @@ import Player from "./components/commons/Player/Player";
 import Top from "./components/views/Top/Top";
 import About2 from "./components/views/about/About2";
 import ArtistProfile from './components/commons/ArtistProfile/ArtistProfile'
+import Artist from "./components/views/Artist/Artist";
 
 
 
@@ -35,7 +36,7 @@ function App() {
         <Route path="/favorites" element={<><Library/><Player/></>}/>
         <Route path="/top" element={<><Top/><Player/></>} />
 
-        <Route path="/artist/:id" element={<h1>Artist</h1>} />
+        <Route path="/artist/:id" element={<><Artist/><Player/></>} />
         <Route path="/album/:id" element={<><AlbumPlaylist /><Player/></>} />
         <Route path="/playlist/:id" element={<><AlbumPlaylist /><Player/></>} />
         <Route path="/genre/:id" element={<><Genre /><Player/></>} />

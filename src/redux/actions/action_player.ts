@@ -151,7 +151,7 @@ export const setQuery = (query: string) => {
       payload: query
     })
   }
-}
+
 export const loading = (value: boolean) => {
   return (dispatch: Dispatch<Actions>) => {
     dispatch({
@@ -160,3 +160,22 @@ export const loading = (value: boolean) => {
     })
   }
 }
+
+export const updatePlaylist = (playlist: any) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.UPDATE_PLAYLIST,
+      payload: playlist,
+    })
+  };
+};
+
+export const playAll = (data: swSong[]) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.PLAY_ALL,
+      payload: data,
+    });
+  };
+};
+

@@ -9,6 +9,7 @@ interface State {
   query: string;
   searchResults: any;
   album_playlist: swAlbum | swPlaylist | any;
+  playlist_update: any;
   library_artist: types.LibraryArtist | any;
   queue: swSong[];
   home: types.Home;
@@ -17,6 +18,8 @@ interface State {
   top: any;
   users: any;
   loading: boolean;
+  artist: any;
+  artistTop: any
 }
 
 const initialState: State = {
@@ -30,6 +33,7 @@ const initialState: State = {
   //   playlistData: []
   // },
   album_playlist: {},
+  playlist_update: [],
   library_artist: {
     list: [], // favs   -  top       // track[]
     card: [], // playlist - albums   // album[]
@@ -44,10 +48,22 @@ const initialState: State = {
   top: [],
   users: [],
   loading: false,
+  artist:{},
+  artistTop:{}
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
   switch (action.type) {
+    case ActionType.GET_ARTIST_TOP:
+      return {
+        ...state,
+        artistTop: action.payload,
+      };
+    case ActionType.GET_ARTIST:
+      return {
+        ...state,
+        artist: action.payload,
+      };
     case ActionType.CLEAN_GENRE:
       return {
         ...state,
@@ -140,6 +156,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
       return {
         ...state,
       };
+    case ActionType.UPDATE_PLAYLIST:
+      return {
+        ...state,
+        playlist_update: action.payload,
+      };
     case ActionType.GET_TOP:
       return {
         ...state,
@@ -164,6 +185,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         loading: action.payload,
       };
+    case ActionType.PLAY_ALL:
+      return{
+        ...state,
+        queue: action.payload
+      }
     default:
       return state;
   }

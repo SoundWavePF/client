@@ -1,9 +1,6 @@
 import { LibraryArtist } from "../reducer/types";
 
-
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery | GetAllUsers | DislikeSong | loading;
-
-
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery | GetAllUsers | DislikeSong | loading | GetArtist | GetArtistTop | PlayAll | UpdatePlaylist;
 
 export enum ActionType {
   CLEAN_GENRE = 'CLEAN_GENRE',
@@ -23,20 +20,31 @@ export enum ActionType {
   GET_PlaylistForId = 'GET_PlaylistForId',
   ADD_TO_PLAYLIST = 'ADD_TO_PLAYLIST',
   NEW_PLAYLIST = 'NEW_PLAYLIST',
+  UPDATE_PLAYLIST = 'UPDATE_PLAYLIST',
   UPDATE_USER = 'UPDATE_USER',
   GET_TOP = 'GET_TOP',
   LIKE_SONG = 'LIKE_SONG',
   DISLIKE_SONG = 'DISLIKE_SONG',
   SET_QUERY = 'SET_QUERY',
   GET_ALL_USERS = 'GET_ALL_USERS',
-  LOADING = 'LOADING'
+  LOADING = 'LOADING',
+  GET_ARTIST = 'GET_ARTIST',
+  GET_ARTIST_TOP = 'GET_ARTIST_TOP',
+  PLAY_ALL = 'PLAY_ALL'
 }
 
-export interface GetAllUsers {
+export interface GetArtistTop{
+  type: ActionType.GET_ARTIST_TOP;
+  payload:any
+}
+export interface GetArtist{
+  type: ActionType.GET_ARTIST;
+  payload:any
+}
+export interface GetAllUsers{
   type: ActionType.GET_ALL_USERS;
   payload: any
 }
-
 export interface userOption { //opciones del componente AdminPanel
   home: boolean,
   user: boolean
@@ -108,7 +116,11 @@ interface NewPlaylist {
   type: ActionType.NEW_PLAYLIST,
   payload: any
 }
-interface GetTop {
+interface UpdatePlaylist{
+  type: ActionType.UPDATE_PLAYLIST,
+  payload: any
+}
+interface GetTop{
   type: ActionType.GET_TOP,
   payload: any
 }
@@ -120,7 +132,6 @@ interface SetQuery {
   type: ActionType.SET_QUERY,
   payload: string
 }
-
 interface DislikeSong {
   type: ActionType.DISLIKE_SONG,
   payload: any
@@ -128,4 +139,7 @@ interface DislikeSong {
 interface loading {
   type: ActionType.LOADING,
   payload: boolean
+interface PlayAll{
+  type: ActionType.PLAY_ALL,
+  payload: swSong[]
 } 
