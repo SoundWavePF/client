@@ -1,7 +1,6 @@
 import { LibraryArtist } from "../reducer/types";
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery |  GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll | UpdatePlaylist| sortQueue | deleteFromQueue | loading | GetStats | UserAdmin;
-
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery |  GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll | UpdatePlaylist| sortQueue | deleteFromQueue | loading | GetStats | UserAdmin | GetUserInfo;
 
 export enum ActionType {
   CLEAN_GENRE = 'CLEAN_GENRE',
@@ -37,6 +36,7 @@ export enum ActionType {
   DELETE_FROM_QUEUE = 'DELETE_FROM_QUEUE',
   USER_ADMIN = 'USER_ADMIN',
   CLEAN_ALBUM_PLAYLIST = 'CLEAN_ALBUM_PLAYLIST',
+  GET_USER_INFO = 'GET_USER_INFO',
 }
 
 
@@ -162,8 +162,13 @@ interface loading {
 interface PlayAll{
   type: ActionType.PLAY_ALL,
   payload: swSong[]
-} 
+}
+interface GetUserInfo{
+  type: ActionType.GET_USER_INFO,
+  payload: any
+}
 interface UserAdmin{
   type: ActionType.USER_ADMIN,
   payload: any
 }
+

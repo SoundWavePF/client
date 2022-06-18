@@ -56,3 +56,17 @@ export const updateUser = (payload: any) => {
     }
   }
 }
+export const getUserInfo = (email: string) => {
+  //hay que poner el id del usuario creado hasta que se pueda haceder a el
+  return (dispatch: Dispatch<Actions>) => {
+    axios.post("http://143.198.158.238:3001/info", {
+      email: email,
+    }).then((response) =>
+        dispatch({
+          type: ActionType.GET_USER_INFO,
+          payload: response.data,
+        })
+      )
+      .catch((error) => console.log(error));
+  };
+};

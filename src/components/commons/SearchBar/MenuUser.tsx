@@ -5,6 +5,7 @@ import style from './MenuUser.module.css';
 import userIcon from '../../../assets/user_icon.png'
 import likeFull from '../../../assets/likefull.png'
 import { useAuth0 } from "@auth0/auth0-react";
+import { useSelector } from "react-redux";
 
 interface node {
     contains?: (arg: any) => any
@@ -17,7 +18,7 @@ interface props {
 }
 
 const Menu: React.FunctionComponent<props> = (props) => {
-
+    const {rol} = useSelector((state: any) => state.user_info);
     const [open, setOpen] = useState<boolean>(false);
     const container = useRef(document.getElementsByTagName('div')[0]); // obtiene da un nodo html como valor inicial 
     //para que no de error cuando la referencia intente usar  el  metodo contains
@@ -59,8 +60,8 @@ const Menu: React.FunctionComponent<props> = (props) => {
         navigate('/signup')
     }
 
-    function handleClick(): void {
-        navigate('/settings')
+    function handleClick(path: string): void {
+        navigate(`/${path}`)
     }
 
     return (
@@ -79,7 +80,8 @@ const Menu: React.FunctionComponent<props> = (props) => {
                             {/* {username !== 'Unregistered' &&  */}
                             <div style={{ display: 'flex', flexDirection: 'column' }}>
                                 <a>{user?.nickname}</a>
-                                <button onClick={handleClick} className={style.btn}>Settings</button>
+                                <button onClick={() => handleClick('settings')} className={style.btn}>Settings</button>
+                                { rol === 'artist' && <button onClick={() => handleClick('panel_artist')} className={style.btn}>Artist Panel</button>}
                                 <button onClick={() => logout({ returnTo: window.location.origin })} className={style.btnPrimary}>Logout</button>
 
                             </div>

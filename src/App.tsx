@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as actionCreator from "./redux/actions/action_user";
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Landing from './components/views/Landing/Landing'
@@ -23,6 +27,13 @@ import Artist from "./components/views/Artist/Artist";
 
 
 function App() {
+  const { user, isAuthenticated } = useAuth0();
+  const email = user?.email;
+  const dispatch = useDispatch();
+  const { getUserInfo } = bindActionCreators(actionCreator, dispatch);
+  useEffect(() => {
+    email && getUserInfo(email);
+  }, [isAuthenticated]);
   return (
     <div>
       <Routes>
