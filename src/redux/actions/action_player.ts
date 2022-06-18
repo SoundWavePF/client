@@ -120,14 +120,22 @@ export const cleanGenre = () => {
   }
 }
 export const getAlbumPlaylist = (id: any, type: string) => {
-  return (dispatch: Dispatch<any>) => {
-    axios.get(`http://143.198.158.238:3001/${type}/${id}`)
-      .then(response =>
+  if (id === 'clean') {
+    return(dispatch: Dispatch<Actions>) => {
         dispatch({
-          type: ActionType.GET_ALBUM_PLAYLIST,
-          payload: response.data
+          type: ActionType.CLEAN_ALBUM_PLAYLIST
         })
-      )
+      }
+  } else {
+    return (dispatch: Dispatch<any>) => {
+      axios.get(`http://143.198.158.238:3001/${type}/${id}`)
+        .then(response =>
+          dispatch({
+            type: ActionType.GET_ALBUM_PLAYLIST,
+            payload: response.data
+          })
+        )
+    }
   }
 }
 export const getTop = () => {
@@ -167,7 +175,7 @@ export const setQuery = (query: string) => {
       payload: query
     })
   }
-
+}
 export const loading = (value: boolean) => {
   return (dispatch: Dispatch<Actions>) => {
     dispatch({

@@ -158,6 +158,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         album_playlist: action.payload,
       };
+    case ActionType.CLEAN_ALBUM_PLAYLIST:
+      return {
+        ...state,
+        album_playlist: {},
+      };
     case ActionType.GET_PlaylistForId:
       return {
         ...state,

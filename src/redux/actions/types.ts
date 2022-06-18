@@ -32,9 +32,10 @@ export enum ActionType {
   GET_ARTIST = 'GET_ARTIST',
   GET_ARTIST_TOP = 'GET_ARTIST_TOP',
   PLAY_ALL = 'PLAY_ALL',
-  GET_STATS = 'GET_STATS' 
+  GET_STATS = 'GET_STATS',
   SORT_QUEUE = 'SORT_QUEUE',
-  DELETE_FROM_QUEUE = 'DELETE_FROM_QUEUE'
+  DELETE_FROM_QUEUE = 'DELETE_FROM_QUEUE',
+  CLEAN_ALBUM_PLAYLIST = 'CLEAN_ALBUM_PLAYLIST',
 }
 
 
@@ -78,8 +79,8 @@ interface GetLastSongs {
   payload?: swSong[]
 }
 interface GetAlbumPlaylist {
-  type: ActionType.GET_ALBUM_PLAYLIST;
-  payload: swAlbum[]
+  type: ActionType.GET_ALBUM_PLAYLIST | ActionType.CLEAN_ALBUM_PLAYLIST;
+  payload?: any
 }
 interface ChangeAdminOption {
   type: ActionType.CHANGE_ADMIN_OPTION;
