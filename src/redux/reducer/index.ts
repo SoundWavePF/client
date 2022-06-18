@@ -226,6 +226,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
             liked_songs: action.payload
           },
         },
+    }
     case ActionType.PLAY_ALL:
       return{
         ...state,
