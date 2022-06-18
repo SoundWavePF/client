@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import FileUpload from '../../views/FileUpload/FileUpload'
 import style from './FloatButton.module.css'
 const FloatButton = () => {
 
@@ -75,19 +76,19 @@ const FloatButton = () => {
 
                     <div className={style.containerCreates}>
                         <div className={style.modalExistingAlbum}>
+                        <FileUpload />
                             <button className={style.buttonClose} onClick={(e) => handleModal(e)} name='all'>x</button>
                         </div>
                     </div>
                     : null
-                }
+            }
 
             {
                 modal.createAlbum === true ?
-                
-                <div className={style.containerCreates}>
-                        <div className={style.modalCreateAlbum}>
-                        <button className={style.buttonClose} onClick={(e) => handleModal(e)} name='all'>x</button>
 
+                    <div className={style.containerCreates}>
+                        <div className={style.modalCreateAlbum}>
+                            <button className={style.buttonClose} onClick={(e) => handleModal(e)} name='all'>x</button>
                         </div>
                     </div>
                     : null
