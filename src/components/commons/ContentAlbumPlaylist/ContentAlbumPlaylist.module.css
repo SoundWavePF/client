@@ -13,7 +13,7 @@
   grid-template-columns: 250px auto;
   grid-template-rows: 3.5rem 3.5rem auto;
   gap: 1.2rem;
-  font-family: var(--sw-medium);
+  font-family: var(sw-medium);
 }
 .details > img{
   grid-area: 1 / 1 / 4 / 2;
@@ -22,15 +22,18 @@
 .details > span:nth-child(2){
   grid-area: 1 / 2 / 2 / 3;
   align-self: start;
-  font-size: 2.8rem;
+  font-size: 2.2rem;
+  font-family: var(sw-bold);
   /* margin-top: .5rem; */
 }
-.details > span:nth-child(3){
+.details > a:nth-child(3){
   grid-area: 2 / 2 / 3 / 3;
   align-self: center;
   font-size: 1.5rem;
   cursor: pointer;
   width: fit-content;
+  text-decoration: none;
+  color: black;
 }
 .btn{
   grid-area: 3 / 2 / 4 / 3;
@@ -70,4 +73,11 @@
 .container > div:last-child {
   /* border: 1px solid gray; */
   display: block;
+}
+.loading {
+  align-self: center;
+  justify-self: center;
+  size: 100%;
+  width: 5rem;
+  height: 5rem;
 }
