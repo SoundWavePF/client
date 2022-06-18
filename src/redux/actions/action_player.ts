@@ -149,6 +149,15 @@ export const setQuery = (query: string) => {
   }
 }
 
+export const updatePlaylist = (playlist: any) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.UPDATE_PLAYLIST,
+      payload: playlist,
+    })
+  };
+};
+
 export const playAll = (data: swSong[]) => {
   return (dispatch: Dispatch<Actions>) => {
     dispatch({

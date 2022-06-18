@@ -138,12 +138,14 @@
     align-items: center;
     padding-right: 1rem;
     /* overflow: hidden; */
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-
+.container:hover {
+    background-color: var(--gray-light);
+}
 .container > div:first-child{
     display: flex;
     height: 100%;
