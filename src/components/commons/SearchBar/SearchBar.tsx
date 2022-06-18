@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_player";
 // import {searchAll} from "../../../redux/actions/action_player";
@@ -12,19 +12,23 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const SearchBar = () => {
   const [input, setInput] = useState("")
+  const loadingState = useSelector((state: any) => state.loading)
+
   const dispatch = useDispatch();
   const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0()
-  const { searchAll, setQuery } = bindActionCreators(actionCreator, dispatch);
+  const { searchAll, setQuery, loading } = bindActionCreators(actionCreator, dispatch);
   useEffect(() => {
-  if ( input ) searchAll(input);
-  setQuery(input);
+    if (input && !loadingState) {
+      searchAll(input);
+      loading(true)
+    }
+    setQuery(input);
   }, [input]);
   function handleChange(e: any): void {
     setInput(e.target.value);
   }
-  function handleSubmit(e:any) {
+  function handleSubmit(e: any) {
     e.preventDefault();
-    searchAll(input);
     setInput("");
   }
   return (

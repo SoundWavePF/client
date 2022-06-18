@@ -17,6 +17,7 @@ interface State {
   genre: any;
   top: any;
   users: any;
+  loading: boolean;
   artist: any;
   artistTop: any
 }
@@ -46,6 +47,7 @@ const initialState: State = {
   genre: [],
   top: [],
   users: [],
+  loading: false,
   artist:{},
   artistTop:{}
 };
@@ -187,6 +189,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
       return {
         ...state,
         users: action.payload,
+      };
+    case ActionType.LOADING:
+      return {
+        ...state,
+        loading: action.payload,
       };
     case ActionType.PLAY_ALL:
       return{
