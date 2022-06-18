@@ -167,7 +167,7 @@ export const setQuery = (query: string) => {
       payload: query
     })
   }
-
+}
 export const loading = (value: boolean) => {
   return (dispatch: Dispatch<Actions>) => {
     dispatch({
