@@ -46,13 +46,12 @@ const TopCard = (props: any) => {
             </div>
           </div>
           <div className={styles.likeIcon}>
-          {email && <button
-            className={styles.likeBtn}
-            onClick={() => estado?.includes(song.id) ? dislikeSong(song.id, email) : likeSong(song.id, email)}
-          >
-            <img
-              src={likefull} alt='like button' onClick={() => {setButtonLike(!buttonLike);}}className={estado?.includes(song.id) | buttonLike ? styles.likeImgInclude : styles.likeImg}/>
-          </button>}
+            <img className={!fav ? styles.noFav : ''} src={likefull} alt="like icon"
+              onClick={fav ? () => setFav(false) : () => {
+                setFav(true)
+                // if (email) likeSong(song.id, email)
+              }
+              } />
             {/* <img  src="https://cdn-icons.flaticon.com/png/512/2589/premium/2589175.png?token=exp=1655324803~hmac=7f8869b901470cca74d785d11ebd8eeb" alt="corazonATR" /> */}
           </div>
         </div>

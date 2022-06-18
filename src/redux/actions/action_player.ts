@@ -148,6 +148,7 @@ export const getTop = () => {
     );
   };
 };
+
 export const likeSong = (songId: string, email: string) => {
   return (dispatch: Dispatch<Actions>) => {
     axios.post(`http://143.198.158.238:3001/favorite/add/${songId}`, { email: email })
@@ -181,6 +182,14 @@ export const loading = (value: boolean) => {
     dispatch({
       type: ActionType.LOADING,
       payload: value
+    })
+  }
+}
+export const updateLike = (likeSong: any[]) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.UPDATE_LIKE,
+      payload: likeSong,
     })
   }
 }

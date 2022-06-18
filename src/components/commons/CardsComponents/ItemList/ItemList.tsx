@@ -35,20 +35,26 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
       }`;
   };
   const dispatch = useDispatch();
-  const { playSong, likeSong, dislikeSong } = bindActionCreators(actionCreator, dispatch);
+  const [fav, setFav] = useState(0)
+  const { playSong, updateLike, likeSong, dislikeSong } = bindActionCreators(actionCreator, dispatch);
   const { user } = useAuth0();
   const email: string | undefined = user?.email;
-  let tipo = props.item.type;
-  const state = useSelector((state: any) => state);
-  const [estado, setEstado] = useState<any>();
-  const [buttonLike, setButtonLike] = useState<any>(false);
-  // const { getLibrary } = bindActionCreators(actionCreatorUser, dispatch);
-  useEffect(() => {
-    // if(email !== undefined) getLibrary(email);
-    state.library_artist.list.liked_songs && setEstado(state.library_artist.list.liked_songs.map((e: any) => e.id));
-  }, []);
-
-  switch (tipo) {
+  let type = props.item.type;
+  const likeSongUser = useSelector((state: any) => state.library_artist.list.liked_songs);
+  function like(item: any) {
+    if (email) likeSong(item.id, email)
+    let likeSongArr = likeSongUser
+    likeSongArr.push(item)
+    updateLike(likeSongArr)
+    setFav(likeSongArr.length)
+  }
+  function dislike(id: string) {
+    if (email) dislikeSong(id, email)
+    let likeSongArr = likeSongUser.filter((e: any) => e.id !== id)
+    updateLike(likeSongArr)
+    setFav(likeSongArr.length)
+  }
+  switch (type) {
     case "track":
       return (
         <div className={s.itemListContainer}>
@@ -70,10 +76,10 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
             {email && (
               <button
                 className={s.likeBtn}
-                onClick={() => estado?.includes(props.item.id) ? dislikeSong(props.item.id, email) : likeSong(props.item.id, email)}
+                onClick={() => likeSongUser.find((e: any) => e.id === props.item.id) ? dislike(props.item.id) : like(props.item)}
               >
-                <img
-                  src={likefull} alt='like button' onClick={() => {setButtonLike(!buttonLike);}}className={estado?.includes(props.item.id) | buttonLike ? s.likeImgInclude : s.likeImg}/>
+                {likeSongUser.find((e: any) => e.id === props.item.id) ? <img className={s.likeImgInclude} src={likefull} alt='like button' /> :
+                  <img className={s.likeImg} src={likefull} alt='like button' />}
               </button>
             )}
             <div>
