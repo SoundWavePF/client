@@ -13,14 +13,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 export const ContainerLibrary = () => {
   const { user, isAuthenticated } = useAuth0();
-  const email: string | undefined = user?.email;
   const state = useSelector((state): any => state);
   const location = useLocation();
-  const dispatch = useDispatch();
-  const { getLibrary } = bindActionCreators(actionCreator, dispatch);
-  useEffect(() => {
-    if (email) getLibrary(email);
-  }, [isAuthenticated]);
+
 
   if (isAuthenticated) {
     switch (location.pathname) {

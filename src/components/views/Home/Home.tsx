@@ -23,9 +23,11 @@ const Home = () => {
   const { setQuery } = bindActionCreators(actionCreator, dispatch)
   const { getLibrary } = bindActionCreators(actionCreator2, dispatch)
   useEffect(() => {
-    setQuery('')
     if (email) getLibrary(email)
   }, [isLoading])
+  useEffect(() => {
+    setQuery('')
+  }, [])
   return (
     <div className={styles.container}>
       <SearchBar />

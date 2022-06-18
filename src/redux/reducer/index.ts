@@ -17,6 +17,7 @@ interface State {
   genre: any;
   top: any;
   users: any;
+  loading: boolean;
   artist: any;
   artistTop: any,
   pageStats: any
@@ -47,6 +48,7 @@ const initialState: State = {
   genre: [],
   top: [],
   users: [],
+  loading: false,
   artist:{},
   artistTop:{},
   pageStats:{},
@@ -128,6 +130,16 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         queue: [...state.queue, action.payload],
       };
+    case ActionType.DELETE_FROM_QUEUE:
+        return {
+          ...state,
+          queue: state.queue.filter((song: any)=> song.id !== action.payload)
+        };
+    case ActionType.SORT_QUEUE:
+        return {
+          ...state,
+          queue: [...action.payload],
+        };
     case ActionType.SEARCH_ALL:
       return {
         ...state,
@@ -184,6 +196,11 @@ const Reducer = (state: any = initialState, action: Actions) => {
       return {
         ...state,
         users: action.payload,
+      };
+    case ActionType.LOADING:
+      return {
+        ...state,
+        loading: action.payload,
       };
     case ActionType.PLAY_ALL:
       return{
