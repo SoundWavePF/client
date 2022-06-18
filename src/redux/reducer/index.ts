@@ -22,6 +22,7 @@ interface State {
   artistTop: any,
   pageStats: any,
   user_info: any,
+  userAdmin: boolean
 }
 
 const initialState: State = {
@@ -54,10 +55,16 @@ const initialState: State = {
   artistTop:{},
   pageStats:{},
   user_info: {},
+  userAdmin: false,
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
   switch (action.type) {
+    case ActionType.USER_ADMIN:
+      return {
+        ...state,
+        userAdmin: action.payload,
+      };
     case ActionType.GET_STATS:
       return {
         ...state,
