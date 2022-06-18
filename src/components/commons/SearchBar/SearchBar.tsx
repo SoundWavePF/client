@@ -18,8 +18,10 @@ const SearchBar = () => {
   const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0()
   const { searchAll, setQuery, loading } = bindActionCreators(actionCreator, dispatch);
   useEffect(() => {
-    if (input && !loadingState) searchAll(input);
-    if (input) loading(true)
+    if (input && !loadingState) {
+      searchAll(input);
+      loading(true)
+    }
     setQuery(input);
   }, [input]);
   function handleChange(e: any): void {

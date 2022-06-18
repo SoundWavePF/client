@@ -31,21 +31,6 @@ const Menu: React.FunctionComponent<props> = (props) => {
     const [username, setUsername] = useState('')
 
     const { user, isAuthenticated, isLoading, logout } = useAuth0();
-    // const newUser: any = user
-    console.log('user', user)
-    console.log('autenti', isAuthenticated)
-    console.log('loding', isLoading)
-    console.log(user?.picture)
-    // useEffect(() => {
-    //   const token = localStorage.getItem('sw-token') || '{}';
-    //   if (token !== '{}') {
-    //     const decoded:any = jwt_decode(token);
-    //     setUsername(decoded.username);
-    //     console.log(decoded);
-    //   } else{
-    //     setUsername('Unregistered')
-    //   }
-    // }, []);
 
 
     useEffect(() => {

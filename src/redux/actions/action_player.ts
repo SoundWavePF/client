@@ -53,7 +53,11 @@ export const searchAll = (input: string) => {
           payload: response.data
         })
       )
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => dispatch({
+        type: ActionType.LOADING,
+        payload: false
+      }));
   };
 };
 export const playSong = (data: swSong) => {
