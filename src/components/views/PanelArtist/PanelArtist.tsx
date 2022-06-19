@@ -23,7 +23,7 @@ const PanelArtist = () => {
   const dispatch = useDispatch();
   const { getArtist } = bindActionCreators(actionCreator, dispatch)
   const { rol, id } = useSelector((state: any) => state.user_info);
-  const idTest = 'e6bfe68a-79eb-45c3-8da3-97718dcb3baf';
+  const idTest = '39c2137e-990c-44b3-878c-442d2f2d8442';
   useEffect(()=>{
     getArtist(idTest)
   },[])

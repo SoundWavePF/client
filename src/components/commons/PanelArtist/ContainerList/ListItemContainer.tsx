@@ -13,8 +13,8 @@ interface myProps {
   sort?: boolean;
 }
 
-const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, nb, sort=false}: myProps) => {
-  const [state, setState] = useState<any>([...content]);
+const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, nb=false, sort=false}: myProps) => {
+  const [state, setState] = useState<any>(content);
   const dispatch = useDispatch();
   const {  } = bindActionCreators(
     actionCreator,
@@ -26,6 +26,7 @@ const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, 
   }
 
   return (
+    state.length > 0 ? 
     <div>
       <div className={styles.header}>
         <span>Title</span>
@@ -42,8 +43,9 @@ const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, 
           })
         }
       </ReactSortable>
-
     </div>
+    :
+    <></>
   );
 };
 export default ListItemContainerPanelArtist;
