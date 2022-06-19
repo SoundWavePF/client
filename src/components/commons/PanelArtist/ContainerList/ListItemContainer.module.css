@@ -1,0 +1,41 @@
+.header{
+  display: grid;
+  background-color: rgba(211, 211, 211, 0.2);
+  grid-template-columns: 1.5fr auto 200px;
+  height: 1.5rem;
+  margin-bottom: 1.2rem;
+  padding-right: 1rem;
+  align-items: center;
+}
+.header > span{
+  font-size: 1rem;
+  margin: 0 1rem;
+}
+.header > span:first-child{
+  margin-left: 10rem;
+  justify-self: start;
+}
+.header > span:nth-child(2){
+  margin-right: 3rem;
+}
+.header > span:last-child{
+  justify-self: end;
+}
+.list{
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+.listSort{
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  /* background-color: rgba(255, 255, 0, 0.10); */
+}
+.listSort > div {
+  background-color: rgba(255, 255, 0, 0.10);
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
+}
+.choose{
+  background-color: rgba(49, 49, 49, 0.25) !important;
+}
