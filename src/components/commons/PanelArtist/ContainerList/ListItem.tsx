@@ -36,7 +36,7 @@ const ItemListPanelArtist: React.FC<myProps> = (props: myProps) => {
     <div className={styles.container}>
       <div>
         <img src={props.item.image_small} alt={'cover'} onClick={()=>playSong(props.item)}/>
-        <span onClick={()=>playSong(props.item)}>{props.nb ? `${props.nb}. ${props.item.name}`: props.item.name}</span>
+        <span >{props.nb ? `${props.nb}. ${props.item.name}`: props.item.name}</span>
       </div>
       {/* <span>{props.item.artist}</span> */}
       <span>{props.album ? props.item.album.name : ''}</span>

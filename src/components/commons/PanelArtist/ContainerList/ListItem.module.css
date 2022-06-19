@@ -34,7 +34,7 @@
 }
 .container > div:first-child > span {
     margin-left: 1rem;
-    cursor: pointer;
+    cursor: default;
 }
 
 .container > span {
