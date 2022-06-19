@@ -36,7 +36,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
           <Link to={`/album/${props.item.id}`}>
             <img src={props.item.image_medium} alt={props.item.title}/>
           </Link>
-          <p>{props.item.title}</p>
+          <p>{props.item.name}</p>
         </div>
       )
     case 'playlist':

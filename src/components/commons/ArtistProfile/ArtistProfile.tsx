@@ -196,7 +196,7 @@ const ArtistProfile: React.FunctionComponent = ()=>{
 
     return (
         <>
-        <SideBarArtist/>
+        {/* <SideBarArtist/> */}
         <div className={style.container}>
             <h1>Music</h1>
             <Profile/>
