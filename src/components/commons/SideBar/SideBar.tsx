@@ -11,27 +11,27 @@ import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
-export default function SideBar(){
+export default function SideBar() {
   const dispatch = useDispatch();
   const { setQuery } = bindActionCreators(actionCreator, dispatch)
-  const userAdmin = useSelector((state:any)=>state.userAdmin)
-  function handleClick(){
+  const userAdmin = useSelector((state: any) => state.userAdmin)
+  function handleClick() {
     setQuery('')
   }
-  return(
+  return (
     <div className={styles.container}>
       <div className={styles.logoContainer}>
-        <img src={logo} alt='SoundWave logo' className={styles.logo}/>
+        <img src={logo} alt='SoundWave logo' className={styles.logo} />
         <span>SoundWave</span>
       </div>
       <div className={styles.btnContainer}>
         {userAdmin &&
-        <Link to='/admin' className={styles.link}>
-          <div className={styles.button} onClick={handleClick}>
-            <img src={admin} alt="Home" className={styles.img} />
-            Admin Panel
-          </div>
-        </Link>}
+          <Link to='/admin' className={styles.link}>
+            <div className={styles.button} onClick={handleClick}>
+              <img src={admin} alt="Home" className={styles.img} />
+              Admin Panel
+            </div>
+          </Link>}
         <Link to='/home' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
             <img src={home} alt="Home" className={styles.img} />
@@ -40,19 +40,19 @@ export default function SideBar(){
         </Link>
         <Link to='/top' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
-            <img src={fire} alt="top10" className={styles.img}/>
+            <img src={fire} alt="top10" className={styles.img} />
             Top 10
           </div>
         </Link>
         <Link to='/playlists' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
-            <img src={play} alt="Play" className={styles.img}/>
+            <img src={play} alt="Play" className={styles.img} />
             Playlists
           </div>
         </Link>
         <Link to='/favorites' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
-            <img src={music} alt="Music" className={styles.img}/>
+            <img src={music} alt="Music" className={styles.img} />
             My favorites
           </div>
         </Link>

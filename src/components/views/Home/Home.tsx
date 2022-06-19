@@ -22,18 +22,13 @@ const Home = () => {
   const dispatch = useDispatch();
   const { user, isLoading } = useAuth0();
   const email: string | undefined = user?.email;
-  const { setQuery } = bindActionCreators(actionCreator, dispatch)
   const { getLibrary } = bindActionCreators(actionCreator2, dispatch)
   const { userAdmin } = bindActionCreators(actionCreator3, dispatch)
 
-  //console.log(user)
   useEffect(() => {
     if (email) userAdmin(email)
     if (email) getLibrary(email)
   }, [isLoading])
-  useEffect(() => {
-    setQuery('')
-  }, [])
   return (
     <div className={styles.container}>
       <SearchBar />

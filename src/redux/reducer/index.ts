@@ -51,9 +51,9 @@ const initialState: State = {
   top: [],
   users: [],
   loading: false,
-  artist:{},
-  artistTop:{},
-  pageStats:{},
+  artist: {},
+  artistTop: {},
+  pageStats: {},
   user_info: {},
   userAdmin: false,
 };
@@ -140,15 +140,15 @@ const Reducer = (state: any = initialState, action: Actions) => {
         queue: [...state.queue, action.payload],
       };
     case ActionType.DELETE_FROM_QUEUE:
-        return {
-          ...state,
-          queue: state.queue.filter((song: any)=> song.id !== action.payload)
-        };
+      return {
+        ...state,
+        queue: state.queue.filter((song: any) => song.id !== action.payload)
+      };
     case ActionType.SORT_QUEUE:
-        return {
-          ...state,
-          queue: [...action.payload],
-        };
+      return {
+        ...state,
+        queue: [...action.payload],
+      };
     case ActionType.SEARCH_ALL:
       return {
         ...state,
@@ -226,8 +226,9 @@ const Reducer = (state: any = initialState, action: Actions) => {
             liked_songs: action.payload
           },
         },
+      }
     case ActionType.PLAY_ALL:
-      return{
+      return {
         ...state,
         queue: action.payload
       }
