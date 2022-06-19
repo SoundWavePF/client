@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import SearchResults from "../SearchResults/SearchResults";
 import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_user";
+import * as actionCreator2 from "../../../redux/actions/action_player";
 import { useAuth0 } from "@auth0/auth0-react";
 
 
@@ -17,6 +18,7 @@ const Library = () => {
   const searchString = useSelector((state: any) => state.query)
   const dispatch = useDispatch();
   const { getLibrary } = bindActionCreators(actionCreator, dispatch);
+  const { setQuery } = bindActionCreators(actionCreator2, dispatch);
   useEffect(() => {
     if (email) getLibrary(email);
   }, [isAuthenticated]);

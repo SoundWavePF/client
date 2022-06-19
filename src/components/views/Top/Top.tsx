@@ -11,20 +11,16 @@ import * as actionCreator from '../../../redux/actions/action_player';
 
 const Top = () => {
   const searchString = useSelector((state: any) => state.query)
-  const dispatch = useDispatch();
-  const { setQuery } = bindActionCreators(actionCreator, dispatch)
-  useEffect(() => {
-    setQuery('')
-  }, [])
+
   return (
     <div className={styles.container}>
-      <SearchBar/>
-      <SideBar/>
+      <SearchBar />
+      <SideBar />
       {
         !searchString ?
-        <TopPage />
-        :
-        <SearchResults/>
+          <TopPage />
+          :
+          <SearchResults />
       }
     </div>
   );
