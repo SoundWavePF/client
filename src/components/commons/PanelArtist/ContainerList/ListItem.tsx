@@ -39,7 +39,7 @@ const ItemListPanelArtist: React.FC<myProps> = (props: myProps) => {
         <span onClick={()=>playSong(props.item)}>{props.nb ? `${props.nb}. ${props.item.name}`: props.item.name}</span>
       </div>
       {/* <span>{props.item.artist}</span> */}
-      <span>{props.album ? props.item.album : ''}</span>
+      <span>{props.album ? props.item.album.name : ''}</span>
       {/* Hace falta el nombre del album de con la cancion */}
       <div>
         <button>editar</button>
