@@ -13,20 +13,20 @@ import style from './QueuePanel.module.css';
 
 const Song = (props)=>{
     const dispatch = useDispatch()
-    const {playSong, deleteFromQueue}  = bindActionCreators(actionCreator, dispatch);
+    const {deleteFromQueue}  = bindActionCreators(actionCreator, dispatch);
 
     function handleClick(){
-        //playSong(props.item)
+        props.setCurrentSong(props.index -1)
     }
     function handleDelete (){
         deleteFromQueue(props.item.id)
     }
 
     return (
-        <div className={style.song } >
+        <div className={props.style} >
             <div className={style.name}  onClick={handleClick}>
                 =
-                <img className={style.image} src={props.item.image_small} alt="" /> 
+                <img className={style.image} src={props.item.image_small} alt="" />
                 {props.index}. {props.item.name}
             </div>
             <div onClick={handleDelete} className={style.info}><img width={'22px'} src={bintrash}/> </div>
@@ -34,24 +34,20 @@ const Song = (props)=>{
     )
 }
 
-const QueuePanel = ()=>{
+const QueuePanel = (props)=>{
     const [open, setOpen] = useState(false);
     const queue = useSelector(state=>state.queue);
     const dispatch = useDispatch()
-   
+
     const {sortQueue}  = bindActionCreators(actionCreator, dispatch)
-    
-    console.log('queue', queue)
 
-    const container = useRef(null); 
 
-    console.log(queue)
+    const container = useRef(null);
 
     function click(event) {
         if (!container.current.contains(event.target)) {
             setOpen(false);
         }
-        console.log('Click Event', event.target)
     }
 
     useEffect(() => {
@@ -63,7 +59,6 @@ const QueuePanel = ()=>{
 
     function toggle(event) {
         setOpen(!open)
-        console.log(event)
     }
 
 
@@ -80,7 +75,13 @@ const QueuePanel = ()=>{
                     <h4>Queue</h4>
                     <hr/>
                     <ReactSortable list={queue} setList={sortQueue} sort={true}>
-                        {queue.map((song, index) => <Song key={index} item={song} index={index+1}  />
+                        {queue.map((song, index) => <Song
+                          key={index}
+                          item={song}
+                          index={index+1}
+                          style={ props.songPosition === index? style.currentSong: style.song }
+                          setCurrentSong={props.setSongPosition}
+                        />
                         )}
                     </ReactSortable>
                 </div>

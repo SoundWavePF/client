@@ -7,7 +7,7 @@
     overflow: scroll;
     padding: 10px;
     max-height: 300px;
-    
+
     border: 1px solid var(--gray-light);
     border-radius: 5px;
 
@@ -41,6 +41,7 @@
     height: 20px;
     text-align: center;
     border-radius: 50%;
+    cursor: default;
     background-color: var(--yellow-light);
 }
 
@@ -48,6 +49,7 @@
     display: flex;
     flex-direction: row;
     font-family: sw-medium;
+    cursor: default;
 
     align-items: center;
     text-overflow: '...';
@@ -55,14 +57,6 @@
     gap: 5px
 }
 
-.songTable {
-    width: 45rem;
-}
-
-.songTable > tr {
-    cursor: default;
-    border-bottom: 1px solid var(--gray-light);
-}
 
 .song {
     display: flex;
@@ -80,5 +74,5 @@
 
     justify-content: space-between;
     border-bottom: 1px solid var(--gray-light);
-    background-color: var(--yello-light);
+    background-color: var(--yellow-light);
 }
