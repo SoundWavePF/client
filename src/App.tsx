@@ -23,6 +23,7 @@ import Top from "./components/views/Top/Top";
 import About2 from "./components/views/about/About2";
 import ArtistProfile from './components/commons/ArtistProfile/ArtistProfile'
 import Artist from "./components/views/Artist/Artist";
+import PanelArtist from "./components/views/PanelArtist/PanelArtist";
 
 
 
@@ -53,7 +54,7 @@ function App() {
         <Route path="/genre/:id" element={<><Genre /><Player/></>} />
 
         <Route path="/settings" element={<UserSettings />} />
-        <Route path="/panel_artist" element={< ArtistProfile/>} />
+        <Route path="/panel_artist" element={<PanelArtist/>} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/file" element={<FileUpload />} />
 
