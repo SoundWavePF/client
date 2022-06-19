@@ -22,13 +22,14 @@ const SearchBar = () => {
       searchAll(input);
       loading(true)
     }
-    setQuery(input);
+    setQuery('true');
   }, [input]);
   function handleChange(e: any): void {
     setInput(e.target.value);
   }
   function handleSubmit(e: any) {
     e.preventDefault();
+    searchAll(input);
     setInput("");
   }
   return (
