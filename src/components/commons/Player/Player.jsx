@@ -103,7 +103,7 @@ export default function Player(){
         </div>
         <div className={styles.volume}>
           <QueuePanel songPosition={pos} setSongPosition={setPos}/>
-          {queue[pos] && userId && <button className={styles.btn} onClick={() => Like(queue[pos].id, userId)}><img src={like} className={styles.btnImg}/></button>}
+          {/* {queue[pos] && userId && <button className={styles.btn} onClick={() => Like(queue[pos].id, userId)}><img src={like} className={styles.btnImg}/></button>} */}
           <button onClick={mute} className={styles.btn}><img src={parseInt(volume) === 0 ? muteicon : parseInt(volume) < 33 ? volume1 : parseInt(volume) < 66 ? volume2 : volume3} className={styles.btnImg}/></button>
           <input type='range' value={volume} min='0' max='100' onChange={e => setVolume(e.target.value)} className={styles.volumeR}/>
         </div>
