@@ -24,3 +24,13 @@ export const getArtistTop = (id:any)=>{
       )
   }
 }
+export const changeAbout = (email: string, description: string) => {
+  return(dispatch: Dispatch<Actions>) => {
+    axios.post('http://143.198.158.238:3001/artistpanel/description', {email: email, description: description})
+    .then(response => 
+      dispatch({
+        type: ActionType.CHANGE_ABOUT,
+        payload: response
+      }))
+  }
+}

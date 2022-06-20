@@ -237,6 +237,10 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         user_info: action.payload,
       };
+    case ActionType.CHANGE_ABOUT:
+      return{
+        ...state
+      }
     default:
       return state;
   }
