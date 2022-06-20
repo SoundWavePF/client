@@ -15,7 +15,7 @@ const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
   const {songs} = useSelector((state: any) => state.artist);
   const dispatch = useDispatch();
   const {  } = bindActionCreators(actionCreator, dispatch);
-  const [songsState, setSongsState] = useState(songs)
+  const [songsState, setSongsState] = useState([...songs])
   const [input, setInput] = useState("")
   const searchSong = ()=>{
     if(input=== ''){
