@@ -42,7 +42,7 @@ const ItemListPanelArtist: React.FC<myProps> = (props: myProps) => {
       email: 'no importa',
       songId: props.item.id,
       songName: name,
-      albumId: albums.filter((e: any) => e.name === album)?.id,
+      albumId: albums.filter((e: any) => e.name === album)[0]?.id,
     });
     getArtist(id);
     Swal.fire("Song updated!");
