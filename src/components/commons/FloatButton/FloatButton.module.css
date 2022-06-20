@@ -12,7 +12,7 @@
 
 .secondBackground {
     position: fixed;
-    right: 15px;
+    right: 20px;
     bottom: 100px;
     width: 50px;
     height: 50px;
@@ -23,12 +23,11 @@
 }
 .firstBackground{
     position: fixed;
-    right: 23px;
+    right: 28px;
     bottom: 110px;
     width: 82px;
     height: 80px;
     border-radius: 50%;
-    
     z-index: 1;
 }
 
@@ -81,7 +80,7 @@
 
 .buttonOpenModal {
     position: fixed;
-    right: 15px;
+    right: 20px;
     bottom: 100px;
     background: none;
     border-radius: 20px;

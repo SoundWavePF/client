@@ -1,28 +1,10 @@
 import React, { useEffect } from 'react';
 import style from "./FileUpload.module.css"
 import moreinfo from '../../../assets/more-info.webp'
+import FormUploadSong from '../../commons/FormUploadSong/FormUploadSong';
 
 let arr: any[] = [];
 const FileUpload = (props: any) => {
-
-  interface musicToSend {
-    name: string
-    preview: string
-    image_small: string
-    image_medium: string
-    image_big: string
-    duration: string
-  }
-
-
-  const [music, setMusic] = React.useState<musicToSend>({
-    name: "",
-    preview: "",
-    image_small: "",
-    image_medium: "",
-    image_big: "",
-    duration: "",
-  })
 
   const [sound, setSound] = React.useState('');
   const [loading, setLoading] = React.useState(false);
@@ -56,13 +38,10 @@ const FileUpload = (props: any) => {
       console.log(arr);   // [cancion, cancion, cancion]
     }
     arr.pop();
+  }
 
-
-
-    // setArreglo(arr)
-
-
-
+  const onSubmitHandle = (e: any) => {
+    e.preventDefault()
   }
 
   function handleSubmit(event: any) {
@@ -88,17 +67,15 @@ const FileUpload = (props: any) => {
         </form>
 
       </div>
+
       {
         arr.map((tema: any) => (
-          <div className={style.formCont}>
-            <label>Song name: </label>
-            <input type="text" />
-            <label>Image: </label>
-            <input type="text" />
-            
-          </div>
+          <form className={style.formCont} onSubmit={(e) => onSubmitHandle(e)}>
+            <FormUploadSong />
+          </form>
         ))
       }
+
     </div>
   );
 };
