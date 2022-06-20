@@ -50,3 +50,12 @@ export const updateSong = (info: any) => {
   };
 };
 
+export const uploadSong = (payload: any) => {
+  return async function (dispatch: Dispatch<Actions>) {
+    const update = await axios.post("https://www.javierochoa.me/create", payload)
+    return {
+      type: ActionType.UPLOAD_SONG,
+      payload: update
+    }
+  }
+}

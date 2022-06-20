@@ -17,6 +17,7 @@ import PanelArtistProfile from "../../commons/PanelArtist/PanelArtistProfile";
 import PanelArtistSongs from "../../commons/PanelArtist/PanelArtistSongs";
 import PanelArtistAlbums from "../../commons/PanelArtist/PanelArtistAlbums";
 import Player from "../../commons/Player/Player";
+import FloatButton from "../../commons/FloatButton/FloatButton";
 
 const PanelArtist = () => {
   const [page, setPage] = useState(1)
@@ -77,6 +78,7 @@ const PanelArtist = () => {
           </div>
         }
         <Player/>
+        <FloatButton />
       </div>
     :
     <Error404/>

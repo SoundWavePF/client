@@ -40,6 +40,7 @@ export enum ActionType {
   GET_USER_INFO = 'GET_USER_INFO',
   CHANGE_ABOUT = 'CHANGE_ABOUT',
   UPDATE_SONG = 'UPDATE_SONG',
+  UPLOAD_SONG = 'UPLOAD_SONG',
 }
 
 
