@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import * as actionCreator from "../../../redux/actions/action_player";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-
+import playlistFran from '../../../assets/playlistFran.png'
 interface myProps {
   item: any
 }
@@ -43,7 +43,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
       return(
         <div className={styles.default}>
           <Link to={`/playlist/${props.item.id}`}>
-            <img src={props.item.image_medium} alt={props.item.name}/>
+            <img src={playlistFran} alt={props.item.name}/>
           </Link>
           <p>{props.item.name}</p>
         </div>
