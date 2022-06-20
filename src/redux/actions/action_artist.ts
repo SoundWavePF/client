@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const getArtist = (id:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.get('http://143.198.158.238:3001/artist/'+id)
+    axios.get('https://www.javierochoa.me/artist/'+id)
     .then(response => 
       dispatch({
         type: ActionType.GET_ARTIST,
@@ -15,7 +15,7 @@ export const getArtist = (id:any)=>{
 }
 export const getArtistTop = (id:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.get('http://143.198.158.238:3001/artist/'+id+'/top')
+    axios.get('https://www.javierochoa.me/artist/'+id+'/top')
     .then(response => 
       dispatch({
         type: ActionType.GET_ARTIST_TOP,
@@ -26,7 +26,7 @@ export const getArtistTop = (id:any)=>{
 }
 export const changeAbout = (email: string, description: string) => {
   return(dispatch: Dispatch<Actions>) => {
-    axios.post('http://143.198.158.238:3001/artistpanel/description', {email: email, description: description})
+    axios.post('https://www.javierochoa.me/artistpanel/description', {email: email, description: description})
     .then(response => 
       dispatch({
         type: ActionType.CHANGE_ABOUT,
@@ -36,7 +36,7 @@ export const changeAbout = (email: string, description: string) => {
 }
 export const updateSong = (info: any) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post("http://143.198.158.238:3001/artistpanel/song/update",{
+    axios.post("https://www.javierochoa.me/artistpanel/song/update",{
       email: info.email,
       songId: info.id,
       songName: info.name,
