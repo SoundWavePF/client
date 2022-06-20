@@ -34,15 +34,26 @@ const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, 
         {/* <p>Album</p> */}
         <span>Duration</span>
       </div>
-      <ReactSortable list={state} setList={setState} className={sort ? styles.listSort : styles.list}
-        chosenClass={styles.choose} disabled={!sort} onUpdate={() => updateLocal(state)}
-      >
-        {
-          state?.map((e:any, i:any) => {
-            return <ListItem key={i} item={e} nb={nb?i+1:undefined} album={album}/>;
-          })
-        }
-      </ReactSortable>
+      {
+        !sort ? 
+        <div className={styles.list}>
+          {
+            content?.map((e:any, i:any) => {
+              return <ListItem key={i} item={e} nb={nb?i+1:undefined} album={album}/>;
+            })
+          }
+        </div>
+        :
+        <ReactSortable list={state} setList={setState} className={sort ? styles.listSort : styles.list}
+          chosenClass={styles.choose} disabled={!sort} onUpdate={() => updateLocal(state)}
+        >
+          {
+            state?.map((e:any, i:any) => {
+              return <ListItem key={i} item={e} nb={nb?i+1:undefined} album={album}/>;
+            })
+          }
+        </ReactSortable>
+      }
     </div>
     :
     <></>
