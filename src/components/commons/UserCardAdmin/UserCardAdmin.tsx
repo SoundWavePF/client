@@ -27,7 +27,7 @@ const UserCardAdmin = (userP:any)=>{
           adminEmail:ADMIN_EMAIL,
           userEmail:userC.email,
         }
-        axios.post('http://143.198.158.238:3001/admin/deactivate',data)
+        axios.post('https://www.javierochoa.me/admin/deactivate',data)
         .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
@@ -59,7 +59,7 @@ const UserCardAdmin = (userP:any)=>{
           adminEmail:ADMIN_EMAIL,
           userEmail:userC.email,
         }
-        axios.post('http://143.198.158.238:3001/admin/accept',data)
+        axios.post('https://www.javierochoa.me/admin/accept',data)
         .then(r=>{
           console.log(r.data,'BIENNNNN')
           getAllUsers(ADMIN_EMAIL)
@@ -92,7 +92,7 @@ const UserCardAdmin = (userP:any)=>{
         field:'username', 
         newData:text 
       }
-      axios.post('http://143.198.158.238:3001/admin/update',data)
+      axios.post('https://www.javierochoa.me/admin/update',data)
       .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
@@ -121,7 +121,7 @@ const UserCardAdmin = (userP:any)=>{
         field:'email', 
         newData:email 
       }
-      axios.post('http://143.198.158.238:3001/admin/update',data)
+      axios.post('https://www.javierochoa.me/admin/update',data)
       .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
