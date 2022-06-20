@@ -1,5 +1,8 @@
 import styles from "./PanelArtistProfile.module.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import * as actionCreator from '../../../redux/actions/action_artist';
+import { bindActionCreators } from "redux";
 
 interface myProps {
   content?: any;
@@ -7,10 +10,21 @@ interface myProps {
 
 const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
   const {id, username, email, image_avatar} = useSelector((state: any) => state.user_info);
+  const dispatch = useDispatch();
+  const { changeAbout } = bindActionCreators(actionCreator, dispatch);
   const imageHC = 'https://ca.slack-edge.com/TPRS7H4PN-U033J87QWUE-d32d957d0868-512';
   const nameHC = 'Miguel Garcia';
   const textHC = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci animi placeat exercitationem vel sit maxime,\nab obcaecati architecto sint molestiae unde amet quasi harum iusto, beatae esse. Iste, quasi perferendis?. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla magnam perspiciatis impedit, nisi quasi provident,<br/> possimus repellat cupiditate totam mollitia non magni expedita? Aut quo vel sed cum, optio nisi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore animi aperiam ad consectetur saepe, vero expedita fugit, necessitatibus distinctio odio eum repellendus illum dolor eaque vitae libero eveniet! Iure, inventore. Lorem ipsum dolor, sit amet consectetur adipisicing elit.';
-
+  const [edit, setEdit] = useState<boolean>(false);
+  const [about, setAbout] = useState<string>(textHC);
+  function onChangeAbout(e: any){
+    setAbout(e.target.value);
+    console.log(about)
+  }
+  function handleSubmit(){
+    setEdit(false);
+    changeAbout(email, about);
+  }
   return (
     <div className={styles.container}>
       <img src={imageHC} alt={username} />
@@ -34,7 +48,8 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
             <div className={styles.value}>15000</div>
         </div>
       </div>
-      <p>{textHC}</p>
+      {edit ? <div><textarea value={about} onChange={(e) => onChangeAbout(e)}></textarea> <button onClick={handleSubmit}>OK</button> <button onClick={() => setEdit(false)}>Cancel</button> </div> : <div><p>{about}</p> <button onClick={() => setEdit(!edit)}>Edit about</button></div>}
+      
     </div>
   )
 };

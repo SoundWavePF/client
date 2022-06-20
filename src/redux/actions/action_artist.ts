@@ -24,6 +24,16 @@ export const getArtistTop = (id:any)=>{
       )
   }
 }
+export const changeAbout = (email: string, description: string) => {
+  return(dispatch: Dispatch<Actions>) => {
+    axios.post('http://143.198.158.238:3001/artistpanel/description', {email: email, description: description})
+    .then(response => 
+      dispatch({
+        type: ActionType.CHANGE_ABOUT,
+        payload: response
+      }))
+  }
+}
 export const updateSong = (info: any) => {
   return (dispatch: Dispatch<Actions>) => {
     axios.post("http://143.198.158.238:3001/artistpanel/song/update",{
@@ -39,3 +49,4 @@ export const updateSong = (info: any) => {
       .catch((error) => console.log(error));
   };
 };
+
