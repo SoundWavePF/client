@@ -26,7 +26,7 @@ export default function Player(){
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [pos, setPos] = useState(0);
-  const [volume, setVolume] = useState('100');
+  const [volume, setVolume] = useState('20');
   useEffect(() => setIsPlaying(true), [queue[0]])
   useEffect(() => updatePos(), [queue]);
   function Like(song, user){
