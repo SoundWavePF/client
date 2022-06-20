@@ -1,6 +1,6 @@
 import { LibraryArtist } from "../reducer/types";
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery | GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll | UpdatePlaylist| sortQueue | deleteFromQueue | loading | GetStats | UserAdmin | GetUserInfo | updateLike;
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery | GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll | UpdatePlaylist| sortQueue | deleteFromQueue | loading | GetStats | UserAdmin | GetUserInfo | updateLike | ChangeAbout | UpdateSong | LocalLoadedAlbum;
 
 export enum ActionType {
   CLEAN_GENRE = 'CLEAN_GENRE',
@@ -38,6 +38,9 @@ export enum ActionType {
   USER_ADMIN = 'USER_ADMIN',
   CLEAN_ALBUM_PLAYLIST = 'CLEAN_ALBUM_PLAYLIST',
   GET_USER_INFO = 'GET_USER_INFO',
+  CHANGE_ABOUT = 'CHANGE_ABOUT',
+  UPDATE_SONG = 'UPDATE_SONG',
+  LOCAL_LOADED_ALBUM = 'LOCAL_LOADED_ALBUM',
 }
 
 
@@ -175,6 +178,18 @@ interface GetUserInfo{
 interface UserAdmin{
   type: ActionType.USER_ADMIN,
   payload: any
+}
+interface ChangeAbout{
+  type: ActionType.CHANGE_ABOUT,
+  payload: any
+}
+interface UpdateSong{
+  type: ActionType.UPDATE_SONG,
+  payload?: any
+}
+interface LocalLoadedAlbum{
+  type: ActionType.LOCAL_LOADED_ALBUM,
+  payload?: any
 }
 
 

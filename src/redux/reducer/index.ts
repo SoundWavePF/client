@@ -22,7 +22,8 @@ interface State {
   artistTop: any,
   pageStats: any,
   user_info: any,
-  userAdmin: boolean
+  userAdmin: boolean,
+  panel_artist: any,
 }
 
 const initialState: State = {
@@ -56,6 +57,7 @@ const initialState: State = {
   pageStats: {},
   user_info: {},
   userAdmin: false,
+  panel_artist: { loaded_album: false, album: {}},
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -237,6 +239,39 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         user_info: action.payload,
       };
+    case ActionType.CHANGE_ABOUT:
+      return{
+        ...state
+      }
+    case ActionType.LOCAL_LOADED_ALBUM:
+      if (typeof action.payload === 'boolean') {
+        if (action.payload) {
+          return{
+            ...state,
+            panel_artist: {
+              ...state.panel_artist,
+              loaded_album: action.payload,
+            }
+          }
+        } else {
+          return{
+            ...state,
+            panel_artist: {
+              ...state.panel_artist,
+              loaded_album: action.payload,
+              album: {},
+            }
+          }
+        }
+      } else {
+        return{
+          ...state,
+          panel_artist: {
+            ...state.panel_artist,
+            album: action.payload,
+          }
+        }
+      }
     default:
       return state;
   }

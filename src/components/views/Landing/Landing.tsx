@@ -9,7 +9,7 @@ export default function Landing() {
   const { user, isAuthenticated } = useAuth0()
 
   function userLogin() {
-    axios.post("http://143.198.158.238:3001/login/userRegister", {
+    axios.post("https://www.javierochoa.me/login/userRegister", {
       name: user?.name,
       username: user?.nickname,
       email: user?.email,

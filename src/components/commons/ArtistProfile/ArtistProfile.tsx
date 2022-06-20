@@ -189,7 +189,7 @@ const ArtistProfile: React.FunctionComponent = ()=>{
     const [searchWord, setSearchWord] = useState('')
 
     useEffect( ()=>{
-        axios.get('http://143.198.158.238:3001/search?all=amor')
+        axios.get('https://www.javierochoa.me/search?all=amor')
         .then( (res)=>res.data.songData)
         .then( songs => setSongs(songs))
     }, [])

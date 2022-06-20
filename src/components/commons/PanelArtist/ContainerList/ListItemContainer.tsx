@@ -13,8 +13,8 @@ interface myProps {
   sort?: boolean;
 }
 
-const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, nb, sort=false}: myProps) => {
-  const [state, setState] = useState<any>([...content]);
+const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, nb=false, sort=false}: myProps) => {
+  const [state, setState] = useState<any>(content);
   const dispatch = useDispatch();
   const {  } = bindActionCreators(
     actionCreator,
@@ -26,6 +26,7 @@ const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, 
   }
 
   return (
+    state.length > 0 ? 
     <div>
       <div className={styles.header}>
         <span>Title</span>
@@ -33,17 +34,29 @@ const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, 
         {/* <p>Album</p> */}
         <span>Duration</span>
       </div>
-      <ReactSortable list={state} setList={setState} className={sort ? styles.listSort : styles.list}
-        chosenClass={styles.choose} disabled={!sort} onUpdate={() => updateLocal(state)}
-      >
-        {
-          state?.map((e:any, i:any) => {
-            return <ListItem key={i} item={e} nb={nb?i+1:undefined} album={album}/>;
-          })
-        }
-      </ReactSortable>
-
+      {
+        !sort ? 
+        <div className={styles.list}>
+          {
+            content?.map((e:any, i:any) => {
+              return <ListItem key={i} item={e} nb={nb?i+1:undefined} album={album}/>;
+            })
+          }
+        </div>
+        :
+        <ReactSortable list={state} setList={setState} className={sort ? styles.listSort : styles.list}
+          chosenClass={styles.choose} disabled={!sort} onUpdate={() => updateLocal(state)}
+        >
+          {
+            state?.map((e:any, i:any) => {
+              return <ListItem key={i} item={e} nb={nb?i+1:undefined} album={album}/>;
+            })
+          }
+        </ReactSortable>
+      }
     </div>
+    :
+    <></>
   );
 };
 export default ListItemContainerPanelArtist;
