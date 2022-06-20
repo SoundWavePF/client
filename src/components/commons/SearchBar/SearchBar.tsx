@@ -25,10 +25,12 @@ const SearchBar = () => {
     }
   }, [input]);
   useEffect(() => {
+    setQuery('')
     return () => { setQuery('') };
   }, []);
   function handleChange(e: any): void {
     setInput(e.target.value);
+    console.log(e)
   }
   function handleSubmit(e: any) {
     e.preventDefault();
