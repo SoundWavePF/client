@@ -31,8 +31,8 @@ const PanelArtist = () => {
     setPage(page);
   }
   return (
-    rol === "user" ?
-      <div>
+    true ?
+      <div className={styles.container}>
         <div className={sidebar.container}>
           <div>
             <img src={logo} alt="SoundWave logo" className={sidebar.logo} />

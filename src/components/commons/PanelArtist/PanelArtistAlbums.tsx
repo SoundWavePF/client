@@ -1,4 +1,4 @@
-import styles from "./PanelArtistContent.module.css";
+import styles from "./PanelArtistAlbum.module.css";
 import { useEffect, useState } from "react";
 import CardContainer from "../CardContainer/CardContainer";
 import * as actionCreator from "../../../redux/actions/action_artist";
@@ -22,14 +22,14 @@ const PanelArtistAlbums: React.FC<myProps> = ({ content }: myProps) => {
     
   })
   return (
-    <div className={styles.containerAlbum}>
-      <div className={''}>
-        <span onClick={()=>setOpen(true)}>My albums  ¡CLICK AQUI! (Lo que se espera al clickear un album)</span>
+    <div className={styles.container}>
+      <div className={styles.albums}>
+        <span>My albums  ¡CLICK AQUI! (Lo que se espera al clickear un album)</span>
         <CardContainerPanelArtist content={albums}/>
       </div>
       {
         loaded_album &&
-        <>
+        <div className={styles.floating}>
           <button className={styles.floatingClose} onClick={()=>localLoadedAlbum(false)}>X</button>
           <div className={styles.floatingList}>
             {
@@ -37,7 +37,7 @@ const PanelArtistAlbums: React.FC<myProps> = ({ content }: myProps) => {
               <ListItemContainerPanelArtist content={album.songs} nb={true} album={false} sort={true}/>
             }
           </div>
-        </>
+        </div>
       }
     </div>
   )
