@@ -34,3 +34,19 @@ export const changeAbout = (email: string, description: string) => {
       }))
   }
 }
+export const updateSong = (info: any) => {
+  return (dispatch: Dispatch<Actions>) => {
+    axios.post("http://143.198.158.238:3001/artistpanel/song/update",{
+      email: info.email,
+      songId: info.id,
+      songName: info.name,
+      albumId: info.album,
+    }).then((response) =>
+        dispatch({
+          type: ActionType.UPDATE_SONG,
+        })
+      )
+      .catch((error) => console.log(error));
+  };
+};
+
