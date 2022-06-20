@@ -41,15 +41,38 @@ export const updateSong = (info: any) => {
       songId: info.id,
       songName: info.name,
       albumId: info.album,
-    }).then((response) =>
-        dispatch({
-          type: ActionType.UPDATE_SONG,
-        })
-      )
-      .catch((error) => console.log(error));
+    })
+    .then((response) =>
+      console.log('res of update ',response)
+    )
+    .then((response) =>
+      dispatch({
+        type: ActionType.UPDATE_SONG,
+      })
+    )
+    .catch((error) => console.log(error));
   };
 };
-
+export const localLoadedAlbum = (id: string | boolean) => {
+  if (typeof id === 'boolean'){
+    return (dispatch: Dispatch<Actions>) => {
+      dispatch({
+        type: ActionType.LOCAL_LOADED_ALBUM,
+        payload: id,
+      })
+    };
+  } else {
+    return (dispatch: Dispatch<Actions>) => {
+      axios.get(`https://www.javierochoa.me/album/${id}`)
+        .then(response =>
+        dispatch({
+          type: ActionType.LOCAL_LOADED_ALBUM,
+          payload: response.data,
+        })
+      )
+    };
+  }
+};
 export const uploadSong = (payload: any) => {
   return async function (dispatch: Dispatch<Actions>) {
     const update = await axios.post("https://www.javierochoa.me/create", payload)

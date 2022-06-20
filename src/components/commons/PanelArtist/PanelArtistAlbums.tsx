@@ -15,8 +15,9 @@ interface myProps {
 const PanelArtistAlbums: React.FC<myProps> = ({ content }: myProps) => {
   const [open, setOpen] = useState<any>(false);
   const {albums, songs} = useSelector((state: any) => state.artist);
+  const {loaded_album, album} = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
-  const {  } = bindActionCreators(actionCreator, dispatch)
+  const { localLoadedAlbum } = bindActionCreators(actionCreator, dispatch)
   useEffect(()=>{
     
   })
@@ -27,11 +28,14 @@ const PanelArtistAlbums: React.FC<myProps> = ({ content }: myProps) => {
         <CardContainerPanelArtist content={albums}/>
       </div>
       {
-        open &&
+        loaded_album &&
         <>
-          <button className={styles.floatingClose} onClick={()=>setOpen(false)}>X</button>
+          <button className={styles.floatingClose} onClick={()=>localLoadedAlbum(false)}>X</button>
           <div className={styles.floatingList}>
-            <ListItemContainerPanelArtist content={songs} nb={true} album={false} sort={true}/>
+            {
+              album.songs &&
+              <ListItemContainerPanelArtist content={album.songs} nb={true} album={false} sort={true}/>
+            }
           </div>
         </>
       }
