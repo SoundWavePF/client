@@ -27,7 +27,6 @@ export default function Landing() {
         {
           user?.nickname?
           <div>
-            <img className={styles.picture} src={user?.picture} alt={user?.name} />
             <p className={styles.p}>{'Welcome again '+user?.nickname}</p>
           </div>
           :
