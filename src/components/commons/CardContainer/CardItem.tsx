@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import * as actionCreator from "../../../redux/actions/action_player";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-import playlistFran from '../../../assets/playlistFran.png'
+import playlistFran from '../../../assets/playlistFran2.png'
 interface myProps {
   item: any
 }
