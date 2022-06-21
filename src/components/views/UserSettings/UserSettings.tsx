@@ -10,6 +10,7 @@ import * as actionCreator from '../../../redux/actions/action_user'
 import { bindActionCreators } from 'redux';
 import { useSelector } from "react-redux";
 import Player from "../../commons/Player/Player";
+import axios from "axios";
 
 
 interface inputs {
@@ -21,6 +22,7 @@ interface inputs {
 
 const UserSettings = () => {
 
+  const [image,setImage]:any= useState()
   const [InfoUser,setInfoUser]:any= useState()
   const {user_info}=useSelector((state:any)=>state)
 
@@ -29,11 +31,10 @@ const UserSettings = () => {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
    const { sub }: any = user
   const {email}:string | undefined | any =user
-  let { picture }: any = user
   let [input, setInput] = useState<inputs>({
     email: email,
-    oldData: "",
-    newData: "",
+    oldData:  user_info.image_avatar,
+    newData: '',
     field: "avatar",
   })
 
@@ -45,27 +46,53 @@ const UserSettings = () => {
 
   },[])
 
+  const uploadImage = async (e:any) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "songImage");
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/jonathanhortman/image/upload",
+      {
+        method: "POST",
+        body: data
+      }
+    );
+
+
+    const file = await res.json();
+    setImage(file.secure_url);
+  
+    setInput({...input,
+      newData:file.secure_url
+    
+    })
+
+    const ress = await axios.post(
+      "https://www.javierochoa.me/update",input
+      
+    )
+    console.log(ress,"s")
+    
+    
+  };
+
 
 
 
   function onSubmitHandle(e: any) {
     e.preventDefault()
+    console.log(InfoUser)
+
+    
+
+
+
     updateUser(input)
-    setInput({
-      email: email,
-    oldData: "",
-    newData: "",
-    field: "avatar",
-    })
-    console.log(user)
+  
   }
 
-  const handleOnChange = (e: any) => {
-    setInput({
-        ...input,
-        [e.target.name]: e.target.value
-    })
-}
 
 
   const [modal, setModal]: any = useState({
@@ -136,7 +163,7 @@ const UserSettings = () => {
 
           <form className={style.father} onSubmit={(e) => onSubmitHandle(e)}>
             <img src={user_info.image_avatar} alt="image" className={style.userImage} />
-            <input type="file" onChange={(e)=>handleOnChange(e)} value={input.newData} name={"newData"} className={style.input} />
+            <input type="file" onChange={uploadImage}  className={style.input} />
           <button type='submit'>Send</button>
           </form>
 

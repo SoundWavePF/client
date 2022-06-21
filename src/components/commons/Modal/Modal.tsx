@@ -52,6 +52,7 @@ const Modal = (props: Modal) => {
     }
     
     function onSubmitHandle(e: any) {
+        console.log(input,"input")
      
 
         if(props.action == 'artist')
