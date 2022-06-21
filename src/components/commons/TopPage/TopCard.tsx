@@ -2,6 +2,7 @@ import styles from "./TopCard.module.css";
 // import { Link } from "react-router-dom";
 import * as actionCreator from "../../../redux/actions/action_player";
 // import * as actionCreatorUser from "../../../redux/actions/action_user";
+import time from "../../../../src/assets/time.png";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { useState } from "react";
@@ -94,6 +95,7 @@ const TopCard = (props: any) => {
               />
             ) : null}
             <span>{formatDuration(props.props.duration)}</span>
+            <img src={time} alt="time icon" />
           </div>
         </div>
       );
