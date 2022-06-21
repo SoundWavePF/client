@@ -9,7 +9,7 @@ import MenuUser from "../SearchBar/MenuUser";
 
 const NavBar = () => {
   // const [username, setUsername] = useState('')
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
   // const useAuth: any = useAuth0();
   // const { user, isAuthenticated, isLoading } = useAuth
   // const newUser: any = user
@@ -57,9 +57,10 @@ const NavBar = () => {
         {
           isAuthenticated ? 
           //<MenuUser username={"username"}/>
-          (<button className="btn btn-outline-warning"onClick={() => logout({ returnTo: window.location.origin })}>Logout</button>) 
+          (<div><img className={styles.picture} src={user?.picture} alt={user?.name} /> 
+          <button className="btn btn-warning" onClick={() => logout({ returnTo: window.location.origin })}>Logout</button></div>)
           :
-          <button onClick={() => loginWithRedirect()} className="btn btn-outline-warning" >Log In</button>
+          <button onClick={() => loginWithRedirect()} className="btn btn-warning" >Log In</button>
         }
       </div>
 
