@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 // import { useEffect, useState } from "react";
 // import jwt_decode from "jwt-decode";
 import { useAuth0 } from "@auth0/auth0-react";
+import MenuUser from "../SearchBar/MenuUser";
 
 const NavBar = () => {
   // const [username, setUsername] = useState('')
@@ -45,18 +46,21 @@ const NavBar = () => {
         </Nav.Item>
       </Nav>
       <Link to='/'>
-        <img src={logo} alt="logo" />
+        <img  src={logo} alt="logo" />
       </Link>
       {/* {username === 'Unregistered' &&  */}
 
       {/* <Link to='/signup' className="btn btn-warning">Sign Up</Link>
     // <Link to='/login' className="btn btn-outline-warning">Log In</Link> */}
       <div>
-        <button onClick={() => loginWithRedirect()}
-          className="btn btn-outline-warning" >Log In</button>
-        {isAuthenticated ? (<button className="btn btn-outline-warning"
-          onClick={() => logout({ returnTo: window.location.origin })}>Logout</button>) :
-          null}
+        {/* <button onClick={() => loginWithRedirect()}className="btn btn-outline-warning" >Log In</button> */}
+        {
+          isAuthenticated ? 
+          //<MenuUser username={"username"}/>
+          (<button className="btn btn-outline-warning"onClick={() => logout({ returnTo: window.location.origin })}>Logout</button>) 
+          :
+          <button onClick={() => loginWithRedirect()} className="btn btn-outline-warning" >Log In</button>
+        }
       </div>
 
 

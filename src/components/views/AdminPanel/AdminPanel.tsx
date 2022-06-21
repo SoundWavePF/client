@@ -90,6 +90,14 @@ const AdminPanel = ()=>{
         <div>
           <AdminSideBar/>
           <NavAdmin option={false}/>
+          <div className={m.containerHeader}>
+            <div className={m.type}>type</div>
+            <div className={m.request}>request</div>
+            <div className={m.id}>id</div>
+            <div className={m.username}>username</div>
+            <div className={m.email}>email</div>
+            <div className={m.account}>account</div>
+          </div>
           <div className={m.containerCards}>
             <ul className={m.ul}>
               {users.length>0 && users.map((user:any)=>{

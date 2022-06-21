@@ -2,7 +2,6 @@ import Modal from "../../commons/Modal/Modal";
 import styles from "../Home/Home.module.css";
 import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";
-import Player from "../../commons/Player/Player";
 import style from './UserSettings.module.css'
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
@@ -184,6 +183,7 @@ const UserSettings = () => {
       </div>
 
       <Player />
+
       {modal.modalArtist === true ?
         <Modal handleModal={handleModal} email={InfoUser?.email} action={'artist'} setpass={"Put your password"} inputArtistType={"password"} artistName={"Set your artist name"} type={"text"} header={"Ready to become an artist?"} contentButton={"confirm"} />
         : null
