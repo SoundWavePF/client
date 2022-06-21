@@ -18,7 +18,6 @@ const Library = () => {
   const searchString = useSelector((state: any) => state.query)
   const dispatch = useDispatch();
   const { getLibrary } = bindActionCreators(actionCreator, dispatch);
-  const { setQuery } = bindActionCreators(actionCreator2, dispatch);
   useEffect(() => {
     if (email) getLibrary(email);
   }, [isAuthenticated]);
