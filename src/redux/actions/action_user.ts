@@ -70,3 +70,6 @@ export const getUserInfo = (email: string) => {
       .catch((error) => console.log(error));
   };
 };
+
+
+

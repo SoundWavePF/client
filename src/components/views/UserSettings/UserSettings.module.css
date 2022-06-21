@@ -44,6 +44,7 @@
 .buttons:hover {
     background-color: #ffee32;
     transition: ease-in 0.1s;
+    font-family: 'sw-bold';
 }
 
 .subscriptionContainer {
@@ -145,10 +146,33 @@
     top: 15px;
     border-radius: 60px;
 }
+.father button{
+    padding: 0.5em;
+    position: absolute;
+
+    left: 40px;
+    bottom: -70px;
+
+    background-color: transparent;
+    border-radius: 1em;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.232);
+}
+
+
+.father button:hover{
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.232);
+    font-family: 'sw-bold';
+    background-color: #ffee32;
+    transition: ease-in 0.1s;
+
+}
 
 .userImage{
     width: 130px;
     height: 130px;
+    
 }
 
 
