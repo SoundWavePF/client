@@ -9,6 +9,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import * as actionCreator from '../../../redux/actions/action_user'
 import { bindActionCreators } from 'redux';
 import { useSelector } from "react-redux";
+import Player from "../../commons/Player/Player";
 
 
 interface inputs {
@@ -182,7 +183,7 @@ const UserSettings = () => {
         </div>
       </div>
 
-      <Player />
+      {/* <Player /> */}
 
       {modal.modalArtist === true ?
         <Modal handleModal={handleModal} email={InfoUser?.email} action={'artist'} setpass={"Put your password"} inputArtistType={"password"} artistName={"Set your artist name"} type={"text"} header={"Ready to become an artist?"} contentButton={"confirm"} />
