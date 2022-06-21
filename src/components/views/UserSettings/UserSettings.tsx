@@ -164,7 +164,7 @@ const UserSettings = () => {
           <form className={style.father} onSubmit={(e) => onSubmitHandle(e)}>
             <img src={user_info.image_avatar} alt="image" className={style.userImage} />
             <input type="file" onChange={uploadImage}  className={style.input} />
-          <button type='submit'>Send</button>
+          <button className={style.button} type='submit'></button>
           </form>
 
 
