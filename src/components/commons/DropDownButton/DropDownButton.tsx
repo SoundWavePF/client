@@ -34,7 +34,7 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
   }
   return (
     <div>
-      <DropdownButton id="dropdown-basic-button" variant="warning" title="">
+      <DropdownButton id="dropdown-basic-button" variant="warning" title="•••" bsPrefix={styles.dropdown}>
         <Dropdown.Item ><Link className={styles.link} to={`/artist/${props.item.artists[0].id}`}>Go to Artist</Link></Dropdown.Item>
         <Dropdown.Item ><Link className={styles.link} to={`/album/${props.item.album.id}`}>Go to Album</Link></Dropdown.Item>
         <Dropdown.Item onClick={() => addToQueue(props.item)}>Add to queue</Dropdown.Item>
@@ -47,6 +47,7 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
                 drop={'end'}
                 variant="warning"
                 title='➕ Playlist'
+                bsPrefix={styles.dropdrop}
               >
                 {playlists.length ? playlists.map((p: any) => { return <Dropdown.Item onClick={() => addToPlaylist(p.id, props.item.id)}>{p.name}</Dropdown.Item> }) : null}
                 <Dropdown.Item onClick={addPlaylist}>New Playlist</Dropdown.Item>
