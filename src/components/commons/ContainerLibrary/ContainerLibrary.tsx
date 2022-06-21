@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
 import CardItem from "../CardContainer/CardItem";
-import ItemList from "../CardsComponents/ItemList/ItemList";
+import ListItem from '../ListItemContainer/ListItem';
 import Styled from "../ContainerLibrary/ContainerLibrary.module.css";
-import { bindActionCreators } from "redux";
-import { useDispatch } from "react-redux";
-import * as actionCreator from "../../../redux/actions/action_user";
 import { useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -59,10 +55,10 @@ export const ContainerLibrary = () => {
             </div>
 
             {state.library_artist.list.liked_songs &&
-              state.library_artist.list.liked_songs.map((s: any) => (
-                <div className={Styled.ContainerFavorite}>
+              state.library_artist.list.liked_songs.map((s: any, index:number) => (
+                <div key={index} className={Styled.ContainerFavorite}>
                   {" "}
-                  <ItemList item={s}></ItemList>{" "}
+                  <ListItem item={s}></ListItem>{" "}
                 </div>
               ))}
           </div>
