@@ -1,5 +1,6 @@
 import Modal from "../../commons/Modal/Modal";
-import styles from "../Home/Home.module.css";
+// import styles from "../Home/Home.module.css";
+import StylesC from "./UserSettingContainer.module.css";
 import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";
 import style from './UserSettings.module.css'
@@ -11,7 +12,6 @@ import { bindActionCreators } from 'redux';
 import { useSelector } from "react-redux";
 import Player from "../../commons/Player/Player";
 import axios from "axios";
-
 
 interface inputs {
   email: string
@@ -153,7 +153,7 @@ const UserSettings = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={StylesC.container}>
       <SearchBar />
       <SideBar />
 
