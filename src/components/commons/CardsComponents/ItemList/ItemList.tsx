@@ -69,7 +69,9 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
               <div onClick={() => playSong(props.item)} className={s.songName}>
                 {props.item.name}
               </div>
-              <span className={s.spanArtistName}>{props.item.artists[0].name}</span>
+              <Link className={s.spanArtistName} to={'/artist/'+props.item.artists[0].id}>
+                <span >{props.item.artists[0].name}</span>
+              </Link>
             </div>
           </div>
           <div className={s.controllerContainer}>

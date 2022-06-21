@@ -24,11 +24,15 @@ export default function Landing() {
       <NavBar />
       <div className={styles.container}>
         <h1 className={styles.title}>SoundWave</h1>
-        <p className={styles.p}>Sign up now on the best platform to play and share your favorite music</p>
-        <div>
-          <img src={user?.picture} alt={user?.name} />
-          <h3>{user?.nickname}</h3>
-        </div>
+        {
+          user?.nickname?
+          <div>
+            <img className={styles.picture} src={user?.picture} alt={user?.name} />
+            <p className={styles.p}>{'Welcome again '+user?.nickname}</p>
+          </div>
+          :
+          <p className={styles.p}>Sign up now on the best platform to play and share your favorite music</p>
+        }
         <div className={styles.button}>
           {isAuthenticated ? <Link to='/home' className={styles.button} onClick={() => userLogin()}>Open Player</Link> :
             <Link to='/home' className={styles.button}>Open Player</Link>}

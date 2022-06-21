@@ -114,6 +114,7 @@
 .spanArtistName {
     color: #1a1a1a;
     padding-left: 12px;
+    text-decoration: none;
 }
 
 .likeBtn {

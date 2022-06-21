@@ -140,7 +140,9 @@ const UserCardAdmin = (userP:any)=>{
               <div className={m.divType}>
                 <span>{user.rol}</span>
               </div>
-              <button onClick={user.requested_artist? ()=>changeRole(user):undefined} className={user.requested_artist? m.buttonRequestTrue : m.buttonRequest}>{user.requested_artist.toString()}</button>
+              <button onClick={user.requested_artist? ()=>changeRole(user):undefined} className={user.requested_artist? m.buttonRequestTrue : m.buttonRequest}>
+                {user.requested_artist? 'yes' : 'no'}
+              </button>
               <div className={m.divId}>
                 <span className={m.span}>Id: {user.id}</span>
               </div>
@@ -149,7 +151,7 @@ const UserCardAdmin = (userP:any)=>{
               {/* <div className={m.divSong}>
                 <span className={m.span}>Songs number: {user.songNumber}</span>
               </div> */}
-              <button onClick={user.deactivated? undefined:()=>deleteUser(user)} className={m.button}>{user.deactivated.toString()}</button>
+              <button onClick={user.deactivated? undefined:()=>deleteUser(user)} className={m.buttonDelete}>{user.deactivated? 'deactivated':'no deactivated'}</button>
           </div>
         </div>
       )
