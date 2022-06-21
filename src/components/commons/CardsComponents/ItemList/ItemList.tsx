@@ -12,13 +12,6 @@ import { bindActionCreators } from "redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
 
-// interface Item {
-//     position: number;
-//     image: string;
-//     name: string;
-//     timeLapse:string;
-//     cantidad?: string;
-// }
 
 interface myProps {
   item: any;

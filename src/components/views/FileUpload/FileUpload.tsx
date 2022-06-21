@@ -49,7 +49,7 @@ const FileUpload = (props: any) => {
         }
       )
       const file = await res.json();
-      console.log(res)
+      console.log('file', file.duration) // esta es la duration
       setSound(file.secure_url)
       console.log(file.secure_url) // url de la imagen subida
       setLoading(false)
