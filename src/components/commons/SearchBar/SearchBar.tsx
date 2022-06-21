@@ -18,8 +18,8 @@ const SearchBar = () => {
   const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0()
   const { searchAll, setQuery, loading } = bindActionCreators(actionCreator, dispatch);
   useEffect(() => {
+    setQuery(input);
     if (input && !loadingState) {
-      if (!searchString) setQuery('true');
       searchAll(input);
       loading(true)
     }
@@ -35,7 +35,7 @@ const SearchBar = () => {
   function handleSubmit(e: any) {
     e.preventDefault();
     searchAll(input);
-    setInput("");
+    // setInput("");
   }
   return (
     <nav className={`${style.navbar}`}>

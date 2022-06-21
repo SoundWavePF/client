@@ -40,3 +40,21 @@
 .value {
   font-size: 16px;
 }
+.textarea{
+  width: 100%;
+  min-height: 10em;
+  height: fit-content;
+  resize: none;
+}
+.btn{
+  background-color: var(--yellow-light);
+  border: 2px solid var(--yellow-light);
+  border-radius: 5px;
+  padding: 3px 5px;
+}
+.btn2{
+  background-color: white;
+  border: 2px solid var(--yellow-light);
+  border-radius: 5px;
+  padding: 3px 5px;
+}

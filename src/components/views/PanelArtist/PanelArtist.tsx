@@ -17,6 +17,7 @@ import PanelArtistProfile from "../../commons/PanelArtist/PanelArtistProfile";
 import PanelArtistSongs from "../../commons/PanelArtist/PanelArtistSongs";
 import PanelArtistAlbums from "../../commons/PanelArtist/PanelArtistAlbums";
 import Player from "../../commons/Player/Player";
+import FloatButton from "../../commons/FloatButton/FloatButton";
 
 const PanelArtist = () => {
   const [page, setPage] = useState(1)
@@ -31,8 +32,8 @@ const PanelArtist = () => {
     setPage(page);
   }
   return (
-    rol === "user" ?
-      <div>
+    true ?
+      <div className={styles.container}>
         <div className={sidebar.container}>
           <div>
             <img src={logo} alt="SoundWave logo" className={sidebar.logo} />
@@ -77,6 +78,7 @@ const PanelArtist = () => {
           </div>
         }
         <Player/>
+        <FloatButton />
       </div>
     :
     <Error404/>

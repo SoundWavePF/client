@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png';
-import home from '../../../assets/home.png';
+import trend from '../../../assets/trend.png';
 import music from '../../../assets/music.png';
 import styles from './AdminSideBar.module.css';
 import { useDispatch } from 'react-redux';
@@ -31,16 +31,16 @@ export default function AdminSideBar(){
       </div>
       <div className={styles.btnContainer}>
         <button value="home" onClick={(e)=>onChange(e)} className={styles.button}>
-          <img src={home} alt="Home" className={styles.img}/>
-          Home
+          <img src={trend} alt="Home" className={styles.img}/>
+          Statistics
         </button>
         <button value='users' onClick={(e)=>onChange(e)} className={styles.button}>
           <img src='https://cdn-icons-png.flaticon.com/512/1077/1077114.png' alt="users" className={styles.img}/>
-          Users
+          Users List
         </button>
         <button value='artist' onClick={(e)=>onChange(e)} className={styles.button}>
           <img src={music} alt="artist" className={styles.img}/>
-          Artist
+          Artist List
         </button>
       </div>
     </div>

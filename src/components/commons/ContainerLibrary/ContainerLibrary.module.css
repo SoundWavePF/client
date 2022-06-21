@@ -99,25 +99,22 @@
     height: 15em;
     width: 15em;
 }
-
-.User img{
-    width: 15vw;
-    height: 100%;
-}
-
 .User{
-    width: 50%;
-    height: 30vh;
-
+    width: 40%;
+    height: 40%;
     display: flex;
+    padding: 3%;
+}
+.User img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
 }
 .User h1{
     margin-left: 1em;
     display: flex;
     align-items: center;
-
 }
-
 .Registerto{
     display: flex;
     justify-content: center;

@@ -44,7 +44,7 @@ const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, 
           }
         </div>
         :
-        <ReactSortable list={state} setList={setState} className={sort ? styles.listSort : styles.list}
+        <ReactSortable list={state} setList={setState} className={styles.listSort}
           chosenClass={styles.choose} disabled={!sort} onUpdate={() => updateLocal(state)}
         >
           {

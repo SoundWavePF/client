@@ -12,13 +12,6 @@ import { bindActionCreators } from "redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
 
-// interface Item {
-//     position: number;
-//     image: string;
-//     name: string;
-//     timeLapse:string;
-//     cantidad?: string;
-// }
 
 interface myProps {
   item: any;
@@ -69,7 +62,9 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
               <div onClick={() => playSong(props.item)} className={s.songName}>
                 {props.item.name}
               </div>
-              <span className={s.spanArtistName}>{props.item.name}</span>
+              <Link className={s.spanArtistName} to={'/artist/'+props.item.artists[0].id}>
+                <span >{props.item.artists[0].name}</span>
+              </Link>
             </div>
           </div>
           <div className={s.controllerContainer}>
