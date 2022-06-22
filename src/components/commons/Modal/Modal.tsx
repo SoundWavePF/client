@@ -42,7 +42,7 @@ const Modal = (props: Modal) => {
         email: props.email,
         oldData: "",
         newData: "",
-        field: props.field,
+        field: props.field
     })
     const handleOnChange = (e: any) => {
         setInput({
@@ -52,8 +52,11 @@ const Modal = (props: Modal) => {
     }
     
     function onSubmitHandle(e: any) {
+      
+
+        let close={target:{name:'all'}}
         console.log(input,"input")
-     
+        console.log(close.target.name,"close")
 
         if(props.action == 'artist')
         {
@@ -62,6 +65,8 @@ const Modal = (props: Modal) => {
 
         axios.post('https://www.javierochoa.me/requestArtistStatus',{email:props.email})
         .then(e=>console.log(e))
+        props.handleModal(close)
+
 
         }
 
@@ -71,12 +76,17 @@ const Modal = (props: Modal) => {
 
         axios.post('https://www.javierochoa.me/deactivate',{email:props.email})
         .then(e=>console.log(e))
+        props.handleModal(close)
+
 
         }
         else{
+            console.log(input)
             
         e.preventDefault()
         updateUser(input)
+        props.handleModal(close)
+
 
         }
 
@@ -94,7 +104,7 @@ const Modal = (props: Modal) => {
                     <div className={style.div1}><h1>{props.header}</h1></div>
                     <div className={style.div2}><button onClick={(e) => props.handleModal(e)} name="all">X</button></div>
                     <div className={style.div3}><h3>{props.description}</h3></div>
-                    <div className={style.div4}>
+                    <div className={style.div6}>
                         {
                             props.oldData ?
                                 <div><label>{props.oldData}</label></div>
@@ -102,7 +112,7 @@ const Modal = (props: Modal) => {
                         }
                    
                     </div>
-                    <div className={style.div5}>
+                    <div className={style.div7}>
                         {
                             props.oldData ?
                                 <input onChange={(e) => handleOnChange(e)} value={input.oldData} name={"oldData"} type={props.type} />

@@ -75,7 +75,10 @@ export const localLoadedAlbum = (id: string | boolean) => {
 };
 export const uploadSong = (payload: any) => {
   return async function (dispatch: Dispatch<Actions>) {
-    const update = await axios.post("https://www.javierochoa.me/create", payload)
+    console.log(payload);
+    
+    const update = await axios.post("https://www.javierochoa.me/artistpanel/song/create", payload)
+    console.log("la actioooooooooooooooooooon", update);
     return {
       type: ActionType.UPLOAD_SONG,
       payload: update

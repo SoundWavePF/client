@@ -40,6 +40,7 @@
   display: flex;
   gap: 10px;
 }
+/*
 .container > div:nth-child(3) :first-child {
   background-color: var(--yellow-light);
   border-color: var(--yellow-light);
@@ -54,4 +55,10 @@
 }
 .container > div:nth-child(3) :last-child:hover {
   background-color: var(--yellow-light);
+} */
+.picture{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 15px;
 }

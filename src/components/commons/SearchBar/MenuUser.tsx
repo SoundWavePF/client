@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import style from './MenuUser.module.css';
-import userIcon from '../../../assets/user_icon.png'
-import likeFull from '../../../assets/likefull.png'
+
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
+
+import style from './MenuUser.module.css';
 
 interface node {
     contains?: (arg: any) => any
@@ -46,16 +46,6 @@ const Menu: React.FunctionComponent<props> = (props) => {
         console.log(event)
     }
 
-    function handleLogout(): void {
-        localStorage.removeItem('sw-token')
-        navigate('/')
-    }
-
-    function handleLogIn(): void {
-        localStorage.removeItem('sw-token')
-        navigate('/login')
-    }
-
     function handleSignUp(): void {
         navigate('/signup')
     }
@@ -77,20 +67,12 @@ const Menu: React.FunctionComponent<props> = (props) => {
                         </div>
                         <div className={style.textContainer}>
                             <span>{username}</span>
-                            {/* {username !== 'Unregistered' &&  */}
-                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                            <div className={style.buttonContainer}>
                                 <a>{user?.nickname}</a>
                                 <button onClick={() => handleClick('settings')} className={style.btn}>Settings</button>
                                 { rol === 'artist' && <button onClick={() => handleClick('panel_artist')} className={style.btn}>Artist Panel</button>}
                                 <button onClick={() => logout({ returnTo: window.location.origin })} className={style.btnPrimary}>Logout</button>
-
                             </div>
-                            {/* {username === 'Unregistered' &&
-                        <div style={{display: 'flex', flexDirection:'column'}}>
-                            <button onClick={handleLogIn} className={style.btnPrimary}>Log In</button>
-                            <button onClick={handleSignUp} className={style.btn}>Sign Up</button>
-                        </div>
-                    } */}
                         </div>
                     </div>
             }

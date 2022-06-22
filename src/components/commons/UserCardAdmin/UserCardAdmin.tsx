@@ -18,7 +18,7 @@ const UserCardAdmin = (userP:any)=>{
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: '#ffd100',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
@@ -51,6 +51,7 @@ const UserCardAdmin = (userP:any)=>{
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: 'SI',
+      confirmButtonColor: '#ffd100',
       denyButtonText: `NO`,
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
@@ -80,6 +81,8 @@ const UserCardAdmin = (userP:any)=>{
       input: 'textarea',
       inputLabel: 'Set new username',
       inputPlaceholder: 'Type here...',
+      confirmButtonColor: '#ffd100',
+      cancelButtonColor: '#d33',
       inputAttributes: {
         'aria-label': 'Type your message here'
       },
@@ -110,6 +113,8 @@ const UserCardAdmin = (userP:any)=>{
     const { value: email } = await Swal.fire({
       title: 'Input email address',
       input: 'email',
+      confirmButtonColor: '#ffd100',
+
       inputLabel: 'Your email address',
       inputPlaceholder: 'Enter your email address'
     })

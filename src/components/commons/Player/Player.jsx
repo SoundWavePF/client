@@ -101,7 +101,7 @@ export default function Player(){
             {queue[pos] ? <img src={queue[pos].image_medium} className={styles.cover}/> : null}
             <div>
               <h4 className={styles.title}>
-                <Link className={styles.title} to={queue[pos] ? '/artist/'+queue[pos].artists[0].id : '/'}>
+                <Link className={styles.title} to={queue[pos] ? '/artist/'+(queue[pos].artists[0].id || queue[pos].artists[0].contributors.artistId) : '/'}>
                   <span>{queue[pos] ? queue[pos].artists[0].name : null}</span>
                 </Link>  
                 {' - '+queue[pos]?.name}

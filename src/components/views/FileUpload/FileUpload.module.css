@@ -8,6 +8,18 @@
     overflow-y: scroll;
 }
 
+.uploadContainer {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    border: 3px solid rgba(255, 255, 255, 0.577);
+    background-color: rgba(0, 0, 0, 0.262);
+    padding: 10px;
+    border-radius: 10px;
+    width: 80%;
+}
+
 .titleContainer {
     display: flex;
     flex-direction: row;
@@ -30,17 +42,6 @@
     font-size: 50px;
 }
 
-.uploadContainer {
-    display: flex;
-    margin-top: 20px;
-    align-items: center;
-    justify-content: flex-start;
-    border: 3px solid rgba(255, 255, 255, 0.577);
-    background-color: rgba(0, 0, 0, 0.262);
-    padding: 10px;
-    border-radius: 10px;
-    width: 80%;
-}
 
 .uploadContainer label {
     font-family: 'sw-bold';
@@ -62,4 +63,68 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.modalInfo{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 700px;
+    height: 650px;
+    overflow-y: scroll;
+}
+
+.modalBackground{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: ease-in 1s;
+    background-color: rgba(0, 0, 0, 0.717);
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.titleCont{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.title{
+    font-weight: bold;
+}
+.xButton{
+    position: absolute;
+    right: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.24);
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+}
+
+.closeButt{
+    position: absolute;
+    left: 30px;
+    border: none;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    background-image: url("https://e7.pngegg.com/pngimages/649/536/png-clipart-crop-supply-computer-icons-blog-info-infographic-text.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.index{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 5px;
 }
