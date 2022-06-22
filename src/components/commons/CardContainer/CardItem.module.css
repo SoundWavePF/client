@@ -81,3 +81,27 @@
   position: relative;
   margin: 0;
 }
+.figure{
+  display: inline-flex;
+  position: relative
+}
+.actions{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  line-height: 1;
+  padding-left: 0px;
+}
+.action{
+  display: inline-flex;
+  opacity: 0.00000001;
+  height: 35px;
+  width: 35px;
+  background-color: white;
+  border-radius: 50%;
+  align-items: center;
+  margin-right: 7px;
+}
+.figure:hover .action{
+  opacity: 1;
+}

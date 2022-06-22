@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import * as actionCreator from "../../../redux/actions/action_player";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-import playlistFran from '../../../assets/playlistFran2.png'
+import playlistFran from '../../../assets/playlistFran2.png';
+import DropDownButton from '../DropDownButton/DropDownButton';
+
 interface myProps {
   item: any
 }
@@ -51,10 +53,12 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
     case 'track':
         return(
           <div className={styles.song}>
-            <figure><img src={props.item.album?.image_medium ? props.item.album.image_medium : props.item.image_medium}
+            <figure className={styles.figure}><img src={props.item.album?.image_medium ? props.item.album.image_medium : props.item.image_medium}
               alt={props.item.title}
               onClick={() => playSong(props.item)}
-            /></figure>
+            />
+            <ul className={styles.actions}><li className={styles.action}><DropDownButton item={props.item}/></li><li className={styles.action}>like</li></ul>
+            </figure>
             <p>{props.item.name}</p>
             <a href={`/artist/${props.item.artists[0].id}`}>{props.item.artists[0].name}</a>
           </div>
