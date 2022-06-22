@@ -43,6 +43,7 @@
   align-items: center;
 }
 .cover > img{
+  margin-right: 25px;
   margin-top: 16px;
   width: 100px;
   height: 100px;
@@ -74,17 +75,19 @@
 .likeIcon { 
   grid-area: 1 / 4 / 2 / 5; 
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 .likeIcon > img{
-  width: 60px;
-  height: 60px;
+  width: 35px;
   cursor: pointer;
-
+  margin-right: 10px;
 }
-
 .noFav{
   opacity: 15%;
   cursor: pointer;
+}
+.time{
+  margin-left: 10px;
+  margin-right: 3px;
 }

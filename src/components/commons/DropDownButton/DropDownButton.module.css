@@ -2,6 +2,9 @@
   text-decoration: none;
   color: black;
 }
+.link:hover{
+  color: black;
+}
 .dropdown{
   background-color: transparent;
   border: none;
