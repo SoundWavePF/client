@@ -8,6 +8,7 @@ import { bindActionCreators } from "redux";
 import { useState } from "react";
 import likefull from "../../../../src/assets/likefull.png";
 import { useAuth0 } from "@auth0/auth0-react";
+import DropDownButton from "../DropDownButton/DropDownButton";
 
 const TopCard = (props: any) => {
   const formatDuration = (duration: string): string => {
@@ -94,7 +95,8 @@ const TopCard = (props: any) => {
                 }
               />
             ) : null}
-            <span>{formatDuration(props.props.duration)}</span>
+            <DropDownButton item={props.props}/>
+            <span className={styles.time}>{formatDuration(props.props.duration)}</span>
             <img src={time} alt="time icon" />
           </div>
         </div>
