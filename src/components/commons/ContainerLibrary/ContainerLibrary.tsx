@@ -2,7 +2,8 @@ import React from "react";
 import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
 import CardItem from "../CardContainer/CardItem";
-import ListItem from '../ListItemContainer/ListItem';
+// import ListItem from '../ListItemContainer/ListItem';
+import ItemList from '../CardsComponents/ItemList/ItemList';
 import Styled from "../ContainerLibrary/ContainerLibrary.module.css";
 import { useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -58,7 +59,7 @@ export const ContainerLibrary = () => {
               state.library_artist.list.liked_songs.map((s: any, index:number) => (
                 <div key={index} className={Styled.ContainerFavorite}>
                   {" "}
-                  <ListItem item={s}></ListItem>{" "}
+                  <ItemList item={s}></ItemList>{" "}
                 </div>
               ))}
           </div>
