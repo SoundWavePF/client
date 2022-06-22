@@ -1,0 +1,47 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding-bottom: 50px;
+}
+.container > div{
+  width: 100%;
+  padding: 0px;
+}
+.colorContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  min-height: 200px;
+  max-height: 400px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.colorContainer > div{
+  height: 400px;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+.swBlack{
+  background-color: var(--black);
+}
+.lightGray{
+  background-color: var(--gray-light);
+
+}
+.darkGray{
+  background-color: var(--gray-dark);
+}
+.lightYellow{
+  background-color: var(--yellow-light);
+  
+}
+.darkYellow{
+  background-color: var(--yellow-dark);
+}
+
