@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "./ItemList.module.css";
-import likefull from "../../../../assets/likefull.png";
 import time from "../../../../assets/time.png";
 import DropDownButton from "../../DropDownButton/DropDownButton";
 import { Link } from "react-router-dom";
 import play from "../../../../assets/play.png";
 import * as actionCreator from "../../../../redux/actions/action_player";
-import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useSelector } from "react-redux";
+import FavoriteIcon from "../../FavoriteIcon/FavoriteIcon";
+import { useDispatch } from "react-redux";
 
 interface myProps {
   item: any;
@@ -27,30 +25,9 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
     }`;
   };
   const dispatch = useDispatch();
-  const [fav, setFav] = useState(0);
-  const { playSong, updateLike, likeSong, dislikeSong } = bindActionCreators(
-    actionCreator,
-    dispatch
-  );
-  const { user } = useAuth0();
-  const email: string | undefined = user?.email;
+  const { playSong } = bindActionCreators(actionCreator, dispatch);
   const type = props.item.type;
-  const likeSongUser = useSelector(
-    (state: any) => state.library_artist.list.liked_songs
-  );
-  function like(item: any) {
-    if (email) likeSong(item.id, email);
-    const likeSongArr = likeSongUser;
-    likeSongArr.push(item);
-    updateLike(likeSongArr);
-    setFav(likeSongArr.length);
-  }
-  function dislike(id: string) {
-    if (email) dislikeSong(id, email);
-    const likeSongArr = likeSongUser.filter((e: any) => e.id !== id);
-    updateLike(likeSongArr);
-    setFav(likeSongArr.length);
-  }
+
   switch (type) {
     case "track":
       return (
@@ -75,26 +52,7 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
             </div>
           </div>
           <div className={s.controllerContainer}>
-            {email && (
-              <button
-                className={s.likeBtn}
-                onClick={() =>
-                  likeSongUser?.find((e: any) => e.id === props.item.id)
-                    ? dislike(props.item.id)
-                    : like(props.item)
-                }
-              >
-                {likeSongUser?.find((e: any) => e.id === props.item.id) ? (
-                  <img
-                    className={s.likeImgInclude}
-                    src={likefull}
-                    alt="like button"
-                  />
-                ) : (
-                  <img className={s.likeImg} src={likefull} alt="like button" />
-                )}
-              </button>
-            )}
+            <FavoriteIcon item={props.item} />
             <div>
               <DropDownButton item={props.item} />
             </div>
