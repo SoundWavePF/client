@@ -100,8 +100,11 @@
   background-color: white;
   border-radius: 50%;
   align-items: center;
+  justify-content: center;
   margin-right: 7px;
+  transition: .3s ease-in-out;
 }
 .figure:hover .action{
   opacity: 1;
+  transition-duration: .25s;
 }
