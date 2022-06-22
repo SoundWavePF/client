@@ -3,42 +3,16 @@ import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";
 import ContentHome from "../../commons/ContentHome/ContentHome";
 import SearchResults from "../SearchResults/SearchResults";
-
-
-import FloatButton from "../../commons/FloatButton/FloatButton";
-
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import * as actionCreator from "../../../redux/actions/action_player";
-import * as actionCreator2 from "../../../redux/actions/action_user";
-import * as actionCreator3 from "../../../redux/actions/action_admin";
-
-import { bindActionCreators } from "redux";
-import { useAuth0 } from "@auth0/auth0-react";
-
+import { useSelector } from "react-redux";
 
 const Home = () => {
-  const searchString = useSelector((state: any) => state.query)
-  const dispatch = useDispatch();
-  const { user, isLoading } = useAuth0();
-  const email: string | undefined = user?.email;
-  const { getLibrary } = bindActionCreators(actionCreator2, dispatch)
-  const { userAdmin } = bindActionCreators(actionCreator3, dispatch)
+  const searchString = useSelector((state: any) => state.query);
 
-  useEffect(() => {
-    if (email) userAdmin(email)
-    if (email) getLibrary(email)
-  }, [isLoading])
   return (
     <div className={styles.container}>
       <SearchBar />
       <SideBar />
-      {
-        !searchString ?
-          <ContentHome />
-          :
-          <SearchResults />
-      }
+      {!searchString ? <ContentHome /> : <SearchResults />}
     </div>
   );
 };
