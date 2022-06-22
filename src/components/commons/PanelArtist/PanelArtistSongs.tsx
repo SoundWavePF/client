@@ -15,13 +15,13 @@ const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
   const {songs} = useSelector((state: any) => state.artist);
   const dispatch = useDispatch();
   const {  } = bindActionCreators(actionCreator, dispatch);
-  const [songsState, setSongsState] = useState(songs)
+  const [songsState, setSongsState] = useState([...songs])
   const [input, setInput] = useState("")
   const searchSong = ()=>{
     if(input=== ''){
       setSongsState(songs)
     } else{
-      setSongsState(songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase())===true))
+      setSongsState(songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase())))
       console.log(songsState)
     }
   }

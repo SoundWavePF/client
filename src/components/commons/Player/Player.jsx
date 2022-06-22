@@ -16,6 +16,7 @@ import { likeSong } from '../../../redux/actions/action_player';
 import { useAuth0 } from '@auth0/auth0-react';
 import styles from './Player.module.css';
 import QueuePanel from './QueuePanel';
+import { Link } from 'react-router-dom';
 
 export default function Player(){
   const player = useRef();
@@ -94,16 +95,26 @@ export default function Player(){
           <button onClick={nextSong} className={styles.btn} disabled={queue[pos + 1] ? false : true}>{queue[pos + 1] ? <img src={next} className={styles.btnImg}/> : <img src={nextvoid} className={styles.btnImg}/>}</button>
           {prettyTime(currentTime)}/{player.current !== undefined ? prettyTime(player.current.getDuration()) : '0:00'}
         </div>
-        <div className={styles.songInfo}>
-          {queue[pos] ? <img src={queue[pos].image_medium} className={styles.cover}/> : null}
-          <div>
-            <h3>{queue[pos]?.name}</h3>
-            <span>{queue[pos] ? queue[pos].artists[0].name + ' • ' + queue[pos].album.name : null}</span>
+        {
+          queue[pos] ?
+          <div className={styles.songInfo}>
+            {queue[pos] ? <img src={queue[pos].image_medium} className={styles.cover}/> : null}
+            <div>
+              <h4 className={styles.title}>
+                <Link className={styles.title} to={queue[pos] ? '/artist/'+queue[pos].artists[0].id : '/'}>
+                  <span>{queue[pos] ? queue[pos].artists[0].name : null}</span>
+                </Link>  
+                {' - '+queue[pos]?.name}
+              </h4>
+              <span>{queue[pos] ? ''+queue[pos].album.name : null}</span>            
+            </div>
           </div>
-        </div>
+          :
+          <></>
+        }
         <div className={styles.volume}>
           <QueuePanel songPosition={pos} setSongPosition={setPos}/>
-          {queue[pos] && userId && <button className={styles.btn} onClick={() => Like(queue[pos].id, userId)}><img src={like} className={styles.btnImg}/></button>}
+          {/* {queue[pos] && userId && <button className={styles.btn} onClick={() => Like(queue[pos].id, userId)}><img src={like} className={styles.btnImg}/></button>} */}
           <button onClick={mute} className={styles.btn}><img src={parseInt(volume) === 0 ? muteicon : parseInt(volume) < 33 ? volume1 : parseInt(volume) < 66 ? volume2 : volume3} className={styles.btnImg}/></button>
           <input type='range' value={volume} min='0' max='100' onChange={e => setVolume(e.target.value)} className={styles.volumeR}/>
         </div>

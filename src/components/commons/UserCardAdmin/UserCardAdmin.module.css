@@ -14,6 +14,11 @@
   border: none;
   border: 1px solid black;
 }
+.buttonDelete{
+  background-color: #ffee32;
+  border: 1px solid black;
+  width: 100px;
+}
 .button:hover{
   background-color: #fff79c;
 }
@@ -21,7 +26,6 @@
   display: flex;
   align-items: center;
   background-color: #ffee32;
-  border: none;
   border: 1px solid black;
   width: 270px;
 }
@@ -64,6 +68,9 @@
 }
 
 .divType{
+  display: flex;
+  align-items: center;
+  
   padding: 4px;
   width: 50px;
   border: 1px solid black;

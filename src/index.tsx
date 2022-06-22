@@ -12,8 +12,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Auth0Provider
-    domain="dev-pcc2s4en.us.auth0.com"
-    clientId="YKG0kkMcog95jcErN1Kk45Z0FONMbjtg"
+    domain="dev-vriepxa7.us.auth0.com"
+    clientId="bTUr2RqUnLhNxgw7zhqhcqCw6H80Jifs"
     redirectUri={window.location.origin}
   >
     <Provider store={Store}>

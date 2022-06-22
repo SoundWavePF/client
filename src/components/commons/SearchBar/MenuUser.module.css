@@ -79,6 +79,14 @@
     opacity: 0.8;
 }
 
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 5px;
+
+}
+
 .btn {
     background: transparent;
     border: 1px solid var(--yellow-dark);

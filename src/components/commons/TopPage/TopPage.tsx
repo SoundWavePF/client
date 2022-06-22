@@ -1,5 +1,4 @@
 import styles from "./TopPage.module.css";
-import CardContainer from "../CardContainer/CardContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { bindActionCreators } from "redux";
@@ -19,7 +18,6 @@ const TopPage = () => {
   }, []);
 
   if(topTen.length>0){
-    //let top = {num:0};
     return (
         <div className={styles.container}>
           { topTen.length > 0 &&
@@ -28,7 +26,7 @@ const TopPage = () => {
             </div>
           }
           <div className={styles.cardContainer}>
-            {topTen.map((song:any)=><TopCard props={{...song,...{num: topTen.indexOf(song)+1}}}/>)}
+            {topTen.map((song:any, index: number)=><TopCard key={index} props={{...song,...{num: topTen.indexOf(song)+1}}}/>)}
           </div>
         </div>
     );
