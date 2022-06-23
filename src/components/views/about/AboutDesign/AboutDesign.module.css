@@ -25,23 +25,29 @@
   width: 20%;
   display: flex;
   justify-content: center;
-  color: white;
 }
 .swBlack{
   background-color: var(--black);
+  color: white;
 }
 .lightGray{
   background-color: var(--gray-light);
+  color: black;
 
 }
 .darkGray{
   background-color: var(--gray-dark);
+  color: white;
+
 }
 .lightYellow{
   background-color: var(--yellow-light);
+  color: black;
   
 }
 .darkYellow{
   background-color: var(--yellow-dark);
+  color: black;
+
 }
 

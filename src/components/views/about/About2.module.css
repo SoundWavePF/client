@@ -28,9 +28,18 @@
   align-items: center;
   justify-content: center;
   margin: 50px;
+  height: 500px;
 }
 .divInfo{
   width: 300px;
+}
+.divInfo2{
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 .buttonHome{
   position: fixed;

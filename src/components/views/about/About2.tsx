@@ -17,6 +17,7 @@ import AboutDesign from './AboutDesign/AboutDesign';
 const  About2=( )=> {
   return (
     <div className={Style.about}>
+      <Link to={'/'} className={Style.buttonHome}><button >Back to page</button></Link>
       <div className={Style.divNav}>
         <h1>SoundWave</h1>
       </div>
@@ -32,25 +33,41 @@ const  About2=( )=> {
                 tempore nisi aliquam a ea! Officia.</p>
         </div>
       </div>
-        <div className={Style.containerInfo}>
-          <h3>Retos de este proyecto</h3>
-          <p> Lorem ipsum dolor sit, amet consectetur 
-              adipisicing elit. Dolores atque sequi reprehenderit officiis
-                veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
-                tempore nisi aliquam a ea! Officia.</p>
-          <h4>Trabajo en equipo</h4>
-          <p> metodologia scrum gitHub etc Lorem ipsum dolor sit, amet consectetur 
-              adipisicing elit. Dolores atque sequi reprehenderit officiis
-                veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
-                tempore nisi aliquam a ea! Officia.</p>
-          <AboutDesign/>
-          <h4>Relaciones y rutas</h4>
-          <p> Lorem ipsum dolor sit, amet consectetur 
-              adipisicing elit. Dolores atque sequi reprehenderit officiis
-                veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
-                tempore nisi aliquam a ea! Officia.</p>
+      <div className={Style.containerInfo}>
+        <div className={Style.div1}>
+          <div className={Style.divInfo2}>
+            <h3>Retos de este proyecto</h3>
+            <p> Lorem ipsum dolor sit, amet consectetur 
+                adipisicing elit. Dolores atque sequi reprehenderit officiis
+                  veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
+                  tempore nisi aliquam a ea! Officia.</p>
+          </div>
+          <div className={Style.divInfo2}>
+            <h3>Trabajo en equipo</h3>
+            <p> metodologia scrum gitHub etc Lorem ipsum dolor sit, amet consectetur 
+                adipisicing elit. Dolores atque sequi reprehenderit officiis
+                  veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
+                  tempore nisi aliquam a ea! Officia.</p>
+          </div>
+          <div className={Style.divInfo2}>
+            <h3>Diseño y Ejecucion de ideas</h3>
+            <p> metodologia scrum gitHub etc Lorem ipsum dolor sit, amet consectetur 
+                adipisicing elit. Dolores atque sequi reprehenderit officiis
+                  veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
+                  tempore nisi aliquam a ea! Officia.</p>
+          </div>
         </div>
-      <Link to={'/'} className={Style.buttonHome}><button >Back to page</button></Link>
+        <AboutDesign/>
+        <div className={Style.div1}>
+          <div className={Style.divInfo2}>
+            <h3>Relaciones y ruta</h3>
+            <p> Lorem ipsum dolor sit, amet consectetur 
+                adipisicing elit. Dolores atque sequi reprehenderit officiis
+                  veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
+                  tempore nisi aliquam a ea! Officia.</p>
+          </div>
+        </div>
+      </div>
         <div className={Style.containerInfo2}>
           <h3>Tecnologias utilizadas</h3>
           <div className={Style.techInfo}>
