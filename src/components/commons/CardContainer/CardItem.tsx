@@ -60,7 +60,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
               alt={props.item.title}
               onClick={() => playSong(props.item)}
             />
-            <ul className={styles.actions}><li className={styles.action}><DropDownButton item={props.item}/></li>{isAuthenticated && props.item && <li className={styles.action}><FavoriteIcon props={props?.item}/></li>}</ul>
+            <ul className={styles.actions}><li className={styles.action}><DropDownButton item={props.item}/></li>{isAuthenticated && props.item && <li className={styles.action2}><FavoriteIcon props={props?.item}/></li>}</ul>
             </figure>
             <p>{props.item.name}</p>
             <a href={`/artist/${props.item.artists[0].id}`}>{props.item.artists[0].name}</a>

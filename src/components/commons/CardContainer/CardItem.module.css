@@ -105,11 +105,27 @@
   margin-right: 7px;
   transition: .3s ease-in-out;
 }
+.action2{
+  display: inline-flex;
+  opacity: 0.00000001;
+  height: 35px;
+  width: 35px;
+  background-color: white;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  margin-right: 7px;
+  transition: .3s ease-in-out;
+}
 .figure:hover .action{
   opacity: 1;
   transition-duration: .25s;
 }
-ul :nth-child(2) :nth-child(1) :nth-child(1){
+.figure:hover .action2{
+  opacity: 1;
+  transition-duration: .25s;
+}
+.action2 :nth-child(1) :nth-child(1){
   width: 20px;
   margin-left: 0;
   margin-top: 1px;
