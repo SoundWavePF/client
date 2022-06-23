@@ -168,3 +168,6 @@
     margin-left: 4px;
 }
 
+.Play:hover{
+    cursor: pointer;
+}

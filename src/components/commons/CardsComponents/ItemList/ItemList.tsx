@@ -36,7 +36,7 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
             <div>
               <div>
                 <img className={s.image} src={props.item.image_small} alt="" />
-                <img src={play} className={s.Play} />{" "}
+                <img src={play} className={s.Play} onClick={() => playSong(props.item)}/>{" "}
               </div>
             </div>
             <div>

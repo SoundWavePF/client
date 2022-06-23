@@ -5,12 +5,15 @@ import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import playlistFran from '../../../assets/playlistFran2.png';
 import DropDownButton from '../DropDownButton/DropDownButton';
+import FavoriteIcon from "../FavoriteIcon/FavoriteIcon";
+import { useAuth0 } from '@auth0/auth0-react';
 
 interface myProps {
   item: any
 }
 
 const CardItem: React.FC<myProps> = (props: myProps) => {
+  const { isAuthenticated } = useAuth0();
   let IType = props.item.type;
   const dispatch = useDispatch();
   const { playSong } = bindActionCreators(
@@ -57,7 +60,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
               alt={props.item.title}
               onClick={() => playSong(props.item)}
             />
-            <ul className={styles.actions}><li className={styles.action}><DropDownButton item={props.item}/></li><li className={styles.action}>like</li></ul>
+            <ul className={styles.actions}><li className={styles.action}><DropDownButton item={props.item}/></li>{isAuthenticated && props.item && <li className={styles.action}><FavoriteIcon props={props?.item}/></li>}</ul>
             </figure>
             <p>{props.item.name}</p>
             <a href={`/artist/${props.item.artists[0].id}`}>{props.item.artists[0].name}</a>

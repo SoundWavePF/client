@@ -114,3 +114,14 @@
   text-decoration: none;
   color: black;
 }
+.link{
+  text-decoration: none;
+  color: black;
+}
+.link:hover{
+  text-decoration: none;
+  color: black;
+}
+.volume > :nth-child(2) :nth-child(1){
+  margin: 0;
+}
