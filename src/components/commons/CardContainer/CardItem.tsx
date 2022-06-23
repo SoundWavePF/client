@@ -63,7 +63,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
             <ul className={styles.actions}><li className={styles.action}><DropDownButton item={props.item}/></li>{isAuthenticated && props.item && <li className={styles.action2}><FavoriteIcon props={props?.item}/></li>}</ul>
             </figure>
             <p>{props.item.name}</p>
-            <a href={`/artist/${props.item.artists[0].id}`}>{props.item.artists[0].name}</a>
+            <a href={`/artist/${props.item.artists[props.item.artists.length - 1].id}`}>{props.item.artists[props.item.artists.length - 1].name}</a>
           </div>
         )
     default:
