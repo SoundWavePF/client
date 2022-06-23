@@ -97,7 +97,7 @@ export default function Player(){
           {<img src={queue[pos].image_medium} className={styles.cover}/>}
           <div>
             <h3>{queue[pos]?.name}</h3>
-            <span><Link to={`/artist/${queue[pos].artists[0].id}`} className={styles.link}>{queue[pos].artists[0].name}</Link> • <Link to={`/album/${queue[pos].albumId}`} className={styles.link}>{queue[pos].album.name}</Link></span>
+            <span><Link to={`/artist/${queue[pos].artists[queue[pos].artists.length - 1].id}`} className={styles.link}>{queue[pos].artists[queue[pos].artists.length - 1].name}</Link> • <Link to={`/album/${queue[pos].albumId}`} className={styles.link}>{queue[pos].album.name}</Link></span>
           </div>
         </div>}
         <div className={styles.volume}>
