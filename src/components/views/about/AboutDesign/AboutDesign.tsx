@@ -5,9 +5,7 @@ const AboutDesign = ()=>{
 
   return(
     <div className={Style.container}>
-      <h4>Diseño y Ejecucion de ideas</h4>
-      <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores atque sequi reprehenderit officiis veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis, tempore nisi aliquam a ea! Officia.</p>
-      <h5>Paleta de colores utilizada</h5>
+      <h3>Paleta de colores utilizada</h3>
       <div>
         <div className={Style.colorContainer}>
           <div className={Style.swBlack}>#202020</div>
