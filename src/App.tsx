@@ -9,7 +9,6 @@ import Landing from "./components/views/Landing/Landing";
 import SignUp from "./components/views/SignUp/SignUp";
 import Home from "./components/views/Home/Home";
 import Login from "./components/views/Login/Login";
-import About from "./components/views/about/About";
 import AdminPanel from "./components/views/AdminPanel/AdminPanel";
 import AlbumPlaylist from "./components/views/AlbumPlaylist/AlbumPlaylist";
 import Library from "./components/views/Library/Library";
