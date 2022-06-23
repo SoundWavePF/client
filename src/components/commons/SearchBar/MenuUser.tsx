@@ -19,6 +19,7 @@ interface props {
 
 const Menu: React.FunctionComponent<props> = (props) => {
     const {rol} = useSelector((state: any) => state.user_info);
+    const {user_info} = useSelector((state: any) => state);
     const [open, setOpen] = useState<boolean>(false);
     const container = useRef(document.getElementsByTagName('div')[0]); // obtiene da un nodo html como valor inicial 
     //para que no de error cuando la referencia intente usar  el  metodo contains
@@ -28,11 +29,9 @@ const Menu: React.FunctionComponent<props> = (props) => {
             setOpen(false);
         }
     }
-
     const [username, setUsername] = useState('')
 
     const { user, isAuthenticated, isLoading, logout } = useAuth0();
-
 
     useEffect(() => {
         document.body.addEventListener('click', click);
@@ -57,13 +56,13 @@ const Menu: React.FunctionComponent<props> = (props) => {
     return (
         <div ref={container}>
             <div onClick={toggle}>
-                <img className={style.userImg} src={user?.picture} height='30px' width='30px' />
+                <img className={style.userImg} src={user_info?.image_avatar} height='30px' width='30px' />
             </div>
             {
                 !open ? null :
                     <div className={style.box} >
                         <div className={style.innerImg}>
-                            <img className={style.img} src={user?.picture} />
+                            <img className={style.img} src={user_info?.image_avatar} />
                         </div>
                         <div className={style.textContainer}>
                             <span>{username}</span>

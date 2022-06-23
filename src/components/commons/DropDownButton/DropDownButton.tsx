@@ -82,7 +82,7 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
               </SplitButton>
             ))}
           </div>
-        )}
+        }
       </DropdownButton>
     </div>
   );

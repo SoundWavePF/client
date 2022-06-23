@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_player";
+import * as actionUser from "../../../redux/actions/action_user";
 import style from "./SearchBar.module.css";
 import searchIcon from "../../../assets/search_icon.png";
 import userIcon from "../../../assets/user_icon.png";
@@ -13,11 +14,15 @@ const SearchBar = () => {
   const [input, setInput] = useState("")
   const loadingState = useSelector((state: any) => state.loading)
   const searchString = useSelector((state: any) => state.query)
+  const {user_info}=useSelector((state:any)=>state)
 
   const dispatch = useDispatch();
   const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0()
   const { searchAll, setQuery, loading } = bindActionCreators(actionCreator, dispatch);
+  const {  getUserInfo} = bindActionCreators(actionUser, dispatch)
+
   useEffect(() => {
+    getUserInfo(user?.email)
     setQuery(input);
     if (input && !loadingState) {
       searchAll(input);

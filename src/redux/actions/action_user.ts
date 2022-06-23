@@ -56,7 +56,7 @@ export const updateUser = (payload: any) => {
     }
   }
 }
-export const getUserInfo = (email: string) => {
+export const getUserInfo = (email: any) => {
   //hay que poner el id del usuario creado hasta que se pueda haceder a el
   return (dispatch: Dispatch<Actions>) => {
     axios.post("https://www.javierochoa.me/info", {

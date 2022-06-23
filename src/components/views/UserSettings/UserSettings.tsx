@@ -14,11 +14,13 @@ import Player from "../../commons/Player/Player";
 import axios from "axios";
 
 interface inputs {
-  email: string
+  email: any
   oldData: string
   newData: string
   field: any
 }
+
+
 
 const UserSettings = () => {
 
@@ -29,18 +31,16 @@ const UserSettings = () => {
   const dispatch = useDispatch()
   const { updateUser ,getUserInfo} = bindActionCreators(actionCreator, dispatch)
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
-   const { sub }: any = user
-  const {email}:string | undefined | any =user
   let [input, setInput] = useState<inputs>({
-    email: email,
+    email: user?.email,
     oldData:  user_info.image_avatar,
     newData: '',
     field: "avatar",
   })
 
-  useEffect(()=>{
+  useEffect( () => {
 
-    getUserInfo(email)
+    getUserInfo(user?.email)
 
     setInfoUser(user_info)
 
@@ -66,14 +66,12 @@ const UserSettings = () => {
   
     setInput({...input,
       newData:file.secure_url
-    
     })
 
     const ress = await axios.post(
       "https://www.javierochoa.me/update",input
       
     )
-    console.log(ress,"s")
     
     
   };
@@ -83,12 +81,6 @@ const UserSettings = () => {
 
   function onSubmitHandle(e: any) {
     e.preventDefault()
-    console.log(InfoUser)
-
-    
-
-
-
     updateUser(input)
   
   }
@@ -152,11 +144,13 @@ const UserSettings = () => {
     }
   }
 
+
+
+
   return (
     <div className={StylesC.container}>
       <SearchBar />
       <SideBar />
-
 
       <div className={style.page}>
         <div className={style.container}>
@@ -164,7 +158,7 @@ const UserSettings = () => {
           <form className={style.father} onSubmit={(e) => onSubmitHandle(e)}>
             <img src={user_info.image_avatar} alt="image" className={style.userImage} />
             <input type="file" onChange={uploadImage}  className={style.input} />
-          <button className={style.button} type='submit'></button>
+          <button className={style.button} type='submit'>Send</button>
           </form>
 
 
@@ -173,7 +167,7 @@ const UserSettings = () => {
             <div className={style.title} ><p>My status</p></div>
             <hr></hr>
             <div className={style.subscriptionContainer}>
-              <div>{`${InfoUser?.username} Currently you are an user`}</div>
+              <div>{`${user_info?.username} Currently you are an user`}</div>
 
               <button onClick={(e) => handleModal(e)} name='modalArtist' className={style.buttons}>
                 Request to be an artist
@@ -183,10 +177,10 @@ const UserSettings = () => {
             <br />
 
             <div className={style.title} ><p>Log in</p></div>
+
             <hr></hr>
 
             <div className={style.parent}>
-             
               <div className={style.div4}><label>Password:</label></div>
               <div className={style.div5}><input  placeholder={'*****'} disabled={true} name="password" type="text" /></div>
               <div className={style.div6}><button onClick={(e) => handleModal(e)} name='modalPassword' className={style.buttons}>Modify</button></div>
@@ -200,9 +194,7 @@ const UserSettings = () => {
             <br />
             <div className={style.title} ><p>Disabled my account</p></div>
             <hr></hr>
-
           </div>
-
 
         </div>
         <div className={style.buttonContainer}>
@@ -210,14 +202,13 @@ const UserSettings = () => {
         </div>
       </div>
 
-      {/* <Player /> */}
 
       {modal.modalArtist === true ?
         <Modal handleModal={handleModal} email={InfoUser?.email} action={'artist'} setpass={"Put your password"} inputArtistType={"password"} artistName={"Set your artist name"} type={"text"} header={"Ready to become an artist?"} contentButton={"confirm"} />
         : null
       }
       {modal.modalUsername === true ?
-        <Modal handleModal={handleModal}  email={InfoUser?.email}  field={"username"} type={"text"} header={"Change your Username"} oldData={"Current username: "} description={"Set your new username below"} label={"New username: "} contentButton={"CONFIRM"} />
+        <Modal handleModal={handleModal}  email={InfoUser?.email} action={'username'} field={"username"} type={"text"} header={"Change your Username"} oldData={"Current username: "} description={"Set your new username below"} label={"New username: "} contentButton={"CONFIRM"} />
         : null
       }
       {modal.modalDelete === true ?
@@ -225,9 +216,10 @@ const UserSettings = () => {
         : null
       }
       {modal.modalPassword === true ?
-        <Modal handleModal={handleModal}  email={InfoUser?.email}  field={"password"} type={"password"} oldData={"Current password: "} header={"Change your Password"} description={"Put your current password first"} label={"New password: "} contentButton={"CONFIRM"} />
+        <Modal handleModal={handleModal}  email={InfoUser?.email} action={'password'} field={"password"} type={"password"} oldData={"Current password: "} header={"Change your Password"} description={"Put your current password first"} label={"New password: "} contentButton={"CONFIRM"} />
         : null
       }
+      
      
     </div>
   )
