@@ -12,11 +12,6 @@
 .ItemSpace div{
   width:auto;
 }
-
-
-
-
-
 .Column{
   display: flex;
   flex-direction: row;
@@ -24,7 +19,6 @@
   gap: 2em;
   margin-left:1em ;
 }
-
 .ToolBar{
   display: flex;
   justify-content: start;
@@ -109,22 +103,24 @@
   width: 15em;
 }
 
-.User img{
-  width: 15vw;
-  height: 100%;
-  border-radius: 6px;
-  margin-left: 25px;
-}
-
 .User{
   width: 50%;
   height: 30vh;
   display: flex;
   margin-bottom: 50px;
 }
-.User h1{
-  margin-left: 1em;
+.User img{
+  width: 15vw;
+  height: 100%;
+  border-radius: 6px;
+  margin-left: 25px;
+}
+.User > div{
   display: flex;
-  align-items: center;
-
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10%;
+}
+.User > div > h1{
+  margin-bottom: 10%;
 }

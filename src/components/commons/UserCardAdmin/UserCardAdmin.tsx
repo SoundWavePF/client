@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from "redux";
 import * as actionCreator from '../../../redux/actions/action_admin'
-
+ 
 
 const UserCardAdmin = (userP:any)=>{
   const dispatch = useDispatch()

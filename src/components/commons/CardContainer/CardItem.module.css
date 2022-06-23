@@ -82,7 +82,7 @@
   margin: 0;
 }
 .figure{
-  display: inline-flex;
+  /* display: inline-flex; */
   position: relative
 }
 .actions{
