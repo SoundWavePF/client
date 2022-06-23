@@ -36,7 +36,7 @@ const DonationsButton = (props:any)=>{
     })
   } 
   return(
-      <button className={style.donateButton} onClick={()=>donate(props.artistId,props.userEmail,props.stripe_id)}>
+      <button className={style.donateButton} onClick={()=>donate(props.artistId,props.userEmail,props.stripe_Id)}>
         Donate
       </button>
   )
