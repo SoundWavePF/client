@@ -171,3 +171,6 @@
 .Play:hover{
     cursor: pointer;
 }
+.controllerContainer > button:first-child{
+    height: 35px;
+}
