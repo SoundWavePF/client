@@ -20,40 +20,42 @@ export default function SideBar() {
   }
   return (
     <div className={styles.container}>
-      <div className={styles.logoContainer}>
-        <img src={logo} alt='SoundWave logo' className={styles.logo} />
-        <span>SoundWave</span>
-      </div>
+      <Link to='/home' className={styles.link}>
+        <div className={styles.logoContainer}>
+          <img src={logo} alt='SoundWave logo' className={styles.logo} />
+          <span>SoundWave</span>
+        </div>
+      </Link>
       <div className={styles.btnContainer}>
         {userAdmin &&
           <Link to='/admin' className={styles.link}>
             <div className={styles.button} onClick={handleClick}>
               <img src={admin} alt="Home" className={styles.img} />
-              Admin Panel
+              <span>Admin Panel</span>
             </div>
           </Link>}
         <Link to='/home' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
             <img src={home} alt="Home" className={styles.img} />
-            Home
+            <span>Home</span>
           </div>
         </Link>
         <Link to='/top' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
             <img src={fire} alt="top10" className={styles.img} />
-            Top 10
+            <span>Top 10</span>
           </div>
         </Link>
         <Link to='/playlists' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
             <img src={play} alt="Play" className={styles.img} />
-            Playlists
+            <span>Playlists</span>
           </div>
         </Link>
         <Link to='/favorites' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
             <img src={music} alt="Music" className={styles.img} />
-            My favorites
+            <span>My favorites</span>
           </div>
         </Link>
       </div>
