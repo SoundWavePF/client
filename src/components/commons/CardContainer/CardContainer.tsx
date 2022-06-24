@@ -1,17 +1,9 @@
 import { useState, useRef, useEffect} from "react";
-
-
 import styles from "./CardContainer.module.css";
 import CardItem from './CardItem';
 
-interface item {
-  id: number;
-  name: string;
-  picture_medium: string;
-  type: string;
-}
 interface myProps {
-  content: item[];
+  content: any;
   slides?: boolean;
   autoplay?: boolean
 }
@@ -28,7 +20,7 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
         const numberOfSlidesToShow = Math.ceil(carrusel.current.offsetWidth/slideWidth)
         const maxScroll = (slideWidth + gap)*numberOfSlides - carrusel.current.offsetWidth
 
-    console.log("slide count", slideWidth*numberOfSlidesToShow, maxScroll, slidesContainer.current.children.length)
+    // console.log("slide count", slideWidth*numberOfSlidesToShow, maxScroll, slidesContainer.current.children.length)
 
         if (arg === "forward") {
             const x = state + slideWidth + gap;
@@ -61,11 +53,11 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
 
   function handleClick(arg: string){
       return function (){
-        console.log(carrusel.current.style)
+        // console.log(carrusel.current.style)
         const slides  = slidesContainer.current
-        console.log(slidesContainer.current.children.length)
-        console.log("css", carrusel.current.offsetWidth)
-        console.log("state", state)
+        // console.log(slidesContainer.current.children.length)
+        // console.log("css", carrusel.current.offsetWidth)
+        // console.log("state", state)
         setState(()=>{
           slides.style.transform = `translateX(-${getScrollPosition(arg)}px)`;
           return getScrollPosition(arg)

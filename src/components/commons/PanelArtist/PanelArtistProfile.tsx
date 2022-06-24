@@ -11,13 +11,13 @@ interface myProps {
 
 const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
   const {name, username, email, image_avatar} = useSelector((state: any) => state.user_info);
-  const {albums, songs, description, totalFavoriteCount, n_albums, n_songs, totalPlayCount, totalPlaylistCount, image,stripe_Id} = useSelector((state: any) => state.panel_artist);
-  const artisttest = useSelector((state: any) => state.panel_artist);
+  const {description, totalFavoriteCount, n_albums, n_songs, totalPlayCount, totalPlaylistCount, image_medium, stripe_Id} = useSelector((state: any) => state.panel_artist.info);
+  // const artisttest = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
   const { changeAbout } = bindActionCreators(actionCreator, dispatch);
-  const imageHC = 'https://e-cdns-images.dzcdn.net/images/artist/5e17a1209254de68d7edcf9cccccdf67/250x250-000000-80-0-0.jpg';
-  const nameHC = 'Maluma';
-  const textHC = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci animi placeat exercitationem vel sit maxime,\nab obcaecati architecto sint molestiae unde amet quasi harum iusto, beatae esse. Iste, quasi perferendis?. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla magnam perspiciatis impedit, nisi quasi provident,<br/> possimus repellat cupiditate totam mollitia non magni expedita? Aut quo vel sed cum, optio nisi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore animi aperiam ad consectetur saepe, vero expedita fugit, necessitatibus distinctio odio eum repellendus illum dolor eaque vitae libero eveniet! Iure, inventore. Lorem ipsum dolor, sit amet consectetur adipisicing elit.';
+  // const imageHC = 'https://e-cdns-images.dzcdn.net/images/artist/5e17a1209254de68d7edcf9cccccdf67/250x250-000000-80-0-0.jpg';
+  // const nameHC = 'Maluma';
+  // const textHC = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci animi placeat exercitationem vel sit maxime,\nab obcaecati architecto sint molestiae unde amet quasi harum iusto, beatae esse. Iste, quasi perferendis?. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla magnam perspiciatis impedit, nisi quasi provident,<br/> possimus repellat cupiditate totam mollitia non magni expedita? Aut quo vel sed cum, optio nisi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore animi aperiam ad consectetur saepe, vero expedita fugit, necessitatibus distinctio odio eum repellendus illum dolor eaque vitae libero eveniet! Iure, inventore. Lorem ipsum dolor, sit amet consectetur adipisicing elit.';
   const [edit, setEdit] = useState<boolean>(false);
   const [about, setAbout] = useState<string>(description);
   function cancel(){
@@ -35,7 +35,7 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
 
   return (
     <div className={styles.container}>
-      <img src={image} alt={username} />
+      <img src={image_medium} alt={username} />
       <span>{name}</span>
       {stripe_Id ? <p>(Donations enabled)</p> :  <button onClick={()=>handleEnableDonation()} className={styles.btn}>Enable Donations</button> }
       {/* stats harcodeadas */}

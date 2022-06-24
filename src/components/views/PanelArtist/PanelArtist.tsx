@@ -22,14 +22,17 @@ import PopUp from "../../commons/PanelArtist/PopUp/PopUp";
 
 const PanelArtist = () => {
   const [page, setPage] = useState(1)
-  const {name, username, email, image_avatar} = useSelector((state: any) => state.user_info);
+  const { email, rol, artist } = useSelector((state: any) => state.user_info);
   const dispatch = useDispatch();
-  const { getPanelInfo } = bindActionCreators(actionCreator, dispatch)
-  const { rol, id, artist } = useSelector((state: any) => state.user_info);
-  const idTest = '63ab0aae-f562-4f5a-af65-97d14c8d5100';
+  const { getPanelInfo } = bindActionCreators(actionCreator, dispatch);
+  // const idTest = '63ab0aae-f562-4f5a-af65-97d14c8d5100';
   useEffect(()=>{
-    getPanelInfo(email);
-  },[])
+    getPanelInfo(artist?.id, email);
+  },[]);
+  useEffect(()=>{
+    getPanelInfo(artist?.id, email);
+  },[email])
+
   function handlePage(page: number) {
     setPage(page);
   }

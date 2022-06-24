@@ -34,7 +34,7 @@ function FavoriteIcon(props: any) {
 		setFav(likeSongArr.length);
 	}
 
-	return (console.log(props),
+	return (
 			email ? (
 				<button
 					className={s.likeBtn}

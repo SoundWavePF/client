@@ -85,13 +85,15 @@ export const uploadSong = (payload: any) => {
     }
   }
 }
-export const getPanelInfo = (email:any)=>{
+export const getPanelInfo = (id: string, email:string)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.post('https://www.javierochoa.me/artistpanel/stats', {email: email})
+    let promiseContent = axios.get('https://www.javierochoa.me/artist/'+id);
+    let promiseInfo = axios.post('https://www.javierochoa.me/artistpanel/stats', {email: email});
+    Promise.all([promiseContent, promiseInfo])
     .then(response => 
       dispatch({
         type: ActionType.GET_PANEL_INFO,
-        payload: response.data
+        payload: {content: response[0].data, info: response[1].data}
       })
       )
   }
