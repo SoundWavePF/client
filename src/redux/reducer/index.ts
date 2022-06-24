@@ -192,6 +192,17 @@ const Reducer = (state: any = initialState, action: Actions) => {
           card: [...state.library_artist.card, action.payload],
         },
       };
+    case ActionType.DELETE_PLAYLIST:
+      console.log(action.payload);
+      return {
+        ...state,
+        library_artist: {
+          ...state.library_artist,
+          card: state.library_artist.card.filter(
+            (e: any) => e.id !== action.payload
+          ),
+        },
+      };
     case ActionType.UPDATE_PLAYLIST:
       return {
         ...state,
