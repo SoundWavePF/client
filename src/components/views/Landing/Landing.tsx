@@ -8,6 +8,15 @@ import { bindActionCreators } from "redux";
 import * as actionCreator from '../../../redux/actions/action_player'
 import { useDispatch, useSelector } from 'react-redux';
 
+function Wave(){
+  return (
+    <div className={styles.ocean}>
+      <div className={styles.wave}></div>
+      <div className={styles.wave}></div>
+    </div>
+  )
+}
+
 export default function Landing() {
   const { user, isAuthenticated } = useAuth0()
   const dispatch = useDispatch()
@@ -48,6 +57,7 @@ export default function Landing() {
             <Link to='/home' className={styles.button}>Open Player</Link>}
         </div>
       </div>
+      <Wave/>
     </div>
   )
 }

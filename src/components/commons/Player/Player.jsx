@@ -19,6 +19,14 @@ import QueuePanel from './QueuePanel';
 import { Link } from 'react-router-dom';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 
+function SoundWave(){
+  return (
+  <div>
+      <img height={"70px"} width="300px" src={"https://c.tenor.com/NjavXXAMRD8AAAAC/sound.gif"}/>
+  </div>
+  )
+}
+
 export default function Player(){
   const player = useRef();
   const dispatch = useDispatch();
