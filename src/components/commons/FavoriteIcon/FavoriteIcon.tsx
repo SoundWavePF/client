@@ -40,12 +40,12 @@ function FavoriteIcon(props: any) {
 				<button
 					className={s.likeBtn}
 					onClick={() =>
-						likeSongUser?.find((e: any) => e.id === props.item.id)
+						likeSongUser?.find((e: any) => e.id === props.id)
 							? dislike(props.item.id)
 							: like(props.item)
 					}
 				>
-					{likeSongUser?.find((e: any) => e.id === props.item.id) ? (
+					{likeSongUser?.find((e: any) => e.id === props.id) ? (
 						<img
 							className={s.likeImgInclude}
 							src={likefull}
