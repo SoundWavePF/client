@@ -102,7 +102,7 @@ export default function Player(){
           {prettyTime(currentTime)}/{player.current !== undefined ? prettyTime(player.current.getDuration()) : '0:00'}
         </div>
         {queue[pos] !== undefined && <div className={styles.songInfo}>
-          {<img src={queue[pos].image_medium} className={styles.cover}/>}
+          {<img src={queue[pos].image_small} className={styles.cover}/>}
           <div>
             <h3>{queue[pos]?.name}</h3>
             <span><Link to={`/artist/${queue[pos].artists[queue[pos].artists.length - 1].id}`} className={styles.link}>{queue[pos].artists[queue[pos].artists.length - 1].name}</Link> • <Link to={`/album/${queue[pos].albumId}`} className={styles.link}>{queue[pos].album.name}</Link></span>

@@ -228,10 +228,18 @@ const Reducer = (state: any = initialState, action: Actions) => {
         users: action.payload,
       };
     case ActionType.LOADING:
-      return {
-        ...state,
-        loading: action.payload,
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          loading: action.payload,
+          searchResults: {},
+        };
+      } else {
+        return {
+          ...state,
+          loading: action.payload,
+        };
+      }
     case ActionType.UPDATE_LIKE:
       return {
         ...state,
