@@ -11,7 +11,7 @@ interface myProps {
 
 const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
   const {name, username, email, image_avatar} = useSelector((state: any) => state.user_info);
-  const {albums, songs, description, totalFavoriteCount, n_albums, n_songs, totalPlayCount, totalPlaylistCount, image} = useSelector((state: any) => state.panel_artist);
+  const {albums, songs, description, totalFavoriteCount, n_albums, n_songs, totalPlayCount, totalPlaylistCount, image,stripe_Id} = useSelector((state: any) => state.panel_artist);
   const artisttest = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
   const { changeAbout } = bindActionCreators(actionCreator, dispatch);
@@ -37,7 +37,7 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
     <div className={styles.container}>
       <img src={image} alt={username} />
       <span>{name}</span>
-      <button onClick={()=>handleEnableDonation()} className={styles.btn}>Enable Donations</button>
+      {stripe_Id ? <p>(Donations enabled)</p> :  <button onClick={()=>handleEnableDonation()} className={styles.btn}>Enable Donations</button> }
       {/* stats harcodeadas */}
       <div className={styles.statContainer}>
         <div className={styles.statInfo}>
