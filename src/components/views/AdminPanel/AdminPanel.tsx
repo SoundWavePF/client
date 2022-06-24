@@ -79,7 +79,11 @@ const AdminPanel = ()=>{
                   </div>
                 </div> 
                 :
-                <h2>Loading...</h2>
+                <div className={m.container}>
+                  <div className={m.sectionLoading}>
+                    <div className="spinner-border"  role="status"></div>
+                  </div>
+                </div>
               }
             <Link className={m.buttonBack} to='/'>Back to Landing</Link>
             </div>
