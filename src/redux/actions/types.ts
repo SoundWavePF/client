@@ -1,49 +1,89 @@
 import { LibraryArtist } from "../reducer/types";
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery | GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll | UpdatePlaylist| sortQueue | deleteFromQueue | loading | GetStats | UserAdmin | GetUserInfo | updateLike | ChangeAbout | UpdateSong | LocalLoadedAlbum | GetPanelInfo | LaunchPopUp;
+export type Actions =
+  | GetGenres
+  | GetAlbumPlaylist
+  | ChangeAdminOption
+  | PostSignUp
+  | PostLogin
+  | SearchAll
+  | GetChart
+  | GetLastSongs
+  | SendPrevPlay
+  | PlaySong
+  | AddToQueue
+  | getLibrary
+  | get_PlaylistForId
+  | GetGenre
+  | CleanGenre
+  | AddToPlaylist
+  | NewPlaylist
+  | LikeSong
+  | GetTop
+  | SetQuery
+  | GetAllUsers
+  | GetArtist
+  | GetArtistTop
+  | DislikeSong
+  | PlayAll
+  | UpdatePlaylist
+  | sortQueue
+  | deleteFromQueue
+  | loading
+  | GetStats
+  | UserAdmin
+  | GetUserInfo
+  | updateLike
+  | ChangeAbout
+  | UpdateSong
+  | LocalLoadedAlbum
+  | GetPanelInfo
+  | LaunchPopUp
+  | deletePlaylist;
 
 export enum ActionType {
-  CLEAN_GENRE = 'CLEAN_GENRE',
-  GET_GENRE = 'GET_GENRE',
-  GET_GENRES = 'GET_GENRES',
-  GET_CHART = 'GET_CHART',
-  GET_LAST_SONGS = 'GET_LAST_SONGS',
-  GET_ALBUM_PLAYLIST = 'GET_ALBUM_PLAYLIST',
-  CHANGE_ADMIN_OPTION = 'CHANGE_ADMIN_OPTION',
-  POST_SIGN_UP = 'POST_SIGN_UP',
-  POST_LOGIN = 'POST_LOGIN',
-  SEARCH_ALL = 'SEARCH_ALL',
-  SEND_PREV_PLAY = 'SEND_PREV_PLAY',
-  PLAY_SONG = 'PLAY_SONG',
-  ADD_TO_QUEUE = 'ADD_TO_QUEUE',
-  GET_LIBRARY = 'GET_LIBRARY',
-  GET_PlaylistForId = 'GET_PlaylistForId',
-  ADD_TO_PLAYLIST = 'ADD_TO_PLAYLIST',
-  NEW_PLAYLIST = 'NEW_PLAYLIST',
-  UPDATE_PLAYLIST = 'UPDATE_PLAYLIST',
-  UPDATE_USER = 'UPDATE_USER',
-  GET_TOP = 'GET_TOP',
-  LIKE_SONG = 'LIKE_SONG',
-  DISLIKE_SONG = 'DISLIKE_SONG',
-  SET_QUERY = 'SET_QUERY',
-  GET_ALL_USERS = 'GET_ALL_USERS',
-  LOADING = 'LOADING',
-  UPDATE_LIKE = 'UPDATE_LIKE',
-  GET_ARTIST = 'GET_ARTIST',
-  GET_ARTIST_TOP = 'GET_ARTIST_TOP',
-  PLAY_ALL = 'PLAY_ALL',
-  GET_STATS = 'GET_STATS',
-  SORT_QUEUE = 'SORT_QUEUE',
-  DELETE_FROM_QUEUE = 'DELETE_FROM_QUEUE',
-  USER_ADMIN = 'USER_ADMIN',
-  CLEAN_ALBUM_PLAYLIST = 'CLEAN_ALBUM_PLAYLIST',
-  GET_USER_INFO = 'GET_USER_INFO',
-  CHANGE_ABOUT = 'CHANGE_ABOUT',
-  UPDATE_SONG = 'UPDATE_SONG',
-  UPLOAD_SONG = 'UPLOAD_SONG',
-  LOCAL_LOADED_ALBUM = 'LOCAL_LOADED_ALBUM',
-  GET_PANEL_INFO = 'GET_PANEL_INFO',
-  LAUNCH_POP_UP = 'LAUNCH_POP_UP',
+  CLEAN_GENRE = "CLEAN_GENRE",
+  GET_GENRE = "GET_GENRE",
+  GET_GENRES = "GET_GENRES",
+  GET_CHART = "GET_CHART",
+  GET_LAST_SONGS = "GET_LAST_SONGS",
+  GET_ALBUM_PLAYLIST = "GET_ALBUM_PLAYLIST",
+  CHANGE_ADMIN_OPTION = "CHANGE_ADMIN_OPTION",
+  POST_SIGN_UP = "POST_SIGN_UP",
+  POST_LOGIN = "POST_LOGIN",
+  SEARCH_ALL = "SEARCH_ALL",
+  SEND_PREV_PLAY = "SEND_PREV_PLAY",
+  PLAY_SONG = "PLAY_SONG",
+  ADD_TO_QUEUE = "ADD_TO_QUEUE",
+  GET_LIBRARY = "GET_LIBRARY",
+  GET_PlaylistForId = "GET_PlaylistForId",
+  ADD_TO_PLAYLIST = "ADD_TO_PLAYLIST",
+  NEW_PLAYLIST = "NEW_PLAYLIST",
+  UPDATE_PLAYLIST = "UPDATE_PLAYLIST",
+  UPDATE_USER = "UPDATE_USER",
+  GET_TOP = "GET_TOP",
+  LIKE_SONG = "LIKE_SONG",
+  DISLIKE_SONG = "DISLIKE_SONG",
+  SET_QUERY = "SET_QUERY",
+  GET_ALL_USERS = "GET_ALL_USERS",
+  LOADING = "LOADING",
+  UPDATE_LIKE = "UPDATE_LIKE",
+  GET_ARTIST = "GET_ARTIST",
+  GET_ARTIST_TOP = "GET_ARTIST_TOP",
+  PLAY_ALL = "PLAY_ALL",
+  GET_STATS = "GET_STATS",
+  SORT_QUEUE = "SORT_QUEUE",
+  DELETE_FROM_QUEUE = "DELETE_FROM_QUEUE",
+  USER_ADMIN = "USER_ADMIN",
+  CLEAN_ALBUM_PLAYLIST = "CLEAN_ALBUM_PLAYLIST",
+  GET_USER_INFO = "GET_USER_INFO",
+  CHANGE_ABOUT = "CHANGE_ABOUT",
+  UPDATE_SONG = "UPDATE_SONG",
+  UPLOAD_SONG = "UPLOAD_SONG",
+  LOCAL_LOADED_ALBUM = "LOCAL_LOADED_ALBUM",
+  GET_PANEL_INFO = "GET_PANEL_INFO",
+  LAUNCH_POP_UP = "LAUNCH_POP_UP",
+  DELETE_PLAYLIST = "DELETE_PLAYLIST",
 }
 
 export interface GetStats {
@@ -198,11 +238,11 @@ interface LocalLoadedAlbum {
   type: ActionType.LOCAL_LOADED_ALBUM;
   payload?: any;
 }
-interface GetPanelInfo{
+interface GetPanelInfo {
   type: ActionType.GET_PANEL_INFO;
-  payload:any
+  payload: any;
 }
-interface LaunchPopUp{
+interface LaunchPopUp {
   type: ActionType.LAUNCH_POP_UP;
-  payload:any
+  payload: any;
 }
