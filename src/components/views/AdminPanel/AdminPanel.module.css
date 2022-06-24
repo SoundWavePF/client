@@ -142,3 +142,11 @@
   background-color: var(--yellow-dark);
   padding-left: 5px;
 }
+.container{
+  padding: 30px;
+}
+.sectionLoading{
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+}

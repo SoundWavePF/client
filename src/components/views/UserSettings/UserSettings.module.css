@@ -3,6 +3,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-family: sw-medium;
+
 }
 
 .container {
@@ -36,14 +38,17 @@
 }
 
 .buttons {
-    border-radius: 25px;
     border: 1px solid rgba(0, 0, 0, 0.315);
+    border-radius:  7px;
 
     
 }
 
 .buttons:hover {
     background-color: #ffee32;
+    transition: ease-in 0.1s;
+    transform: scale(1.1);
+    cursor: pointer;
     transition: ease-in 0.1s;
 }
 
@@ -157,45 +162,34 @@
     border-radius: 60px;
 }
 .father button{
+
+    
+
     padding: 0.5em;
     position: absolute;
 
-    left: 35px;
-    bottom: -100px;
+    left: 32px;
+    bottom: -60px;
 
-    border-radius: 1em;
+    border-radius: 10px 10px 5px 5px;
     border: none;
-    background-color: transparent;
+    background-color: var(--yellow-light);
    
-    background-image: url('./Upload-Text.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 75px;
-    width: 75px;
+
+    text-align: center;
+    height: 35px;
+    width: 70px;
+    font-family: sw-medium;
 
 }
 
 
 .father button:hover{
-    background-color: transparent;
-
-    padding: 0.5em;
-    position: absolute;
-
-    left: 35px;
-
-    bottom: -100px;
-
-
-
-
+    transform: scale(1.1);
     cursor: pointer;
     transition: ease-in 0.1s;
-    background-image: url('./Arrow.png');
-    background-size: cover;
-    height: 75px;
-    width: 75px;
+    background-color: var(--yellow-light);
+
 
 }
 
@@ -204,6 +198,7 @@
     height: 130px;
     
 }
+
 
 
 .input {

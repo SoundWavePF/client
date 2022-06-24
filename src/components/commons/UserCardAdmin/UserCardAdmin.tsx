@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from "redux";
 import * as actionCreator from '../../../redux/actions/action_admin'
-
+ 
 
 const UserCardAdmin = (userP:any)=>{
   const dispatch = useDispatch()
@@ -31,10 +31,11 @@ const UserCardAdmin = (userP:any)=>{
         .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
-        Swal.fire(
-          'Deleted!',
-          'This user was deleted.',
-          'success'
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'This user was deleted.',
+          confirmButtonColor: '#ffd100'
+        }
         )
         })
         .catch(error=>{
@@ -62,14 +63,16 @@ const UserCardAdmin = (userP:any)=>{
         }
         axios.post('https://www.javierochoa.me/admin/accept',data)
         .then(r=>{
-          console.log(r.data,'BIENNNNN')
           getAllUsers(ADMIN_EMAIL)
-          Swal.fire('Aprobado!')
-        })
-        .catch(error=>{
-          console.log(error)
-          Swal.fire('Error paso algo :(')
-        })
+          Swal.fire({
+            title:'Aprobado!',
+            confirmButtonColor: '#ffd100',
+          })
+          })
+          .catch(error=>{
+            console.log(error)
+            Swal.fire('Error paso algo :(')
+          })
         // Swal.fire('Saved!', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('Desaprobado')
@@ -99,7 +102,11 @@ const UserCardAdmin = (userP:any)=>{
       .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
-        Swal.fire('The user was successfully changed to "'+text+'"')
+        Swal.fire({
+          title:'The user was successfully changed to "'+text+'"',
+          confirmButtonColor: '#ffd100',
+        }
+        )
       })
       .catch(error=>{
         console.log(error)
@@ -130,7 +137,10 @@ const UserCardAdmin = (userP:any)=>{
       .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
-        Swal.fire(`The email was successfully changed to: ${email}`)
+        Swal.fire({
+          title:`The email was successfully changed to: ${email}`,
+          confirmButtonColor: '#ffd100',
+        })
       })
       .catch(error=>{
         console.log(error)

@@ -75,11 +75,11 @@ export const updateUser = (payload: any) => {
     );
     return {
       type: ActionType.UPDATE_USER,
-      payload: update,
-    };
-  };
-};
-export const getUserInfo = (email: string) => {
+      payload: update
+    }
+  }
+}
+export const getUserInfo = (email: any) => {
   //hay que poner el id del usuario creado hasta que se pueda haceder a el
   return (dispatch: Dispatch<Actions>) => {
     axios

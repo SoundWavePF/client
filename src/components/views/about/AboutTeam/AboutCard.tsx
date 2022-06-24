@@ -1,7 +1,7 @@
 import React from 'react';
 import Style from './AboutCard.module.css'
-import Git from '../../../assets/about/git.png'
-import Linkedin from '../../../assets/about/linked.png'
+import Git from '../../../../assets/about/git.png'
+import Linkedin from '../../../../assets/about/linked.png'
 
 type AboutCard ={
     name?:string

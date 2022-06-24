@@ -4,15 +4,17 @@ import * as actionCreator from "../../../redux/actions/action_player";
 import * as actionCreator2 from "../../../redux/actions/action_user";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-import playlistFran from "../../../assets/playlistFran2.png";
-import DropDownButton from "../DropDownButton/DropDownButton";
-import { useAuth0 } from "@auth0/auth0-react";
+import playlistFran from '../../../assets/playlistFran2.png';
+import DropDownButton from '../DropDownButton/DropDownButton';
+import FavoriteIcon from "../FavoriteIcon/FavoriteIcon";
+import { useAuth0 } from '@auth0/auth0-react';
 
 interface myProps {
   item: any;
 }
 
 const CardItem: React.FC<myProps> = (props: myProps) => {
+  const { isAuthenticated } = useAuth0();
   let IType = props.item.type;
   const { user } = useAuth0();
   const email = user?.email;
@@ -73,17 +75,18 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
             />
             <ul className={styles.actions}>
               <li className={styles.action}>
-                <DropDownButton item={props.item} />
+                <DropDownButton item={props.item}/>
               </li>
-              <li className={styles.action}>like</li>
+              {isAuthenticated && props.item && 
+              <li className={styles.action2}>
+                <FavoriteIcon item={props?.item}/>
+              </li>}
             </ul>
-          </figure>
-          <p>{props.item.name}</p>
-          <a href={`/artist/${props.item.artists[0].id}`}>
-            {props.item.artists[0].name}
-          </a>
-        </div>
-      );
+            </figure>
+            <p>{props.item.name}</p>
+            <a href={`/artist/${props.item.artists[props.item.artists.length - 1].id}`}>{props.item.artists[props.item.artists.length - 1].name}</a>
+          </div>
+        )
     default:
       return <></>;
   }

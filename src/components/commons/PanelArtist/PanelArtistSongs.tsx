@@ -12,7 +12,7 @@ interface myProps {
 }
 
 const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
-  const {songs} = useSelector((state: any) => state.artist);
+  const {songs} = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
   const {  } = bindActionCreators(actionCreator, dispatch);
   const [songsState, setSongsState] = useState([...songs])

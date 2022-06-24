@@ -17,6 +17,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import styles from './Player.module.css';
 import QueuePanel from './QueuePanel';
 import { Link } from 'react-router-dom';
+import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
 
 export default function Player(){
   const player = useRef();
@@ -30,9 +31,6 @@ export default function Player(){
   const [volume, setVolume] = useState('20');
   useEffect(() => setIsPlaying(true), [queue[0]])
   useEffect(() => updatePos(), [queue]);
-  function Like(song, user){
-    dispatch(likeSong(song, user))
-  }
   function updatePos(){
     if(pos + 1 > queue.length){
       setPos(0);
@@ -95,26 +93,16 @@ export default function Player(){
           <button onClick={nextSong} className={styles.btn} disabled={queue[pos + 1] ? false : true}>{queue[pos + 1] ? <img src={next} className={styles.btnImg}/> : <img src={nextvoid} className={styles.btnImg}/>}</button>
           {prettyTime(currentTime)}/{player.current !== undefined ? prettyTime(player.current.getDuration()) : '0:00'}
         </div>
-        {
-          queue[pos] ?
-          <div className={styles.songInfo}>
-            {queue[pos] ? <img src={queue[pos].image_medium} className={styles.cover}/> : null}
-            <div>
-              <h4 className={styles.title}>
-                <Link className={styles.title} to={queue[pos] ? '/artist/'+(queue[pos].artists[0].id || queue[pos].artists[0].contributors.artistId) : '/'}>
-                  <span>{queue[pos] ? queue[pos].artists[0].name : null}</span>
-                </Link>  
-                {' - '+queue[pos]?.name}
-              </h4>
-              <span>{queue[pos] ? ''+queue[pos].album.name : null}</span>            
-            </div>
+        {queue[pos] !== undefined && <div className={styles.songInfo}>
+          {<img src={queue[pos].image_medium} className={styles.cover}/>}
+          <div>
+            <h3>{queue[pos]?.name}</h3>
+            <span><Link to={`/artist/${queue[pos].artists[queue[pos].artists.length - 1].id}`} className={styles.link}>{queue[pos].artists[queue[pos].artists.length - 1].name}</Link> • <Link to={`/album/${queue[pos].albumId}`} className={styles.link}>{queue[pos].album.name}</Link></span>
           </div>
-          :
-          <></>
-        }
+        </div>}
         <div className={styles.volume}>
           <QueuePanel songPosition={pos} setSongPosition={setPos}/>
-          {/* {queue[pos] && userId && <button className={styles.btn} onClick={() => Like(queue[pos].id, userId)}><img src={like} className={styles.btnImg}/></button>} */}
+          {queue[pos] && userId && <FavoriteIcon item={queue[pos]}/>}
           <button onClick={mute} className={styles.btn}><img src={parseInt(volume) === 0 ? muteicon : parseInt(volume) < 33 ? volume1 : parseInt(volume) < 66 ? volume2 : volume3} className={styles.btnImg}/></button>
           <input type='range' value={volume} min='0' max='100' onChange={e => setVolume(e.target.value)} className={styles.volumeR}/>
         </div>

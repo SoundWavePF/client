@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
 import CardItem from "../CardContainer/CardItem";
-// import ListItem from '../ListItemContainer/ListItem';
 import ItemList from "../CardsComponents/ItemList/ItemList";
 import Styled from "../ContainerLibrary/ContainerLibrary.module.css";
+import * as actionUser from '../../../redux/actions/action_user'
+
 import { useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
+import { bindActionCreators } from "redux";
+import { useDispatch } from "react-redux";
 
 export const ContainerLibrary = () => {
   const { user, isAuthenticated } = useAuth0();
+  const dispatch= useDispatch()
+
+  const { updateUser ,getUserInfo} = bindActionCreators(actionUser, dispatch)
+
   const state = useSelector((state): any => state);
+  const {user_info} = useSelector((state): any => state);
   const location = useLocation();
+
+  useEffect(()=>{
+
+    getUserInfo(user?.email)
+  },[])
 
   if (isAuthenticated) {
     switch (location.pathname) {
@@ -22,7 +35,7 @@ export const ContainerLibrary = () => {
               <img
                 src={
                   isAuthenticated
-                    ? user?.picture
+                    ? user_info?.image_avatar
                     : "https://cdn.discordapp.com/attachments/974053763335716884/985759356895260713/token_1_3.png"
                 }
                 alt=""
@@ -73,7 +86,7 @@ export const ContainerLibrary = () => {
               <img
                 src={
                   isAuthenticated
-                    ? user?.picture
+                    ? user_info?.image_avatar
                     : "https://cdn.discordapp.com/attachments/974053763335716884/985759356895260713/token_1_3.png"
                 }
                 alt=""

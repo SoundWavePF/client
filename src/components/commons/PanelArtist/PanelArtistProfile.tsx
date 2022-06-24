@@ -9,7 +9,8 @@ interface myProps {
 }
 
 const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
-  const {id, username, email, image_avatar} = useSelector((state: any) => state.user_info);
+  const {name, username, email, image_avatar} = useSelector((state: any) => state.user_info);
+  const {albums, songs} = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
   const { changeAbout } = bindActionCreators(actionCreator, dispatch);
   const imageHC = 'https://e-cdns-images.dzcdn.net/images/artist/5e17a1209254de68d7edcf9cccccdf67/250x250-000000-80-0-0.jpg';
@@ -27,25 +28,25 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
   }
   return (
     <div className={styles.container}>
-      <img src={imageHC} alt={username} />
-      <span>{nameHC}</span>
+      <img src={image_avatar} alt={username} />
+      <span>{name}</span>
       {/* stats harcodeadas */}
       <div className={styles.statContainer}>
         <div className={styles.statInfo}>
             <div className={styles.title}>Songs</div>
-            <div className={styles.value}>33</div>
+            <div className={styles.value}>{songs?.length}</div>
         </div>
         <div className={styles.statInfo}>
             <div className={styles.title}>Likes</div>
-            <div className={styles.value}>5130</div>
+            <div className={styles.value}>999999</div>
         </div>
         <div className={styles.statInfo}>
             <div className={styles.title}>Albums</div>
-            <div className={styles.value}>9</div>
+            <div className={styles.value}>{albums?.length}</div>
         </div>
         <div className={styles.statInfo}>
             <div className={styles.title}>Views</div>
-            <div className={styles.value}>15000</div>
+            <div className={styles.value}>999999</div>
         </div>
       </div>
       {edit ? <div><textarea value={about} onChange={(e) => setAbout(e.target.value)} className={styles.textarea} required></textarea> <button onClick={handleSubmit} className={styles.btn}>OK</button> <button onClick={cancel} className={styles.btn2}>Cancel</button> </div> : <div><p>{about}</p> <button onClick={() => setEdit(!edit)} className={styles.btn}>Edit about</button></div>}
