@@ -27,16 +27,16 @@ const DonationsButton = (props:any)=>{
           amount: Number(r.value), 
           stripeId: stripe 
         }
-      /*  axios.post('https://www.javierochoa.me/order',donation)
-        .then((res:any)=>{
-          console.log(res)
-        })*/
+      axios.post('https://www.javierochoa.me/order',donation)
+        .then(({data}:any)=>{
+          window.location.href = data.url
+        })
         console.log(donation)
       }
     })
   } 
   return(
-      <button className={style.donateButton} onClick={()=>donate(props.artistId,props.userEmail,props.stripe_Id)}>
+      <button className={style.donateButton} onClick={()=>donate(props.artistId,props.userEmail,props.stripeId)}>
         Donate
       </button>
   )

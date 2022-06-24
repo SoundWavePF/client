@@ -85,9 +85,9 @@ export const uploadSong = (payload: any) => {
     }
   }
 }
-export const getPanelInfo = (id:any)=>{
+export const getPanelInfo = (email:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.get('https://www.javierochoa.me/artist/'+id)
+    axios.post('https://www.javierochoa.me/artistpanel/stats', {email: email})
     .then(response => 
       dispatch({
         type: ActionType.GET_PANEL_INFO,

@@ -31,9 +31,9 @@ export const ArtistPage = () => {
           <div>
             <h1>{artist.name}</h1>
             {
-              //artist.stripe_id?
+              artist.stripe_Id?
               <DonationsButton stripeId={artist.stripe_Id} artistId={artist.id} userEmail={user?.email} />
-              //:null
+              :null
             }
           </div>
         </div>
