@@ -27,10 +27,7 @@ const  About2=( )=> {
         </div>
         <div className={Style.divInfo}>
           <h3>Quienes Somos?</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur 
-              adipisicing elit. Dolores atque sequi reprehenderit officiis
-                veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
-                tempore nisi aliquam a ea! Officia.</p>
+          <p> Somos un grupo de programadores de Argentina y Colombia que nos conocimos en la instancia de bootcamp de Henry. En donde desde Marzo de 2022 formamos un grupo de trabajo y humano muy integro, en el cual de forma remota hemos adquirido conocimientos técnicos entre nosotros y, además conocer un poco más sobre la culturas de cada uno de nuestros compañeros. </p>
         </div>
       </div>
       <div className={Style.containerInfo}>
@@ -44,10 +41,7 @@ const  About2=( )=> {
           </div>
           <div className={Style.divInfo2}>
             <h3>Trabajo en equipo</h3>
-            <p> metodologia scrum gitHub etc Lorem ipsum dolor sit, amet consectetur 
-                adipisicing elit. Dolores atque sequi reprehenderit officiis
-                  veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
-                  tempore nisi aliquam a ea! Officia.</p>
+            <p> Para llevar a cabo este proceso utilizamos la metodoligia Scrum con el objetivo principal de trabajar de manera colaborativa, y para fomentar el trabajo en equipo. Con este método de trabajo lo que se pretende es alcanzar el mejor resultado de un proyecto determinado.</p>
           </div>
           <div className={Style.divInfo2}>
             <h3>Diseño y Ejecucion de ideas</h3>
