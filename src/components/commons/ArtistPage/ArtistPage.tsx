@@ -7,15 +7,18 @@ import * as actionCreator from '../../../redux/actions/action_artist'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import ArtistCardContainer from './ArtistCardContainer/ArtistCardContainer';
+import DonationsButton from './DonationsButton/DonationsButton';
+import { useAuth0 } from '@auth0/auth0-react'
 
 
 export const ArtistPage = () => {
   const { id } = useParams()
   const artist = useSelector((state: any) => state.artist)
-  const location = useLocation()
   const dispatch = useDispatch();
   const { getArtist, getArtistTop } = bindActionCreators(actionCreator, dispatch);
   const [option, setOption] = useState('Top')
+  const { user, isAuthenticated } = useAuth0()
+
   useEffect(() => {
     getArtist(id)
     getArtistTop(id)
@@ -24,7 +27,14 @@ export const ArtistPage = () => {
     <div className={Styled.ContainerLibrary} >
       <div className={Styled.User} >
         <img src={artist.image_big} alt="" />
-        <h1>{artist.name}</h1>
+        <div>
+          <h1>{artist.name}</h1>
+          {
+            //artist.stripe_id?
+            <DonationsButton stripeId={artist.stripe_Id} artistId={artist.id} userEmail={user?.email} />
+            //:null
+          }
+        </div>
       </div>
       <div className={Styled.ToolBar}>
         <button onClick={(e: any) => setOption(e.target.value)} value='Top'>Top 5</button>

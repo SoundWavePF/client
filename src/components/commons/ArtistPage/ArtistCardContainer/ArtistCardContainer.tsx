@@ -29,7 +29,7 @@ const ArtistCardContainer = ({ props }: any) => {
     case 'Description':
       return (
         <div>
-          <h1>Description... proximamente solo en cines. esperalo :b</h1>
+          <p>{artist.description}</p>
         </div>
       )
     default:
