@@ -7,16 +7,15 @@ import * as actionCreator from "../../../redux/actions/action_player";
 
 const ContentHome = () => {
   const dispatch = useDispatch();
-  const { getGenres, getLastSongs, getChart } = bindActionCreators(
-    actionCreator,
-    dispatch
-  );
+  const { getGenres, getLastSongs, getChart, getTop } = bindActionCreators(actionCreator,dispatch);
   const { last, genres, chart } = useSelector((state: any) => state.home);
+  const top = useSelector((state: any) => state.top);
   
   useEffect(() => {
-    getGenres();
-    getLastSongs();
-    getChart();
+    if(last.length<1) getLastSongs();
+    if(genres.length<1) getGenres();
+    if(chart.length<1) getChart();
+    if(top.length<1) getTop();
   }, []);
 
   return (

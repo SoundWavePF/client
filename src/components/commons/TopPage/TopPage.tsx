@@ -14,7 +14,7 @@ const TopPage = () => {
   const top = useSelector((state: any) => state.top);
   const topTen = top.slice(0,10).reverse()
   useEffect(():any => {
-    getTop();
+    if(top.length<1) getTop();
   }, []);
 
   if(topTen.length>0){

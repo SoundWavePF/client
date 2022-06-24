@@ -27,7 +27,7 @@ export const ArtistPage = () => {
     return (
       <div className={Styled.ContainerLibrary} >
         <div className={Styled.User} >
-          <img src={artist.image_big} alt="" />
+          <img src={artist.image_medium} alt="" />
           <div>
             <h1>{artist.name}</h1>
             {
