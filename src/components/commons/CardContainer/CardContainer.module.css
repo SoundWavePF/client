@@ -1,7 +1,6 @@
 .container{
   overflow: hidden;
   position: relative;
-  border: 2px solid red;
   width: 100%;
 }
 
@@ -22,8 +21,18 @@
 
 .btn {
   z-index: 50;
-  position: sticky;
-  top: 50%
+  position: absolute;
+  top: 30%;
+  color: #ffffff;
+  background-color: #000000;
+  opacity: 0.7;
+
+  padding: 10px ;
+  border-radius: 3px;
+}
+
+.btn:hover {
+  opacity: 1;
 }
 
 .left {

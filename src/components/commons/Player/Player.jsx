@@ -18,6 +18,14 @@ import styles from './Player.module.css';
 import QueuePanel from './QueuePanel';
 import { Link } from 'react-router-dom';
 
+function SoundWave(){
+  return (
+  <div>
+      <img height={"70px"} width="300px" src={"https://w7.pngwing.com/pngs/184/530/png-transparent-sound-waves-acoustic-wave-computer-icons-sound-wave-angle-text-logo-thumbnail.png"}/>
+  </div>
+  )
+}
+
 export default function Player(){
   const player = useRef();
   const dispatch = useDispatch();
@@ -112,6 +120,7 @@ export default function Player(){
           :
           <></>
         }
+        <SoundWave/>
         <div className={styles.volume}>
           <QueuePanel songPosition={pos} setSongPosition={setPos}/>
           {/* {queue[pos] && userId && <button className={styles.btn} onClick={() => Like(queue[pos].id, userId)}><img src={like} className={styles.btnImg}/></button>} */}

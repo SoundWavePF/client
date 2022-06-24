@@ -76,8 +76,13 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
 
   return (
     <div className={styles.container} ref={carrusel}>
-       <button onClick={handleClick} className={`${styles.btn} ${styles.right}`}>right</button>
-       <button className={`${styles.btn} ${styles.left}`}>left</button>
+       {
+        !props.slides? null:
+        <>
+          <button onClick={handleClick} className={`${styles.btn} ${styles.right}`}>→</button>
+          <button className={`${styles.btn} ${styles.left}`}>←</button>
+        </>
+       }
       <div className={props.slides? styles.inner: styles.inner2} ref={slidesContainer}>
         {
           props.content?.map((e:any, i:any) => {
