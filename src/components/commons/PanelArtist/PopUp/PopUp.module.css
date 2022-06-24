@@ -1,0 +1,42 @@
+.background{
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-bottom: 90px;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.floating{
+  width: 500px;
+  height: 350px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  display: grid;
+  grid-template-rows: 40px auto 40px;
+}
+.floating > h3{
+  justify-self: center;
+}
+.floating > div:last-child{
+  display: flex;
+  justify-content: center;
+}
+.btn{
+  background-color: var(--yellow-light);
+  width: auto;
+  height: 30px;
+  border-radius: 5px;
+  padding: 0 1rem;
+  margin: 0 1rem;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+}

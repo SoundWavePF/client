@@ -57,7 +57,7 @@ const initialState: State = {
   pageStats: {},
   user_info: {},
   userAdmin: false,
-  panel_artist: { loaded_album: false, album: {}},
+  panel_artist: { loaded_album: false, pop_up: {}},
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -250,7 +250,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
             ...state,
             panel_artist: {
               ...state.panel_artist,
-              loaded_album: action.payload,
+              loaded_album: {flag: true}
             }
           }
         } else {
@@ -258,8 +258,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
             ...state,
             panel_artist: {
               ...state.panel_artist,
-              loaded_album: action.payload,
-              album: {},
+              loaded_album: {flag: false}
             }
           }
         }
@@ -268,8 +267,27 @@ const Reducer = (state: any = initialState, action: Actions) => {
           ...state,
           panel_artist: {
             ...state.panel_artist,
-            album: action.payload,
+            loaded_album: {...state.panel_artist.loaded_album, data: action.payload},
           }
+        }
+      };
+    case ActionType.GET_PANEL_INFO:
+      let {albums, songs} = action.payload;
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          albums,
+          songs,
+        }
+      };
+    case ActionType.LAUNCH_POP_UP:
+      let {type, item} = action.payload;
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          pop_up: {type, item}
         }
       }
     default:
