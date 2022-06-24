@@ -85,3 +85,22 @@ export const uploadSong = (payload: any) => {
     }
   }
 }
+export const getPanelInfo = (id:any)=>{
+  return(dispatch: Dispatch<any>)=>{
+    axios.get('https://www.javierochoa.me/artist/'+id)
+    .then(response => 
+      dispatch({
+        type: ActionType.GET_PANEL_INFO,
+        payload: response.data
+      })
+      )
+  }
+}
+export const launchPopUp = (type: string | boolean , item?: any) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.LAUNCH_POP_UP,
+      payload: {type, item}
+    })
+  };
+};

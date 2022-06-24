@@ -17,6 +17,7 @@ import AboutDesign from './AboutDesign/AboutDesign';
 const  About2=( )=> {
   return (
     <div className={Style.about}>
+      <Link to={'/'} className={Style.buttonHome}><button >Back to page</button></Link>
       <div className={Style.divNav}>
         <h1>SoundWave</h1>
       </div>
@@ -26,31 +27,41 @@ const  About2=( )=> {
         </div>
         <div className={Style.divInfo}>
           <h3>Quienes Somos?</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur 
-              adipisicing elit. Dolores atque sequi reprehenderit officiis
-                veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
-                tempore nisi aliquam a ea! Officia.</p>
+          <p> Somos un grupo de programadores de Argentina y Colombia que nos conocimos en la instancia de bootcamp de Henry. En donde desde Marzo de 2022 formamos un grupo de trabajo y humano muy integro, en el cual de forma remota hemos adquirido conocimientos técnicos entre nosotros y, además conocer un poco más sobre la culturas de cada uno de nuestros compañeros. </p>
         </div>
       </div>
-        <div className={Style.containerInfo}>
-          <h3>Retos de este proyecto</h3>
-          <p> Lorem ipsum dolor sit, amet consectetur 
-              adipisicing elit. Dolores atque sequi reprehenderit officiis
-                veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
-                tempore nisi aliquam a ea! Officia.</p>
-          <h4>Trabajo en equipo</h4>
-          <p> metodologia scrum gitHub etc Lorem ipsum dolor sit, amet consectetur 
-              adipisicing elit. Dolores atque sequi reprehenderit officiis
-                veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
-                tempore nisi aliquam a ea! Officia.</p>
-          <AboutDesign/>
-          <h4>Relaciones y rutas</h4>
-          <p> Lorem ipsum dolor sit, amet consectetur 
-              adipisicing elit. Dolores atque sequi reprehenderit officiis
-                veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
-                tempore nisi aliquam a ea! Officia.</p>
+      <div className={Style.containerInfo}>
+        <div className={Style.div1}>
+          <div className={Style.divInfo2}>
+            <h3>Retos de este proyecto</h3>
+            <p> Lorem ipsum dolor sit, amet consectetur 
+                adipisicing elit. Dolores atque sequi reprehenderit officiis
+                  veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
+                  tempore nisi aliquam a ea! Officia.</p>
+          </div>
+          <div className={Style.divInfo2}>
+            <h3>Trabajo en equipo</h3>
+            <p> Para llevar a cabo este proceso utilizamos la metodoligia Scrum con el objetivo principal de trabajar de manera colaborativa, y para fomentar el trabajo en equipo. Con este método de trabajo lo que se pretende es alcanzar el mejor resultado de un proyecto determinado.</p>
+          </div>
+          <div className={Style.divInfo2}>
+            <h3>Diseño y Ejecucion de ideas</h3>
+            <p> metodologia scrum gitHub etc Lorem ipsum dolor sit, amet consectetur 
+                adipisicing elit. Dolores atque sequi reprehenderit officiis
+                  veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
+                  tempore nisi aliquam a ea! Officia.</p>
+          </div>
         </div>
-      <Link to={'/'} className={Style.buttonHome}><button >Back to page</button></Link>
+        <AboutDesign/>
+        <div className={Style.div1}>
+          <div className={Style.divInfo2}>
+            <h3>Relaciones y ruta</h3>
+            <p> Lorem ipsum dolor sit, amet consectetur 
+                adipisicing elit. Dolores atque sequi reprehenderit officiis
+                  veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
+                  tempore nisi aliquam a ea! Officia.</p>
+          </div>
+        </div>
+      </div>
         <div className={Style.containerInfo2}>
           <h3>Tecnologias utilizadas</h3>
           <div className={Style.techInfo}>

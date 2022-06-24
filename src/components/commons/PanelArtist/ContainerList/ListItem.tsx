@@ -3,7 +3,7 @@ import styles from "./ListItem.module.css";
 import time from "../../../../../src/assets/time.png";
 import edit from "../../../../../src/assets/edit.png";
 import * as actionCreator from "../../../../redux/actions/action_player";
-import * as actionCreatorUser from "../../../../redux/actions/action_artist";
+import * as actionCreatorArtist from "../../../../redux/actions/action_artist";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import Swal from "sweetalert2";
@@ -22,7 +22,7 @@ const ItemListPanelArtist: React.FC<myProps> = (props: myProps) => {
   const {albums, id} = useSelector((state: any) => state.artist);
   const dispatch = useDispatch();
   const { playSong } = bindActionCreators(actionCreator, dispatch);
-  const { updateSong, getArtist } = bindActionCreators(actionCreatorUser, dispatch);
+  const { updateSong, getArtist, launchPopUp } = bindActionCreators(actionCreatorArtist, dispatch);
 
   const formatDuration = (duration: string): string => {
     let num = parseInt(duration);
@@ -87,7 +87,7 @@ const ItemListPanelArtist: React.FC<myProps> = (props: myProps) => {
       <div>
         {
           !editing ?
-          <img src={edit} onClick={toggleEdit} className={styles.editBtn}/>
+          <img src={edit} onClick={()=>launchPopUp('EditSong')} className={styles.editBtn}/>
           :
           <div>
             <button onClick={approveEdit}>✅</button>

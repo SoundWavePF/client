@@ -1,6 +1,5 @@
 import styles from "./PanelArtistAlbum.module.css";
 import { useEffect, useState } from "react";
-import CardContainer from "../CardContainer/CardContainer";
 import * as actionCreator from "../../../redux/actions/action_artist";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -14,32 +13,41 @@ interface myProps {
 
 const PanelArtistAlbums: React.FC<myProps> = ({ content }: myProps) => {
   const [open, setOpen] = useState<any>(false);
-  const {albums, songs} = useSelector((state: any) => state.artist);
-  const {loaded_album, album} = useSelector((state: any) => state.panel_artist);
+  // const {} = useSelector((state: any) => state.artist);
+  const {albums} = useSelector((state: any) => state.panel_artist);
+  const {flag, data} = useSelector((state: any) => state.panel_artist.loaded_album);
   const dispatch = useDispatch();
-  const { localLoadedAlbum } = bindActionCreators(actionCreator, dispatch)
+  const { localLoadedAlbum, launchPopUp } = bindActionCreators(actionCreator, dispatch)
   useEffect(()=>{
-    
-  })
+    return () => {
+      localLoadedAlbum(false)
+    }
+  },[])
   return (
+    !flag ?
     <div className={styles.container}>
-      <div className={styles.albums}>
-        <span>My albums  ¡CLICK AQUI! (Lo que se espera al clickear un album)</span>
-        <CardContainerPanelArtist content={albums}/>
-      </div>
-      {
-        loaded_album &&
-        <div className={styles.floating}>
-          <button className={styles.floatingClose} onClick={()=>localLoadedAlbum(false)}>X</button>
-          <div className={styles.floatingList}>
-            {
-              album.songs &&
-              <ListItemContainerPanelArtist content={album.songs} nb={true} album={false} sort={true}/>
-            }
-          </div>
-        </div>
-      }
+      <h1>My albums</h1>
+      <CardContainerPanelArtist content={albums}/>
     </div>
+    :
+    data ?
+      <div className={styles.container}>
+        <p className={styles.back} onClick={()=>localLoadedAlbum(false)}>back</p>
+        <div className={styles.details}>
+          <img src={data.image_medium} alt={data.name} />
+          <span>{data.name}</span>
+          <button className={styles.btn} onClick={()=>launchPopUp('EditAlbum')}>edit</button>
+        </div>
+        {data.songs && (
+          <ListItemContainerPanelArtist
+            content={data.songs}
+            nb={true}
+            sort={true}
+          />
+        )}
+      </div>
+    :
+    <div className={styles.loading}><div className='spinner-border' role="status"></div></div>
   )
 };
 export default PanelArtistAlbums;

@@ -15,7 +15,6 @@ interface myProps {
 
 const DropDownButton: React.FC<myProps> = (props: myProps) => {
   const playlists = useSelector((state: any) => state.library_artist.card);
-  const [list, setList] = useState(0);
   const { user, isAuthenticated } = useAuth0();
   const email: string | undefined = user?.email;
   const dispatch = useDispatch();
@@ -23,10 +22,7 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
     actionCreator,
     dispatch
   );
-  const { newPlaylist, getLibrary } = bindActionCreators(
-    actionCreatorUser,
-    dispatch
-  );
+  const { newPlaylist } = bindActionCreators(actionCreatorUser, dispatch);
   async function addPlaylist() {
     if (email !== undefined) {
       const { value: playlistName } = await Swal.fire({
@@ -38,23 +34,32 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
         newPlaylist(email, playlistName);
       }
     }
-    if (email) getLibrary(email);
-    // await setTimeout(function () {
-    //   console.log(playlists);
-    console.log("tama", playlists.length);
-    //   console.log("espere");
-    // }, 6000);
-    const numPlaylist = playlists.length;
-    setList(numPlaylist);
-    console.log("estate", list);
   }
   return (
     <div>
-      <DropdownButton id="dropdown-basic-button" variant="warning" title="•••" bsPrefix={styles.dropdown}>
-        <Dropdown.Item ><Link className={styles.link} to={`/artist/${props.item.artists[0].id}`}>Go to Artist</Link></Dropdown.Item>
-        <Dropdown.Item ><Link className={styles.link} to={`/album/${props.item.album.id}`}>Go to Album</Link></Dropdown.Item>
-        <Dropdown.Item onClick={() => addToQueue(props.item)}>Add to queue</Dropdown.Item>
-        {isAuthenticated &&
+      <DropdownButton
+        id="dropdown-basic-button"
+        variant="warning"
+        title="•••"
+        bsPrefix={styles.dropdown}
+      >
+        <Dropdown.Item>
+          <Link
+            className={styles.link}
+            to={`/artist/${props.item.artists[0].id}`}
+          >
+            Go to Artist
+          </Link>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <Link className={styles.link} to={`/album/${props.item.album.id}`}>
+            Go to Album
+          </Link>
+        </Dropdown.Item>
+        <Dropdown.Item onClick={() => addToQueue(props.item)}>
+          Add to queue
+        </Dropdown.Item>
+        {isAuthenticated && (
           <div>
             {["end"].map((direction) => (
               <SplitButton
@@ -62,7 +67,7 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
                 id={`dropdown-button-drop-${direction}`}
                 drop={"end"}
                 variant="warning"
-                title='➕ Playlist'
+                title="➕ Playlist"
                 bsPrefix={styles.dropdrop}
               >
                 {playlists.length
@@ -82,7 +87,7 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
               </SplitButton>
             ))}
           </div>
-        }
+        )}
       </DropdownButton>
     </div>
   );

@@ -18,22 +18,24 @@ import PanelArtistSongs from "../../commons/PanelArtist/PanelArtistSongs";
 import PanelArtistAlbums from "../../commons/PanelArtist/PanelArtistAlbums";
 import Player from "../../commons/Player/Player";
 import FloatButton from "../../commons/FloatButton/FloatButton";
+import PopUp from "../../commons/PanelArtist/PopUp/PopUp";
 
 const PanelArtist = () => {
   const [page, setPage] = useState(1)
   const dispatch = useDispatch();
-  const { getArtist } = bindActionCreators(actionCreator, dispatch)
-  const { rol, id } = useSelector((state: any) => state.user_info);
-  const idTest = '39c2137e-990c-44b3-878c-442d2f2d8442';
+  const { getPanelInfo } = bindActionCreators(actionCreator, dispatch)
+  const { rol, id, artist } = useSelector((state: any) => state.user_info);
+  const idTest = '63ab0aae-f562-4f5a-af65-97d14c8d5100';
   useEffect(()=>{
-    getArtist(idTest)
+    getPanelInfo(artist ? artist.id : idTest);
   },[])
   function handlePage(page: number) {
     setPage(page);
   }
   return (
-    true ?
-      <div className={styles.container}>
+    rol === 'artist' ?
+    <div className={styles.container}>
+        <FloatButton />
         <div className={sidebar.container}>
           <div>
             <img src={logo} alt="SoundWave logo" className={sidebar.logo} />
@@ -78,7 +80,7 @@ const PanelArtist = () => {
           </div>
         }
         <Player/>
-        <FloatButton />
+        <PopUp/>
       </div>
     :
     <Error404/>

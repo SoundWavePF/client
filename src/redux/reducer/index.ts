@@ -19,11 +19,11 @@ interface State {
   users: any;
   loading: boolean;
   artist: any;
-  artistTop: any,
-  pageStats: any,
-  user_info: any,
-  userAdmin: boolean,
-  panel_artist: any,
+  artistTop: any;
+  pageStats: any;
+  user_info: any;
+  userAdmin: boolean;
+  panel_artist: any;
 }
 
 const initialState: State = {
@@ -57,7 +57,7 @@ const initialState: State = {
   pageStats: {},
   user_info: {},
   userAdmin: false,
-  panel_artist: { loaded_album: false, album: {}},
+  panel_artist: { loaded_album: false, pop_up: {}},
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -144,7 +144,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
     case ActionType.DELETE_FROM_QUEUE:
       return {
         ...state,
-        queue: state.queue.filter((song: any) => song.id !== action.payload)
+        queue: state.queue.filter((song: any) => song.id !== action.payload),
       };
     case ActionType.SORT_QUEUE:
       return {
@@ -180,14 +180,17 @@ const Reducer = (state: any = initialState, action: Actions) => {
         album_playlist: action.payload,
       };
     case ActionType.ADD_TO_PLAYLIST:
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
       };
     case ActionType.NEW_PLAYLIST:
-      console.log(action.payload);
       return {
         ...state,
+        library_artist: {
+          ...state.library_artist,
+          card: [...state.library_artist.card, action.payload],
+        },
       };
     case ActionType.UPDATE_PLAYLIST:
       return {
@@ -225,51 +228,69 @@ const Reducer = (state: any = initialState, action: Actions) => {
           ...state.library_artist,
           list: {
             ...state.library_artist.list,
-            liked_songs: action.payload
+            liked_songs: action.payload,
           },
         },
-      }
+      };
     case ActionType.PLAY_ALL:
       return {
         ...state,
-        queue: action.payload
-      }
+        queue: action.payload,
+      };
     case ActionType.GET_USER_INFO:
       return {
         ...state,
         user_info: action.payload,
       };
     case ActionType.CHANGE_ABOUT:
-      return{
-        ...state
-      }
+      return {
+        ...state,
+      };
     case ActionType.LOCAL_LOADED_ALBUM:
-      if (typeof action.payload === 'boolean') {
+      if (typeof action.payload === "boolean") {
         if (action.payload) {
-          return{
+          return {
             ...state,
             panel_artist: {
               ...state.panel_artist,
-              loaded_album: action.payload,
+              loaded_album: {flag: true}
             }
           }
         } else {
-          return{
+          return {
             ...state,
             panel_artist: {
               ...state.panel_artist,
-              loaded_album: action.payload,
-              album: {},
+              loaded_album: {flag: false}
             }
           }
         }
       } else {
-        return{
+        return {
           ...state,
           panel_artist: {
             ...state.panel_artist,
-            album: action.payload,
+            loaded_album: {...state.panel_artist.loaded_album, data: action.payload},
           }
+        }
+      };
+    case ActionType.GET_PANEL_INFO:
+      let {albums, songs} = action.payload;
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          albums,
+          songs,
+        }
+      };
+    case ActionType.LAUNCH_POP_UP:
+      let {type, item} = action.payload;
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          pop_up: {type, item}
         }
       }
     default:

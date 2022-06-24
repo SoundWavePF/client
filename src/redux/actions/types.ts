@@ -1,6 +1,6 @@
 import { LibraryArtist } from "../reducer/types";
 
-export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery | GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll | UpdatePlaylist| sortQueue | deleteFromQueue | loading | GetStats | UserAdmin | GetUserInfo | updateLike | ChangeAbout | UpdateSong | LocalLoadedAlbum;
+export type Actions = GetGenres | GetAlbumPlaylist | ChangeAdminOption | PostSignUp | PostLogin | SearchAll | GetChart | GetLastSongs | SendPrevPlay | PlaySong | AddToQueue | getLibrary | get_PlaylistForId | GetGenre | CleanGenre | AddToPlaylist | NewPlaylist | LikeSong | GetTop | SetQuery | GetAllUsers | GetArtist | GetArtistTop | DislikeSong | PlayAll | UpdatePlaylist| sortQueue | deleteFromQueue | loading | GetStats | UserAdmin | GetUserInfo | updateLike | ChangeAbout | UpdateSong | LocalLoadedAlbum | GetPanelInfo | LaunchPopUp;
 
 export enum ActionType {
   CLEAN_GENRE = 'CLEAN_GENRE',
@@ -42,6 +42,8 @@ export enum ActionType {
   UPDATE_SONG = 'UPDATE_SONG',
   UPLOAD_SONG = 'UPLOAD_SONG',
   LOCAL_LOADED_ALBUM = 'LOCAL_LOADED_ALBUM',
+  GET_PANEL_INFO = 'GET_PANEL_INFO',
+  LAUNCH_POP_UP = 'LAUNCH_POP_UP',
 
 }
 
@@ -193,5 +195,11 @@ interface LocalLoadedAlbum{
   type: ActionType.LOCAL_LOADED_ALBUM,
   payload?: any
 }
-
-
+interface GetPanelInfo{
+  type: ActionType.GET_PANEL_INFO;
+  payload:any
+}
+interface LaunchPopUp{
+  type: ActionType.LAUNCH_POP_UP;
+  payload:any
+}

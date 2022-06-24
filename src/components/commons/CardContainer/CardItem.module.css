@@ -84,10 +84,11 @@
   margin: 0;
 }
 .figure{
-  display: inline-flex;
+  /* display: inline-flex; */
   position: relative
 }
 .actions{
+  display: flex;
   position: absolute;
   top: 5px;
   left: 5px;
@@ -106,7 +107,28 @@
   margin-right: 7px;
   transition: .3s ease-in-out;
 }
+.action2{
+  display: inline-flex;
+  opacity: 0;
+  height: 35px;
+  width: 35px;
+  background-color: white;
+  border-radius: 50%;
+  justify-content: center;
+  /* margin-right: 7px; */
+  transition: .3s ease-in-out;
+  align-items: center;
+  align-content: center;
+}
 .figure:hover .action{
   opacity: 1;
   transition-duration: .25s;
 }
+.figure:hover .action2{
+  opacity: 1;
+  transition-duration: .25s;
+}
+.action2 > button{
+  width: 80%;
+}
+
