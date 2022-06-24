@@ -11,7 +11,7 @@ import MenuUser from "./MenuUser";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const SearchBar = () => {
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState('')
   const loadingState = useSelector((state: any) => state.loading)
   const searchString = useSelector((state: any) => state.query)
   const {user_info}=useSelector((state:any)=>state)
@@ -22,17 +22,20 @@ const SearchBar = () => {
   const {  getUserInfo} = bindActionCreators(actionUser, dispatch)
 
   useEffect(() => {
-    getUserInfo(user?.email)
-    setQuery(input);
-    if (input && !loadingState) {
-      searchAll(input);
-      loading(true)
+    if (!input) setQuery('');
+    let timer = setTimeout(() => {
+      if (input.length > 2 && !loadingState) {
+        searchAll(input);
+        loading(true);
+        setQuery(input);
+      }
     }
+    , 1000)
+    return (() => clearTimeout(timer))
   }, [input]);
   useEffect(() => {
-    setQuery('')
-    return () => { setQuery('') };
-  }, []);
+    setInput(searchString);
+  }, [searchString]);
   function handleChange(e: any): void {
     setInput(e.target.value);
     console.log(e)
