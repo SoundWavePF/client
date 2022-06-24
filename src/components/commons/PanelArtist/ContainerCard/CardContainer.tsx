@@ -1,14 +1,8 @@
 import styles from "./CardContainer.module.css";
 import CardItem from './CardItem';
 
-interface item {
-  id: number;
-  name: string;
-  picture_medium: string;
-  type: string;
-}
 interface myProps {
-  content: item[];
+  content: any;
 }
 
 const CardContainerPanelArtist: React.FC<myProps> = (props: myProps) => {
@@ -19,6 +13,7 @@ const CardContainerPanelArtist: React.FC<myProps> = (props: myProps) => {
           return <CardItem key={i} item={e}/>;
         })
       }
+      <CardItem item='' create={true}/>
     </div>
   );
 };
