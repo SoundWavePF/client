@@ -275,13 +275,21 @@ const Reducer = (state: any = initialState, action: Actions) => {
         }
       };
     case ActionType.GET_PANEL_INFO:
-      let {albums, songs} = action.payload;
+      let {albums, songs, description, name, image_medium, totalFavoriteCount, totalPlayCount, n_songs, n_albums, totalPlaylistCount} = action.payload;
       return{
         ...state,
         panel_artist: {
           ...state.panel_artist,
           albums,
           songs,
+          description,
+          name,
+          image: image_medium,
+          totalFavoriteCount,
+          totalPlayCount,
+          totalPlaylistCount,
+          n_songs,
+          n_albums,
         }
       };
     case ActionType.LAUNCH_POP_UP:
