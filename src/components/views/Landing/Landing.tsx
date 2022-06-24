@@ -4,6 +4,15 @@ import NavBar from '../../commons/NavBar/NavBar';
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from 'axios'
 
+function Wave(){
+  return (
+    <div className={styles.ocean}>
+      <div className={styles.wave}></div>
+      <div className={styles.wave}></div>
+    </div>
+  )
+}
+
 export default function Landing() {
 
   const { user, isAuthenticated } = useAuth0()
@@ -37,6 +46,7 @@ export default function Landing() {
             <Link to='/home' className={styles.button}>Open Player</Link>}
         </div>
       </div>
+      <Wave/>
     </div>
   )
 }
