@@ -57,7 +57,7 @@ const initialState: State = {
   pageStats: {},
   user_info: {},
   userAdmin: false,
-  panel_artist: { loaded_album: false, pop_up: {}},
+  panel_artist: { loaded_album: false, pop_up: {}, info: {}},
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -294,22 +294,14 @@ const Reducer = (state: any = initialState, action: Actions) => {
         }
       };
     case ActionType.GET_PANEL_INFO:
-      let {albums, songs, description, name, image_medium, totalFavoriteCount, totalPlayCount, n_songs, n_albums, totalPlaylistCount, stripe_Id} = action.payload;
+      let {albums, songs} = action.payload.content;
       return{
         ...state,
         panel_artist: {
           ...state.panel_artist,
           albums,
           songs,
-          description,
-          stripe_Id,
-          name,
-          image: image_medium,
-          totalFavoriteCount,
-          totalPlayCount,
-          totalPlaylistCount,
-          n_songs,
-          n_albums,
+          info: action.payload.info,
         }
       };
     case ActionType.LAUNCH_POP_UP:
