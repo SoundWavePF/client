@@ -22,13 +22,13 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
   const [state, setState] = useState<number>(0)
 
   const getScrollPosition= (arg: string) => {
-        const gap = 10;//in px
-        const slideWidth = 270 //in px
+        const gap = 10;//in px 
+        const slideWidth = 270 //in px, width of the card
         const numberOfSlides = slidesContainer.current.children.length
-        const slideCount = Math.ceil(carrusel.current.offsetWidth/slideWidth)
-        const maxScroll = (slideWidth+gap)*numberOfSlides - carrusel.current.offsetWidth
+        const numberOfSlidesToShow = Math.ceil(carrusel.current.offsetWidth/slideWidth)
+        const maxScroll = (slideWidth + gap)*numberOfSlides - carrusel.current.offsetWidth
 
-    console.log("slide count", slideWidth*slideCount, maxScroll, slidesContainer.current.children.length)
+    console.log("slide count", slideWidth*numberOfSlidesToShow, maxScroll, slidesContainer.current.children.length)
 
         if (arg === "forward") {
             const x = state + slideWidth + gap;
@@ -43,7 +43,7 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
         return 0
     }
 
-  useEffect( ()=>{
+  /*useEffect( ()=>{
    if(props.slides) {
     console.log("mount")
     const interval = setInterval( ()=>{
@@ -56,7 +56,7 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
     }, 4000)
     return ()=>clearInterval(interval)
    }
-  }, [state])
+  }, [state])*/
 
 
   function handleClick(arg: string){
