@@ -27,10 +27,10 @@ export default function Landing() {
         {
           user?.nickname?
           <div>
-            <p className={styles.p}>{'Welcome again '+user?.nickname}</p>
+            <p className={styles.p}>{'Welcome to the best wave again '+user?.nickname}</p>
           </div>
           :
-          <p className={styles.p}>Sign up now on the best platform to play and share your favorite music</p>
+          <p className={styles.p}>Sign up now on the best platform the music and let the wave take you to your favorite music</p>
         }
         <div className={styles.button}>
           {isAuthenticated ? <Link to='/home' className={styles.button} onClick={() => userLogin()}>Open Player</Link> :
