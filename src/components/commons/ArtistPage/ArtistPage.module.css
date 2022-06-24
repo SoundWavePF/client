@@ -78,13 +78,8 @@
 
 .ToolBar h4:hover{
   color: var(--yellow-dark);
-
-
   border-bottom: 1px solid var(--yellow-dark);
 }
-
-
-
 .ContainerPlaylist{
   overflow: hidden;
   height: 89%;
@@ -123,4 +118,12 @@
 }
 .User > div > h1{
   margin-bottom: 10%;
+}
+.container{
+  padding: 30px;
+}
+.sectionLoading{
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
 }
