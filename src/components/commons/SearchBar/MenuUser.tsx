@@ -55,12 +55,12 @@ const Menu: React.FunctionComponent<props> = (props) => {
 
     return (
         <div ref={container}>
-            <div onClick={toggle}>
+            <div onClick={toggle}  className={open? style.bkg: style.imgClicked }>
                 <img className={style.userImg} src={user_info?.image_avatar} height='30px' width='30px' />
             </div>
             {
                 !open ? null :
-                    <div className={style.box} >
+                    <div className={open? style.openedBox: style.box } >
                         <div className={style.innerImg}>
                             <img className={style.img} src={user_info?.image_avatar} />
                         </div>
