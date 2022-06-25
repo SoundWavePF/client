@@ -28,9 +28,16 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
       const { value: playlistName } = await Swal.fire({
         title: "New Playlist",
         input: "text",
+        inputLabel:'Enter a playlist name',
+        confirmButtonColor: '#ffee32',
       });
       if (playlistName) {
-        Swal.fire("Playlist created!");
+        Swal.fire({
+          title:"Playlist created!",
+          icon: 'success',
+          confirmButtonColor: '#ffee32',
+        }
+          );
         newPlaylist(email, playlistName);
       }
     }
