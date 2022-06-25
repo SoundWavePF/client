@@ -4,30 +4,41 @@ import { useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_artist";
 import ListItemContainerPanelArtist from "./ContainerList/ListItemContainer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import searchIcon from "../../../assets/search_icon.png";
+import ListItem from "./ContainerList/ListItem";
 
 interface myProps {
   content?: any;
 }
 
 const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
-  const {songs} = useSelector((state: any) => state.panel_artist);
+  const {songs, filtered} = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
-  const {  } = bindActionCreators(actionCreator, dispatch);
-  const [songsState, setSongsState] = useState([...songs])
-  const [input, setInput] = useState("")
-  const searchSong = ()=>{
-    if(input=== ''){
-      setSongsState(songs)
-    } else{
-      setSongsState(songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase())))
-      console.log(songsState)
+  const { setFiltered } = bindActionCreators(actionCreator, dispatch);
+  // const [songsState, setSongsState] = useState([...songs])
+  const [input, setInput] = useState("");
+  useEffect(() => {
+    if (!input) {
+      setFiltered(songs);
+    } else {
+      // setFiltered(songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase())))
+      let filter = songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase()))
+      console.log('________', filter)
+      setFiltered(filter)
     }
-  }
+  },[input])
+  // const searchSong = ()=>{
+  //   if(input=== ''){
+  //     setSongsState(songs)
+  //   } else{
+  //     setSongsState(songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase())))
+  //     console.log(songsState)
+  //   }
+  // }
   function handleChange(e: any): void {
     setInput(e.target.value);
-    searchSong();
+    // searchSong();
   }
   function handleSubmit(e: any) {
     e.preventDefault();
@@ -49,8 +60,8 @@ const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
         </div>
       </form>
       {
-        songsState.length>0 ?
-        <ListItemContainerPanelArtist content={songsState}/> 
+        filtered?.length>0 ?
+        <ListItemContainerPanelArtist content={filtered}/> 
         :
         <h1>no hay resultados</h1>
       }
