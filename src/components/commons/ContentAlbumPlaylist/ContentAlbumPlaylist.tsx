@@ -9,16 +9,6 @@ import Swal from "sweetalert2";
 import imgPlaylist from '../../../assets/coverPl.jpg'
 import shareIcon from '../../../assets/icons-share.svg'
 
-const ShareButton: React.FunctionComponent = ()=>{
-  return (
-    <button className={styles.button}>
-      <div className={styles.icon}>
-        <img src={shareIcon}/>
-      </div>
-    <div>Share me</div>
-  </button>
-  )
-}
 
 const ContentAlbumPlaylist = () => {
   const [edit, setEdit] = useState<boolean>(false);
@@ -61,7 +51,6 @@ const ContentAlbumPlaylist = () => {
           <span>{item.name}</span>
           {item.artists && <a href={`/artist/${item.artists[0].id}`}>{item.artists[0].name}</a>}
           {/* <span>{item.artists && item.artists[0].name}</span> */}
-          <ShareButton/>
           <button onClick={() => playAll(item.songs)} className={styles.btn}>Play all</button>
           {isPlaylist && (
             <button

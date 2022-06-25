@@ -82,36 +82,3 @@
   height: 5rem;
 }
 
-
-/*share button*/
-.button {
-  grid-area: 4 / 2 / 1 / 1;
-  font-family: sw-medium;
-  background: #f2295b;
-  color: white;
-  padding: 6px;
-  font-size: 15px;
-  border: none;
-  border-radius: 5px;
-  height: 35px;
-  width: 120px;
-
-  display: flex;
-  align-content: center;
-  align-items: center;
-  overflow: hidden;
- }
- 
- .icon {
-  background: #fff;
-  margin-right: 1em;
-  height: 1.6em;
-  width: 1.6em;
-  border-radius: 0.5em;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: all .7s;
- }
