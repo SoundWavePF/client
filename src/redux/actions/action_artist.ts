@@ -87,15 +87,16 @@ export const uploadSong = (payload: any) => {
 }
 export const getPanelInfo = (id: string, email:string)=>{
   return(dispatch: Dispatch<any>)=>{
-    let promiseContent = axios.get('https://www.javierochoa.me/artist/'+id);
-    let promiseInfo = axios.post('https://www.javierochoa.me/artistpanel/stats', {email: email});
-    Promise.all([promiseContent, promiseInfo])
-    .then(response => 
+    // let promiseContent = axios.get('https://www.javierochoa.me/artist/'+id);
+    // let promiseInfo = axios.post('https://www.javierochoa.me/artistpanel/stats', {email: email});
+    // Promise.all([promiseContent, promiseInfo])
+    axios.post('https://www.javierochoa.me/artistpanel/stats', {email: email})
+    .then(response =>
       dispatch({
         type: ActionType.GET_PANEL_INFO,
-        payload: {content: response[0].data, info: response[1].data}
+        payload: response.data,
       })
-      )
+    )
   }
 }
 export const launchPopUp = (type: string | boolean , item?: any) => {
@@ -103,6 +104,14 @@ export const launchPopUp = (type: string | boolean , item?: any) => {
     dispatch({
       type: ActionType.LAUNCH_POP_UP,
       payload: {type, item}
+    })
+  };
+};
+export const setFiltered = (value: any) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.SET_FILTERED,
+      payload: value
     })
   };
 };

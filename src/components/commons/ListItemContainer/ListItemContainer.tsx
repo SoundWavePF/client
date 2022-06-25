@@ -1,7 +1,7 @@
 import styles from "./ListItemContainer.module.css";
 import ListItem from './ListItem';
 import { ReactSortable } from "react-sortablejs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as actionCreator from "../../../redux/actions/action_player";
 import { bindActionCreators } from "redux";
 import { useDispatch } from "react-redux";
@@ -25,7 +25,9 @@ const ListItemContainer: React.FC<myProps> = ({ content, header=false, artist, n
     updatePlaylist(playlist);
     console.log('_update_');
   }
-
+  useEffect(()=>{
+    updatePlaylist(state);
+  },[state])
   return (
     <div>
       {
@@ -47,7 +49,7 @@ const ListItemContainer: React.FC<myProps> = ({ content, header=false, artist, n
         </div>
       :
         <ReactSortable list={state} setList={setState} className={sort ? styles.listSort : styles.list}
-          chosenClass={styles.choose} disabled={!sort} onUpdate={() => updateLocal(state)}
+          chosenClass={styles.choose} disabled={!sort}
         >
           {
             state?.map((e:any, i:any) => {

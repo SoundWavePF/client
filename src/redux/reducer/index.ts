@@ -294,14 +294,24 @@ const Reducer = (state: any = initialState, action: Actions) => {
         }
       };
     case ActionType.GET_PANEL_INFO:
-      let {albums, songs} = action.payload.content;
+      let {albums, songs, description, name, image_medium, totalFavoriteCount,
+        totalPlayCount, n_songs, n_albums, totalPlaylistCount, stripe_Id} = action.payload;
       return{
         ...state,
         panel_artist: {
           ...state.panel_artist,
           albums,
           songs,
-          info: action.payload.info,
+          info: {
+            description,
+            name,
+            image_medium,
+            totalFavoriteCount,
+            totalPlayCount,
+            n_songs, n_albums,
+            totalPlaylistCount,
+            stripe_Id,
+          },
         }
       };
     case ActionType.LAUNCH_POP_UP:
@@ -311,6 +321,14 @@ const Reducer = (state: any = initialState, action: Actions) => {
         panel_artist: {
           ...state.panel_artist,
           pop_up: {type, item}
+        }
+      };
+    case ActionType.SET_FILTERED:
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          filtered: action.payload
         }
       }
     default:

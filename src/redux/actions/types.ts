@@ -39,7 +39,8 @@ export type Actions =
   | LocalLoadedAlbum
   | GetPanelInfo
   | LaunchPopUp
-  | deletePlaylist;
+  | deletePlaylist
+  | SetFiltered;
 
 export enum ActionType {
   CLEAN_GENRE = "CLEAN_GENRE",
@@ -84,6 +85,7 @@ export enum ActionType {
   GET_PANEL_INFO = "GET_PANEL_INFO",
   LAUNCH_POP_UP = "LAUNCH_POP_UP",
   DELETE_PLAYLIST = "DELETE_PLAYLIST",
+  SET_FILTERED = "SET_FILTERED",
 }
 
 export interface GetStats {
@@ -244,5 +246,9 @@ interface GetPanelInfo {
 }
 interface LaunchPopUp {
   type: ActionType.LAUNCH_POP_UP;
+  payload: any;
+}
+interface SetFiltered {
+  type: ActionType.SET_FILTERED;
   payload: any;
 }
