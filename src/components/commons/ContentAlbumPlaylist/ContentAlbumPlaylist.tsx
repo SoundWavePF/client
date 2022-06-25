@@ -7,10 +7,11 @@ import * as actionCreator from "../../../redux/actions/action_player";
 import ListItemContainer from "../ListItemContainer/ListItemContainer";
 import Swal from "sweetalert2";
 import imgPlaylist from '../../../assets/coverPl.jpg'
-import shareIcon from '../../../assets/icons-share.svg'
+import axios from 'axios';
 
 
 const ContentAlbumPlaylist = () => {
+  const {email} = useSelector((state: any) => state.user_info);
   const [edit, setEdit] = useState<boolean>(false);
   const dispatch = useDispatch();
   const { getAlbumPlaylist, updatePlaylist, playAll } = bindActionCreators(actionCreator, dispatch);
@@ -27,14 +28,15 @@ const ContentAlbumPlaylist = () => {
         getAlbumPlaylist('clean', '');
       };
   }, []);
-  const toggleEdit = () => {
+  const toggleEdit = async() => {
     if (edit) {
       if (newPlaylist.length === 0){
         Swal.fire("No changes!");
         setEdit(false);
         return
       } else {
-        //newPlaylist al back
+        let newSongOrder = newPlaylist.map((song:any)=>song.id)
+        await axios.post('https://www.javierochoa.me/playlist/update', {playlistId: id, newSongOrder, field: 'songOrder', email})
         updatePlaylist([]);
         Swal.fire("Playlist updated!");
         setEdit(false);
