@@ -4,10 +4,31 @@ import { useState } from "react";
 import * as actionCreator from '../../../redux/actions/action_artist';
 import { bindActionCreators } from "redux"; 
 import axios from 'axios';
+//import { Button } from "react-bootstrap/lib/InputGroup";
+
+import Button from '../Button/Button' 
 
 interface myProps {
   content?: any;
 }
+interface buttonProps {
+  action: any;
+  state: boolean
+}
+
+const EditButton: React.FunctionComponent<buttonProps>  = (props)=>{
+  return (
+    <button onClick={()=>props.action(!props.state)}  className={styles.button}>
+    <svg className="css-i6dzq1" stroke-linejoin="round" 
+      stroke-linecap="round" fill="gray" stroke-width="2" 
+      stroke="black" height="24" width="24" viewBox="0 0 24 24">
+        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+    </svg>
+    Edit
+</button>
+  )
+}
+
 
 const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
   const {name, username, email, artist} = useSelector((state: any) => state.user_info);
@@ -34,6 +55,7 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
 
   return (
     <div className={styles.container}>
+      <Button/>
       <img src={artist.image_medium} alt={username} />
       <span>{artist.name}</span>
       {stripe_Id ? <p>(Donations enabled)</p> :  <button onClick={()=>handleEnableDonation()} className={styles.btn}>Enable Donations</button> }
@@ -71,7 +93,7 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
         :
         <div>
           <p>{about}</p>
-          <button onClick={() => setEdit(!edit)} className={styles.btn}>Edit about</button>
+          <EditButton action={setEdit} state={edit}/>
         </div>}
       
     </div>

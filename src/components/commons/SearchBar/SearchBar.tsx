@@ -10,6 +10,21 @@ import bellIcon from "../../../assets/bell.png";
 import MenuUser from "./MenuUser";
 import { useAuth0 } from "@auth0/auth0-react";
 
+const LoginButton: React.FunctionComponent = ()=>{
+  return (
+    <button className={style.buttonLogin}> Login
+  <div className={style.icon}>
+    <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="none">
+      </path>
+      <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor">
+      </path>
+      </svg>
+  </div>
+</button>
+  )
+}
+
 const SearchBar = () => {
   const [input, setInput] = useState('')
   const loadingState = useSelector((state: any) => state.loading)
@@ -61,8 +76,7 @@ const SearchBar = () => {
       </form>
       <div className={style.icons}>
         {isAuthenticated ? (<MenuUser username={"username"} />) :
-          (<button onClick={() => loginWithRedirect()}
-            className="btn btn-outline-warning" >Log In</button>)
+          (<LoginButton/>)
         }
       </div>
     </nav>

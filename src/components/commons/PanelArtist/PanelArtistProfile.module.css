@@ -58,3 +58,32 @@
   border-radius: 5px;
   padding: 3px 5px;
 }
+
+/*//////* Edit Button/
+/* From uiverse.io by @barisdogansutcu */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--yellow-light);
+  border: solid 3px transparent;
+
+
+  color: black;
+  min-height: 43px;
+  padding: 0 13px 0 13px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all .5s ease;
+}
+
+.button:active {
+  transform: scale(.95);
+  transition: all 100ms ease;
+}
+
+.button svg {
+  width: 16px;
+}
