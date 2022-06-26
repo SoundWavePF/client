@@ -16,16 +16,17 @@ const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
   const {songs, filtered} = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
   const { setFiltered } = bindActionCreators(actionCreator, dispatch);
-  // const [songsState, setSongsState] = useState([...songs])
+  const [songsState, setSongsState] = useState(songs)
   const [input, setInput] = useState("");
   useEffect(() => {
     if (!input) {
-      setFiltered(songs);
+      // setFiltered(songs);
+      setSongsState(songs)
     } else {
-      // setFiltered(songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase())))
       let filter = songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase()))
-      console.log('________', filter)
-      setFiltered(filter)
+      // console.log('________', filter)
+      // setFiltered(filter)
+      setSongsState(filter)
     }
   },[input])
   // const searchSong = ()=>{
@@ -60,8 +61,15 @@ const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
         </div>
       </form>
       {
-        filtered?.length>0 ?
-        <ListItemContainerPanelArtist content={filtered}/> 
+        songsState?.length>0 ?
+        // <div className={styles.list}>
+        //   {
+        //     filtered?.map((e:any, i:any) => {
+        //       return <ListItem key={i} item={e}/>;
+        //     })
+        //   }
+        // </div>
+        <ListItemContainerPanelArtist content={songsState}/> 
         :
         <h1>no hay resultados</h1>
       }
