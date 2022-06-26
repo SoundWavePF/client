@@ -68,6 +68,7 @@
   gap: 10px;
   background: var(--yellow-light);
   border: solid 3px transparent;
+  margin: 20px 0;
 
 
   color: black;
@@ -82,8 +83,4 @@
 .button:active {
   transform: scale(.95);
   transition: all 100ms ease;
-}
-
-.button svg {
-  width: 16px;
 }
