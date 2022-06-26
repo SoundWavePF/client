@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 import { useSelector } from "react-redux";
 import CardContainerPanelArtist from "./ContainerCard/CardContainer";
 import ListItemContainerPanelArtist from "./ContainerList/ListItemContainer";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 interface myProps {
   content?: any;
@@ -42,12 +43,12 @@ const PanelArtistAlbums: React.FC<myProps> = ({ content }: myProps) => {
           <ListItemContainerPanelArtist
             content={data.songs}
             nb={true}
-            sort={true}
+            album={false}
           />
         )}
       </div>
     :
-    <div className={styles.loading}><div className='spinner-border' role="status"></div></div>
+    <LoadingSpinner/>
   )
 };
 export default PanelArtistAlbums;

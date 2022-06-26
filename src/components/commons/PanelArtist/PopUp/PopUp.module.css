@@ -40,3 +40,75 @@
   text-align: center;
   border: none;
 }
+.floating label{
+  margin: .5rem 0;
+}
+.floating input{
+  padding: .75rem;
+  width: 100%;
+  margin-bottom: .5rem;
+}
+.editSong{
+  display: flex;
+  flex-direction: column;
+}
+.editSong > select{
+  padding: .75rem;
+  width: 100%;
+  margin-bottom: .5rem;
+}
+.upload{
+  height: 180px;
+  width: 180px;
+  border-radius: 5px;
+  grid-area: a;
+  position: relative;
+}
+.upload > div:first-child{
+  width: 100%;
+  height: 100%;
+}
+.upload > div:first-child > img{
+  width: 100%;
+  height: 100%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.upload > label:last-child{
+  position: absolute;
+  top: 65px;
+  left: 65px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: ease-in-out .3s;
+  opacity: .6;
+}
+.upload > label:last-child:hover{
+  /* filter: brightness(1.2); */
+  opacity: 1;
+}
+.upload > label:last-child > input{
+  display: none;
+}
+.upload > label:last-child > span{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: var(--yellow-light) no-repeat center/40% url('../../../../assets/edit.png');
+}
+.createAlbum{
+  display: grid;
+  grid-template-areas: "a b" "a c";
+  column-gap: 1rem;
+  align-content: center;
+}
+.createAlbum > label:nth-child(2){
+  grid-area: b;
+}
+.createAlbum > label:nth-child(3){
+  grid-area: c;
+}

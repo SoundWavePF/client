@@ -39,6 +39,9 @@
 .container > div:first-child > span {
     margin-left: 1rem;
     cursor: default;
+    max-height: 1.5rem;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 .container > div:first-child > input {
     margin-left: 1rem;
@@ -50,6 +53,9 @@
     width: 100%;
     justify-self: center;
     cursor: default;
+    max-height: 1.5rem;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 .container > select {
     width: 100%;
