@@ -59,7 +59,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
               onClick={() => playSong(props.item.id)}
             /></figure>
             <p>{props.item.title}</p>
-            <a href={`/artist/${props.item.id}`}>{props.item.artist}</a>
+            <Link to={`/artist/${props.item.id}`}>{props.item.artist}</Link>
           </div>
         )
     case 'drop':
