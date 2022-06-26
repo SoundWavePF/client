@@ -18,10 +18,11 @@ function Wave(){
 }
 
 export default function Landing() {
-  const { user, isAuthenticated } = useAuth0()
+  const { user, isAuthenticated } = useAuth0();
+  const email = user?.email;
   const dispatch = useDispatch()
-  const { getGenres, getLastSongs, getChart, getTop } = bindActionCreators(actionCreator,dispatch);
-  const { last, genres, chart } = useSelector((state: any) => state.home);
+  const { getGenres, getLastSongs, getChart, getTop, getDiscoverSongs } = bindActionCreators(actionCreator,dispatch);
+  const { last, genres, chart, discover } = useSelector((state: any) => state.home);
   const top = useSelector((state: any) => state.top);
   
   function userLogin() {
@@ -33,11 +34,15 @@ export default function Landing() {
     })
   }
   useEffect(()=>{
-    if(last.length<1) getLastSongs();
+    if(discover.length<1) getDiscoverSongs()
     if(genres.length<1) getGenres();
     if(chart.length<1) getChart();
     if(top.length<1) getTop();
+    // if(last.length<1) getLastSongs(email);
   },[])
+  if(email !== undefined){
+    if(last.length<1) getLastSongs(email);
+  }
 
   return (
     <div className={styles.containerBig}>

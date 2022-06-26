@@ -7,6 +7,7 @@ import * as actionCreatorArtist from "../../../../redux/actions/action_artist";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import Swal from "sweetalert2";
+import {useAuth0} from '@auth0/auth0-react';
 
 
 interface myProps {
@@ -16,6 +17,8 @@ interface myProps {
 }
 
 const ItemListPanelArtist: React.FC<myProps> = (props: myProps) => {
+  const { user } = useAuth0();
+  const email = user?.email;
   const [editing, setEditing] = useState<boolean>(false);
   const [name, setName] = useState<string>(props.item.name);
   const [album, setAlbum] = useState<string>(props.item.album?.name);
@@ -60,7 +63,7 @@ const ItemListPanelArtist: React.FC<myProps> = (props: myProps) => {
   return (
     <div className={editing ? `${styles.container} ${styles.editing}` : styles.container}>
       <div>
-        <img src={props.item.image_small} alt={'cover'} onClick={()=>playSong(props.item)}/>
+        <img src={props.item.image_small} alt={'cover'} onClick={()=>playSong(props.item, email)}/>
         {
           !editing ? 
           <span >{props.nb ? `${props.nb}. ${name}`: name}</span>

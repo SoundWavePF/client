@@ -61,7 +61,7 @@ const TopCard = (props: any) => {
                   : song.image_medium
               }
               alt={song.name}
-              onClick={() => playSong(song)}
+              onClick={() => playSong(song, email)}
             />
           </figure>
           <div className={styles.divNames}>

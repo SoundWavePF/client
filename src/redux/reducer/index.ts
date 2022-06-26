@@ -44,6 +44,7 @@ const initialState: State = {
   },
   home: {
     last: [],
+    discover: [],
     genres: [],
     chart: [],
   },
@@ -106,6 +107,14 @@ const Reducer = (state: any = initialState, action: Actions) => {
         home: {
           ...state.home,
           last: action.payload,
+        },
+      };
+    case ActionType.DISCOVER_SONGS:
+      return {
+        ...state,
+        home: {
+          ...state.home,
+          discover: action.payload,
         },
       };
     case ActionType.GET_CHART:
