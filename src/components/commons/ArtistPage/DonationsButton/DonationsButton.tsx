@@ -22,9 +22,13 @@ const Button: React.FunctionComponent<btnProps > = (props)=>{
     },400);
   }
   return (
-    <button className={clicked? style.bubblyButtonClicked: style.bubblyButton} onClick={handleClick}>
-      Donate
-    </button>
+        <div className={style.buttonContainer}>
+          <h2>Donate</h2>
+          <p>Support your favorite creator. Donate below.</p>
+          <button className={clicked? style.bubblyButtonClicked: style.bubblyButton} onClick={handleClick}>
+            Stripe
+          </button>
+        </div>
   )
 }
 
