@@ -7,6 +7,7 @@ import style from "./SearchBar.module.css";
 import searchIcon from "../../../assets/search_icon.png";
 import userIcon from "../../../assets/user_icon.png";
 import bellIcon from "../../../assets/bell.png";
+import swAnim from "../../../assets/loadinganimation.gif";
 import MenuUser from "./MenuUser";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -76,7 +77,8 @@ const SearchBar = () => {
         </div>
       </form>
       <div className={style.icons}>
-        {isAuthenticated ? (<MenuUser username={"username"} />) :
+
+        {isLoading ? <img src={swAnim} alt={'Loading...'} width={30} height={30}/>:isAuthenticated ? (<MenuUser username={"username"} />) :
           (<LoginButton/>)
         }
       </div>
