@@ -22,7 +22,7 @@ export const getGenres = () => {
 }
 export const getChart = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get('https://www.javierochoa.me/top')
+    axios.get('https://www.javierochoa.me/top/10')
       .then(response =>
         dispatch({
           type: ActionType.GET_CHART,
