@@ -8,12 +8,15 @@ import * as actionCreator from "../../../../redux/actions/action_player";
 import { bindActionCreators } from "redux";
 import FavoriteIcon from "../../FavoriteIcon/FavoriteIcon";
 import { useDispatch } from "react-redux";
+import { useAuth0 } from '@auth0/auth0-react';
 
 interface myProps {
   item: any;
 }
 
 const ItemList: React.FC<myProps> = (props: myProps) => {
+  const { user } = useAuth0();
+  const email = user?.email;
   const formatDuration = (duration: string): string => {
     const num = parseInt(duration);
     const minutes: number = Math.floor(num / 60);
@@ -36,11 +39,11 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
             <div>
               <div>
                 <img className={s.image} src={props.item.image_small} alt="" />
-                <img src={play} className={s.Play} onClick={() => playSong(props.item)}/>{" "}
+                <img src={play} className={s.Play} onClick={() => playSong(props.item, email)}/>{" "}
               </div>
             </div>
             <div>
-              <div onClick={() => playSong(props.item)} className={s.songName}>
+              <div onClick={() => playSong(props.item, email)} className={s.songName}>
                 {props.item.name}
               </div>
               <Link

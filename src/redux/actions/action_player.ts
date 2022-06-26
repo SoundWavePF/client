@@ -32,12 +32,25 @@ export const getChart = () => {
   };
 };
 
-export const getLastSongs = () => {
+export const getDiscoverSongs = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get("https://www.javierochoa.me/top").then((response) =>
+    axios.get("https://www.javierochoa.me/top/discover")
+    .then((response) =>
+      dispatch({
+        type: ActionType.DISCOVER_SONGS,
+        payload: response.data,
+      })
+    );
+  };
+};
+
+export const getLastSongs = (email:any) => {
+  return (dispatch: Dispatch<any>) => {
+    axios.post("https://www.javierochoa.me/history", {email})
+    .then((response) =>
       dispatch({
         type: ActionType.GET_LAST_SONGS,
-        payload: response.data.reverse(),
+        payload: response.data.history,
       })
     );
   };
@@ -60,10 +73,15 @@ export const searchAll = (input: string) => {
       }));
   };
 };
-export const playSong = (data: swSong) => {
+export const playSong = (data: any, email:any) => {
+  axios.post("https://www.javierochoa.me/play", {songId: data.id, userEmail:email})
   return (dispatch: Dispatch<Actions>) => {
     dispatch({
       type: ActionType.PLAY_SONG,
+      payload: data,
+    });
+    dispatch({
+      type: ActionType.GET_LAST_SONGS,
       payload: data,
     });
   };
