@@ -158,7 +158,7 @@ export const getAlbumPlaylist = (id: any, type: string) => {
 }
 export const getTop = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get("https://www.javierochoa.me/top").then((response) =>
+    axios.get("https://www.javierochoa.me/top/10").then((response) =>
       dispatch({
         type: ActionType.GET_TOP,
         payload: response.data,
