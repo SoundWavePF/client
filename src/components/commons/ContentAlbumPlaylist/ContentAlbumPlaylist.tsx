@@ -1,6 +1,6 @@
 import styles from "./ContentAlbumPlaylist.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { bindActionCreators } from "redux";
 import { useParams, useLocation } from "react-router";
 import * as actionCreator from "../../../redux/actions/action_player";
@@ -8,6 +8,7 @@ import ListItemContainer from "../ListItemContainer/ListItemContainer";
 import Swal from "sweetalert2";
 import imgPlaylist from '../../../assets/coverPl.jpg'
 import axios from 'axios';
+
 
 const ContentAlbumPlaylist = () => {
   const {email} = useSelector((state: any) => state.user_info);
