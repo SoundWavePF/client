@@ -55,3 +55,9 @@
     gap: 2rem;
     align-items: center;
 }
+
+@media(max-width: 400px){
+    .navbar{
+        width: 85vw;
+    }
+}

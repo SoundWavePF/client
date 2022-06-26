@@ -66,7 +66,7 @@ const TopCard = (props: any) => {
           </figure>
           <div className={styles.divNames}>
             <p>{song.name}</p>
-            <div>
+            <div className={styles.artistNameContainer}>
               {song.artists.map((artist: any, index: number) => (
                 <a
                   key={index}
