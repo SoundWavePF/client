@@ -9,6 +9,7 @@ export type Actions =
   | SearchAll
   | GetChart
   | GetLastSongs
+  | DiscoverSongs
   | SendPrevPlay
   | PlaySong
   | AddToQueue
@@ -86,6 +87,7 @@ export enum ActionType {
   LAUNCH_POP_UP = "LAUNCH_POP_UP",
   DELETE_PLAYLIST = "DELETE_PLAYLIST",
   SET_FILTERED = "SET_FILTERED",
+  DISCOVER_SONGS = "DISCOVER_SONGS",
 }
 
 export interface GetStats {
@@ -126,6 +128,10 @@ interface GetChart {
 }
 interface GetLastSongs {
   type: ActionType.GET_LAST_SONGS;
+  payload?: swSong[];
+}
+interface DiscoverSongs {
+  type: ActionType.DISCOVER_SONGS;
   payload?: swSong[];
 }
 interface GetAlbumPlaylist {

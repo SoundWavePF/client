@@ -71,7 +71,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
                   : props.item.image_medium
               }
               alt={props.item.title}
-              onClick={() => playSong(props.item)}
+              onClick={() => playSong(props.item, email)}
             />
             <ul className={styles.actions}>
               <li className={styles.action}>
