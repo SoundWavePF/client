@@ -151,7 +151,6 @@ const UserCardAdmin = (userP:any)=>{
   if(user.rol){
       return(
         <div className={m.container}>
-          <div className={m.infoContainer}>
               <div className={m.divType}>
                 <span>{user.rol}</span>
               </div>
@@ -167,7 +166,6 @@ const UserCardAdmin = (userP:any)=>{
                 <span className={m.span}>Songs number: {user.songNumber}</span>
               </div> */}
               <button onClick={user.deactivated? undefined:()=>deleteUser(user)} className={m.buttonDelete}>{user.deactivated? 'deactivated':'no deactivated'}</button>
-          </div>
         </div>
       )
     } else{

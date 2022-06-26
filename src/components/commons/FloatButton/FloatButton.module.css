@@ -113,11 +113,14 @@
     display: flex;
     position: relative;
     padding: 10px;
-    background-image: url('https://c4.wallpaperflare.com/wallpaper/726/954/546/honeycomb-wallpaper-preview.jpg');
+    background-image: url('https://img.freepik.com/free-vector/yellow-diagonal-geometric-striped-background-with-halftone-detailed_1409-1451.jpg?w=2000');
+    background-position: center;
+    background-size: cover;
     border-radius: 10px;
     width: 800px;
     height: 90%
 }
+
 
 .modalCreateAlbum{
     padding: 10px;
@@ -129,20 +132,45 @@
 
 .buttonClose{
     display: flex;
+    font-weight: bold;
+
     justify-content: center;
     align-items: center;
     position: absolute;
     right: 33px;
     top: 10px;
     padding: 0px;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.577);
-    background-color: rgba(0, 0, 0, 0.262);
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+
+    border: 1px solid black;
+
+    background-color: rgb(255, 255, 255);
     font-size: 19px;
 }
 
 .buttonClose:hover{
-background-color: rgba(255, 0, 0, 0.395);
+background-color: rgba(255, 0, 0, 0.788);
 }
+    @media (max-width: 400px) {
+    .modalExistingAlbum{
+        height: 100%;
+    }
+    .buttonClose{
+        font-weight: bold;
+        border: 1px solid black;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+        width: 30px;
+        height: 30px;
+    }
+
+    .buttonClose:active{
+        background-color: red;
+    }
+    
+    }

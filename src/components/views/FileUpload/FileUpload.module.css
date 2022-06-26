@@ -38,7 +38,8 @@
     width: 45px;
     height: 45px;
 }
-.title{
+
+.title {
     font-size: 50px;
 }
 
@@ -58,14 +59,14 @@
 }
 
 .formCont {
-    width:100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.modalInfo{
+.modalInfo {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -76,7 +77,7 @@
     overflow-y: scroll;
 }
 
-.modalBackground{
+.modalBackground {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,26 +92,31 @@
     z-index: 100;
 }
 
-.titleCont{
+.titleCont {
     position: relative;
     display: flex;
     justify-content: center;
     width: 100%;
 }
 
-.title{
+.title {
     font-weight: bold;
 }
-.xButton{
+
+.xButton {
     position: absolute;
     right: 0px;
-    border: 1px solid rgba(0, 0, 0, 0.24);
-    border-radius: 50px;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
     width: 30px;
     height: 30px;
 }
 
-.closeButt{
+.moreInf {
     position: absolute;
     left: 30px;
     border: none;
@@ -122,9 +128,86 @@
     background-size: cover;
 }
 
-.index{
+.index {
     font-size: 20px;
     font-weight: bold;
     margin-top: 50px;
     margin-bottom: 5px;
+}
+
+.moreInfresponsive {
+    display: none;
+    position: absolute;
+    border: none;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    background-image: url("https://e7.pngegg.com/pngimages/649/536/png-clipart-crop-supply-computer-icons-blog-info-infographic-text.png");
+    background-position: center;
+    background-size: cover;
+}
+
+@media (max-width: 400px) {
+
+    .modalInfo {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .titleContainer {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+    }
+
+    .titleCont {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .titleCont div {
+        font-weight: bold;
+        font-size: 35px;
+    }
+
+    .xButton {
+        top: 0px;
+        right: 10px;
+    }
+
+    .xButton:active {
+        background-color: rgba(255, 0, 0, 0.705);
+    }
+
+    .title {
+        margin-top: 35px;
+        font-size: 40px;
+    }
+
+    .moreInf {
+        display: none;
+    }
+
+    .moreInfresponsive {
+        display: flex;
+        top: 11px;
+        right: 75px;
+        position: absolute;
+        border: none;
+        border-radius: 50px;
+        width: 30px;
+        height: 30px;
+        background-image: url("https://e7.pngegg.com/pngimages/169/913/png-clipart-penedes-wine-penedesenca-cava-do-info-tourism-culture-text-hand-thumbnail.png");
+        background-position: center;
+        background-size: cover;
+    }
+
+    .uploadContainer {
+        width: 90vw;
+    }
+
+    .index {width: 90vw;}
+
+    .instructionImage {width: 90vw;}
 }

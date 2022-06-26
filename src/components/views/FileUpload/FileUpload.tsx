@@ -11,7 +11,6 @@ import i35 from '../../../assets/i35.png'
 import i4 from '../../../assets/i4.png'
 
 let arr: any[] = [];
-// let durationArr: any[] = [];
 const FileUpload = (props: any) => {
 
   const [info, setInfo]: any = useState({
@@ -58,15 +57,12 @@ const FileUpload = (props: any) => {
       )
       const file = await res.json();
       setSound(file.secure_url)
-      // let id = 0
       let objeto = {
-        // id : id + 1,
         url: file.secure_url,
         duration: file.duration
       }
 
       arr.push(objeto)
-      // durationArr.push(file.duration)
       setLoading(false)
 
     }
@@ -85,9 +81,9 @@ const FileUpload = (props: any) => {
       <div className={style.component}>
         <div className={style.titleContainer}>
           <h1 className={style.title}>Upload your music</h1>
-          <button onClick={(e) => handleInfo(e)} name="moreInfo" className={style.closeButt}></button>
+          <button onClick={(e) => handleInfo(e)} name="moreInfo" className={style.moreInf}></button>
+          <button onClick={(e) => handleInfo(e)} name="moreInfo" className={style.moreInfresponsive}></button>
         </div>
-
         <form className={style.uploadContainer} onSubmit={handleSubmit}>
           <label>Upload files</label>
           <input
@@ -102,7 +98,6 @@ const FileUpload = (props: any) => {
 
       {
         arr.map((a: any) => (
-
           <form className={style.formCont} >
             <FormUploadSong url={a.url} duration={a.duration} />
           </form>
@@ -113,8 +108,8 @@ const FileUpload = (props: any) => {
           <div className={style.modalBackground}>
             <div className={style.modalInfo}>
               <div className={style.titleCont}>
-              <div className={style.title}>how to upload music ?</div>
-              <button onClick={(e) => handleInfo(e)} name='close' className={style.xButton}>x</button>
+                <div className={style.title}>how to upload music ?</div>
+                <button onClick={(e) => handleInfo(e)} name='close' className={style.xButton}>X</button>
               </div>
               <div className={style.index}>1. touch the button in the red circle.</div>
               <div><img className={style.instructionImage} src={i1} /></div>

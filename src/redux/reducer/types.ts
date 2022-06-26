@@ -16,6 +16,7 @@ export interface AdminOption {
 }
 export interface Home {
   last?: swSong[],
+  discover?: swSong[],
   genres?: swGenre[],
   chart?: swSong[],
 }
