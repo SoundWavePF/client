@@ -124,3 +124,9 @@
   }
 
 }
+
+@media(max-width: 1300px){
+.div1{
+  margin-right: 20px;
+}
+}
