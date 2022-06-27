@@ -48,8 +48,10 @@ export const newPlaylist = (email: string, playlistName: string) => {
   }
 }
 export const updateUser = (payload: any) => {
+  console.log(payload)
   return async function (dispatch: Dispatch<Actions>) {
     const update = await axios.post("https://www.javierochoa.me/update", payload)
+    .then(r=>console.log(r,"r"))
     return {
       type: ActionType.UPDATE_USER,
       payload: update
@@ -58,7 +60,7 @@ export const updateUser = (payload: any) => {
 }
 export const getUserInfo = (email: any) => {
   //hay que poner el id del usuario creado hasta que se pueda haceder a el
-  return (dispatch: Dispatch<Actions>) => {
+  return  (dispatch: Dispatch<Actions>) => {
     axios.post("https://www.javierochoa.me/info", {
       email: email,
     }).then((response) =>

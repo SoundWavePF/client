@@ -238,6 +238,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
         queue: action.payload,
       };
     case ActionType.GET_USER_INFO:
+      console.log(action.payload,"action.payload")
       return {
         ...state,
         user_info: action.payload,
