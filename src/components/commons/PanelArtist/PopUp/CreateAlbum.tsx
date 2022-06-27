@@ -30,7 +30,7 @@ const CreateAlbum: React.FC<myProps> = ({ item }: myProps) => {
   }
   useEffect(()=>{
     getGenres();
-  })
+  },[])
   return (
     <div className={styles.background}>
       <div className={styles.floating} style={{'width': '600px', 'height': '420px'}}>
