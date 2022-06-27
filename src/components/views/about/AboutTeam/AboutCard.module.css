@@ -45,3 +45,25 @@
   width: 2.5vw;
   height: 2.5vw;
 }
+@media(max-width:500px){
+  .AboutCard{
+    width: 80vw;
+    height: 60vh;
+  }
+  .AboutCard>img{
+    width: 30vh;
+    height: 30vh;
+  }
+  .infoName>h4{
+    font-size: x-large;
+  }
+  .infoName>label{
+    font-size: large;
+  }
+  .containerAccounts>a>img{
+    width: 7vh;
+    height: 7vh;
+    margin: 3vh 2vh 0px 3vh;
+  }
+
+}

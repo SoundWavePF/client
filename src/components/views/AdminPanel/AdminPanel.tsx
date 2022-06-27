@@ -33,9 +33,8 @@ const AdminPanel = ()=>{
   const userAdmin = useSelector((state:any)=>state.userAdmin)
   const {user, isAuthenticated} = useAuth0()
   const ADMIN_EMAIL = user?.email
-  const [userSearch, setUserSearch] = useState(users)
-  //const [search, setSearch] = useState('')
   
+  const [userSearch, setUserSearch] = useState(users)
   const searchUser = (e:any)=>{
     e.preventDefault()
     if(e.target.value === ''){
@@ -44,6 +43,7 @@ const AdminPanel = ()=>{
       setUserSearch(users.filter((user:any)=> user.name.toLowerCase().includes(e.target.value.toLowerCase())))
     }
   }
+  
 
   useEffect(()=>{
     getAllUsers(ADMIN_EMAIL)
@@ -87,15 +87,15 @@ const AdminPanel = ()=>{
                   <div className={m.email}>email</div>
                   <div className={m.account}>account</div>
                 </div>
-                {userSearch.length>0 && userSearch.map((user:any)=>{
-                  if(adminOption.user && user.rol==='user'){
-                    return <UserCardAdmin user={user} admin={ADMIN_EMAIL}/>
+                  {userSearch.length>0 && userSearch.map((user:any)=>{
+                    if(adminOption.user && user.rol==='user'){
+                      return <UserCardAdmin user={user} admin={ADMIN_EMAIL}/>
+                    }
+                    if(!adminOption.user && user.rol==='artist'){
+                      return <UserCardAdmin user={user} admin={ADMIN_EMAIL}/>
+                    }
                   }
-                  if(!adminOption.user && user.rol==='artist'){
-                    return <UserCardAdmin user={user} admin={ADMIN_EMAIL}/>
-                  }
-                }
-                )}
+                  )}
               <Link className={m.buttonBack} to='/'>Back to Landing</Link>
             </div>
           </div>

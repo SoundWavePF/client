@@ -57,10 +57,10 @@ export default function Landing() {
           :
           <p className={styles.p}>Sign up now on the best platform the music and let the wave take you to your favorite music</p>
         }
-        <div className={styles.button}>
+        {/* <div className={styles.button}>
+          </div> */}
           {isAuthenticated ? <Link to='/home' className={styles.button} onClick={() => userLogin()}>Open Player</Link> :
             <Link to='/home' className={styles.button}>Open Player</Link>}
-        </div>
       </div>
       <Wave/>
     </div>

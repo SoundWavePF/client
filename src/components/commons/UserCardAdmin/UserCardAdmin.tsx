@@ -151,21 +151,14 @@ const UserCardAdmin = (userP:any)=>{
   if(user.rol){
       return(
         <div className={m.container}>
-              <div className={m.divType}>
-                <span>{user.rol}</span>
-              </div>
+              <div className={m.divType}>{user.rol}</div>
               <button onClick={user.requested_artist? ()=>changeRole(user):undefined} className={user.requested_artist? m.buttonRequestTrue : m.buttonRequest}>
                 {user.requested_artist? 'yes' : 'no'}
               </button>
-              <div className={m.divId}>
-                <span className={m.span}>Id: {user.id}</span>
-              </div>
+              <div className={m.divId}>Id: {user.id}</div>
               <button onClick={()=>setUsername(user)} className={m.buttonUsername}>Username: {user.username}</button>
               <button onClick={setEmail} className={m.buttonEmail}>Email: {user.email}</button>
-              {/* <div className={m.divSong}>
-                <span className={m.span}>Songs number: {user.songNumber}</span>
-              </div> */}
-              <button onClick={user.deactivated? undefined:()=>deleteUser(user)} className={m.buttonDelete}>{user.deactivated? 'deactivated':'no deactivated'}</button>
+              <button onClick={user.deactivated? undefined:()=>deleteUser(user)} className={m.buttonDelete}>{user.deactivated? 'deactivated':'active'}</button>
         </div>
       )
     } else{
