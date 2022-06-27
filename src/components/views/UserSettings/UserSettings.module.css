@@ -294,3 +294,92 @@
     background-color: red;
 
 }
+
+/* Resposive */
+
+@media(max-width: 400px){
+    .page{
+        margin: 0px;
+        padding: 0px;
+    }
+    .container{
+
+        margin: 0px;
+        padding: 0px;
+        height: 100vh;
+        width: 100%;
+        display: grid;
+     
+        grid-template-areas: 
+        "image"
+        "info";
+    margin-bottom: 1em;
+
+    }
+    .ContainerImage{
+        max-width: none;
+        display: flex;
+        width: 100%;
+        height: 7em;
+        background-color: #ffee32;
+        justify-content: center;
+        align-items: center;
+        grid-area: image;
+
+        
+    }
+    .ContainerImage img{
+        top: 10px;
+        height: 5em;
+        width: 5em;
+    }
+
+    .contentContainer{
+        grid-area: info;
+
+        display: grid;
+        grid-template-columns: 1fr  ;
+    }
+    .subscriptionContainer{
+        width: 100%;
+        height: auto;
+        
+        display: flex;
+        flex-direction: column;
+        row-gap: 1em;
+    }
+    .title
+    {
+    background-color: #ffee32;
+    display: flex;
+    justify-content: center;
+    }
+    .title p
+    {
+        font-size: large;
+    }
+
+    .parent{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+
+    gap: 10px;
+
+    }
+  
+    .parent label:nth-child(1){
+        
+    }
+    .parent input:nth-child(1){
+    }
+    .parent button:nth-child(1){
+        background-color: #ffee32;
+       
+    }
+  
+ 
+
+}
