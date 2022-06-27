@@ -7,11 +7,28 @@ import style from "./SearchBar.module.css";
 import searchIcon from "../../../assets/search_icon.png";
 import userIcon from "../../../assets/user_icon.png";
 import bellIcon from "../../../assets/bell.png";
+import swAnim from "../../../assets/loadinganimation.gif";
 import MenuUser from "./MenuUser";
 import { useAuth0 } from "@auth0/auth0-react";
 
+const LoginButton: React.FunctionComponent = ()=>{
+  const { loginWithRedirect } = useAuth0()
+  return (
+  <button className={style.buttonLogin} onClick={() => loginWithRedirect()}> Login
+    <div className={style.icon}>
+      <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 0h24v24H0z" fill="none">
+        </path>
+        <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor">
+        </path>
+        </svg>
+    </div>
+  </button>
+  )
+}
+
 const SearchBar = () => {
-  const [input, setInput] = useState("")
+  const [input, setInput] = useState('')
   const loadingState = useSelector((state: any) => state.loading)
   const searchString = useSelector((state: any) => state.query)
   const {user_info}=useSelector((state:any)=>state)
@@ -22,17 +39,20 @@ const SearchBar = () => {
   const {  getUserInfo} = bindActionCreators(actionUser, dispatch)
 
   useEffect(() => {
-    getUserInfo(user?.email)
-    setQuery(input);
-    if (input && !loadingState) {
-      searchAll(input);
-      loading(true)
+    if (!input) setQuery('');
+    let timer = setTimeout(() => {
+      if (input.length > 2 && !loadingState) {
+        searchAll(input);
+        loading(true);
+        setQuery(input);
+      }
     }
+    , 1000)
+    return (() => clearTimeout(timer))
   }, [input]);
   useEffect(() => {
-    setQuery('')
-    return () => { setQuery('') };
-  }, []);
+    setInput(searchString);
+  }, [searchString]);
   function handleChange(e: any): void {
     setInput(e.target.value);
     console.log(e)
@@ -57,9 +77,9 @@ const SearchBar = () => {
         </div>
       </form>
       <div className={style.icons}>
-        {isAuthenticated ? (<MenuUser username={"username"} />) :
-          (<button onClick={() => loginWithRedirect()}
-            className="btn btn-outline-warning" >Log In</button>)
+
+        {isLoading ? <img src={swAnim} alt={'Loading...'} width={30} height={30}/>:isAuthenticated ? (<MenuUser username={"username"} />) :
+          (<LoginButton/>)
         }
       </div>
     </nav>

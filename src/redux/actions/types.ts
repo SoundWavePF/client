@@ -9,6 +9,7 @@ export type Actions =
   | SearchAll
   | GetChart
   | GetLastSongs
+  | DiscoverSongs
   | SendPrevPlay
   | PlaySong
   | AddToQueue
@@ -39,7 +40,9 @@ export type Actions =
   | LocalLoadedAlbum
   | GetPanelInfo
   | LaunchPopUp
-  | deletePlaylist;
+  | deletePlaylist
+  | SetFiltered
+  | CreateAlbum;
 
 export enum ActionType {
   CLEAN_GENRE = "CLEAN_GENRE",
@@ -84,6 +87,9 @@ export enum ActionType {
   GET_PANEL_INFO = "GET_PANEL_INFO",
   LAUNCH_POP_UP = "LAUNCH_POP_UP",
   DELETE_PLAYLIST = "DELETE_PLAYLIST",
+  SET_FILTERED = "SET_FILTERED",
+  DISCOVER_SONGS = "DISCOVER_SONGS",
+  CREATE_ALBUM = "CREATE_ALBUM",
 }
 
 export interface GetStats {
@@ -124,6 +130,10 @@ interface GetChart {
 }
 interface GetLastSongs {
   type: ActionType.GET_LAST_SONGS;
+  payload?: swSong[];
+}
+interface DiscoverSongs {
+  type: ActionType.DISCOVER_SONGS;
   payload?: swSong[];
 }
 interface GetAlbumPlaylist {
@@ -245,4 +255,12 @@ interface GetPanelInfo {
 interface LaunchPopUp {
   type: ActionType.LAUNCH_POP_UP;
   payload: any;
+}
+interface SetFiltered {
+  type: ActionType.SET_FILTERED;
+  payload: any;
+}
+interface CreateAlbum {
+  type: ActionType.CREATE_ALBUM;
+  payload?: any;
 }

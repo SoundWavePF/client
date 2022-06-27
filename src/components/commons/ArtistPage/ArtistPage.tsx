@@ -9,6 +9,7 @@ import { useParams } from 'react-router'
 import ArtistCardContainer from './ArtistCardContainer/ArtistCardContainer';
 import DonationsButton from './DonationsButton/DonationsButton';
 import { useAuth0 } from '@auth0/auth0-react'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 
 
 export const ArtistPage = () => {
@@ -27,13 +28,13 @@ export const ArtistPage = () => {
     return (
       <div className={Styled.ContainerLibrary} >
         <div className={Styled.User} >
-          <img src={artist.image_big} alt="" />
+          <img src={artist.image_medium} alt="" />
           <div>
             <h1>{artist.name}</h1>
             {
-              //artist.stripe_id?
+              artist.stripe_Id?
               <DonationsButton stripeId={artist.stripe_Id} artistId={artist.id} userEmail={user?.email} />
-              //:null
+              :null
             }
           </div>
         </div>
@@ -49,11 +50,7 @@ export const ArtistPage = () => {
   }
   else{
     return(
-      <div className={Styled.container}>
-            <div className={Styled.sectionLoading}>
-              <div className="spinner-border"  role="status"></div>
-            </div>
-        </div>
+      <LoadingSpinner/>
     )
   }
 }

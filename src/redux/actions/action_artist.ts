@@ -85,15 +85,18 @@ export const uploadSong = (payload: any) => {
     }
   }
 }
-export const getPanelInfo = (id:any)=>{
+export const getPanelInfo = (id: string, email:string)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.get('https://www.javierochoa.me/artist/'+id)
-    .then(response => 
+    // let promiseContent = axios.get('https://www.javierochoa.me/artist/'+id);
+    // let promiseInfo = axios.post('https://www.javierochoa.me/artistpanel/stats', {email: email});
+    // Promise.all([promiseContent, promiseInfo])
+    axios.post('https://www.javierochoa.me/artistpanel/stats', {email: email})
+    .then(response =>
       dispatch({
         type: ActionType.GET_PANEL_INFO,
-        payload: response.data
+        payload: response.data,
       })
-      )
+    )
   }
 }
 export const launchPopUp = (type: string | boolean , item?: any) => {
@@ -102,5 +105,36 @@ export const launchPopUp = (type: string | boolean , item?: any) => {
       type: ActionType.LAUNCH_POP_UP,
       payload: {type, item}
     })
+  };
+};
+export const setFiltered = (value: any) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.SET_FILTERED,
+      payload: value
+    })
+  };
+};
+export const createAlbum = (info: any, data: any) => {
+  return async (dispatch: Dispatch<Actions>) => {
+    const remote = await axios.post("https://api.cloudinary.com/v1_1/dbi1xhzps/image/upload", data);
+    const obj = {
+      userEmail: info.email,
+      albumName: info.name,
+      albumReleaseDate: info.date,
+      image: remote.data?.secure_url,
+      genreId: info.genre,
+    };
+    console.log('__send\n', obj);
+    axios.post("https://www.javierochoa.me/artistpanel/album/create", obj)
+    .then((response) =>
+      console.log('res of create ',response)
+    )
+    .then((response) =>
+      dispatch({
+        type: ActionType.CREATE_ALBUM,
+      })
+    )
+    .catch((error) => console.log(error));
   };
 };

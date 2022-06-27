@@ -74,7 +74,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
                   : props.item.image_medium
               }
               alt={props.item.title}
-              onClick={() => playSong(props.item)}
+              onClick={() => playSong(props.item, email)}
             />
             <ul className={styles.actions}>
               <li className={styles.action}>
@@ -86,17 +86,11 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
                 </li>
               )}
             </ul>
-          </figure>
-          <p>{props.item.name}</p>
-          <a
-            href={`/artist/${
-              props.item.artists[props.item.artists.length - 1].id
-            }`}
-          >
-            {props.item.artists[props.item.artists.length - 1].name}
-          </a>
-        </div>
-      );
+            </figure>
+            <p>{props.item.name}</p>
+            <Link to={`/artist/${props.item.artists[props.item.artists.length - 1].id}`}>{props.item.artists[props.item.artists.length - 1].name}</Link>
+          </div>
+        )
     default:
       return <></>;
   }

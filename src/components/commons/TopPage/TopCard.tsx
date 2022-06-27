@@ -9,6 +9,7 @@ import { useState } from "react";
 import likefull from "../../../../src/assets/likefull.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import DropDownButton from "../DropDownButton/DropDownButton";
+import { Link } from 'react-router-dom';
 
 const TopCard = (props: any) => {
   const formatDuration = (duration: string): string => {
@@ -61,20 +62,20 @@ const TopCard = (props: any) => {
                   : song.image_medium
               }
               alt={song.name}
-              onClick={() => playSong(song)}
+              onClick={() => playSong(song, email)}
             />
           </figure>
           <div className={styles.divNames}>
             <p>{song.name}</p>
-            <div>
+            <div className={styles.artistNameContainer}>
               {song.artists.map((artist: any, index: number) => (
-                <a
+                <Link
                   key={index}
                   className={styles.artistName}
-                  href={`/artist/${artist.id}`}
+                  to={`/artist/${artist.id}`}
                 >
                   {artist.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
