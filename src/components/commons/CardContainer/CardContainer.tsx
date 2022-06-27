@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect} from "react";
 import styles from "./CardContainer.module.css";
-import CardItem from './CardItem';
+import CardItem from "./CardItem";
 
 interface myProps {
   content: any;
@@ -9,6 +9,7 @@ interface myProps {
 }
 
 const CardContainer: React.FC<myProps> = (props: myProps) => {
+
   const carrusel = useRef(document.createElement("div") )
   const slidesContainer = useRef(document.createElement("div") )
   const [state, setState] = useState<number>(0)

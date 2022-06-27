@@ -28,8 +28,8 @@ const EditSong: React.FC<myProps> = ({ item }: myProps) => {
     }
     updateSong(info);
     launchPopUp(false);
-    await new Promise(res => setTimeout(res,1500))
-    getPanelInfo(artist?.id, email);
+    // await new Promise(res => setTimeout(res,1500))
+    // getPanelInfo(artist?.id, email);
     // let newSongs = [...songs]
     // newSongs[newSongs.findIndex((e:any)=>e.name === name)].name = name;
     // console.log('___---', newSongs)
