@@ -43,3 +43,10 @@
 .right {
   right: 20px;
 }
+
+@media(max-width: 400px){
+  .inner2{
+  grid-template-columns: repeat(1, minmax(155px, 1fr));
+
+  }
+}
