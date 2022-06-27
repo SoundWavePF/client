@@ -76,3 +76,11 @@
     border-bottom: 1px solid var(--gray-light);
     background-color: var(--yellow-light);
 }
+
+.buttonLoop {
+    background: blue;
+}
+
+.buttonLoopActive {
+    background: red;
+}
