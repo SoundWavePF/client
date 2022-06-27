@@ -49,3 +49,11 @@
   text-align: center;
     }
   }
+  @media(max-width: 1300px){
+  .container{
+    padding: 0px;
+  }
+  .cardContainer{
+    width: 70vw;
+  }
+}
