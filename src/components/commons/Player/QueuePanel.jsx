@@ -78,7 +78,8 @@ const QueuePanel = (props)=>{
             !open ? null :
                 <div className={style.box}>
                     <h4>Queue</h4>
-                    <button className={props.loopPlaying? style.buttonLoopActive: style.buttonLoop } onClick={setLoop}>loop {props.loopPlaying}</button>
+                    <button className={props.loopPlaying? style.buttonLoopActive: style.buttonLoop } onClick={setLoop}>loop </button>
+                    <button>keep as playlist</button>
                     <hr/>
                     <ReactSortable list={queue} setList={sortQueue} sort={true}>
                         {queue.map((song, index) => <Song
