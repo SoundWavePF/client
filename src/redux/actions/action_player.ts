@@ -80,10 +80,10 @@ export const playSong = (data: any, email:any) => {
       type: ActionType.PLAY_SONG,
       payload: data,
     });
-    dispatch({
-      type: ActionType.GET_LAST_SONGS,
-      payload: data,
-    });
+    // dispatch({
+    //   type: ActionType.GET_LAST_SONGS,
+    //   payload: data,
+    // });
   };
 };
 export const addToQueue = (data: swSong) => {
