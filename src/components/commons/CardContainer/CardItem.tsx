@@ -4,10 +4,11 @@ import * as actionCreator from "../../../redux/actions/action_player";
 import * as actionCreator2 from "../../../redux/actions/action_user";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-import playlistFran from '../../../assets/playlistFran2.png';
-import DropDownButton from '../DropDownButton/DropDownButton';
+import playlistFran from "../../../assets/playlistFran2.png";
+import DropDownButton from "../DropDownButton/DropDownButton";
 import FavoriteIcon from "../FavoriteIcon/FavoriteIcon";
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from "@auth0/auth0-react";
+import papeleria from "../../../assets/papeleriaIcon.png";
 
 interface myProps {
   item: any;
@@ -50,14 +51,16 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
       );
     case "playlist":
       return (
-        <div className={styles.default}>
+        <div className={styles.playlist}>
+          <div className={styles.icon}>
+            <button onClick={() => email && deletePlaylist(props.item.id)}>
+              <img src={papeleria} alt="like button" />
+            </button>
+          </div>
           <Link to={`/playlist/${props.item.id}`}>
             <img src={playlistFran} alt={props.item.name} />
           </Link>
           <p>{props.item.name}</p>
-          <button onClick={() => email && deletePlaylist(props.item.id)}>
-            x
-          </button>
         </div>
       );
     case "track":
@@ -75,18 +78,25 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
             />
             <ul className={styles.actions}>
               <li className={styles.action}>
-                <DropDownButton item={props.item}/>
+                <DropDownButton item={props.item} />
               </li>
-              {isAuthenticated && props.item && 
-              <li className={styles.action2}>
-                <FavoriteIcon item={props?.item}/>
-              </li>}
+              {isAuthenticated && props.item && (
+                <li className={styles.action2}>
+                  <FavoriteIcon item={props?.item} />
+                </li>
+              )}
             </ul>
-            </figure>
-            <p>{props.item.name}</p>
-            <a href={`/artist/${props.item.artists[props.item.artists.length - 1].id}`}>{props.item.artists[props.item.artists.length - 1].name}</a>
-          </div>
-        )
+          </figure>
+          <p>{props.item.name}</p>
+          <a
+            href={`/artist/${
+              props.item.artists[props.item.artists.length - 1].id
+            }`}
+          >
+            {props.item.artists[props.item.artists.length - 1].name}
+          </a>
+        </div>
+      );
     default:
       return <></>;
   }

@@ -34,33 +34,27 @@ function FavoriteIcon(props: any) {
 		setFav(likeSongArr.length);
 	}
 
-	return (console.log(props),
-			email ? (
-				<button
-					className={s.likeBtn}
-					onClick={() =>
-						likeSongUser?.find((e: any) => e.id === props.item?.id)
-							? dislike(props.item.id)
-							: like(props.item)
-					}
-				>
-					{likeSongUser?.find((e: any) => e.id === props.item?.id) ? (
-						<img
-							className={s.likeImgInclude}
-							src={likefull}
-							alt="like button"
-						/>
-					) : (
-						<img
-							className={s.likeImg}
-							src={likefull}
-							alt="like button"
-						/>
-					)}
-				</button>
-			)
-			: <></>
-		
+	return email ? (
+		<button
+			className={s.likeBtn}
+			onClick={() =>
+				likeSongUser?.find((e: any) => e.id === props.item?.id)
+					? dislike(props.item.id)
+					: like(props.item)
+			}
+		>
+			{likeSongUser?.find((e: any) => e.id === props.item?.id) ? (
+				<img
+					className={s.likeImgInclude}
+					src={likefull}
+					alt="like button"
+				/>
+			) : (
+				<img className={s.likeImg} src={likefull} alt="like button" />
+			)}
+		</button>
+	) : (
+		<></>
 	);
 }
 
