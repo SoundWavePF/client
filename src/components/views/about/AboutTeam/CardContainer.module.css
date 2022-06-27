@@ -7,4 +7,10 @@
   align-items: center;
   justify-content: space-evenly;
 }
-
+@media(max-width:500px){
+  .cardContainer{
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    margin-bottom: 12vh;
+  }
+}
