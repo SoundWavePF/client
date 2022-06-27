@@ -9,6 +9,7 @@ import DropDownButton from "../DropDownButton/DropDownButton";
 import FavoriteIcon from "../FavoriteIcon/FavoriteIcon";
 import { useAuth0 } from "@auth0/auth0-react";
 import papeleria from "../../../assets/papeleriaIcon.png";
+import Swal from "sweetalert2";
 
 interface myProps {
   item: any;
@@ -22,6 +23,25 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
   const dispatch = useDispatch();
   const { playSong } = bindActionCreators(actionCreator, dispatch);
   const { deletePlaylist } = bindActionCreators(actionCreator2, dispatch);
+  function borrar(p: any){
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#ffee32',
+      confirmButtonText: 'Delete'
+    }).then((result) => {
+      if (result.isConfirmed){
+        deletePlaylist(p)
+        Swal.fire(
+          'Deleted!',
+          'The playlist has been deleted.',
+          'success'
+        )
+      }
+    })
+  }
   switch (IType) {
     case "genre":
       return (
@@ -53,7 +73,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
       return (
         <div className={styles.playlist}>
           <div className={styles.icon}>
-            <button onClick={() => email && deletePlaylist(props.item.id)}>
+            <button onClick={() => email && borrar(props.item.id)}>
               <img src={papeleria} alt="like button" />
             </button>
           </div>

@@ -274,14 +274,14 @@
   .volume > button:nth-child(2){
     height: 25px;
   }
-  h3{
+  .name{
     font-size: 0.8rem;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     max-width: 33vw;
   }
-  p{
+  .album{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
