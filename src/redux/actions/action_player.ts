@@ -56,6 +56,14 @@ export const getLastSongs = (email:any) => {
   };
 };
 
+export const setRecentlyPlayed = (song: swSong, email: string) =>{
+  axios.post("https://www.javierochoa.me/play", {songId: song.id, userEmail:email})
+  return {
+    type: ActionType.GET_LAST_SONGS,
+    payload: song
+  }
+}
+
 export const searchAll = (input: string) => {
   //hasta que no halla back el axios queda comentado
   return (dispatch: Dispatch<Actions>) => {
