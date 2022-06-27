@@ -8,6 +8,7 @@ import { bindActionCreators } from "redux";
 
 import playlist from '../../../assets/playlist.png'
 import bintrash from '../../../assets/bintrash.png'
+import loopIcon from '../../../assets/looping-arrows.png'
 
 import style from './QueuePanel.module.css';
 
@@ -78,8 +79,9 @@ const QueuePanel = (props)=>{
             !open ? null :
                 <div className={style.box}>
                     <h4>Queue</h4>
-                    <button className={props.loopPlaying? style.buttonLoopActive: style.buttonLoop } onClick={setLoop}>loop </button>
-                    <button>keep as playlist</button>
+                    <button className={props.loopPlaying? style.buttonLoopActive: style.buttonLoop } onClick={setLoop}>
+                        <img className={style.loopIcon} src={loopIcon}/>
+                    </button>
                     <hr/>
                     <ReactSortable list={queue} setList={sortQueue} sort={true}>
                         {queue.map((song, index) => <Song

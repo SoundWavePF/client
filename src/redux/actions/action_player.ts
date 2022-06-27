@@ -58,6 +58,7 @@ export const getLastSongs = (email:any) => {
 
 export const setRecentlyPlayed = (song: swSong, email: string) =>{
   axios.post("https://www.javierochoa.me/play", {songId: song.id, userEmail:email})
+  .then( res => console.log('set Recently Played', res))
   return {
     type: ActionType.GET_LAST_SONGS,
     payload: song
@@ -88,10 +89,6 @@ export const playSong = (data: any, email:any) => {
       type: ActionType.PLAY_SONG,
       payload: data,
     });
-    // dispatch({
-    //   type: ActionType.GET_LAST_SONGS,
-    //   payload: data,
-    // });
   };
 };
 export const addToQueue = (data: swSong) => {

@@ -25,7 +25,8 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
 
         if (arg === "forward") {
             const x = state + slideWidth + gap;
-            return x <= maxScroll? x : 0;
+            console.log('carrusel',x,  maxScroll, x <= maxScroll, carrusel.current.offsetWidth, (slideWidth + gap)*numberOfSlides)
+            return x <= Math.abs(maxScroll)? x : 0;
         } else if (arg === "backward") {
             const x = state - slideWidth - gap;
             return x >= 0 ? x : maxScroll;
@@ -33,7 +34,7 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
             const x = arg * (slideWidth + gap);
             return x;
         }
-        return 0
+        return 10
   }
 
   useEffect( ()=>{
@@ -46,11 +47,7 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
 
   function handleClick(arg: string){
       return function (){
-        // console.log(carrusel.current.style)
         const slides  = slidesContainer.current
-        // console.log(slidesContainer.current.children.length)
-        // console.log("css", carrusel.current.offsetWidth)
-        // console.log("state", state)
         setState(()=>{
           slides.style.transform = `translateX(-${getScrollPosition(arg)}px)`;
           return getScrollPosition(arg)

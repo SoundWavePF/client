@@ -78,9 +78,23 @@
 }
 
 .buttonLoop {
-    background: blue;
+    width: 30px;
+    padding: 0;
+    border: none;
+    transition: all 0.3 ease-in-out;
 }
 
 .buttonLoopActive {
-    background: red;
+    background: var(--yellow-light);
+    width: 30px;
+    padding: 0;
+    border: none;
+    transition: all 0.2 ease-in-out;
+}
+.buttonLoop:active, .buttonLoopActive:active {
+    transform: scale(0.97);
+}
+
+.loopIcon {
+    width: 100%;
 }

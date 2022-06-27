@@ -130,7 +130,7 @@ interface GetChart {
 }
 interface GetLastSongs {
   type: ActionType.GET_LAST_SONGS;
-  payload?: swSong[];
+  payload?: any;
 }
 interface DiscoverSongs {
   type: ActionType.DISCOVER_SONGS;

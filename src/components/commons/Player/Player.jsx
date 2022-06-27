@@ -68,7 +68,6 @@ export default function Player(){
       setCurrentTime(0);
       setPos(0);
       if(queue.length === 1){
-        console.log(loopPlaying, !!queue.length, loopCurrentSong)
         setLoopCurrentSong(loopPlaying)
       }
     }
