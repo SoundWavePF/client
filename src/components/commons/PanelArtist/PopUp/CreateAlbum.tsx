@@ -12,21 +12,23 @@ interface myProps {
 }
 
 const CreateAlbum: React.FC<myProps> = ({ item }: myProps) => {
-  const {email} = useSelector((state: any) => state.user_info);
+  const {email, artist} = useSelector((state: any) => state.user_info);
   const {genres} = useSelector((state: any) => state.home);
   const dispatch = useDispatch();
-  const { launchPopUp, createAlbum } = bindActionCreators(actionCreator, dispatch);
+  const { launchPopUp, createAlbum, getPanelInfo } = bindActionCreators(actionCreator, dispatch);
   const { getGenres } = bindActionCreators(actionCreatorPlayer, dispatch);
   const [name, setName] = useState<string>('');
   const [date, setDate] = useState<any>(new Date().toLocaleDateString('en-CA'));
   const [img, setImg] = useState<string>('');
   const [file, setFile] = useState<any>('');
   const [genre, setGenre] = useState<string>('');
-  const saveAlbum = () => {
+  const saveAlbum = async () => {
     const data = new FormData();
     data.append("file", file[0]);
     data.append("upload_preset", "album_image");
     createAlbum({email, name, date, genre}, data);
+    await new Promise(res => setTimeout(res,1500));
+    getPanelInfo(artist?.id, email);
   }
   useEffect(()=>{
     getGenres();
@@ -58,6 +60,7 @@ const CreateAlbum: React.FC<myProps> = ({ item }: myProps) => {
           </label>
           <label>Genre
             <select value={genre} onChange={e=>setGenre(e.target.value)}>
+              <option value=''></option>
               {
                 genres?.map((e:any, i:number) => (
                   <option key={i} value={e.id}>{e.name}</option>
