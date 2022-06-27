@@ -1,22 +1,39 @@
 import styles from "./PopUp.module.css";
 import * as actionCreator from "../../../../redux/actions/action_artist";
+import * as actionCreatorPlayer from "../../../../redux/actions/action_player";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import defaultImg from '../../../../assets/playlistFran.png'
+import { useSelector } from "react-redux";
 
 interface myProps {
   item?: any;
 }
 
 const CreateAlbum: React.FC<myProps> = ({ item }: myProps) => {
+  const {email} = useSelector((state: any) => state.user_info);
+  const {genres} = useSelector((state: any) => state.home);
   const dispatch = useDispatch();
-  const { launchPopUp } = bindActionCreators(actionCreator, dispatch);
+  const { launchPopUp, createAlbum } = bindActionCreators(actionCreator, dispatch);
+  const { getGenres } = bindActionCreators(actionCreatorPlayer, dispatch);
   const [name, setName] = useState<string>('');
+  const [date, setDate] = useState<any>(new Date().toLocaleDateString('en-CA'));
   const [img, setImg] = useState<string>('');
+  const [file, setFile] = useState<any>('');
+  const [genre, setGenre] = useState<string>('');
+  const saveAlbum = () => {
+    const data = new FormData();
+    data.append("file", file[0]);
+    data.append("upload_preset", "album_image");
+    createAlbum({email, name, date, genre}, data);
+  }
+  useEffect(()=>{
+    getGenres();
+  })
   return (
     <div className={styles.background}>
-      <div className={styles.floating} style={{'width': '600px'}}>
+      <div className={styles.floating} style={{'width': '600px', 'height': '420px'}}>
         <h3>Create an album</h3>
         <div className={styles.createAlbum}>
           <div className={styles.upload}>
@@ -26,8 +43,10 @@ const CreateAlbum: React.FC<myProps> = ({ item }: myProps) => {
             <label>
               <span></span>
               <input type="file" accept="image/*" onChange={(e)=>{
-                let file = e.target.files
-                if (file) {setImg(URL.createObjectURL(file[0]))}
+                setFile(e.target.files);
+                let local = e.target.files;
+                if (local) {setImg(URL.createObjectURL(local[0]))};
+                // console.log('___subido',file)
               }}/>
             </label>
           </div>
@@ -35,11 +54,20 @@ const CreateAlbum: React.FC<myProps> = ({ item }: myProps) => {
             <input type="text" value={name} onChange={e=>setName(e.target.value)}/>
           </label>
           <label>Release date
-            <input type="date" onChange={e=>setName(e.target.value)}/>
+            <input type="date" value={date} onChange={e=>setDate(e.target.value)} max={new Date().toLocaleDateString('en-CA')}/>
+          </label>
+          <label>Genre
+            <select value={genre} onChange={e=>setGenre(e.target.value)}>
+              {
+                genres?.map((e:any, i:number) => (
+                  <option key={i} value={e.id}>{e.name}</option>
+                ))
+              }
+            </select>
           </label>
         </div>
         <div>
-          <button className={styles.btn} onClick={undefined}>Save</button>
+          <button className={styles.btn} onClick={saveAlbum}>Save</button>
           <button className={styles.btn} onClick={()=>launchPopUp(false)}>Cancel</button>
         </div>
       </div>
