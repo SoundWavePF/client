@@ -56,9 +56,9 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.button} onClick={()=>navigate('/home')}>
+      {/* <button className={styles.button} onClick={()=>navigate('/home')}>
         <span>home</span>
-      </button>
+      </button> */}
       <img src={artist.image_medium} alt={username} />
       <span>{artist.name}</span>
       {stripe_Id ? <p>(Donations enabled)</p> :  <button onClick={()=>handleEnableDonation()} className={styles.btn}>Enable Donations</button> }
