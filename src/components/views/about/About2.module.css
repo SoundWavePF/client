@@ -3,9 +3,6 @@
   flex-direction: column;
   align-items: center;
   font-family: 'sw-medium';
-  background-color: white;
-  font-family: sw-medium;
-
 }
 .divNav{
   display: flex;
@@ -13,25 +10,40 @@
   align-items: center;
   width: 100%;
   background-color: #ffee32;
-  /* border-bottom: 1px solid #d6d6d6; */
 }
 .divNav > h1 {
   color: var(--gray-black);
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
-  font-family: sw-medium;
-  font-size: 140px;
+  font-size: 5vw;
 }
 .div1{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin: 50px;
-  height: 500px;
+  margin: 3vw;
+  height: 32vw;
+}
+.div1>img{
+  width: 29vw;
+  height: 29vw;
 }
 .divInfo{
-  width: 300px;
+  width: 20vw;
+}
+.divInfo>h3{
+  font-size: 2vw;
+}
+.divInfo>p{
+  font-size: 1.2vw;
+}
+.div2{
+  display: flex;
+  align-items: center;
+  justify-content:space-around ;
+  margin: 3vw;
+  height: 32vw;
 }
 .divInfo2{
   width: 300px;
@@ -48,16 +60,14 @@
 }
 .buttonHome > button{
   background-color: #ffee32;
-  width: 150px;
-  font-size: larger;
+  width: 13vw;
+  font-size: 1.1vw;
   border-radius: 5px;
 }
 .buttonHome > button:hover{
   background-color: #fff47b;
 }
 .containerInfo{
-  margin-top: 50px;
-  margin-bottom: 50px;
   width: 100%;
 }
 .containerInfo2{
@@ -68,8 +78,10 @@
   width: 100%;
   background-color: #ffee32;
   padding: 50px;
-  margin-top: 100px;
   margin-bottom: 50px;
+}
+.containerInfo2>h3{
+  font-size: 2vw;
 }
 .techInfo{
   display: flex;
@@ -78,12 +90,14 @@
   justify-content: center;
 }
 .techInfo > img {
-  width: 100px;
-  height: 100px;
-  margin:50px;
+  width: 5vw;
+  height: 5vw;
+  margin:2.5vw;
 }
 .techInfo > svg {
-  margin:50px
+  width: 14vw;
+  height: 5vw;
+  margin:2.5vw;
 }
 .cardContainer{
   width: 100%;

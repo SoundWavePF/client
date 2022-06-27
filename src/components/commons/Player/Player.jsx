@@ -96,23 +96,25 @@ export default function Player(){
       </div>
       <div className={styles.semicontainer}>
         <div className={styles.audioCtrl}>
-          <button onClick={prevSong} className={styles.btn} disabled={queue[pos - 1] ? false : true}>{queue[pos - 1] ? <img src={prev} className={styles.btnImg}/> : <img src={prevvoid} className={styles.btnImg}/>}</button>
-          <button onClick={pausePlay} className={styles.btn}>{isPlaying ? <img src={pause} className={styles.btnImg}/> : <img src={play} className={styles.btnImg}/>}</button>
-          <button onClick={nextSong} className={styles.btn} disabled={queue[pos + 1] ? false : true}>{queue[pos + 1] ? <img src={next} className={styles.btnImg}/> : <img src={nextvoid} className={styles.btnImg}/>}</button>
+          <div>
+            <button onClick={prevSong} className={styles.btn} disabled={queue[pos - 1] ? false : true}>{queue[pos - 1] ? <img src={prev} className={styles.btnImg}/> : <img src={prevvoid} className={styles.btnImg}/>}</button>
+            <button onClick={pausePlay} className={styles.btn}>{isPlaying ? <img src={pause} className={styles.btnImg}/> : <img src={play} className={styles.btnImg}/>}</button>
+            <button onClick={nextSong} className={styles.btn} disabled={queue[pos + 1] ? false : true}>{queue[pos + 1] ? <img src={next} className={styles.btnImg}/> : <img src={nextvoid} className={styles.btnImg}/>}</button>
+          </div>
           {prettyTime(currentTime)}/{player.current !== undefined ? prettyTime(player.current.getDuration()) : '0:00'}
         </div>
         {queue[pos] !== undefined && <div className={styles.songInfo}>
           {<img src={queue[pos].image_small} className={styles.cover}/>}
           <div>
             <h3>{queue[pos]?.name}</h3>
-            <span><Link to={`/artist/${queue[pos].artists[queue[pos].artists.length - 1].id}`} className={styles.link}>{queue[pos].artists[queue[pos].artists.length - 1].name}</Link> • <Link to={`/album/${queue[pos].albumId}`} className={styles.link}>{queue[pos].album.name}</Link></span>
+            <p><Link to={`/artist/${queue[pos].artists[queue[pos].artists.length - 1].id}`} className={styles.link}>{queue[pos].artists[queue[pos].artists.length - 1].name}</Link> • <Link to={`/album/${queue[pos].albumId}`} className={styles.link}>{queue[pos].album.name}</Link></p>
           </div>
         </div>}
         <div className={styles.volume}>
           <QueuePanel songPosition={pos} setSongPosition={setPos}/>
           {queue[pos] && userId && <FavoriteIcon item={queue[pos]}/>}
           <button onClick={mute} className={styles.btn}><img src={parseInt(volume) === 0 ? muteicon : parseInt(volume) < 33 ? volume1 : parseInt(volume) < 66 ? volume2 : volume3} className={styles.btnImg}/></button>
-          <input type='range' value={volume} min='0' max='100' onChange={e => setVolume(e.target.value)} className={styles.volumeR}/>
+          {/* <input type='range' value={volume} min='0' max='100' onChange={e => setVolume(e.target.value)} className={styles.volumeR}/> */}
         </div>
       </div>
     </div>

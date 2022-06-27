@@ -8,6 +8,7 @@ import ListItemContainer from "../ListItemContainer/ListItemContainer";
 import Swal from "sweetalert2";
 import imgPlaylist from '../../../assets/coverPl.jpg'
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 
 const ContentAlbumPlaylist = () => {
@@ -51,7 +52,7 @@ const ContentAlbumPlaylist = () => {
         <div className={styles.details}>
           <img src={isPlaylist ? imgPlaylist : item.image_medium} alt={item.name} />
           <span>{item.name}</span>
-          {item.artists && <a href={`/artist/${item.artists[0].id}`}>{item.artists[0].name}</a>}
+          {item.artists && <Link to={`/artist/${item.artists[item.artists.length - 1].id}`}>{item.artists[item.artists.length - 1].name}</Link>}
           {/* <span>{item.artists && item.artists[0].name}</span> */}
           <button onClick={() => playAll(item.songs)} className={styles.btn}>Play all</button>
           {isPlaylist && (
