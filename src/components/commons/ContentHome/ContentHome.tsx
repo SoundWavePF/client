@@ -20,9 +20,6 @@ const ContentHome = () => {
     if(genres.length<1) getGenres();
     if(chart.length<1) getChart();
     if(top.length<1) getTop();
-    // if(email !== undefined && last) {
-    //   getLastSongs(email);
-    // };
   }, []);
 
   useEffect(() => {
