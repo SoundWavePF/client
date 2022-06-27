@@ -97,7 +97,6 @@ const PanelArtist = () => {
               <ArtistProfile/>
             </div>
           }
-          <Player/>
           <PopUp/>
         </div>
     );
