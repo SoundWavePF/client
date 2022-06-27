@@ -106,7 +106,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         home: {
           ...state.home,
-          last: Array.isArray(action.payload)? action.payload: [...state.home.last, action.payload],
+          last: Array.isArray(action.payload)? action.payload: [action.payload, ...state.home.last].reverse(),
         },
       };
     case ActionType.DISCOVER_SONGS:

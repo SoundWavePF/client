@@ -36,7 +36,7 @@ const ContentHome = () => {
       getLastSongs(email);
     }
     return
-  },[last.length])
+  },[])
   
   return (
     <div className={styles.container}>
