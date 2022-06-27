@@ -106,7 +106,9 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         home: {
           ...state.home,
-          last: action.payload,
+          last: Array.isArray(action.payload)? 
+          action.payload : 
+          [action.payload, ...state.home.last.filter( (song: any)=>action.payload?.id !== song?.id)],
         },
       };
     case ActionType.DISCOVER_SONGS:

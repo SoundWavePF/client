@@ -11,8 +11,7 @@ const ContentHome = () => {
   const email = user?.email;
   const dispatch = useDispatch();
   const { getGenres, getLastSongs, getChart, getTop, getDiscoverSongs } = bindActionCreators(actionCreator,dispatch);
-  const { last, genres, chart, discover } = useSelector((state: any) => state.home);
-  const { queue } = useSelector((state: any) => state);
+  const { last, genres, chart, discover, queue } = useSelector((state: any) => state.home);
   const top = useSelector((state: any) => state.top);
   
   useEffect(() => {
@@ -31,22 +30,13 @@ const ContentHome = () => {
 
   useEffect(()=>{
     if(email !== undefined){
-      new Promise(res => setTimeout(res, 1500))
-      .then(e =>
-        getLastSongs(email)
-      )
+      getLastSongs(email);
     }
     return
-  },[queue])
+  },[])
   
   return (
     <div className={styles.container}>
-      { last?.length > 0 &&
-        <div className={styles.section}>
-          <h1>Recently played</h1>
-          <CardContainer content={last.reverse()} slides={true}/>
-        </div>
-      }
       { discover.length > 0 &&
         <div className={styles.section}>
           <h1>Discover</h1>
@@ -63,6 +53,12 @@ const ContentHome = () => {
         <div className={styles.section}>
           <h1>Most popular</h1>
           <CardContainer content={chart.slice(10)} slides={true}/>
+        </div>
+      }
+      { last?.length > 0 &&
+        <div className={styles.section}>
+          <h1>Recently played</h1>
+          <CardContainer content={last} slides={true}/>
         </div>
       }
     </div>
