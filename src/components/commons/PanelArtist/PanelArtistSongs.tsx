@@ -62,14 +62,7 @@ const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
       </form>
       {
         filtered?.length>0 ?
-        // <div className={styles.list}>
-        //   {
-        //     filtered?.map((e:any, i:any) => {
-        //       return <ListItem key={i} item={e}/>;
-        //     })
-        //   }
-        // </div>
-        <ListItemContainerPanelArtist content={filtered}/> 
+        <ListItemContainerPanelArtist content={filtered} nb={true}/>
         :
         <h1>no hay resultados</h1>
       }

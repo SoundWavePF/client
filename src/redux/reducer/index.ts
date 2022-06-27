@@ -58,7 +58,7 @@ const initialState: State = {
   pageStats: {},
   user_info: {},
   userAdmin: false,
-  panel_artist: { loaded_album: false, pop_up: {}, info: {}},
+  panel_artist: { loaded_album: false, pop_up: {}, info: {}, updated: false},
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -321,6 +321,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
             totalPlaylistCount,
             stripe_Id,
           },
+          updated: false
         }
       };
     case ActionType.LAUNCH_POP_UP:
@@ -339,7 +340,23 @@ const Reducer = (state: any = initialState, action: Actions) => {
           ...state.panel_artist,
           filtered: action.payload
         }
-      }
+      };
+    case ActionType.UPDATE_SONG:
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          updated: true
+        }
+      };
+    case ActionType.CREATE_ALBUM:
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          updated: true
+        }
+      };
     default:
       return state;
   }
