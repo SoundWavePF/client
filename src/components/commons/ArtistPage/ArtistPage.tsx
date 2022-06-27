@@ -9,6 +9,7 @@ import { useParams } from 'react-router'
 import ArtistCardContainer from './ArtistCardContainer/ArtistCardContainer';
 import DonationsButton from './DonationsButton/DonationsButton';
 import { useAuth0 } from '@auth0/auth0-react'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 
 
 export const ArtistPage = () => {
@@ -49,11 +50,7 @@ export const ArtistPage = () => {
   }
   else{
     return(
-      <div className={Styled.container}>
-            <div className={Styled.sectionLoading}>
-              <div className="spinner-border"  role="status"></div>
-            </div>
-        </div>
+      <LoadingSpinner/>
     )
   }
 }
