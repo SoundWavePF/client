@@ -48,7 +48,6 @@
 .btn{
   background-color: transparent;
   border: none;
-  width: 20px;
 }
 .cover{
   width: 60px;
@@ -191,6 +190,7 @@
   .btn{
     background-color: transparent;
     border: none;
+    width: 20px;
   }
   .cover{
     width: 40px;
