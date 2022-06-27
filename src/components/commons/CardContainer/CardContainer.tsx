@@ -69,10 +69,11 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
     <div className={styles.container} ref={carrusel}>
        {
         !props.slides? null:
-        <>
-          <button onClick={handleClick("forward")} className={`${styles.btn} ${styles.right}`}>→</button>
-          <button onClick={handleClick("backward")} className={`${styles.btn} ${styles.left}`}>←</button>
-        </>
+          slidesContainer.current.children.length < 2? null: 
+            <>
+              <button onClick={handleClick("forward")} className={`${styles.btn} ${styles.right}`}>→</button>
+              <button onClick={handleClick("backward")} className={`${styles.btn} ${styles.left}`}>←</button>
+            </>
        }
       <div className={props.slides? styles.inner: styles.inner2} ref={slidesContainer}>
         {
