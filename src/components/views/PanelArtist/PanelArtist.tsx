@@ -41,10 +41,10 @@ const PanelArtist = () => {
     <div className={styles.container}>
         <FloatButton />
         <div className={sidebar.container}>
-          <div>
+          <Link to={'/home'}>
             <img src={logo} alt="SoundWave logo" className={sidebar.logo} />
             <span>SoundWave</span>
-          </div>
+          </Link>
           <div className={sidebar.button} onClick={()=>handlePage(1)}>
             <img src={admin} alt="prof" className={sidebar.img} />
             Profile
