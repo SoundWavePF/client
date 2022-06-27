@@ -28,77 +28,77 @@ const PanelArtist = () => {
   const dispatch = useDispatch();
   const { getPanelInfo } = bindActionCreators(actionCreator, dispatch);
   const { user, isAuthenticated, isLoading } = useAuth0();
-  const [test, setTest] = useState(false)
+  // const [test, setTest] = useState(false)
   // const idTest = '63ab0aae-f562-4f5a-af65-97d14c8d5100';
   useEffect(()=>{
     getPanelInfo(artist?.id, email);
-    if(rol==='undefined'){
-      setTest(true)
-    }
+    // if(rol==='undefined'){
+    //   setTest(true)
+    // }
   },[]);
   useEffect(()=>{
     getPanelInfo(artist?.id, email);
-    if(rol!=='undefined'){
-      setTest(false)
-    }
+    // if(rol!=='undefined'){
+    //   setTest(false)
+    // }
   },[email])
 
   function handlePage(page: number) {
     setPage(page);
   }
-  if(isLoading || rol === 'undefined'){
-    return <LoadingPage />
-  }
+  // if(isLoading || rol === 'undefined'){
+  //   return <LoadingPage />
+  // }
   
   if(isAuthenticated && rol==='artist'){
     return (
       <div className={styles.container}>
-          <FloatButton />
-          <div className={sidebar.container}>
-            <Link to={'/home'}>
-              <img src={logo} alt="SoundWave logo" className={sidebar.logo} />
-              <span>SoundWave</span>
-            </Link>
-            <div className={sidebar.button} onClick={()=>handlePage(1)}>
-              <img src={admin} alt="prof" className={sidebar.img} />
-              Profile
-            </div>
-            <div className={sidebar.button} onClick={()=>handlePage(2)}>
-              <img src={music} alt="music" className={sidebar.img} />
-              Songs
-            </div>
-            <div className={sidebar.button} onClick={()=>handlePage(3)}>
-              <img src={music} alt="music" className={sidebar.img} />
-              Albums
-            </div>
-            <div className={sidebar.button} onClick={()=>handlePage(4)}>
-              <img src={info} alt="info" className={sidebar.img} />
-              Stats
-            </div>
+        <div className={sidebar.container}>
+          <Link to={'/home'}>
+            <img src={logo} alt="SoundWave logo" className={sidebar.logo} />
+            <span>SoundWave</span>
+          </Link>
+          <div className={sidebar.button} onClick={()=>handlePage(1)}>
+            <img src={admin} alt="prof" className={sidebar.img} />
+            Profile
           </div>
-          <div className={styles.usermenu}>
-            <UserMenu username={"username"}/>
+          <div className={sidebar.button} onClick={()=>handlePage(2)}>
+            <img src={music} alt="music" className={sidebar.img} />
+            Songs
           </div>
-          { 
-            page === 1 ?
-            <div className={styles.content}>
-              <PanelArtistProfile/>
-            </div>
-            : page === 2 ?
-            <div className={styles.content}>
-              <PanelArtistSongs/>
-            </div>
-            : page === 3 ?
-            <div className={styles.content}>
-              <PanelArtistAlbums/>
-            </div>
-            :
-            <div className={styles.content}>
-              <ArtistProfile/>
-            </div>
-          }
-          <PopUp/>
+          <div className={sidebar.button} onClick={()=>handlePage(3)}>
+            <img src={music} alt="music" className={sidebar.img} />
+            Albums
+          </div>
+          <div className={sidebar.button} onClick={()=>handlePage(4)}>
+            <img src={info} alt="info" className={sidebar.img} />
+            Stats
+          </div>
         </div>
+        <div className={styles.usermenu}>
+          <UserMenu username={"username"}/>
+        </div>
+        { 
+          page === 1 ?
+          <div className={styles.content}>
+            <PanelArtistProfile/>
+          </div>
+          : page === 2 ?
+          <div className={styles.content}>
+            <PanelArtistSongs/>
+          </div>
+          : page === 3 ?
+          <div className={styles.content}>
+            <PanelArtistAlbums/>
+          </div>
+          :
+          <div className={styles.content}>
+            <ArtistProfile/>
+          </div>
+        }
+        <FloatButton />
+        <PopUp/>
+      </div>
     );
   }
   if(!isAuthenticated || rol==='user'){
