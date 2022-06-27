@@ -84,7 +84,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
             </ul>
             </figure>
             <p>{props.item.name}</p>
-            <a href={`/artist/${props.item.artists[props.item.artists.length - 1].id}`}>{props.item.artists[props.item.artists.length - 1].name}</a>
+            <Link to={`/artist/${props.item.artists[props.item.artists.length - 1].id}`}>{props.item.artists[props.item.artists.length - 1].name}</Link>
           </div>
         )
     default:
