@@ -6,7 +6,6 @@ const AboutDesign = ()=>{
   return(
     <div className={Style.container}>
       <h3>Paleta de colores utilizada</h3>
-      <div>
         <div className={Style.colorContainer}>
           <div className={Style.swBlack}>#202020</div>
           <div className={Style.lightGray}>#D6D6D6</div> 
@@ -14,7 +13,6 @@ const AboutDesign = ()=>{
           <div className={Style.lightYellow}>#FFEE32</div>
           <div className={Style.darkYellow}>#FFD100</div> 
         </div>
-      </div>
     </div>
   )
 }

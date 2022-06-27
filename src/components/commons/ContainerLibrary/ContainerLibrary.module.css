@@ -1,129 +1,107 @@
-.ContainerLibrary{
+.ContainerLibrary {
     margin-left: 2em;
     margin-right: 2em;
-
 }
-.ItemSpace{
+.ItemSpace {
     margin-left: 1em;
     max-width: 100%;
-    
 }
-.ItemSpace div{
-    width:auto;
+.ItemSpace div {
+    width: auto;
 }
 
-
-
-
-
-.Column{
+.Column {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 2em;
-    margin-left:1em ;
+    margin-left: 1em;
 }
 
-.ToolBar{
-   
-
+.ToolBar {
     display: flex;
     justify-content: start;
     border-bottom: 1px solid rgba(0, 0, 0, 0.509);
-    margin-bottom:1em ;
-    margin-top:1em ;
+    margin-bottom: 1em;
+    margin-top: 1em;
 
     max-height: 37px;
-    
 }
 
-.ToolBar h4{
+.ToolBar h4 {
     margin-left: 1.5em;
     padding-bottom: 7px;
     cursor: pointer;
 }
 
-.ToolBar a{
+.ToolBar a {
     text-decoration: none;
     color: black;
-
 }
 
-.actived{
+.actived {
     color: var(--yellow-dark);
     border-bottom: 1px solid var(--yellow-dark);
-
 }
 
-.ContainerFavorite div{
+.ContainerFavorite div {
     width: auto;
 }
 
-
-
-
-
-
-
-
-.ToolBar :link{
+.ToolBar :link {
     color: red;
     background-color: red;
-
 }
 
-
-.ToolBar h4:hover{
+.ToolBar h4:hover {
     color: var(--yellow-dark);
-
 
     border-bottom: 1px solid var(--yellow-dark);
 }
 
-
-
-.ContainerPlaylist{
-    overflow: hidden;
-    height: 89%;
+.ContainerPlaylist {
+    /*overflow: hidden;*/
+    /*position: relative;*/
+    height: 100%;
     width: 100%;
     padding: 1em;
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-
-    
+    display: flex;
+    /*justify-content: space-evenly;*/
+    flex-wrap: wrap;
+    gap: 40px 40px;
+    /*grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));*/
 }
 
-.ContainerPlaylist div{
+/*.ContainerPlaylist div {
     background-color: beige;
     position: relative;
     height: 15em;
     width: 15em;
-}
-.User{
+}*/
+
+.User {
     width: 40%;
     height: 40%;
     display: flex;
     padding: 3%;
 }
-.User img{
+.User img {
     width: 100%;
     height: 100%;
     border-radius: 5px;
 }
-.User h1{
+.User h1 {
     margin-left: 1em;
     display: flex;
     align-items: center;
 }
-.Registerto{
+.Registerto {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: xx-large;
-    
-
 }
-.Registerto p{
+.Registerto p {
     font-weight: bolder;
     background-color: var(--yellow-light);
     padding: 1em;

@@ -19,20 +19,18 @@ import FileUpload from "./components/views/FileUpload/FileUpload";
 import Player from "./components/commons/Player/Player";
 import Top from "./components/views/Top/Top";
 import About2 from "./components/views/about/About2";
-import ArtistProfile from "./components/commons/ArtistProfile/ArtistProfile";
+// import ArtistProfile from "./components/commons/ArtistProfile/ArtistProfile";
 import Artist from "./components/views/Artist/Artist";
 import PanelArtist from "./components/views/PanelArtist/PanelArtist";
 import * as actionCreator from "./redux/actions/action_user";
 import * as actionCreator2 from "./redux/actions/action_admin";
+import LoadingPage from "./components/commons/LoadingPage/LoadingPage";
 
 function App() {
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const email = user?.email;
   const dispatch = useDispatch();
-  const { getUserInfo, getLibrary } = bindActionCreators(
-    actionCreator,
-    dispatch
-  );
+  const { getUserInfo, getLibrary } = bindActionCreators(actionCreator, dispatch);
   const { userAdmin } = bindActionCreators(actionCreator2, dispatch);
   useEffect(() => {
     email && getUserInfo(email);
@@ -123,7 +121,7 @@ function App() {
         />
 
         <Route path="/settings" element={<UserSettings />} />
-        <Route path="/panel_artist" element={<PanelArtist />} />
+        <Route path="/panel_artist" element={isLoading?<LoadingPage/>:<><PanelArtist/><Player/></>} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/file" element={<FileUpload />} />
 

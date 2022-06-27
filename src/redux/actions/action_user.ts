@@ -1,8 +1,7 @@
 import { Dispatch } from "react";
 import { ActionType, Actions } from "./types";
 import axios from "axios";
-import useAuth0 from '@auth0/auth0-react';
-
+import useAuth0 from "@auth0/auth0-react";
 
 export const getLibrary = (email: string) => {
   //hay que poner el id del usuario creado hasta que se pueda haceder a el
@@ -28,7 +27,8 @@ export const getLibrary = (email: string) => {
 };
 export const getPlaylist = (id: any) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.get(`https://www.javierochoa.me/playlist/${id}`)
+    axios
+      .get(`https://www.javierochoa.me/playlist/${id}`)
       .then((response) =>
         dispatch({
           type: ActionType.GET_PlaylistForId,
@@ -40,30 +40,54 @@ export const getPlaylist = (id: any) => {
 };
 export const newPlaylist = (email: string, playlistName: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post('https://www.javierochoa.me/playlist/create', { email: email, playlistName: playlistName })
-      .then(response => dispatch({
-        type: ActionType.NEW_PLAYLIST,
-        payload: response.data
-      }))
-  }
-}
+    axios
+      .post("https://www.javierochoa.me/playlist/create", {
+        email: email,
+        playlistName: playlistName,
+      })
+      .then((response) =>
+        dispatch({
+          type: ActionType.NEW_PLAYLIST,
+          payload: response.data,
+        })
+      );
+  };
+};
+export const deletePlaylist = (id: string) => {
+  return (dispatch: Dispatch<Actions>) => {
+    axios
+      .post("https://www.javierochoa.me/playlist/delete", {
+        playlistId: id,
+      })
+      .then((response) =>
+        dispatch({
+          type: ActionType.DELETE_PLAYLIST,
+          payload: id,
+        })
+      );
+  };
+};
 export const updateUser = (payload: any) => {
   console.log(payload)
   return async function (dispatch: Dispatch<Actions>) {
-    const update = await axios.post("https://www.javierochoa.me/update", payload)
-    .then(r=>console.log(r,"r"))
+
+    const update = await axios.post(
+      "https://www.javierochoa.me/update",
+      payload
+    );
     return {
       type: ActionType.UPDATE_USER,
-      payload: update
-    }
-  }
-}
+      payload: update,
+    };
+  };
+};
 export const getUserInfo = (email: any) => {
   //hay que poner el id del usuario creado hasta que se pueda haceder a el
   return  (dispatch: Dispatch<Actions>) => {
     axios.post("https://www.javierochoa.me/info", {
       email: email,
     }).then((response) =>
+
         dispatch({
           type: ActionType.GET_USER_INFO,
           payload: response.data,
@@ -72,6 +96,3 @@ export const getUserInfo = (email: any) => {
       .catch((error) => console.log(error));
   };
 };
-
-
-

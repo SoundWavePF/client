@@ -1,16 +1,15 @@
 
 .navbar{
-  margin-left: 250px;
   padding: 30px;
   display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid #d6d6d6;
+  justify-content: center;
+  align-items: center;
 }
-.divOption{
-  display: flex;
-  justify-content: space-evenly;
+.navbar>b{
+  font-size: 5vw;
 }
-.b{
-  font-size: 70px;
-  margin-bottom: 20px;
+@media(max-width:400px){
+  .navbar{
+    background-color: var(--yellow-light);
+  }
 }

@@ -2,43 +2,94 @@ import Swal from 'sweetalert2'
 import style from './DonationsButton.module.css' 
 import axios from "axios";
 
+import {useState} from 'react' 
+
+interface btnProps {
+  artistId: any;
+  userEmail:any;
+  stripeId:any;
+  donate:any
+}
+
+const Button: React.FunctionComponent<btnProps > = (props)=>{
+  const [clicked, setClicked] = useState<boolean>(false)
+  function handleClick(){
+    
+    setClicked(true)
+    setTimeout(function(){
+      setClicked(false)
+      props.donate(props.artistId,props.userEmail,props.stripeId)
+    },400);
+  }
+  return (
+        <div className={style.buttonContainer}>
+          <h2>Donate</h2>
+          <p>Support your favorite creator. Donate below.</p>
+          <button className={clicked? style.bubblyButtonClicked: style.bubblyButton} onClick={handleClick}>
+            Stripe
+          </button>
+        </div>
+  )
+}
 
 const DonationsButton = (props:any)=>{
   const swal:any = Swal
-
+  
   const donate = (id:any, email:string, stripe:any)=>{
     swal.fire({
+      icon:'question',
       title: 'How much do you want to donate?',
-      icon: 'question',
-      input: 'range',
-      inputLabel: 'The amount',
-      inputAttributes: {
-        min: 1,
-        max: 200,
-        step: 1
-      },
-      inputValue: 15
-    })
-    .then((r:any)=>{
-      if(r.value){
-        let donation = { 
-          artistId:id,
-          userEmail:email, 
-          amount: Number(r.value), 
-          stripeId: stripe 
+      input: 'text',
+      inputLabel: 'The amount is in USD',
+      confirmButtonColor: '#ffee32',
+      cancelButtonColor: '#dd6b55',
+      showCancelButton: true,
+      inputValidator: (value:any) => {
+        console.log('ACA value',value)
+        if (!/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/.test(value)) {
+          swal.fire({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Enter a number amount!',
+            confirmButtonColor: '#ffee32',
+          })
+        }else{
+          if(value<=0){
+            swal.fire({
+              icon: 'error',
+              title: 'Error...',
+              text: 'Enter an amount greater than zero!',
+              confirmButtonColor: '#ffee32',
+            })
+          }else{
+            let donation = { 
+              artistId:id,
+              userEmail:email, 
+              amount: Number(value), 
+              stripeId: stripe 
+            }
+            swal.fire({
+              title:'Success!', 
+              text:'Redirecting', 
+              icon:'success',
+              confirmButtonColor: '#ffee32',
+            })
+            axios.post('https://www.javierochoa.me/order',donation)
+            .then(({data}:any)=>{
+              window.location.href = data.url
+            })
+          }
         }
-      /*  axios.post('https://www.javierochoa.me/order',donation)
-        .then((res:any)=>{
-          console.log(res)
-        })*/
-        console.log(donation)
       }
     })
   } 
   return(
-      <button className={style.donateButton} onClick={()=>donate(props.artistId,props.userEmail,props.stripe_Id)}>
-        Donate
-      </button>
+    <Button 
+      artistId={props.artistId}
+      userEmail={props.userEmail}
+      stripeId={props.stripeId}
+      donate={donate}
+    />
   )
 }
 export default DonationsButton

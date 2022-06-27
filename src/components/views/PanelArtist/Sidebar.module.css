@@ -9,6 +9,11 @@
   top: 0;
   left: 0;
 }
+.container > a:first-child{
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
 .logo{
   width: 50px;
   margin: 10px;

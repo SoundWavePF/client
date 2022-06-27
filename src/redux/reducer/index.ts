@@ -44,6 +44,7 @@ const initialState: State = {
   },
   home: {
     last: [],
+    discover: [],
     genres: [],
     chart: [],
   },
@@ -57,7 +58,7 @@ const initialState: State = {
   pageStats: {},
   user_info: {},
   userAdmin: false,
-  panel_artist: { loaded_album: false, pop_up: {}},
+  panel_artist: { loaded_album: false, pop_up: {}, info: {}, updated: false},
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -106,6 +107,14 @@ const Reducer = (state: any = initialState, action: Actions) => {
         home: {
           ...state.home,
           last: action.payload,
+        },
+      };
+    case ActionType.DISCOVER_SONGS:
+      return {
+        ...state,
+        home: {
+          ...state.home,
+          discover: action.payload,
         },
       };
     case ActionType.GET_CHART:
@@ -192,6 +201,17 @@ const Reducer = (state: any = initialState, action: Actions) => {
           card: [...state.library_artist.card, action.payload],
         },
       };
+    case ActionType.DELETE_PLAYLIST:
+      console.log(action.payload);
+      return {
+        ...state,
+        library_artist: {
+          ...state.library_artist,
+          card: state.library_artist.card.filter(
+            (e: any) => e.id !== action.payload
+          ),
+        },
+      };
     case ActionType.UPDATE_PLAYLIST:
       return {
         ...state,
@@ -217,10 +237,18 @@ const Reducer = (state: any = initialState, action: Actions) => {
         users: action.payload,
       };
     case ActionType.LOADING:
-      return {
-        ...state,
-        loading: action.payload,
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          loading: action.payload,
+          searchResults: {},
+        };
+      } else {
+        return {
+          ...state,
+          loading: action.payload,
+        };
+      }
     case ActionType.UPDATE_LIKE:
       return {
         ...state,
@@ -276,13 +304,25 @@ const Reducer = (state: any = initialState, action: Actions) => {
         }
       };
     case ActionType.GET_PANEL_INFO:
-      let {albums, songs} = action.payload;
+      let {albums, songs, description, name, image_medium, totalFavoriteCount,
+        totalPlayCount, n_songs, n_albums, totalPlaylistCount, stripe_Id} = action.payload;
       return{
         ...state,
         panel_artist: {
           ...state.panel_artist,
           albums,
           songs,
+          info: {
+            description,
+            name,
+            image_medium,
+            totalFavoriteCount,
+            totalPlayCount,
+            n_songs, n_albums,
+            totalPlaylistCount,
+            stripe_Id,
+          },
+          updated: false
         }
       };
     case ActionType.LAUNCH_POP_UP:
@@ -293,7 +333,31 @@ const Reducer = (state: any = initialState, action: Actions) => {
           ...state.panel_artist,
           pop_up: {type, item}
         }
-      }
+      };
+    case ActionType.SET_FILTERED:
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          filtered: action.payload
+        }
+      };
+    case ActionType.UPDATE_SONG:
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          updated: true
+        }
+      };
+    case ActionType.CREATE_ALBUM:
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          updated: true
+        }
+      };
     default:
       return state;
   }
