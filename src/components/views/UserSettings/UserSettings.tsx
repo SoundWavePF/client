@@ -26,12 +26,8 @@ interface inputs {
 const UserSettings = () => {
 
   const [image,setImage]:any= useState()
-
-  
   const user_info=useSelector((state:any)=>state.user_info)
   const [InfoUser,setInfoUser]:any= useState(user_info)
-
-
   const dispatch = useDispatch()
   const { updateUser ,getUserInfo} = bindActionCreators(actionCreator, dispatch)
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
@@ -75,25 +71,11 @@ user?.email && callInfouser()
     field: ''
 })
 
-
-
-
-
   function onSubmitHandle(e: any) {
     e.preventDefault()
     updateUser(input)
   
   }
-
-
-
-  const [modal, setModal]: any = useState({
-    modalArtist: false,
-    modalEmail: false,
-    modalPassword: false,
-    modalUsername: false,
-    modalDelete: false
-  })
 
 
   const [images,setImages]:any= useState<any>({
@@ -143,8 +125,7 @@ user?.email && callInfouser()
         
         Swal.fire({
           title:'Disabled  account',
-          icon:'success'
-        
+          icon:'success' 
         })}})}
 
 
@@ -258,14 +239,10 @@ const changeImage = async()=>{
 
   })
 
-
-
   const files1=file
   
   if (file) {
     const files = files1;
-
-
 
     const data:any = new FormData();
     data.append("file", files);
@@ -279,27 +256,17 @@ const changeImage = async()=>{
       "https://api.cloudinary.com/v1_1/jonathanhortman/image/upload",data
       
     )
-
     let fileupdate= await res.data;    
-    let email = await user_info.email 
+    let newImage={
+      ...images,
+        email: user_info.email,
+        newData: fileupdate.secure_url
+    }
 
-let newImage={
-  ...images,
-    email: user_info.email,
-    newData: fileupdate.secure_url
-}
-
-    
-  
        axios.post("https://www.javierochoa.me/update",newImage)
         .then(e=>console.log(e))      
-
-    }
-     Swal.fire('Saved!', '', 'success')
-
-    
-  
-    }
+        Swal.fire('Saved!', '', 'success')
+    }}
 
 
   return (
@@ -309,12 +276,9 @@ let newImage={
 {user ?
       <div className={style.page}>
         <div className={style.container}>
-
-      <div className={style.ContainerImage}>
+        <div className={style.ContainerImage}>
         <button onClick={()=>changeImage()}></button>
         <img src={user_info.image_avatar?user_info.image_avatar:userDefault} alt="image" className={style.userImage} />
-
-
         </div>
 
 
@@ -323,17 +287,16 @@ let newImage={
 
 
           <div className={style.contentContainer}>
-
+            
             <div className={style.title} ><p>My status</p></div>
+            
             <hr></hr>
+
             <div className={style.subscriptionContainer}>
               <div>{`${user_info?.username} Currently you are an user`}</div>
-
               <button onClick={(e) => modalArtist()} name='modalArtist' className={style.buttons}>
               Request to be an artist
               </button>
-
-
             </div>
 
             <br />
@@ -350,25 +313,24 @@ let newImage={
               <div className={style.div8}><input placeholder={user_info?.username}  disabled={true} name="username" type="text" /> </div>
               <div className={style.div9}> <button onClick={(e) => modalChangeUsername()} name='modalUsername' className={style.buttons}>Modify</button></div>
             </div>
-
             <br />
-            <br />
-            <br />
+           
             <div className={style.title} ><p>Disabled my account</p></div>
           </div>
+          </div>
 
-        </div>
         <div className={style.buttonContainer}>
           <button onClick={(e) => modalDisabled()} name='modalArtist' className={style.deleteButton}>
           deactivate account 
               </button>
         </div>
-      </div>
+        </div>
       
     : 
     <div className={style.Loading}>
     <div className="spinner-border"  role="status"></div>
     </div>
+
 }
 
 
