@@ -19,7 +19,7 @@ import FileUpload from "./components/views/FileUpload/FileUpload";
 import Player from "./components/commons/Player/Player";
 import Top from "./components/views/Top/Top";
 import About2 from "./components/views/about/About2";
-import ArtistProfile from "./components/commons/ArtistProfile/ArtistProfile";
+// import ArtistProfile from "./components/commons/ArtistProfile/ArtistProfile";
 import Artist from "./components/views/Artist/Artist";
 import PanelArtist from "./components/views/PanelArtist/PanelArtist";
 import * as actionCreator from "./redux/actions/action_user";
