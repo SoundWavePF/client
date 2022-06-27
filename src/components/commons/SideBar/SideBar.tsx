@@ -20,42 +20,42 @@ export default function SideBar() {
   }
   return (
     <div className={styles.container}>
-      <Link to='/home' className={styles.link}>
-        <div className={styles.logoContainer}>
-          <img src={logo} alt='SoundWave logo' className={styles.logo} />
-          <span>SoundWave</span>
-        </div>
-      </Link>
       <div className={styles.btnContainer}>
+        <Link to='/home' className={styles.linkLogo}>
+          <div className={styles.logoContainer}>
+            <img src={logo} alt='SoundWave logo' className={styles.logo} />
+            <span>SoundWave</span>
+          </div>
+        </Link>
         {userAdmin &&
           <Link to='/admin' className={styles.link}>
             <div className={styles.button} onClick={handleClick}>
               <img src={admin} alt="Home" className={styles.img} />
-              <span>Admin Panel</span>
+              Admin Panel
             </div>
           </Link>}
         <Link to='/home' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
             <img src={home} alt="Home" className={styles.img} />
-            <span>Home</span>
+            Home
           </div>
         </Link>
         <Link to='/top' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
             <img src={fire} alt="top10" className={styles.img} />
-            <span>Top 10</span>
+            Top 10
           </div>
         </Link>
         <Link to='/playlists' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
             <img src={play} alt="Play" className={styles.img} />
-            <span>Playlists</span>
+            Playlists
           </div>
         </Link>
         <Link to='/favorites' className={styles.link}>
           <div className={styles.button} onClick={handleClick}>
             <img src={music} alt="Music" className={styles.img} />
-            <span>My favorites</span>
+            My favorites
           </div>
         </Link>
       </div>
