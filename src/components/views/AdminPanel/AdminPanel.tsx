@@ -11,6 +11,8 @@ import { bindActionCreators } from "redux";
 import * as actionCreator from '../../../redux/actions/action_admin'
 import Error404 from '../error404/error404';
 import searchIcon from "../../../assets/search_icon.png";
+import AdminStats from './AdminStats';
+import LoadingSpinner from '../../commons/LoadingSpinner/LoadingSpinner';
 
 
 interface user{
@@ -55,48 +57,11 @@ const AdminPanel = ()=>{
           <AdminSideBar/>
           <div>
             <div className={m.containerStats}>
-                { pageStats.totalsongs?
-                  <div className={m.cardContainer}>
-                    <div className={m.divRow}>
-                      <div>
-                        <h2>Total Songs: {pageStats.totalsongs}</h2>
-                      </div>
-                      <div>
-                        <h2>Total Admin Users: {pageStats.totaladminusers}</h2>
-                      </div>
-                      <div>
-                        <h2>Total Regular Users: {pageStats.totalregularusers}</h2>
-                      </div>
-                    </div>
-                    <div className={m.divRow}>
-                      <div>
-                        <h2>Total Users: {pageStats.totalusers}</h2>
-                      </div>
-                      <div>
-                        <h2>Total Albums: {pageStats.totalalbums}</h2>
-                      </div>
-                      <div>
-                        <h2>Total Artists: {pageStats.totalartists}</h2>
-                      </div>
-                    </div>
-                    <div className={m.divRow}>
-                      <div>
-                        <h2>Total Genres: {pageStats.totalgenres}</h2>
-                      </div>
-                      <div>
-                        <h2>Total Playlists: {pageStats.totalplaylists}</h2>
-                      </div>
-                      <div>
-                        <h2>Play Count: {pageStats.totalplaycount}</h2>
-                      </div>
-                    </div>
-                  </div> 
+                { 
+                  pageStats.totalsongs?
+                  <AdminStats pageStats={pageStats} /> 
                   :
-                  <div className={m.containerSpinner}>
-                    <div className={m.sectionLoading}>
-                      <div className="spinner-border"  role="status"></div>
-                    </div>
-                  </div>
+                  <LoadingSpinner/>
                 }
               <Link className={m.buttonBack} to='/'>Back to Landing</Link>
               </div>
@@ -114,7 +79,6 @@ const AdminPanel = ()=>{
               <input  onChange={searchUser} placeholder='Put user...' type="text" />
             </div>
             <div className={m.containerCards}>
-              <ul className={m.ul}>
                 <div className={m.containerHeader}>
                   <div className={m.type}>type</div>
                   <div className={m.request}>request</div>
@@ -125,14 +89,13 @@ const AdminPanel = ()=>{
                 </div>
                 {userSearch.length>0 && userSearch.map((user:any)=>{
                   if(adminOption.user && user.rol==='user'){
-                    return <li className={m.li}><UserCardAdmin user={user} admin={ADMIN_EMAIL}/></li>
+                    return <UserCardAdmin user={user} admin={ADMIN_EMAIL}/>
                   }
                   if(!adminOption.user && user.rol==='artist'){
-                    return <li className={m.li}><UserCardAdmin user={user} admin={ADMIN_EMAIL}/></li>
+                    return <UserCardAdmin user={user} admin={ADMIN_EMAIL}/>
                   }
                 }
                 )}
-              </ul>
               <Link className={m.buttonBack} to='/'>Back to Landing</Link>
             </div>
           </div>
