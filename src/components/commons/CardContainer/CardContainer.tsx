@@ -14,14 +14,14 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
   const slidesContainer = useRef(document.createElement("div") )
   const [state, setState] = useState<number>(0)
 
-  const getScrollPosition= (arg: string) => {
-        const gap = 10;//in px 
-        const slideWidth = 270 //in px, width of the card
-        const numberOfSlides = slidesContainer.current.children.length
-        const numberOfSlidesToShow = Math.ceil(carrusel.current.offsetWidth/slideWidth)
+  const gap = 10;//in px 
+  const slideWidth = 270 //in px, width of the card
+  const numberOfSlides = slidesContainer.current.children.length
+  const numberOfSlidesToShow = Math.ceil(carrusel.current.offsetWidth/slideWidth)
+
+  const getScrollPosition= (arg: string | number) => {
         const maxScroll = (slideWidth + gap)*numberOfSlides - carrusel.current.offsetWidth
 
-    // console.log("slide count", slideWidth*numberOfSlidesToShow, maxScroll, slidesContainer.current.children.length)
 
         if (arg === "forward") {
             const x = state + slideWidth + gap;
@@ -34,23 +34,15 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
             return x;
         }
         return 0
-    }
+  }
 
-  /*useEffect( ()=>{
-   if(props.slides) {
-    console.log("mount")
-    const interval = setInterval( ()=>{
-      const slides  = slidesContainer.current
-      console.log("interval", state)
-     setState(()=>{
-          slides.style.transform = `translateX(-${getScrollPosition("forward")}px)`;
-          return getScrollPosition("forward")
-        })
-    }, 4000)
-    return ()=>clearInterval(interval)
-   }
-  }, [state])*/
-
+  useEffect( ()=>{
+    const slides  = slidesContainer.current
+    window.addEventListener('resize', ()=> setState(()=>{
+      slides.style.transform = `translateX(-${getScrollPosition(0)}px)`;
+      return getScrollPosition(0)
+    }));
+  }, [])
 
   function handleClick(arg: string){
       return function (){
@@ -70,10 +62,11 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
     <div className={styles.container} ref={carrusel}>
        {
         !props.slides? null:
-        <>
-          <button onClick={handleClick("forward")} className={`${styles.btn} ${styles.right}`}>→</button>
-          <button onClick={handleClick("backward")} className={`${styles.btn} ${styles.left}`}>←</button>
-        </>
+          slidesContainer.current.children.length < numberOfSlidesToShow? null: 
+            <>
+              <button onClick={handleClick("forward")} className={`${styles.btn} ${styles.right}`}>→</button>
+              <button onClick={handleClick("backward")} className={`${styles.btn} ${styles.left}`}>←</button>
+            </>
        }
       <div className={props.slides? styles.inner: styles.inner2} ref={slidesContainer}>
         {
