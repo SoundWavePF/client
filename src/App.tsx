@@ -123,7 +123,7 @@ function App() {
         />
 
         <Route path="/settings" element={<UserSettings />} />
-        <Route path="/panel_artist" element={<PanelArtist />} />
+        <Route path="/panel_artist" element={<><PanelArtist /> <Player /> </>} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/file" element={<FileUpload />} />
 
