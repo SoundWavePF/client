@@ -42,7 +42,7 @@ const ItemList: React.FC<myProps> = (props: myProps) => {
                 <img src={play} className={s.Play} onClick={() => playSong(props.item, email)}/>{" "}
               </div>
             </div>
-            <div>
+            <div className={s.songNameContainer}>
               <div onClick={() => playSong(props.item, email)} className={s.songName}>
                 {props.item.name}
               </div>
