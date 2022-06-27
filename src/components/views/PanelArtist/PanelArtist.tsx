@@ -23,8 +23,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LoadingPage from "../../commons/LoadingPage/LoadingPage";
 
 const PanelArtist = () => {
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1);
   const { email, rol, artist } = useSelector((state: any) => state.user_info);
+  const { updated } = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
   const { getPanelInfo } = bindActionCreators(actionCreator, dispatch);
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -42,7 +43,9 @@ const PanelArtist = () => {
     //   setTest(false)
     // }
   },[email])
-
+  useEffect(()=>{
+    updated && getPanelInfo(artist?.id, email);
+  },[updated]);
   function handlePage(page: number) {
     setPage(page);
   }

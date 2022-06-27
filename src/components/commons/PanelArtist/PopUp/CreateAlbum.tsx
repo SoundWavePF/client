@@ -27,8 +27,9 @@ const CreateAlbum: React.FC<myProps> = ({ item }: myProps) => {
     data.append("file", file[0]);
     data.append("upload_preset", "album_image");
     createAlbum({email, name, date, genre}, data);
-    await new Promise(res => setTimeout(res,1500));
-    getPanelInfo(artist?.id, email);
+    // await new Promise(res => setTimeout(res,1500));
+    // getPanelInfo(artist?.id, email);
+    launchPopUp(false);
   }
   useEffect(()=>{
     getGenres();
