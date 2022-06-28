@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../Home/Home.module.css";
+import styles from "../Artist/Artist.module.css";
 import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";
 import { ContainerLibrary } from "../../commons/ContainerLibrary/ContainerLibrary";
