@@ -307,7 +307,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
       };
     case ActionType.GET_PANEL_INFO:
       let {albums, songs, description, name, image_medium, totalFavoriteCount,
-        totalPlayCount, n_songs, n_albums, totalPlaylistCount, stripe_Id} = action.payload;
+        totalPlayCount, n_songs, n_albums, totalPlaylistCount, stripe_Id, donations} = action.payload;
       return{
         ...state,
         panel_artist: {
@@ -323,6 +323,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
             n_songs, n_albums,
             totalPlaylistCount,
             stripe_Id,
+            donations
           },
           updated: false
         }

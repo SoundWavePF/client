@@ -102,6 +102,28 @@ const ListItem: React.FC<myProps> = (props: myProps) => {
           <div className={s.controllerContainer}></div>
         </div>
       );
+      case "donation":
+        return (
+          <div className={s.itemListContainer}>
+            {/* <Link className={s.links} to={"/artist/:id"}> */}
+              <div className={s.imageAndNameContainer}>
+                <div>
+                  <div>
+                    <img
+                      className={s.image}
+                      src={props.item.user.image_avatar}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className={s.songName}>{props.item.user.username} donated ${props.item.amount}</div>
+                </div>
+              </div>
+            {/* </Link> */}
+            <div className={s.controllerContainer}></div>
+          </div>
+        );
 
     default:
       return <>nada</>;
