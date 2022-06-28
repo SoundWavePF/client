@@ -23,11 +23,39 @@ interface user{
   email:string,
   songNumber:number
 }
+interface option {
+  setOption: any;
+  option: any
+}
+
+const options = ['aproved' , 'pendig', 'denegado']
+
+const MultiButtons: React.FunctionComponent<option> = (props)=>{
+
+  return (
+    <div className={m.multiButton}>
+      {
+        options.map( (_option: any) => (<button  className={props.option == _option? m.buttonOptionSelected: m.buttonOption } onClick={(e: any)=>props.setOption(_option)}  >{_option}</button>))
+      }
+    </div>
+  )
+}
+
+function filterUsers(state: any, filter:string){
+  if(filter==='aproved'){
+    console.log('users',state.users)
+    return state.users.length? state.users.filter( (user: any)=>{
+      return !user.requested_artist
+    }): state.users
+  }
+  return state.users
+}
 
 const AdminPanel = ()=>{
   const dispatch = useDispatch()
+  const [option, setOption] = useState<string>('aproved')
   const {getAllUsers, getStats} = bindActionCreators(actionCreator,dispatch)
-  const users = useSelector((state:any)=>state.users)
+  const users = useSelector((state:any)=>filterUsers(state, option))
   const adminOption = useSelector((state:any)=>state.adminOption)
   const pageStats = useSelector((state:any)=>state.pageStats)
   const userAdmin = useSelector((state:any)=>state.userAdmin)
