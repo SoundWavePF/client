@@ -40,7 +40,7 @@ const UserSettings = () => {
   
   useEffect(  () =>{
     const callInfouser=async ()=>{
-      console.log(user?.email,"no hay")
+      // console.log(user?.email,"no hay")
       getUserInfo(user?.email)
       const donations = await axios.post(`https://www.javierochoa.me/order/history`, {email: user?.email})
       setDonations(donations.data)
@@ -270,7 +270,7 @@ const changeImage = async()=>{
     }
 
        axios.post("https://www.javierochoa.me/update",newImage)
-        .then(e=>console.log(e))      
+        .then(e=>getUserInfo(user?.email))      
         Swal.fire('Saved!', '', 'success')
     }}
 
