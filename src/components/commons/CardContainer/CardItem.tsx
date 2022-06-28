@@ -2,7 +2,7 @@ import styles from "./CardItem.module.css";
 import { Link } from "react-router-dom";
 import * as actionCreator from "../../../redux/actions/action_player";
 import * as actionCreator2 from "../../../redux/actions/action_user";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import playlistFran from "../../../assets/playlistFran2.png";
 import DropDownButton from "../DropDownButton/DropDownButton";
@@ -11,6 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import papeleria from "../../../assets/papeleriaIcon.png";
 import Swal from "sweetalert2";
 import genres from '../../../assets/genres.png'
+import SoundWave from '../SoundWave/SoundWave'
 
 interface myProps {
   item: any;
@@ -18,6 +19,9 @@ interface myProps {
 
 const CardItem: React.FC<myProps> = (props: myProps) => {
   const { isAuthenticated } = useAuth0();
+  const currentSongPosition = useSelector( (state: any)=>state.player.currentSongPosition)
+  const isPlaying = useSelector( (state: any)=>state.player.isPlaying)
+  const queue = useSelector( (state: any)=>state.queue)
   let IType = props.item.type;
   const { user } = useAuth0();
   const email = user?.email;
@@ -102,6 +106,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
                 </li>
               )}
             </ul>
+                { queue[currentSongPosition]?.id === props.item.id && isPlaying? <SoundWave/>: null}
             </figure>
             <p>{props.item.name}</p>
             <Link to={`/artist/${props.item.artists[props.item.artists.length - 1].id}`}>{props.item.artists[props.item.artists.length - 1].name}</Link>
