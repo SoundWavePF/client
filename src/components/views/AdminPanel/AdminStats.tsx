@@ -34,5 +34,16 @@ const AdminStats = ({pageStats}:any)=>{
       </div>
     </div>
   )
+
+//LIGHT MODE
+//--text-contrast-secundary:   black;
+
+//DARK MODE
+//--text-contrast-secundary:  var(--yellow-light);
+
+
+
+
+
 }
 export default AdminStats
