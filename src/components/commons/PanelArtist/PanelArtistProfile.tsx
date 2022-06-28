@@ -88,7 +88,7 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
         </div>
         <div className={styles.statInfo}>
             <div className={styles.title}>Donations</div>
-            <div className={styles.value}>${donations?.map((donation: any)=>Number(donation.amount)).reduce((a:number, b:number)=>a+b)}</div>
+            <div className={styles.value}>${donations?.map((donation: any)=>Number(donation.amount)).reduce((a:number, b:number)=>a+b, 0)}</div>
         </div>
       </div>
       {
@@ -113,7 +113,7 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
         </tr>
       </thead>
       <tbody>
-      {donations !== undefined && donations.map((donation:any)=>{
+      {donations !== undefined && donations?.map((donation:any)=>{
             return (
               <tr>
                 <td>{donation.id}</td>
