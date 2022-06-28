@@ -62,6 +62,11 @@ const SearchBar = () => {
     searchAll(input);
     // setInput("");
   }
+  const toggleMode = () => {
+
+    document.querySelector('#appSW')?.classList.toggle('light-mode')
+    document.querySelector('#appSW')?.classList.toggle('dark-mode')
+  }
   return (
     <nav className={`${style.navbar}`}>
       <form onSubmit={handleSubmit} className={style.form}>
@@ -77,7 +82,7 @@ const SearchBar = () => {
         </div>
       </form>
       <div className={style.icons}>
-
+        <button onClick={toggleMode} style={{"height":"20px"}}></button>
         {isLoading ? <img src={swAnim} alt={'Loading...'} width={30} height={30}/>:isAuthenticated ? (<MenuUser username={"username"} />) :
           (<LoginButton/>)
         }

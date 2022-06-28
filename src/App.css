@@ -1,10 +1,3 @@
-:root {
-  --black: #202020;
-  --gray-light: #d6d6d6;
-  --gray-dark: #333533;
-  --yellow-light: #ffee32;
-  --yellow-dark: #ffd100;
-}
 @font-face {
   font-family: 'sw-light';
   src: url(./assets/DefaultFont/IBMPlexSans-Light.ttf);
@@ -20,4 +13,49 @@
 @font-face {
   font-family: 'sw-italic';
   src: url(./assets/DefaultFont/IBMPlexSans-Italic.ttf);
+}
+/* body {
+  color: red;
+  background-color: var(--black);
+  
+} */
+:root {
+  --black: #202020;
+  --gray-light: #d6d6d6;
+  --gray-intermediate: #565656;
+  --gray-dark: #333533;
+  --yellow-light: #ffee32;
+  --yellow-dark: #ffd100;
+  
+  --background-primary: white;
+  --background-intermediate: var(--gray-light);
+  --background-secondary: var(--gray-dark);
+  --background-contrast: var(--black);
+  
+  --text-primary: black;
+  --text-secondary: var(--gray-dark);
+  --text-contrast: white;
+  
+  --background-accent: var(--yellow-light);
+  --background-accent-secundary: var(--yellow-dark);
+}
+.light-mode{
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+.dark-mode{
+  --background-primary: var(--black);
+  --background-intermediate: var(--gray-intermediate);
+  --background-secondary: var(--black);
+  --background-contrast: var(--black);
+  
+  --text-primary: white;
+  --text-secondary: var(--gray-light);
+  --text-contrast: black;
+
+  --background-accent: var(--gray-intermediate);
+  --background-accent-secundary: var(--background-intermediate);
+
+  background-color: var(--background-primary);
+  color: var(--text-primary);
 }
