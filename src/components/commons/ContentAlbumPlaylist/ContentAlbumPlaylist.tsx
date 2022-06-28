@@ -73,14 +73,17 @@ const ContentAlbumPlaylist = () => {
           <button onClick={() => playAll(item.songs)} className={styles.btn}>
             Play all
           </button>
-          <Link to={"/playlists"}>
-            <button
-              onClick={() => email && id && deletePlaylist(id)}
-              className={styles.btn}
-            >
-              Delete Playlist
-            </button>
-          </Link>
+          {
+            isPlaylist && 
+            <Link to={"/playlists"}>
+              <button
+                onClick={() => email && id && deletePlaylist(id)}
+                className={styles.btn}
+              >
+                Delete Playlist
+              </button>
+            </Link>
+          }
         </div>
         {isPlaylist && (
           <button

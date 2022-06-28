@@ -71,13 +71,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0%;
+    padding: 0%;
   }
   .btnContainer{
-    /* margin-top: 5px; */
     display: flex;
     width: 100%;
     justify-content: space-around;
     align-content: center;
+    margin-top: 5px;
+    padding: 0%;
   }
   .linkLogo{
     display: none;

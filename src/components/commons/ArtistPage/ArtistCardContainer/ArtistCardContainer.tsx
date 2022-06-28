@@ -28,7 +28,7 @@ const ArtistCardContainer = ({ props }: any) => {
       )
     case 'Description':
       return (
-        <div>
+        <div className={style.descriptionContainer}>
           <p>{artist.description}</p>
         </div>
       )
