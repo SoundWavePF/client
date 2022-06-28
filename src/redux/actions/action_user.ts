@@ -38,18 +38,26 @@ export const getPlaylist = (id: any) => {
       .catch((error) => console.log(error));
   };
 };
-export const newPlaylist = (email: string, playlistName: string) => {
+export const newPlaylist = (email: string, playlistName: string, firtsSongId: any) => {
   return (dispatch: Dispatch<Actions>) => {
     axios
       .post("https://www.javierochoa.me/playlist/create", {
         email: email,
         playlistName: playlistName,
       })
-      .then((response) =>
+      .then((response) => {
         dispatch({
           type: ActionType.NEW_PLAYLIST,
           payload: response.data,
         })
+        if(firtsSongId) {
+          axios.post('https://www.javierochoa.me/playlist/add', { playlistId: response.data.id, songId: firtsSongId })
+          .then(response => dispatch({
+            type: ActionType.ADD_TO_PLAYLIST,
+            payload: response.data
+          }))
+        }
+      }
       );
   };
 };
