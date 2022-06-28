@@ -7,20 +7,21 @@
   height: 29vw;
   margin: 2vw;
   border-radius: 8px;
-  background-color: white;
-  border: 2px solid var(--gray-light);
+  background-color: var(--background-primary);
+  border: 2px solid var(--background-intermediate);
   font-family: sw-medium;
+  color: var(--text-primary);
 }
 .AboutCard:hover{
   background-color: #ffee32;
   border: none;
+  color: black;
 }
 .AboutCard >img{
   width: 12vw;
   height: 12vw;
   margin: 1vw;
   border-radius: 3%;
-  border: 2px solid white;
 }
 .infoName{
   display: flex;

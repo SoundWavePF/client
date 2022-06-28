@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/logo.png';
+import logo from '../../../assets/logo-nbg.png';
 import trend from '../../../assets/trend.png';
 import music from '../../../assets/music.png';
 import styles from './AdminSideBar.module.css';
