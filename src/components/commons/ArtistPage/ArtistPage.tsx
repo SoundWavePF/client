@@ -28,21 +28,24 @@ export const ArtistPage = () => {
     return (
       <div className={Styled.ContainerLibrary} >
         <div className={Styled.User} >
-          <img src={artist.image_medium} alt="" />
+          <div className={Styled.ImageDonation}>
+            <img src={artist.image_medium} alt="" />
+              {
+                artist.stripe_Id?
+                <DonationsButton stripeId={artist.stripe_Id} artistId={artist.id} userEmail={user?.email} />
+                :null
+              }
+          </div>
           <div>
             <h1>{artist.name}</h1>
-            {
-              artist.stripe_Id?
-              <DonationsButton stripeId={artist.stripe_Id} artistId={artist.id} userEmail={user?.email} />
-              :null
-            }
+            <p className={Styled.description}>{artist.description}</p>
           </div>
         </div>
         <div className={Styled.ToolBar}>
           <button onClick={(e: any) => setOption(e.target.value)} value='Top'>Top 5</button>
           <button onClick={(e: any) => setOption(e.target.value)} value='Albums'>Albums</button>
           <button onClick={(e: any) => setOption(e.target.value)} value='Singles'>Singles</button>
-          <button onClick={(e: any) => setOption(e.target.value)} value='Description'>Description</button>
+          <button className={Styled.descriptionTab} onClick={(e: any) => setOption(e.target.value)} value='Description'>Description</button>
         </div>
         <ArtistCardContainer props={option} />
       </div>
