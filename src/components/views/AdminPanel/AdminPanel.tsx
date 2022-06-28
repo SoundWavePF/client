@@ -61,10 +61,6 @@ const AdminPanel = ()=>{
   const userAdmin = useSelector((state:any)=>state.userAdmin)
   const {user, isAuthenticated} = useAuth0()
   const ADMIN_EMAIL = user?.email
-<<<<<<< HEAD
-  console.log(user)
-  console.log(users)
-=======
   
   const [userSearch, setUserSearch] = useState(users)
   const searchUser = (e:any)=>{
@@ -77,7 +73,6 @@ const AdminPanel = ()=>{
   }
   
 
->>>>>>> e796674618ada07737830745e9bf5d4c1d3103dc
   useEffect(()=>{
     getAllUsers(ADMIN_EMAIL)
     getStats(ADMIN_EMAIL)
@@ -103,34 +98,6 @@ const AdminPanel = ()=>{
       )
     } else {
       return(
-<<<<<<< HEAD
-        <div className={m.bigContainer}>
-          <AdminSideBar/>
-       
-          <NavAdmin option={false}/>
-          <MultiButtons setOption={setOption} option={option}/>
-          <div className={m.containerHeader}>
-            <div className={m.type}>type</div>
-            <div className={m.request}>request</div>
-            <div className={m.id}>id</div>
-            <div className={m.username}>username</div>
-            <div className={m.email}>email</div>
-            <div className={m.account}>account</div>
-          </div>
-          <div className={m.containerCards}>
-            <ul className={m.ul}>
-              {users.length>0 && users.map((user:any)=>{
-                if(adminOption.user && user.rol==='user'){
-                  return <li className={m.li}><UserCardAdmin user={user} admin={ADMIN_EMAIL}/></li>
-                }
-                if(!adminOption.user && user.rol==='artist'){
-                  return <li className={m.li}><UserCardAdmin user={user} admin={ADMIN_EMAIL}/></li>
-                }
-              }
-              )}
-            </ul>
-            <Link className={m.buttonBack} to='/'>Back to Landing</Link>
-=======
         <div className={m.container}>
           <NavAdmin option={false}/>
           <AdminSideBar/>
@@ -159,7 +126,6 @@ const AdminPanel = ()=>{
                   )}
               <Link className={m.buttonBack} to='/'>Back to Landing</Link>
             </div>
->>>>>>> e796674618ada07737830745e9bf5d4c1d3103dc
           </div>
         </div>
       )
