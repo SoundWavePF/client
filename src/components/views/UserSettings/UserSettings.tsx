@@ -42,7 +42,7 @@ const UserSettings = () => {
     const callInfouser=async ()=>{
       console.log(user?.email,"no hay")
       getUserInfo(user?.email)
-      const donations = await axios.post(`http://localhost:3001/order/history`, {email: user?.email})
+      const donations = await axios.post(`https://www.javierochoa.me/order/history`, {email: user?.email})
       setDonations(donations.data)
       console.log(donations.data)
     }
