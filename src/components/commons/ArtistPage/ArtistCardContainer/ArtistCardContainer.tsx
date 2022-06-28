@@ -32,6 +32,12 @@ const ArtistCardContainer = ({ props }: any) => {
           <p>{artist.description}</p>
         </div>
       )
+    case 'Donations':
+      return (
+        <div>
+          {artist.donations.length > 0 ? artist.donations.slice(0, 5).map((song: any, index:number) => <div key={index} className={style.listDiv}><ListItem item={song} /></div>) : <h1>No one has donated to this artist</h1>}
+        </div>
+      )
     default:
       return (<></>)
   }
