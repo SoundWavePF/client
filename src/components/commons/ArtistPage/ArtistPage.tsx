@@ -28,14 +28,17 @@ export const ArtistPage = () => {
     return (
       <div className={Styled.ContainerLibrary} >
         <div className={Styled.User} >
-          <img src={artist.image_medium} alt="" />
+          <div className={Styled.ImageDonation}>
+            <img src={artist.image_medium} alt="" />
+              {
+                artist.stripe_Id?
+                <DonationsButton stripeId={artist.stripe_Id} artistId={artist.id} userEmail={user?.email} />
+                :null
+              }
+          </div>
           <div>
             <h1>{artist.name}</h1>
-            {
-              artist.stripe_Id?
-              <DonationsButton stripeId={artist.stripe_Id} artistId={artist.id} userEmail={user?.email} />
-              :null
-            }
+            <p>{artist.description}</p>
           </div>
         </div>
         <div className={Styled.ToolBar}>
