@@ -39,7 +39,7 @@ function App() {
   }, [isAuthenticated]);
 
   return (
-    <div>
+    <div id={"appSW"} className="light-mode">
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
