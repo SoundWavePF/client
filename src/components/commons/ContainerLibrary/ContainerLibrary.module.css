@@ -135,4 +135,7 @@
     .ToolBar{
         padding: 0%;
     }
+    .Column h4{
+        display: none;
+    }
 }

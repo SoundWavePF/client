@@ -23,9 +23,8 @@ const ListItem: React.FC<myProps> = (props: myProps) => {
     const seconds: number = num - minutes * 60;
     const minStr: string = minutes.toString();
     const secStr: string = seconds.toString();
-    return `${minStr.length == 1 ? "0" + minStr : minStr}:${
-      secStr.length == 1 ? "0" + secStr : secStr
-    }`;
+    return `${minStr.length == 1 ? "0" + minStr : minStr}:${secStr.length == 1 ? "0" + secStr : secStr
+      }`;
   };
 
   const dispatch = useDispatch();
@@ -42,16 +41,16 @@ const ListItem: React.FC<myProps> = (props: myProps) => {
               alt={"cover"}
               onClick={() => playSong(props.item, email)}
             />
-            <span onClick={() => playSong(props.item, email)}>
+            <span className={s.textItem} onClick={() => playSong(props.item, email)}>
               {props.nb ? `${props.nb}. ${props.item.name}` : props.item.name}
             </span>
           </div>
           <span>{props.item.artist}</span>
-          <div>
+          <div className={s.favAndDrop}>
             <FavoriteIcon item={props.item} />
             <DropDownButton item={props.item} />
-            <span>{formatDuration(props.item.duration)}</span>
-            <img src={time} alt="time icon" />
+            <span className={s.duration}> {formatDuration(props.item.duration)}</span>
+            <img className={s.timeIcon} src={time} alt="time icon" />
           </div>
         </div>
       );
@@ -102,28 +101,28 @@ const ListItem: React.FC<myProps> = (props: myProps) => {
           <div className={s.controllerContainer}></div>
         </div>
       );
-      case "donation":
-        return (
-          <div className={s.itemListContainer}>
-            {/* <Link className={s.links} to={"/artist/:id"}> */}
-              <div className={s.imageAndNameContainer}>
-                <div>
-                  <div>
-                    <img
-                      className={s.image}
-                      src={props.item.user.image_avatar}
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div className={s.songName}>{props.item.user.username} donated ${props.item.amount}</div>
-                </div>
+    case "donation":
+      return (
+        <div className={s.itemListContainer}>
+          {/* <Link className={s.links} to={"/artist/:id"}> */}
+          <div className={s.imageAndNameContainer}>
+            <div>
+              <div>
+                <img
+                  className={s.image}
+                  src={props.item.user.image_avatar}
+                  alt=""
+                />
               </div>
-            {/* </Link> */}
-            <div className={s.controllerContainer}></div>
+            </div>
+            <div>
+              <div className={s.songName}>{props.item.user.username} donated ${props.item.amount}</div>
+            </div>
           </div>
-        );
+          {/* </Link> */}
+          <div className={s.controllerContainer}></div>
+        </div>
+      );
 
     default:
       return <>nada</>;

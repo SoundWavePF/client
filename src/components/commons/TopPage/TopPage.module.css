@@ -32,28 +32,29 @@
   margin-right: 10%;
   margin-left: 10%;
   }
-  @media(max-width: 400px){
-    .container{
-      padding: 0px;
-    }
-    
-    .cardContainer{
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 600px;
-    }
-
-    .section{
-  display: flex;
-  text-align: center;
-    }
-  }
   @media(max-width: 1300px){
-  .container{
+    .container{
     padding: 0px;
   }
   .cardContainer{
     width: 70vw;
   }
 }
+    @media(max-width: 400px){
+      .container{
+        
+        padding: 30px;
+      }
+      
+      .cardContainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 600px;
+      }
+  
+      .section{
+    display: flex;
+    text-align: center;
+      }
+    }
