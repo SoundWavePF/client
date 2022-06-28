@@ -15,6 +15,9 @@ import axios from "axios";
 import Swal from 'sweetalert2'
 import { isConstructorDeclaration } from "typescript";
 import userDefault from '../../../assets/default-user.png'
+import Table from 'react-bootstrap/Table';
+import { log } from "console";
+
 
 interface inputs {
   email: any
@@ -32,17 +35,19 @@ const UserSettings = () => {
   const dispatch = useDispatch()
   const { updateUser ,getUserInfo} = bindActionCreators(actionCreator, dispatch)
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
-
+  const [donations, setDonations]:any= useState([])
 
   
   useEffect(  () =>{
     const callInfouser=async ()=>{
       console.log(user?.email,"no hay")
       getUserInfo(user?.email)
+      const donations = await axios.post(`http://localhost:3001/order/history`, {email: user?.email})
+      setDonations(donations.data)
+      console.log(donations.data)
+    }
 
-}
-
-user?.email && callInfouser()
+    user?.email && callInfouser()
 
   },[user])
   useEffect(  () =>{
@@ -323,14 +328,45 @@ const changeImage = async()=>{
               <div className={style.div9}> <button onClick={(e) => modalChangeUsername()} name='modalUsername' className={style.buttons}>Modify</button></div>
             </div>
             <br />
+            <Table striped bordered size="sm">
+            <thead>
+              <tr className={'table-secondary'}>
+                <th>Donation ID</th>
+                <th>Arist</th>
+                <th>Amount</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+            {donations !== undefined && donations?.map((donation:any)=>{
+                  return (
+                    <tr>
+                      <td>{donation.id}</td>
+                      <td>{donation.artist.name}</td>
+                      <td>${donation.amount}</td>
+                      <td>{donation.createdAt.split('T')[0]}</td>
+                    </tr>
+                  )
+                }
+              )}
+              {!donations.length && 
+                  <tr>
+                    <td>No donations</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+              }
+            </tbody>
+          </Table>
            
-            <div className={style.title} ><p>Disabled my account</p></div>
+            <div className={style.title} ><p>Disable my account</p></div>
           </div>
           </div>
 
         <div className={style.buttonContainer}>
           <button onClick={(e) => modalDisabled()} name='modalArtist' className={style.deleteButton}>
-          deactivate account 
+          Deactivate account 
               </button>
         </div>
         </div>
