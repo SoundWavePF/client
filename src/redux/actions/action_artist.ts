@@ -138,3 +138,25 @@ export const createAlbum = (info: any, data: any) => {
     .catch((error) => console.log(error));
   };
 };
+export const uploadMusic = (info: any, data: any) => {
+  return async function (dispatch: Dispatch<Actions>) {
+    const remote = await axios.post("https://api.cloudinary.com/v1_1/dbi1xhzps/video/upload", data);
+    const obj = {
+      userEmail: info.email,
+      songName: info.name,
+      duration: remote.data?.duration,
+      preview: remote.data?.secure_url,
+    };
+    console.log('__send\n', obj);
+    axios.post("https://www.javierochoa.me/artistpanel/song/create", obj)
+    .then((response) =>
+      console.log('res of create ',response)
+    )
+    .then((response) =>
+      dispatch({
+        type: ActionType.UPLOAD_MUSIC,
+      })
+    )
+    .catch((error) => console.log(error));
+  }
+}
