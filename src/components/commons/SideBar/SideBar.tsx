@@ -21,13 +21,13 @@ export default function SideBar() {
   }
   return (
     <div className={styles.container}>
-      <div className={styles.btnContainer}>
         <Link to='/home' className={styles.linkLogo}>
           <div className={styles.logoContainer}>
             <img src={logo} alt='SoundWave logo' className={styles.logo} />
             <span>SoundWave</span>
           </div>
         </Link>
+      <div className={styles.btnContainer}>
         {userAdmin &&
           <Link to='/admin' className={styles.link}>
             <div className={styles.button} onClick={handleClick}>
