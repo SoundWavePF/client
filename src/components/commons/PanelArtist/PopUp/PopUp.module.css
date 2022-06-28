@@ -21,6 +21,7 @@
   border-radius: 6px;
   display: grid;
   grid-template-rows: 40px auto 40px;
+  /* transition: all .3s; */
 }
 .floating > h3{
   justify-self: center;
@@ -41,9 +42,9 @@
   text-align: center;
   border: none;
 }
-.floating label{
+/* .floating label{
   margin: .5rem 0;
-}
+} */
 .floating input{
   padding: .75rem;
   width: 100%;
@@ -116,4 +117,103 @@
 }
 .createAlbum > label:nth-child(4){
   grid-area: d;
+}
+.uploadMusic{
+  margin: 1rem 0;
+  position: relative;
+}
+.uploadMusic > div:last-child{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.uploadMusic input[type=text] {
+  /* height: 2rem; */
+  border: none;
+  padding: 5px;
+  /* width: 100%; */
+  margin-bottom: 0;
+  background-color: transparent;
+}
+.uploadMusic input[type=checkbox] {
+  /* height: 2rem; */
+  border: none;
+  padding: 5px;
+  width: 60px;
+  margin-bottom: 0;
+  background-color: transparent;
+}
+.uploadMusic select {
+  /* height: 2rem; */
+  /* border: none; */
+  border: none;
+  padding: 5px;
+  /* width: 100%; */
+  margin-bottom: 0;
+}
+.btnPlay{
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 100%;
+  background: var(--yellow-light) no-repeat center/1rem url('../../../../assets/play.png');
+  padding: 1rem;
+}
+.btnPause{
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 100%;
+  background: var(--yellow-light) no-repeat center/1rem url('../../../../assets/pause.png');
+  padding: 1rem;
+}
+.btnRemove{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  border-radius: 100%;
+  background: red no-repeat center/.75rem url('../../../../assets/bintrash.png');
+  padding: .75rem;
+}
+.itemUpload{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  height: 50px;
+  /* border: 1px solid black; */
+  background-color: var(--gray-light);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+.selectFiles{
+  justify-self: start;
+  position: absolute;
+  top: -50px;
+  /* left: 65px; */
+  height: 30px;
+  width: max-content;
+  padding: .5rem .75rem;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: ease-in-out .3s;
+  /* overflow: hidden; */
+  background-color: var(--yellow-light);
+}
+.selectFiles:hover{
+  background-color: var(--yellow-dark);
+}
+.selectFiles > input{
+  display: none;
+}
+.albumOptions{
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  width: 60%;
+}
+.albumOptions > select{
+  background-color: transparent;
+  border: 1px solid lightgray;
 }

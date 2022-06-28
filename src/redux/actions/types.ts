@@ -42,7 +42,8 @@ export type Actions =
   | LaunchPopUp
   | deletePlaylist
   | SetFiltered
-  | CreateAlbum;
+  | CreateAlbum
+  | UploadMusic;
 
 export enum ActionType {
   CLEAN_GENRE = "CLEAN_GENRE",
@@ -90,6 +91,7 @@ export enum ActionType {
   SET_FILTERED = "SET_FILTERED",
   DISCOVER_SONGS = "DISCOVER_SONGS",
   CREATE_ALBUM = "CREATE_ALBUM",
+  UPLOAD_MUSIC = "UPLOAD_MUSIC",
 }
 
 export interface GetStats {
@@ -262,5 +264,9 @@ interface SetFiltered {
 }
 interface CreateAlbum {
   type: ActionType.CREATE_ALBUM;
+  payload?: any;
+}
+interface UploadMusic {
+  type: ActionType.UPLOAD_MUSIC;
   payload?: any;
 }
