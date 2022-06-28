@@ -1,17 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {ReactSortable} from "react-sortablejs";
+import { useAuth0 } from '@auth0/auth0-react';
 
 import * as actionCreator from '../../../redux/actions/action_player';
 import { bindActionCreators } from "redux";
 
 import playlist from '../../../assets/playlist.png'
 import bintrash from '../../../assets/bintrash.png'
+import loopIcon from '../../../assets/looping-arrows.png'
 
 import style from './QueuePanel.module.css';
 
 
 const Song = (props)=>{
+    const {user} = useAuth0() 
     const dispatch = useDispatch()
     const {deleteFromQueue}  = bindActionCreators(actionCreator, dispatch);
 
@@ -61,7 +64,10 @@ const QueuePanel = (props)=>{
         setOpen(!open)
     }
 
-
+    function setLoop(){
+        props.setLoopPlaying(!props.loopPlaying)
+        console.log('QUeue loop',props.loopPlaying)
+    }
 
     return (
     <div ref={container}>
@@ -73,6 +79,9 @@ const QueuePanel = (props)=>{
             !open ? null :
                 <div className={style.box}>
                     <h4>Queue</h4>
+                    <button className={props.loopPlaying? style.buttonLoopActive: style.buttonLoop } onClick={setLoop}>
+                        <img className={style.loopIcon} src={loopIcon}/>
+                    </button>
                     <hr/>
                     <ReactSortable list={queue} setList={sortQueue} sort={true}>
                         {queue.map((song, index) => <Song

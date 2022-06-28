@@ -62,3 +62,53 @@
   border-radius: 50%;
   margin-right: 15px;
 }
+
+
+/***Login Button****/
+/* From uiverse.io by @adamgiebl */
+.buttonLogin {
+  background: var(--yellow-light);
+  color: var(--gray-dark);
+  font-family: sw-medium;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.5em;
+  border: none;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+ }
+ 
+.icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em rgba(0,0,0,0.1);
+  right: 0.3em;
+  transition: all 0.3s;
+ }
+ 
+.icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: var(--gray-dark);
+ }
+ .buttonLogin:hover .icon {
+  width: calc(100% - 0.6em);
+ }
+ 
+ .buttonLogin:active .icon {
+  transform: scale(0.95);
+ }
+ 

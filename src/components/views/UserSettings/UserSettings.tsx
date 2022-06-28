@@ -12,6 +12,9 @@ import { bindActionCreators } from 'redux';
 import { useSelector } from "react-redux";
 import Player from "../../commons/Player/Player";
 import axios from "axios";
+import Swal from 'sweetalert2'
+import { isConstructorDeclaration } from "typescript";
+import userDefault from '../../../assets/default-user.png'
 
 interface inputs {
   email: any
@@ -20,17 +23,41 @@ interface inputs {
   field: any
 }
 
-
-
 const UserSettings = () => {
 
   const [image,setImage]:any= useState()
-  const [InfoUser,setInfoUser]:any= useState()
-  const {user_info}=useSelector((state:any)=>state)
-
+  const user_info=useSelector((state:any)=>state.user_info)
+  const [InfoUser,setInfoUser]:any= useState(user_info)
+  const [InfoUserA,setInfoUserA]:any= useState(user_info.artist)
   const dispatch = useDispatch()
   const { updateUser ,getUserInfo} = bindActionCreators(actionCreator, dispatch)
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+
+
+  
+  useEffect(  () =>{
+    const callInfouser=async ()=>{
+      console.log(user?.email,"no hay")
+      getUserInfo(user?.email)
+
+}
+
+user?.email && callInfouser()
+
+  },[user])
+  useEffect(  () =>{
+      setInfoUser(user_info)
+
+  },[user_info])
+  
+
+  
+  
+
+  
+
+
+
   let [input, setInput] = useState<inputs>({
     email: user?.email,
     oldData:  user_info.image_avatar,
@@ -38,46 +65,12 @@ const UserSettings = () => {
     field: "avatar",
   })
 
-  useEffect( () => {
-
-    getUserInfo(user?.email)
-
-    setInfoUser(user_info)
-
-  },[])
-
-  const uploadImage = async (e:any) => {
-    const files = e.target.files;
-    const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "songImage");
-
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/jonathanhortman/image/upload",
-      {
-        method: "POST",
-        body: data
-      }
-    );
-
-
-    const file = await res.json();
-    setImage(file.secure_url);
-  
-    setInput({...input,
-      newData:file.secure_url
-    })
-
-    const ress = await axios.post(
-      "https://www.javierochoa.me/update",input
-      
-    )
-    
-    
-  };
-
-
-
+  let [inputs, setInputs] = useState<inputs>({
+    email: user?.email,
+    oldData: "",
+    newData: "",
+    field: ''
+})
 
   function onSubmitHandle(e: any) {
     e.preventDefault()
@@ -86,93 +79,234 @@ const UserSettings = () => {
   }
 
 
-
-  const [modal, setModal]: any = useState({
-    modalArtist: false,
-    modalEmail: false,
-    modalPassword: false,
-    modalUsername: false,
-    modalDelete: false
+  const [images,setImages]:any= useState<any>({
+    email: user?.email,
+    oldData:  user_info.image_avatar,
+    newData: '',
+    field: "avatar",
   })
 
 
+  const modalArtist =  ()=>{
+    Swal.fire({
+      title:"Ready to become an artist?",
+      showCancelButton: true,
+      confirmButtonColor: '#ffd100',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirm',
+     
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        axios.post('https://www.javierochoa.me/requestArtistStatus',{email:user?.email})
+        .then(e=>console.log(e))
+        
 
-  let handleModal: any = (e: any) => {
+        Swal.fire(
+          
+          'Congatulation',
+          'you are already an artist',
+
+          'success'
+        )}})}
 
 
-    switch (e.target.name) {
 
-      case "modalArtist":
-        return setModal({
-          ...modal,
-          modalArtist: !modal.modalArtist
-        })
-      case "modalEmail":
-        return setModal({
-          ...modal,
-          modalEmail: !modal.modalEmail
-        })
-      case "modalPassword":
-        return setModal({
-          ...modal,
-          modalPassword: !modal.modalPassword
-        })
-      case "modalUsername":
-        return setModal({
-          ...modal,
-          modalUsername: !modal.modalUsername
-        })
-      case "modalDelete":
-        return setModal({
-          ...modal,
-          modalDelete: !modal.modalDelete
-        })
-      case "all":
+  const modalDisabled =  ()=>{
+    Swal.fire({
+      title:"Disabled your account?",
+      showCancelButton: true,
+      confirmButtonColor: '#ffd100',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirm'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.post('https://www.javierochoa.me/deactivate',{email:user?.email})
+        .then(e=>console.log(e))
+        
+        Swal.fire({
+          title:'Disabled  account',
+          icon:'success' 
+        })}})}
 
-        return setModal({
-          ...modal,
-          modalArtist: false,
-          modalDelete: false,
-          modalUsername: false,
-          modalPassword: false,
-          modalEmail: false
-        })
 
-      default:
-        return modal
 
+  const modalChangePassword:any = async ()=>{
+
+    const {value:formValues}:any= await Swal.fire({
+      title:"Change your Password?",
+      text:'Put your current password first',
+     
+      html:
+      '<label>Current password:</label>' +
+      '<input id="swal-input1" class="swal2-input">' +
+      '<label>New password:</label>' +
+      '<input id="swal-input2" class="swal2-input">',
+
+
+      showCancelButton: true,
+      confirmButtonColor: '#ffd100',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirm',
+
+      preConfirm: () => {
+        return [
+          document.getElementById('swal-input1'),
+          document.getElementById('swal-input2')
+        ]
+      }
+    })
+
+  if(formValues['0'].value.length > 2){
+
+    setInputs({
+      email:user?.email,
+      oldData: formValues['0'].value,
+      newData: formValues['1'].value,
+      field:'password'
+    })
+    updateUser(inputs)
+
+    Swal.fire({
+      title:'password was successfully changed',
+      icon:'success'
+    
+    })}}
+
+
+
+  
+  const modalChangeUsername = async ()=>{
+
+    const {value:formValues}:any= await Swal.fire({
+      title:"Change your Username?",
+      text:'Set your new username below',
+     
+      html:
+      '<label>Current username:</label>' +
+      '<input id="swal-input1" class="swal2-input">' +
+      '<label>New username:</label>' +
+      '<input id="swal-input2" class="swal2-input">',
+
+
+      showCancelButton: true,
+      confirmButtonColor: '#ffd100',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirm',
+      preConfirm: () => {
+        return [
+          document.getElementById('swal-input1'),
+          document.getElementById('swal-input2')
+        ]
+      }
+    })
+
+    if(formValues['0'].value.length > 2){
+
+      setInputs({
+        email:user?.email,
+        oldData: formValues['0'].value,
+        newData: formValues['1'].value,
+        field:'username'
+      })
+    updateUser(inputs)
+    
+    Swal.fire({
+      
+      title:'user was successfully changed',
+      icon:'success'
+    
+    })}}
+
+    const iP =user_info.image_avatar
+
+const changeImage = async()=>{
+
+  
+  const { value: file }:any = await Swal.fire({
+    title: 'Select image',
+    imageUrl: `${iP}`,
+    imageHeight: 150,
+    imageWidth:150,
+    input: 'file',
+    inputAttributes: {
+      'accept': 'image/*',
+      'aria-label': 'Upload your profile picture'
+    },
+    showConfirmButton:true,
+    confirmButtonText:'send',
+    showCancelButton:true,
+    confirmButtonColor: '#ffd100',
+
+  })
+
+  const files1=file
+  
+  if (file) {
+    const files = files1;
+
+    const data:any = new FormData();
+    data.append("file", files);
+    data.append("upload_preset", "songImage");
+
+    // for(let [name, value] of data) {
+    //   alert( `${name} = ${value}` ); // key1 = value1, then key2 = value2
+    // }
+
+    const res:any = await axios.post(
+      "https://api.cloudinary.com/v1_1/jonathanhortman/image/upload",data
+      
+    )
+    let fileupdate= await res.data;    
+    let newImage={
+      ...images,
+        email: user_info.email,
+        newData: fileupdate.secure_url
     }
-  }
 
-
+       axios.post("https://www.javierochoa.me/update",newImage)
+        .then(e=>console.log(e))      
+        Swal.fire('Saved!', '', 'success')
+    }}
 
 
   return (
     <div className={StylesC.container}>
       <SearchBar />
       <SideBar />
-
+{user ?
       <div className={style.page}>
         <div className={style.container}>
+        <div className={style.ContainerImage}>
+        <button onClick={()=>changeImage()}></button>
+        <img src={user_info.image_avatar?user_info.image_avatar:userDefault} alt="image" className={style.userImage} />
+        </div>
+ 
 
-          <form className={style.father} onSubmit={(e) => onSubmitHandle(e)}>
-            <img src={user_info.image_avatar} alt="image" className={style.userImage} />
-            <input type="file" onChange={uploadImage}  className={style.input} />
-          <button className={style.button} type='submit'>Send</button>
-          </form>
+       
+          
 
 
           <div className={style.contentContainer}>
-
+            
             <div className={style.title} ><p>My status</p></div>
+            
             <hr></hr>
+
+            {InfoUserA?  
+              <div className={style.subscriptionContainer}>
+              <div>{`${user_info?.username} Currently you are an Artist`}</div>
+            </div>
+            
+            
+            : 
             <div className={style.subscriptionContainer}>
               <div>{`${user_info?.username} Currently you are an user`}</div>
-
-              <button onClick={(e) => handleModal(e)} name='modalArtist' className={style.buttons}>
-                Request to be an artist
+              <button onClick={(e) => modalArtist()} name='modalArtist' className={style.buttons}>
+              Request to be an artist
               </button>
             </div>
+}
 
             <br />
 
@@ -183,45 +317,39 @@ const UserSettings = () => {
             <div className={style.parent}>
               <div className={style.div4}><label>Password:</label></div>
               <div className={style.div5}><input  placeholder={'*****'} disabled={true} name="password" type="text" /></div>
-              <div className={style.div6}><button onClick={(e) => handleModal(e)} name='modalPassword' className={style.buttons}>Modify</button></div>
+              <div className={style.div6}><button onClick={(e) => modalChangePassword()} name='modalPassword' className={style.buttons}>Modify</button></div>
               <div className={style.div7}> <label>Username:</label></div>
               <div className={style.div8}><input placeholder={user_info?.username}  disabled={true} name="username" type="text" /> </div>
-              <div className={style.div9}> <button onClick={(e) => handleModal(e)} name='modalUsername' className={style.buttons}>Modify</button></div>
+              <div className={style.div9}> <button onClick={(e) => modalChangeUsername()} name='modalUsername' className={style.buttons}>Modify</button></div>
             </div>
-
             <br />
-            <br />
-            <br />
+           
             <div className={style.title} ><p>Disabled my account</p></div>
-            <hr></hr>
+          </div>
           </div>
 
-        </div>
         <div className={style.buttonContainer}>
-          <button onClick={(e) => handleModal(e)} name='modalDelete' className={style.deleteButton}>DISABLED</button>
+          <button onClick={(e) => modalDisabled()} name='modalArtist' className={style.deleteButton}>
+          deactivate account 
+              </button>
         </div>
-      </div>
+        </div>
+      
+    : 
+    <div className={style.Loading}>
+    <div className="spinner-border"  role="status"></div>
+    </div>
+
+}
 
 
-      {modal.modalArtist === true ?
-        <Modal handleModal={handleModal} email={InfoUser?.email} action={'artist'} setpass={"Put your password"} inputArtistType={"password"} artistName={"Set your artist name"} type={"text"} header={"Ready to become an artist?"} contentButton={"confirm"} />
-        : null
-      }
-      {modal.modalUsername === true ?
-        <Modal handleModal={handleModal}  email={InfoUser?.email} action={'username'} field={"username"} type={"text"} header={"Change your Username"} oldData={"Current username: "} description={"Set your new username below"} label={"New username: "} contentButton={"CONFIRM"} />
-        : null
-      }
-      {modal.modalDelete === true ?
-        <Modal handleModal={handleModal} email={InfoUser?.email} action={'disabled'} type={"password"} header={"Disabled your acount"}  contentButton={"DISABLED"} />
-        : null
-      }
-      {modal.modalPassword === true ?
-        <Modal handleModal={handleModal}  email={InfoUser?.email} action={'password'} field={"password"} type={"password"} oldData={"Current password: "} header={"Change your Password"} description={"Put your current password first"} label={"New password: "} contentButton={"CONFIRM"} />
-        : null
-      }
+
       
      
     </div>
   )
 };
 export default UserSettings;
+
+
+

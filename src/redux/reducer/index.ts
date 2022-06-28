@@ -44,6 +44,7 @@ const initialState: State = {
   },
   home: {
     last: [],
+    discover: [],
     genres: [],
     chart: [],
   },
@@ -57,7 +58,7 @@ const initialState: State = {
   pageStats: {},
   user_info: {},
   userAdmin: false,
-  panel_artist: { loaded_album: false, pop_up: {}, info: {}},
+  panel_artist: { loaded_album: false, pop_up: {}, info: {}, updated: false},
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -105,7 +106,17 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         home: {
           ...state.home,
-          last: action.payload,
+          last: Array.isArray(action.payload)? 
+          action.payload : 
+          [action.payload, ...state.home.last.filter( (song: any)=>action.payload?.id !== song?.id)],
+        },
+      };
+    case ActionType.DISCOVER_SONGS:
+      return {
+        ...state,
+        home: {
+          ...state.home,
+          discover: action.payload,
         },
       };
     case ActionType.GET_CHART:
@@ -257,6 +268,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
         queue: action.payload,
       };
     case ActionType.GET_USER_INFO:
+      console.log(action.payload,"action.payload")
       return {
         ...state,
         user_info: action.payload,
@@ -295,7 +307,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
       };
     case ActionType.GET_PANEL_INFO:
       let {albums, songs, description, name, image_medium, totalFavoriteCount,
-        totalPlayCount, n_songs, n_albums, totalPlaylistCount, stripe_Id} = action.payload;
+        totalPlayCount, n_songs, n_albums, totalPlaylistCount, stripe_Id, donations} = action.payload;
       return{
         ...state,
         panel_artist: {
@@ -311,7 +323,9 @@ const Reducer = (state: any = initialState, action: Actions) => {
             n_songs, n_albums,
             totalPlaylistCount,
             stripe_Id,
+            donations
           },
+          updated: false
         }
       };
     case ActionType.LAUNCH_POP_UP:
@@ -330,7 +344,31 @@ const Reducer = (state: any = initialState, action: Actions) => {
           ...state.panel_artist,
           filtered: action.payload
         }
-      }
+      };
+    case ActionType.UPDATE_SONG:
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          updated: true
+        }
+      };
+    case ActionType.CREATE_ALBUM:
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          updated: true
+        }
+      };
+    case ActionType.UPLOAD_MUSIC:
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          updated: true
+        }
+      };
     default:
       return state;
   }

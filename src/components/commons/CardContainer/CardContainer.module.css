@@ -37,9 +37,27 @@
   opacity: 1;
 }
 
+.btn:active {
+  transform: scale(0.98);
+}
+
 .left {
   left: 10px;
 }
 .right {
   right: 20px;
+}
+
+@media(max-width: 400px){
+  /* .inner2{
+  grid-template-columns: repeat(1, minmax(155px, 1fr));
+
+  } */
+  .inner2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 5vh;
+    width: 100%;
+  }
 }

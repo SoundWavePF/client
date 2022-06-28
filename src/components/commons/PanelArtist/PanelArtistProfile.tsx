@@ -4,14 +4,36 @@ import { useState } from "react";
 import * as actionCreator from '../../../redux/actions/action_artist';
 import { bindActionCreators } from "redux"; 
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom'
+//import { Button } from "react-bootstrap/lib/InputGroup";
+import Table from 'react-bootstrap/Table';
+
 
 interface myProps {
   content?: any;
 }
+interface buttonProps {
+  action: any;
+  state: boolean
+}
+
+const EditButton: React.FunctionComponent<buttonProps>  = (props)=>{
+  return (
+    <button onClick={()=>props.action(!props.state)}  className={styles.button}>
+    <svg className="css-i6dzq1" stroke-linejoin="round" 
+      stroke-linecap="round" fill="gray" stroke-width="2" 
+      stroke="black" height="24" width="24" viewBox="0 0 24 24">
+        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+    </svg>
+    Edit
+</button>
+  )
+}
+
 
 const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
   const {name, username, email, artist} = useSelector((state: any) => state.user_info);
-  const {description, totalFavoriteCount, n_albums, n_songs, totalPlayCount, totalPlaylistCount, stripe_Id} = useSelector((state: any) => state.panel_artist.info);
+  const {description, totalFavoriteCount, n_albums, n_songs, totalPlayCount, totalPlaylistCount, stripe_Id, donations} = useSelector((state: any) => state.panel_artist.info);
   const dispatch = useDispatch();
   const { changeAbout } = bindActionCreators(actionCreator, dispatch);
   // const imageHC = 'https://e-cdns-images.dzcdn.net/images/artist/5e17a1209254de68d7edcf9cccccdf67/250x250-000000-80-0-0.jpg';
@@ -19,6 +41,8 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
   // const textHC = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci animi placeat exercitationem vel sit maxime,\nab obcaecati architecto sint molestiae unde amet quasi harum iusto, beatae esse. Iste, quasi perferendis?. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla magnam perspiciatis impedit, nisi quasi provident,<br/> possimus repellat cupiditate totam mollitia non magni expedita? Aut quo vel sed cum, optio nisi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore animi aperiam ad consectetur saepe, vero expedita fugit, necessitatibus distinctio odio eum repellendus illum dolor eaque vitae libero eveniet! Iure, inventore. Lorem ipsum dolor, sit amet consectetur adipisicing elit.';
   const [edit, setEdit] = useState<boolean>(false);
   const [about, setAbout] = useState<string>(artist.description);
+  const navigate = useNavigate()
+  
   function cancel(){
     setEdit(false);
     setAbout(description);
@@ -34,6 +58,9 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
 
   return (
     <div className={styles.container}>
+      {/* <button className={styles.button} onClick={()=>navigate('/home')}>
+        <span>home</span>
+      </button> */}
       <img src={artist.image_medium} alt={username} />
       <span>{artist.name}</span>
       {stripe_Id ? <p>(Donations enabled)</p> :  <button onClick={()=>handleEnableDonation()} className={styles.btn}>Enable Donations</button> }
@@ -59,6 +86,10 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
             <div className={styles.title}>Playlist</div>
             <div className={styles.value}>{totalPlaylistCount}</div>
         </div>
+        <div className={styles.statInfo}>
+            <div className={styles.title}>Donations</div>
+            <div className={styles.value}>${donations?.map((donation: any)=>Number(donation.amount)).reduce((a:number, b:number)=>a+b, 0)}</div>
+        </div>
       </div>
       {
         edit ? 
@@ -71,9 +102,30 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
         :
         <div>
           <p>{about}</p>
-          <button onClick={() => setEdit(!edit)} className={styles.btn}>Edit about</button>
+          <EditButton action={setEdit} state={edit}/>
         </div>}
-      
+      <Table striped bordered size="sm">
+      <thead>
+        <tr className={'table-secondary'}>
+          <th>Donation ID</th>
+          <th>Amount</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+      {donations !== undefined && donations?.map((donation:any)=>{
+            return (
+              <tr>
+                <td>{donation.id}</td>
+                <td>${donation.amount}</td>
+                <td>{donation.createdAt.split('T')[0]}</td>
+              </tr>
+            )
+          }
+        )}
+      </tbody>
+    </Table>
+
     </div>
   )
 };

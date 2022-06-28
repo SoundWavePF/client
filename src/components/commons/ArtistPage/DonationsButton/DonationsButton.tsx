@@ -2,6 +2,36 @@ import Swal from 'sweetalert2'
 import style from './DonationsButton.module.css' 
 import axios from "axios";
 
+import {useState} from 'react' 
+
+interface btnProps {
+  artistId: any;
+  userEmail:any;
+  stripeId:any;
+  donate:any
+}
+
+const Button: React.FunctionComponent<btnProps > = (props)=>{
+  const [clicked, setClicked] = useState<boolean>(false)
+  function handleClick(){
+    
+    setClicked(true)
+    setTimeout(function(){
+      setClicked(false)
+      props.donate(props.artistId,props.userEmail,props.stripeId)
+    },400);
+  }
+  return (
+        <div className={style.buttonContainer}>
+          {/* <h2>Donate</h2> */}
+          {/* <button className={clicked? style.bubblyButtonClicked: style.bubblyButton} onClick={handleClick}>
+            Donate
+          </button> */}
+          <button onClick={handleClick}>Donate</button>
+          <p>Support your favorite creator.</p>
+        </div>
+  )
+}
 
 const DonationsButton = (props:any)=>{
   const swal:any = Swal
@@ -55,9 +85,12 @@ const DonationsButton = (props:any)=>{
     })
   } 
   return(
-      <button className={style.donateButton} onClick={()=>donate(props.artistId,props.userEmail,props.stripeId)}>
-        Donate
-      </button>
+    <Button 
+      artistId={props.artistId}
+      userEmail={props.userEmail}
+      stripeId={props.stripeId}
+      donate={donate}
+    />
   )
 }
 export default DonationsButton

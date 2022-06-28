@@ -18,6 +18,20 @@
   display: flex;
   justify-content: center;
 }
+@media(max-width:400px){
+  .container{
+    padding: 3vw;
+  }
+  .container>h1{
+    font-size: xx-large;
+    margin-bottom: 4vw;
+  }
+  .section{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
 /* .genreSpinner{
   width: 100px;
   height: 100px;

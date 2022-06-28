@@ -7,6 +7,7 @@ import * as actionCreator from "../../../redux/actions/action_player";
 import { bindActionCreators } from "redux";
 import FavoriteIcon from "../FavoriteIcon/FavoriteIcon";
 import { useDispatch } from "react-redux";
+import { useAuth0 } from '@auth0/auth0-react';
 
 interface myProps {
   item: any;
@@ -14,6 +15,8 @@ interface myProps {
 }
 
 const ListItem: React.FC<myProps> = (props: myProps) => {
+  const { user } = useAuth0();
+  const email = user?.email;
   const formatDuration = (duration: string): string => {
     const num = parseInt(duration);
     const minutes: number = Math.floor(num / 60);
@@ -37,9 +40,9 @@ const ListItem: React.FC<myProps> = (props: myProps) => {
             <img
               src={props.item.image_small}
               alt={"cover"}
-              onClick={() => playSong(props.item)}
+              onClick={() => playSong(props.item, email)}
             />
-            <span onClick={() => playSong(props.item)}>
+            <span onClick={() => playSong(props.item, email)}>
               {props.nb ? `${props.nb}. ${props.item.name}` : props.item.name}
             </span>
           </div>
@@ -99,6 +102,28 @@ const ListItem: React.FC<myProps> = (props: myProps) => {
           <div className={s.controllerContainer}></div>
         </div>
       );
+      case "donation":
+        return (
+          <div className={s.itemListContainer}>
+            {/* <Link className={s.links} to={"/artist/:id"}> */}
+              <div className={s.imageAndNameContainer}>
+                <div>
+                  <div>
+                    <img
+                      className={s.image}
+                      src={props.item.user.image_avatar}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div className={s.songName}>{props.item.user.username} donated ${props.item.amount}</div>
+                </div>
+              </div>
+            {/* </Link> */}
+            <div className={s.controllerContainer}></div>
+          </div>
+        );
 
     default:
       return <>nada</>;

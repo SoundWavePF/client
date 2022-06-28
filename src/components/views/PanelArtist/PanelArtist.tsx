@@ -19,32 +19,48 @@ import PanelArtistAlbums from "../../commons/PanelArtist/PanelArtistAlbums";
 import Player from "../../commons/Player/Player";
 import FloatButton from "../../commons/FloatButton/FloatButton";
 import PopUp from "../../commons/PanelArtist/PopUp/PopUp";
+import { useAuth0 } from "@auth0/auth0-react";
+import LoadingPage from "../../commons/LoadingPage/LoadingPage";
 
 const PanelArtist = () => {
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(1);
   const { email, rol, artist } = useSelector((state: any) => state.user_info);
+  const { updated } = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
   const { getPanelInfo } = bindActionCreators(actionCreator, dispatch);
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  // const [test, setTest] = useState(false)
   // const idTest = '63ab0aae-f562-4f5a-af65-97d14c8d5100';
   useEffect(()=>{
     getPanelInfo(artist?.id, email);
+    // if(rol==='undefined'){
+    //   setTest(true)
+    // }
   },[]);
   useEffect(()=>{
     getPanelInfo(artist?.id, email);
+    // if(rol!=='undefined'){
+    //   setTest(false)
+    // }
   },[email])
-
+  useEffect(()=>{
+    updated && getPanelInfo(artist?.id, email);
+  },[updated]);
   function handlePage(page: number) {
     setPage(page);
   }
-  return (
-    rol === 'artist' ?
-    <div className={styles.container}>
-        <FloatButton />
+  // if(isLoading || rol === 'undefined'){
+  //   return <LoadingPage />
+  // }
+  
+  if(isAuthenticated && rol==='artist'){
+    return (
+      <div className={styles.container}>
         <div className={sidebar.container}>
-          <div>
+          <Link to={'/home'}>
             <img src={logo} alt="SoundWave logo" className={sidebar.logo} />
             <span>SoundWave</span>
-          </div>
+          </Link>
           <div className={sidebar.button} onClick={()=>handlePage(1)}>
             <img src={admin} alt="prof" className={sidebar.img} />
             Profile
@@ -83,11 +99,14 @@ const PanelArtist = () => {
             <ArtistProfile/>
           </div>
         }
-        <Player/>
+        <FloatButton />
         <PopUp/>
       </div>
-    :
-    <Error404/>
-  );
+    );
+  }
+  if(!isAuthenticated || rol==='user'){
+    return <Error404/>
+  }
+  return <div></div>
 }
 export default PanelArtist

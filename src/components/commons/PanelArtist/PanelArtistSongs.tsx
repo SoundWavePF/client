@@ -16,18 +16,19 @@ const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
   const {songs, filtered} = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
   const { setFiltered } = bindActionCreators(actionCreator, dispatch);
-  // const [songsState, setSongsState] = useState([...songs])
+  const [songsState, setSongsState] = useState(songs)
   const [input, setInput] = useState("");
   useEffect(() => {
     if (!input) {
       setFiltered(songs);
+      // setSongsState(songs)
     } else {
-      // setFiltered(songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase())))
       let filter = songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase()))
-      console.log('________', filter)
+      // console.log('________', filter)
       setFiltered(filter)
+      // setSongsState(filter)
     }
-  },[input])
+  },[input, songs])
   // const searchSong = ()=>{
   //   if(input=== ''){
   //     setSongsState(songs)
@@ -61,7 +62,7 @@ const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
       </form>
       {
         filtered?.length>0 ?
-        <ListItemContainerPanelArtist content={filtered}/> 
+        <ListItemContainerPanelArtist content={filtered} nb={true}/>
         :
         <h1>no hay resultados</h1>
       }

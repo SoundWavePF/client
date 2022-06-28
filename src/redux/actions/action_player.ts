@@ -22,7 +22,7 @@ export const getGenres = () => {
 }
 export const getChart = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get('https://www.javierochoa.me/top')
+    axios.get('https://www.javierochoa.me/top/10')
       .then(response =>
         dispatch({
           type: ActionType.GET_CHART,
@@ -32,16 +32,38 @@ export const getChart = () => {
   };
 };
 
-export const getLastSongs = () => {
+export const getDiscoverSongs = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get("https://www.javierochoa.me/top").then((response) =>
+    axios.get("https://www.javierochoa.me/top/discover")
+    .then((response) =>
       dispatch({
-        type: ActionType.GET_LAST_SONGS,
-        payload: response.data.reverse(),
+        type: ActionType.DISCOVER_SONGS,
+        payload: response.data,
       })
     );
   };
 };
+
+export const getLastSongs = (email:any) => {
+  return (dispatch: Dispatch<any>) => {
+    axios.post("https://www.javierochoa.me/history", {email})
+    .then((response) =>
+      dispatch({
+        type: ActionType.GET_LAST_SONGS,
+        payload: response.data.history,
+      })
+    );
+  };
+};
+
+export const setRecentlyPlayed = (song: swSong, email: string) =>{
+  axios.post("https://www.javierochoa.me/play", {songId: song.id, userEmail:email})
+  .then( res => console.log('set Recently Played', res))
+  return {
+    type: ActionType.GET_LAST_SONGS,
+    payload: song
+  }
+}
 
 export const searchAll = (input: string) => {
   //hasta que no halla back el axios queda comentado
@@ -60,7 +82,8 @@ export const searchAll = (input: string) => {
       }));
   };
 };
-export const playSong = (data: swSong) => {
+export const playSong = (data: any, email:any) => {
+  axios.post("https://www.javierochoa.me/play", {songId: data.id, userEmail:email})
   return (dispatch: Dispatch<Actions>) => {
     dispatch({
       type: ActionType.PLAY_SONG,
@@ -140,7 +163,7 @@ export const getAlbumPlaylist = (id: any, type: string) => {
 }
 export const getTop = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get("https://www.javierochoa.me/top").then((response) =>
+    axios.get("https://www.javierochoa.me/top/10").then((response) =>
       dispatch({
         type: ActionType.GET_TOP,
         payload: response.data,

@@ -38,8 +38,12 @@
 }
 
 .buttons {
-    border: 1px solid rgba(0, 0, 0, 0.315);
+    border:none;
     border-radius:  7px;
+    background-color:var(--yellow-light);
+    padding: 5px;
+    padding-top: 2px;
+    
 
     
 }
@@ -60,6 +64,14 @@
     flex: row;
     justify-content: space-around;
     justify-items: center;
+    font-size:large;
+}
+
+.subscriptionContainer div:first-letter {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    color: var(--yellow-dark);
+    letter-spacing: 1px;
 }
 
 
@@ -140,14 +152,16 @@
     height: 60px;
     border: 1px solid rgba(0, 0, 0, 0.232);
     font-family: 'sw-medium';
+    font-size: x-large;
 }
+
 
 .deleteButton:hover {
     width: 100%;
     height: 60px;
     border: 1px solid rgba(0, 0, 0, 0.232);
     font-family: 'sw-bold';
-    background-color: #ffee32;
+    background-color: #cd5555;
     transition: ease-in 0.1s;
 }
 
@@ -220,3 +234,174 @@
     background-size: cover;
 }
 
+
+.Loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.Loading div{
+    width: 5em;
+    height: 5em;
+    
+}
+
+.ContainerImage{
+    position: relative;
+    max-width: 140px;
+    width: 140px;
+  margin: 10px;
+}
+
+.ContainerImage img{
+    z-index: 0;
+}
+.ContainerImage button{
+    position: absolute;
+    z-index: 1;
+    right: 45px;
+    top: 40px;
+    background-color: rgba(131, 110, 110, 0.613);
+    
+    background-image: url(../../../assets/uploadpicture.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 3em;
+
+    border: none;
+    height: 50px;
+    width: 60px;
+    border-radius: 10px;
+    visibility: hidden;
+
+
+}
+.ContainerImage:hover    button{
+    visibility: visible;
+    opacity: 68%;
+
+}
+
+.confirmButton{
+    background-color: var(--yellow-ligth);
+}
+
+.cancelButton{
+    background-color: red;
+
+}
+
+/* Resposive */
+
+@media(max-width: 400px){
+    .page{
+
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        
+        
+    }
+    .container{
+        box-sizing: none;
+
+        margin: 0px;
+        padding: 0px;
+        height: 100vh;
+        width: 90%;
+        display: grid;
+     
+        grid-template-areas: 
+        "image"
+        "info";
+    margin-bottom: 1em;
+    overflow: hidden;
+
+    }
+    .ContainerImage{
+        
+        max-width: none;
+        display: flex;
+        width: 100%;
+        height: 7em;
+        background-color: #ffee32;
+        justify-content: center;
+        align-content: center;
+        align-items: stretch;
+
+        
+        grid-area: image;
+        margin: 0px;
+
+        
+    }
+    .ContainerImage img{
+        
+        top: 10px;
+        height: 6em;
+        width: 6.5em;
+    }
+
+    .contentContainer{
+        grid-area: info;
+
+        display: grid;
+        grid-template-columns: 1fr  ;
+    }
+    .subscriptionContainer{
+        width: 100%;
+        height: auto;
+        
+        display: flex;
+        flex-direction: column;
+        row-gap: 1em;
+    }
+    .title
+    {
+    background-color: #ffee32;
+    display: flex;
+    justify-content: center;
+
+    }
+    .title p
+    {
+     
+        margin-top: 10px;
+
+        
+        font-size: large;
+    }
+
+    .parent{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+
+    gap: 10px;
+
+    }
+  
+    .parent label:nth-child(1){
+        
+    }
+    .parent input:nth-child(1){
+    }
+    .parent button:nth-child(1){
+        background-color: #ffee32;
+       
+    }
+.ContainerImage button{
+left: 170px;
+
+}
+  
+ 
+
+}

@@ -61,34 +61,37 @@
 
 .ContainerPlaylist {
     /*overflow: hidden;*/
-    height: 89%;
+    /*position: relative;*/
+    height: 100%;
     width: 100%;
     padding: 1em;
     display: flex;
-    justify-content: space-evenly;
-    /*flex-wrap: wrap;*/
+    /*justify-content: space-evenly;*/
+    flex-wrap: wrap;
+    gap: 40px 40px;
     /*grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));*/
 }
 
-.ContainerPlaylist div {
+/*.ContainerPlaylist div {
     background-color: beige;
     position: relative;
     height: 15em;
     width: 15em;
-}
+}*/
+
 .User {
-    width: 40%;
-    height: 40%;
+    width: 70%;
+    height: 18vw;
     display: flex;
-    padding: 3%;
 }
 .User img {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
+    width: 15vw;
+    height: 15vw;
+    margin:1vw;
+    border-radius: 6px;
 }
 .User h1 {
-    margin-left: 1em;
+    font-size: 2.7vw;
     display: flex;
     align-items: center;
 }
@@ -103,4 +106,33 @@
     background-color: var(--yellow-light);
     padding: 1em;
     border-radius: 1em;
+}
+@media(max-width:400px){
+    .ContainerLibrary{
+        width: 100%;
+        margin: 0%;
+        padding: 0%;
+    }
+    .User{
+        width: 100%;
+        height: 30vh;
+        flex-direction: column;
+        align-items: center;
+    }
+    .User>img{
+        width: 40vw;
+        height: 40vw;
+        margin: 2vh;
+    }
+    .User>h1{
+        font-size: x-large;
+    }
+    .ToolBar>div>a>h4{
+        font-size: large;
+        margin: 0%;
+        margin-left: 10vw;
+    }
+    .ToolBar{
+        padding: 0%;
+    }
 }
