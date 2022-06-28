@@ -14,7 +14,17 @@
   font-size: max(1rem, 1.1vw);
   margin-top: 0.5rem;
 }
-
+@media(max-width:400px){
+  .default{
+    width: 38vw;
+    height: 38vw;
+    margin-bottom: 1vh;
+  }
+  .default > p{
+    font-size: small;
+    margin: 0%;
+  }
+}
 .song figure {
   border-radius: 5px;
   background: var(--gray-light) no-repeat center/40%

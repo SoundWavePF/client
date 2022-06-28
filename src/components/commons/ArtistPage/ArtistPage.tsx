@@ -46,7 +46,7 @@ export const ArtistPage = () => {
           <button onClick={(e: any) => setOption(e.target.value)} value='Albums'>Albums</button>
           <button onClick={(e: any) => setOption(e.target.value)} value='Singles'>Singles</button>
           <button className={Styled.descriptionTab} onClick={(e: any) => setOption(e.target.value)} value='Description'>Description</button>
-          <button onClick={(e: any) => setOption(e.target.value)} value='Donations'>Donations</button>
+          <button className={Styled.donations} onClick={(e: any) => setOption(e.target.value)} value='Donations'>Donations</button>
         </div>
         <ArtistCardContainer props={option} />
       </div>

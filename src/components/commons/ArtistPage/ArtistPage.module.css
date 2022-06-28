@@ -96,8 +96,6 @@
 }
 
 .ImageDonation{
-  /* display: flex; */
-  /* background-color: red; */
   align-items: center;
   margin-right: 5%;
 }
@@ -110,26 +108,27 @@
     padding: 0%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items:center;
   }
   .User{
     width: 80%;
-    height: 20vh;
+    height: 40vh;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    justify-content: flex-end;
   }
   .User>div{
     width: 100%;
     align-items: center;
-    margin-top: 0%;
+    margin: 0%;
   }
   .User > div > h1{
     font-size: x-large;
     margin: 0%;
-    padding-bottom: 1rem;
+    padding-top: 1rem;
   }
-  .User >img{
+  .User>div>img{
     width: 50vw;
     height: 50vw;
     margin: 3vw;
@@ -144,12 +143,12 @@
     display: none;
   }
   .ImageDonation{
-    display: none;
-    /* padding-top: 4rem; */
-    /* background-color: #ffd100; */
+    height: 100%;
   }
   .descriptionTab{
     display: flex;
   }
-
+  .donations{
+    display: none;
+  }
 }
