@@ -37,8 +37,13 @@
 }
 @media(max-width: 400px){
   .buttonContainer{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: end; */
     width: 100vw;
-    height: 20vw;
+    /* margin-top: 3rem; */
+    height: 15vw;
+    /* background-color: aqua; */
     justify-content: flex-end;
     align-items: center;
   }
@@ -48,6 +53,7 @@
     height: 100%;
   }
   .buttonContainer>p{
+    display: none;
     font-size: small;
   }
   .buttonContainer>button{

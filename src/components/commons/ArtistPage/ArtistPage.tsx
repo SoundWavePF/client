@@ -38,14 +38,14 @@ export const ArtistPage = () => {
           </div>
           <div>
             <h1>{artist.name}</h1>
-            <p>{artist.description}</p>
+            <p className={Styled.description}>{artist.description}</p>
           </div>
         </div>
         <div className={Styled.ToolBar}>
           <button onClick={(e: any) => setOption(e.target.value)} value='Top'>Top 5</button>
           <button onClick={(e: any) => setOption(e.target.value)} value='Albums'>Albums</button>
           <button onClick={(e: any) => setOption(e.target.value)} value='Singles'>Singles</button>
-          <button onClick={(e: any) => setOption(e.target.value)} value='Description'>Description</button>
+          <button className={Styled.descriptionTab} onClick={(e: any) => setOption(e.target.value)} value='Description'>Description</button>
         </div>
         <ArtistCardContainer props={option} />
       </div>
