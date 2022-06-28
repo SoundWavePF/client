@@ -252,13 +252,11 @@
     position: relative;
     max-width: 140px;
     width: 140px;
+  margin: 10px;
 }
 
 .ContainerImage img{
     z-index: 0;
-    
-
-    
 }
 .ContainerImage button{
     position: absolute;
@@ -299,39 +297,54 @@
 
 @media(max-width: 400px){
     .page{
+
         margin: 0px;
         padding: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        
+        
     }
     .container{
+        box-sizing: none;
 
         margin: 0px;
         padding: 0px;
         height: 100vh;
-        width: 100%;
+        width: 90%;
         display: grid;
      
         grid-template-areas: 
         "image"
         "info";
     margin-bottom: 1em;
+    overflow: hidden;
 
     }
     .ContainerImage{
+        
         max-width: none;
         display: flex;
         width: 100%;
         height: 7em;
         background-color: #ffee32;
         justify-content: center;
-        align-items: center;
+        align-content: center;
+        align-items: stretch;
+
+        
         grid-area: image;
+        margin: 0px;
 
         
     }
     .ContainerImage img{
+        
         top: 10px;
-        height: 5em;
-        width: 5em;
+        height: 6em;
+        width: 6.5em;
     }
 
     .contentContainer{
@@ -353,9 +366,14 @@
     background-color: #ffee32;
     display: flex;
     justify-content: center;
+
     }
     .title p
     {
+     
+        margin-top: 10px;
+
+        
         font-size: large;
     }
 
@@ -379,6 +397,10 @@
         background-color: #ffee32;
        
     }
+.ContainerImage button{
+left: 170px;
+
+}
   
  
 

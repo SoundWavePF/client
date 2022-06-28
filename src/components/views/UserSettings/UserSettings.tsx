@@ -28,6 +28,7 @@ const UserSettings = () => {
   const [image,setImage]:any= useState()
   const user_info=useSelector((state:any)=>state.user_info)
   const [InfoUser,setInfoUser]:any= useState(user_info)
+  const [InfoUserA,setInfoUserA]:any= useState(user_info.artist)
   const dispatch = useDispatch()
   const { updateUser ,getUserInfo} = bindActionCreators(actionCreator, dispatch)
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
@@ -280,7 +281,7 @@ const changeImage = async()=>{
         <button onClick={()=>changeImage()}></button>
         <img src={user_info.image_avatar?user_info.image_avatar:userDefault} alt="image" className={style.userImage} />
         </div>
-
+ 
 
        
           
@@ -292,12 +293,20 @@ const changeImage = async()=>{
             
             <hr></hr>
 
+            {InfoUserA?  
+              <div className={style.subscriptionContainer}>
+              <div>{`${user_info?.username} Currently you are an Artist`}</div>
+            </div>
+            
+            
+            : 
             <div className={style.subscriptionContainer}>
               <div>{`${user_info?.username} Currently you are an user`}</div>
               <button onClick={(e) => modalArtist()} name='modalArtist' className={style.buttons}>
               Request to be an artist
               </button>
             </div>
+}
 
             <br />
 
