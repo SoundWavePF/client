@@ -147,10 +147,10 @@
 .playlist:hover .icon {
   opacity: 1;
 }
-.playlist:hover {
+.playlist > a:hover{
   filter: brightness(75%);
   transition: 0.3s ease-in-out;
-}
+} 
 .icon {
   transition: 0.3s ease-in-out;
   width: 17%;
@@ -164,6 +164,7 @@
   justify-content: center;
   align-items: center;
   opacity: 0;
+  z-index: 20;
 }
 .icon > button {
   width: 80%;
