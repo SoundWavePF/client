@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_player";
 import { useParams } from "react-router";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const GenrePage = () => {
   const {id} = useParams()
@@ -31,11 +32,7 @@ const GenrePage = () => {
     );
   } else{
     return(
-      <div className={styles.container}>
-            <div className={styles.sectionLoading}>
-              <div className="spinner-border"  role="status"></div>
-            </div>
-        </div>
+      <LoadingSpinner/>
     )
   }
 };
