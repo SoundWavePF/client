@@ -53,7 +53,7 @@
   --text-secondary: var(--gray-light);
   --text-contrast: black;
 
-  --background-accent: var(--gray-intermediate);
+  --background-accent: var(--gray-dark);
   --background-accent-secundary: var(--background-intermediate);
 
   background-color: var(--background-primary);

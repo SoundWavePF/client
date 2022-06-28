@@ -2,13 +2,12 @@
   display: grid;
   grid-template-columns: repeat(2, 10%) 70% 10%;
   grid-template-rows: 1fr;
-  /* grid-column-gap: 0px;
-  grid-row-gap: 0px; */
   font-family: 'sw-medium';
   border-bottom: 1px solid var(--gray-light);
 }
 .card:hover{
   background-color: var(--gray-light);
+  color: black;
 }
 .likeImg {
   width: 30px;
@@ -70,7 +69,10 @@
   font-family: 'sw-light';
   margin-right: 7px;
   text-decoration: none;
-  color: black;
+  color: var(--text-primary);
+}
+.artistName:hover{
+  color: var(--text-primary);
 }
 .likeIcon { 
   grid-area: 1 / 4 / 2 / 5; 

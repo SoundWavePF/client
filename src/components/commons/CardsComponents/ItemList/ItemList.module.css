@@ -12,36 +12,38 @@
 }
 
 .imageAndNameContainer {
-  display: flex;
-  position: relative;
-  align-items: center;
+    display: flex;
+    position: relative;
+    align-items: center;
 }
 
 .Play {
-  left: 25px;
-  top: 10px;
-  font-weight: bolder;
-  font-size: xx-large;
-  position: absolute;
-  display: none;
+    left: 25px;
+    top: 10px;
+    font-weight: bolder;
+    font-size: xx-large;
+    position: absolute;
+    display: none;
 }
 
 .imageAndNameContainer:hover .Play {
-  display: flex;
-  justify-content: center;
-  height: 1.5em;
-  left: 15px;
-  top: 10px;
-  font-weight: bolder;
-  font-size: xx-large;
-  position: absolute;
-  display: block;
-  color: #0f0f0f;
+    display: flex;
+    justify-content: center;
+    height: 1.5em;
+    left: 15px;
+    top: 10px;
+    font-weight: bolder;
+    font-size: xx-large;
+    position: absolute;
+    display: block;
+    color: #0f0f0f;
 }
+
 .imageAndNameContainer:hover .image {
-  color: #0f0f0f;
-  filter: opacity(70%);
+    color: #0f0f0f;
+    filter: opacity(70%);
 }
+
 .Play {
     left: 25px;
     top: 10px;
@@ -158,9 +160,9 @@
 }
 
 .duration {
-  font-size: 20px;
+    font-size: 20px;
 
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .timeImg {
@@ -168,26 +170,48 @@
     margin-left: 4px;
 }
 
-.Play:hover{
+.Play:hover {
     cursor: pointer;
 }
-.controllerContainer > button:first-child{
+
+.controllerContainer>button:first-child {
     height: 35px;
 }
 
-@media(max-width: 400px){
-    .itemListContainer{
+@media(max-width: 400px) {
+    .itemListContainer {
         width: 80vw;
+        min-height:70px ;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .songNameContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        text-align: start;
+    }
+
+    .duration {
+        display: none;
+    }
+
+    .timeImg {
+        display: none;
+    }
+
+    .songName {
+        max-width: 200px;
+        font-size: 16px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .spanArtistName{
+        font-size: 15px;
+
     }
     
-    .songNameContainer{
-        display: flex;
-        align-items: center;
-    }
-    .duration{
-        display: none;
-    }
-    .timeImg{
-        display: none;
-    }
 }
