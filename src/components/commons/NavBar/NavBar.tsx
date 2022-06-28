@@ -7,10 +7,14 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import MenuUser from "../SearchBar/MenuUser";
 import swAnim from "../../../assets/loadinganimation.gif";
+import { bindActionCreators } from "redux";
+import * as actionUser from '../../../redux/actions/action_user'
+import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const LoginButton: React.FunctionComponent = ()=>{
-  const { loginWithRedirect } = useAuth0()
+  const {user, loginWithRedirect } = useAuth0()
   return (
   <button className={styles.buttonLogin} onClick={() => loginWithRedirect()}> Login
     <div className={styles.icon}>
@@ -26,12 +30,19 @@ const LoginButton: React.FunctionComponent = ()=>{
 }
 
 const NavBar = () => {
+  const dispatch = useDispatch()
+  const { getUserInfo } = bindActionCreators(actionUser,dispatch);
   // const [username, setUsername] = useState('')
   const { loginWithRedirect, logout, isAuthenticated, user, isLoading } = useAuth0();
+  const user_info=useSelector((state:any)=>state.user_info)
+  
   const buttonStyle = {
     backgroundColor: 'var(--yellow-light)', 
     border: 'var(--yellow-light)'
   }
+  useEffect(()=>{
+    getUserInfo(user?.email);
+  },[])
   // const useAuth: any = useAuth0();
   // const { user, isAuthenticated, isLoading } = useAuth
   // const newUser: any = user
@@ -79,7 +90,7 @@ const NavBar = () => {
         {isLoading ? <img src={swAnim} alt={'Loading...'} width={30} height={30}/> : isAuthenticated ? (
                     
                     //<MenuUser username={"username"}/>
-                    (<div><img className={styles.picture} src={user?.picture} alt={user?.name} /> 
+                    (<div><img className={styles.picture} src={user_info?.image_avatar} alt={user?.name} /> 
                     <button className="btn btn-warning" style={buttonStyle} onClick={() => logout({ returnTo: window.location.origin })}>Logout</button></div>)
                     )
                     : 
