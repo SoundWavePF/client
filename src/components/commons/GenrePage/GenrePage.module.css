@@ -26,6 +26,11 @@
     font-size: xx-large;
     margin-bottom: 4vw;
   }
+  .section{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 }
 /* .genreSpinner{
   width: 100px;
