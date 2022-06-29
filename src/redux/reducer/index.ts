@@ -380,7 +380,8 @@ const Reducer = (state: any = initialState, action: Actions) => {
         panel_artist: {
           ...state.panel_artist,
           updated: true
-        };
+        }
+      };
     case ActionType.SET_CURRENT_SONG_POSITION:
         return{
           ...state,
