@@ -211,9 +211,16 @@
   display: flex;
   padding: 1rem;
   align-items: center;
-  width: 60%;
+  width: 100%;
 }
 .albumOptions > select{
   background-color: transparent;
   border: 1px solid lightgray;
+}
+.albumOptions > input[type=text]{
+  background-color: transparent;
+  border: 1px solid lightgray;
+}
+.albumOptions > label{
+  margin: 0 .5rem;
 }

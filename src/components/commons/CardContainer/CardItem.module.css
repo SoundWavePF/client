@@ -3,6 +3,8 @@
   width: 100%;
   border: 1px solid lightgray;
   cursor: pointer;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 .default > a :first-child:hover {
   opacity: 90%;
@@ -26,6 +28,8 @@
   cursor: pointer;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 .song > figure > img:hover {
   opacity: 40%;
@@ -139,6 +143,8 @@
 }
 .playlist > a > img {
   width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 .playlist > p {
   font-family: sw-medium;

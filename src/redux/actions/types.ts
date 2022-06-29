@@ -44,6 +44,9 @@ export type Actions =
   | SetFiltered
   | CreateAlbum
   | UploadMusic
+  | UploadNewAlbum
+  | DeleteSong
+  | DeleteAlbum
   | setCurrentSongPosition
   | setPausePlay;
 
@@ -94,8 +97,12 @@ export enum ActionType {
   DISCOVER_SONGS = "DISCOVER_SONGS",
   CREATE_ALBUM = "CREATE_ALBUM",
   UPLOAD_MUSIC = "UPLOAD_MUSIC",
+  UPLOAD_NEW_ALBUM = "UPLOAD_NEW_ALBUM",
+  DELETE_SONG = "DELETE_SONG",
+  DELETE_ALBUM = "DELETE_ALBUM",
+  UPDATE_LIBRARY = "UPDATE_LIBRARY",
   SET_CURRENT_SONG_POSITION = 'SET_CURRENT_SONG_POSITION',
-  SET_PAUSE_PLAY = 'SET_PAUSE_PLAY'
+  SET_PAUSE_PLAY = 'SET_PAUSE_PLAY',
 }
 
 export interface GetStats {
@@ -274,12 +281,22 @@ interface UploadMusic {
   type: ActionType.UPLOAD_MUSIC;
   payload?: any;
 }
-
+interface UploadNewAlbum {
+  type: ActionType.UPLOAD_NEW_ALBUM;
+  payload?: any;
+}
+interface DeleteSong {
+  type: ActionType.DELETE_SONG | ActionType.UPDATE_LIBRARY;
+  payload?: any;
+}
+interface DeleteAlbum {
+  type: ActionType.DELETE_ALBUM | ActionType.UPDATE_LIBRARY;
+  payload?: any;
+}
 interface setCurrentSongPosition {
   type: ActionType.SET_CURRENT_SONG_POSITION;
   payload: number 
 }
-
 interface setPausePlay {
   type: ActionType.SET_PAUSE_PLAY;
   payload: boolean
