@@ -7,7 +7,7 @@
     padding: 6px;
 
     text-align: center;
-    background: #fff;
+    background: var(--background-primary);
     border-radius: 5px;
     font-family: sw-medium;
 
@@ -22,11 +22,11 @@
     padding: 6px;
 
     text-align: center;
-    background: #fff;
+    background: var(--background-primary);
     border-radius: 5px;
     font-family: sw-medium;
 
-    border: 1px solid gray;
+    border: 1px solid var(--background-intermediate);
 
     animation: show .2s ease-in-out;
   }
@@ -48,9 +48,9 @@
     height: 150px;
     width: 150px;
 
-    border: 1px solid gray;
+    border: 1px solid var(--background-intermediate);
 
-    background-color: var(--gray-dark);
+    background-color: var(--background-secondary);
   }
 
   .bkg {
@@ -139,6 +139,7 @@
     padding: 3px;
     border-radius: 2px;
     transition: background 0.2 ease-in;
+    color: var(--text-primary);
 }
 
 .btn:hover{

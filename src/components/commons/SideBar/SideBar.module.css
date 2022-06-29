@@ -23,6 +23,20 @@
   display: flex;
   align-items: center;
 }
+.button>svg{
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
+  margin-right: 7px;
+  color: var(--text-primary);
+  fill: currentColor;
+}
+.img{
+  width: 25px;
+  height: 25px;
+  margin-left: 15px;
+  margin-right: 7px;
+}
 .button:hover{
   filter: brightness(1.10);
 }
@@ -39,12 +53,6 @@
 }
 .linkLogo:hover{
   color: var(--text-primary);
-}
-.img{
-  width: 25px;
-  height: 25px;
-  margin-left: 15px;
-  margin-right: 7px;
 }
 .buttonDis{
   width: 100%;
