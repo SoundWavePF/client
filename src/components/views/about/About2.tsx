@@ -37,13 +37,13 @@ const  About2=( )=> {
       </div>
       <div className={Style.containerInfo}>
         <div className={Style.div2}>
-          <div className={Style.divInfo}>
+          {/* <div className={Style.divInfo}>
             <h3>Retos de este proyecto</h3>
             <p> Lorem ipsum dolor sit, amet consectetur 
                 adipisicing elit. Dolores atque sequi reprehenderit officiis
                   veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
                   tempore nisi aliquam a ea! Officia.</p>
-          </div>
+          </div> */}
           <div className={Style.divInfo}>
             <h3>Trabajo en equipo</h3>
             <p> Para llevar a cabo este proceso utilizamos la metodoligia Scrum con el objetivo principal de trabajar de manera colaborativa, y para fomentar el trabajo en equipo. Con este método de trabajo lo que se pretende es alcanzar el mejor resultado de un proyecto determinado.</p>
