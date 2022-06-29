@@ -33,7 +33,7 @@ const Song = (props)=>{
             <div className={style.name}  onClick={handleClick}>
                 =
                 <img className={style.image} src={props.item.image_small} alt="" />
-                {props.index}. {props.item.name}
+                {props.index}. <span>{props.item.name}</span>
                 { queue[currentSongPosition]?.id === props.item.id && isPlaying? <SoundWave/>: null}
             </div>
             <button onClick={handleDelete} className={style.delete}>✖</button>

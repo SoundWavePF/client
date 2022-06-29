@@ -19,8 +19,10 @@ interface myProps {
 
 const CardItem: React.FC<myProps> = (props: myProps) => {
   const { isAuthenticated } = useAuth0();
-  const currentSongPosition = useSelector( (state: any)=>state.player.currentSongPosition)
-  const isPlaying = useSelector( (state: any)=>state.player.isPlaying)
+  const renderWave = useSelector( (state: any)=>{
+    const {currentSongPosition, isPlaying} = state.player
+    return state.queue[currentSongPosition]?.id === props.item.id && isPlaying
+  })
   const queue = useSelector( (state: any)=>state.queue)
   let IType = props.item.type;
   const { user } = useAuth0();
@@ -106,7 +108,7 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
                 </li>
               )}
             </ul>
-                { queue[currentSongPosition]?.id === props.item.id && isPlaying? <SoundWave/>: null}
+                { renderWave? <SoundWave/>: null}
             </figure>
             <p>{props.item.name}</p>
             <Link to={`/artist/${props.item.artists[props.item.artists.length - 1].id}`}>{props.item.artists[props.item.artists.length - 1].name}</Link>
