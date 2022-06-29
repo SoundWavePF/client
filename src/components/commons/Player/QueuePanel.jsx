@@ -17,8 +17,10 @@ const Song = (props)=>{
     const {user} = useAuth0() 
     const dispatch = useDispatch()
     const {deleteFromQueue}  = bindActionCreators(actionCreator, dispatch);
-    const currentSongPosition = useSelector( (state)=>state.player.currentSongPosition)
-    const isPlaying = useSelector( (state)=>state.player.isPlaying)
+    const renderWave = useSelector( (state)=>{
+        const {currentSongPosition, isPlaying} = state.player
+        return state.queue[currentSongPosition]?.id === props.item.id && isPlaying
+      })
     const queue = props.queue
 
     function handleClick(){
@@ -34,7 +36,7 @@ const Song = (props)=>{
                 =
                 <img className={style.image} src={props.item.image_small} alt="" />
                 {props.index}. <span>{props.item.name}</span>
-                { queue[currentSongPosition]?.id === props.item.id && isPlaying? <SoundWave/>: null}
+                {renderWave? <SoundWave/>: null}
             </div>
             <button onClick={handleDelete} className={style.delete}>✖</button>
         </div>
