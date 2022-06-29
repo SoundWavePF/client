@@ -38,7 +38,9 @@ export default function Player(){
   const [volume, setVolume] = useState('20');
   const [loopPlaying, setLoopPlaying ] = useState(false)
   const [loopCurrentSong, setLoopCurrentSong ] = useState(false)
-  useEffect(() => queue.length && setIsPlaying(true) , [queue[0]])
+  useEffect(() =>{
+    if(queue.length) setIsPlaying(true); 
+  }, [queue[0]])
   useEffect(() => updatePos(), [queue]);
   function updatePos(){
     if(pos + 1 > queue.length){
