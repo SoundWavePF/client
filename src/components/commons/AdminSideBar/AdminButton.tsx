@@ -5,7 +5,6 @@ const AdminButton = ({option}:any)=>{
     const toggleMode = () => {
         document.querySelector('#appSW')?.classList.toggle('light-mode')
         document.querySelector('#appSW')?.classList.toggle('dark-mode')
-        console.log(document.querySelector('#appSW')?.classList[0])
     }
     return (
     <div className={style.navbar}>

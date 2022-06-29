@@ -148,6 +148,12 @@
   padding: 1rem;
   background-color: transparent;
 }
+.inputSearch>svg{
+  width: 20px;
+  height: 20px;
+  color: var(--text-primary);
+  fill: currentColor;
+}
 .inputSearch>input:focus{
   outline: none;
 }

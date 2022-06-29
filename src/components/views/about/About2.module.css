@@ -25,9 +25,11 @@
   margin: 3vw;
   height: 32vw;
 }
-.div1>img{
+.div1>svg{
   width: 29vw;
   height: 29vw;
+  color: var(--text-primary);
+  fill: currentColor;
 }
 .divInfo{
   width: 20vw;
