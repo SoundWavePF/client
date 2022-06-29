@@ -32,6 +32,12 @@
   margin-left: 15px;
   margin-right: 15px;
 }
+.imgDark{
+  width: 25px;
+  margin-left: 15px;
+  margin-right: 15px;
+  filter: invert(1);
+}
 .link{
   text-decoration: none;
   color: var(--text-primary);

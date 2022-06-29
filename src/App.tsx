@@ -25,6 +25,7 @@ import PanelArtist from "./components/views/PanelArtist/PanelArtist";
 import * as actionCreator from "./redux/actions/action_user";
 import * as actionCreator2 from "./redux/actions/action_admin";
 import LoadingPage from "./components/commons/LoadingPage/LoadingPage";
+import AdminButton from "./components/commons/AdminSideBar/AdminButton";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -45,7 +46,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 
-        <Route path="/about" element={<About2 />} />
+        <Route path="/about" element={<><About2 /><AdminButton/></>} />
         <Route
           path="/home"
           element={
@@ -122,7 +123,7 @@ function App() {
 
         <Route path="/settings" element={<UserSettings />} />
         <Route path="/panel_artist" element={isLoading?<LoadingPage/>:<><PanelArtist/><Player/></>} />
-        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/admin" element={<><AdminPanel /><AdminButton/></>} />
         <Route path="/file" element={<FileUpload />} />
 
         <Route path="/*" element={<Error404 />} />

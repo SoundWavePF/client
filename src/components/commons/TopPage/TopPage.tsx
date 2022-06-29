@@ -3,12 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_player";
-import { useParams } from "react-router";
 import TopCard from "./TopCard";
 
 const TopPage = () => {
-  const {id} = useParams()
-  console.log(id)
   const dispatch = useDispatch();
   const { getTop } = bindActionCreators(actionCreator,dispatch);
   const top = useSelector((state: any) => state.top);

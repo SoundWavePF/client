@@ -43,7 +43,6 @@ const MultiButtons: React.FunctionComponent<option> = (props)=>{
 
 function filterUsers(state: any, filter:string){
   if(filter==='aproved'){
-    console.log('users',state.users)
     return state.users.length? state.users.filter( (user: any)=>{
       return !user.requested_artist
     }): state.users
