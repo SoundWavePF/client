@@ -209,26 +209,28 @@
 @media(max-width:400px) {
     .container {
         display: flex;
-        justify-content: space-evenly;
         width: 100%;
+        padding: 0%;
     }
-
     .container>div:last-child{
         width: 40%;
         justify-content: space-evenly;
     }
-
+    .container>div:first-child{
+        width: 100%;
+    }
+    .container>div:first-child>span{
+        margin-left: 4px;
+    }
     .textItem {
-        max-width: 136px;
+        max-width: 140px;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
     }
-
     .timeIcon {
         display: none
     }
-
     .duration {
         display: none;
     }

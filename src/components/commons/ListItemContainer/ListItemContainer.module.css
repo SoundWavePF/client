@@ -39,3 +39,8 @@
 .choose{
   background-color: rgba(49, 49, 49, 0.25) !important;
 }
+@media(max-width:400px){
+  .header{
+    display: none;
+  }
+}
