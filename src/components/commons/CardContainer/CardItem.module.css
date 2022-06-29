@@ -14,21 +14,10 @@
   font-size: max(1rem, 1.1vw);
   margin-top: 0.5rem;
 }
-@media(max-width:400px){
-  .default{
-    width: 38vw;
-    height: 38vw;
-    margin-bottom: 1vh;
-  }
-  .default > p{
-    font-size: small;
-    margin: 0%;
-  }
-}
 .song figure {
   border-radius: 5px;
   background: var(--gray-light) no-repeat center/40%
-    url("../../../assets/play.png");
+  url("../../../assets/play.png");
 }
 .song > figure > img {
   border-radius: 5px;
@@ -186,4 +175,20 @@
 .icon > button > img {
   width: 100%;
   height: 100%;
+}
+@media(max-width:400px){
+  .default{
+    width: 38vw;
+    height: 38vw;
+    margin-bottom: 1vh;
+  }
+  .default > p{
+    font-size: small;
+    margin: 0%;
+  }
+  .playlist{
+    width: 38vw;
+    height: 38vw;
+    margin-bottom: 1vh;
+  }
 }
