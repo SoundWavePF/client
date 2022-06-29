@@ -38,7 +38,7 @@ export const ArtistPage = () => {
           </div>
           <div>
             <h1>{artist.name}</h1>
-            <p className={Styled.description}>{artist.description}</p>
+            <p>{artist.description}</p>
           </div>
         </div>
         <div className={Styled.ToolBar}>

@@ -41,6 +41,9 @@ const Upload = () => {
     newFiles.splice(i, 1);
     setFiles(newFiles);
   }
+  const checkFields = () => {
+
+  }
   const saveMusic = async () => {
 
     var sameAlbumId = albums.find((e:any)=>e.name===albumForAll)?.id
@@ -85,8 +88,8 @@ const Upload = () => {
               if (local?.length) {
                 let newFiles: any[] = [];
                 for (let i = 0; i < local.length || 0; i++) {
-
-                  newFiles.push({audio: URL.createObjectURL(local[i]), album: '', name:'', isSingle:false, data:local[i]});
+                  console.log('a file ',local[i])
+                  newFiles.push({audio: URL.createObjectURL(local[i]), album: '', name:local[i].name?.split('.mp3')[0], isSingle:false, data:local[i]});
                 }
                 setFiles([...files, ...newFiles]);
               };
@@ -105,7 +108,7 @@ const Upload = () => {
                   ))
                 }
               </select>
-              <label style={!sameAlbum?{'opacity':'50%'}:{}}>New album</label>
+              <label style={!sameAlbum?{'opacity':'30%'}:{}}>New album</label>
               <input type="checkbox" checked={newAlbum} disabled={!sameAlbum} onClick={()=>setAlbumForAll('')} onChange={(e:any) => setNewAlbum(e.target.checked)}/>
               <input type="text" value={newAlbum?albumForAll:''} placeholder={newAlbum?'Album title...':''} disabled={!newAlbum||!sameAlbum} 
               onChange={(ev:any) => setAlbumForAll(ev.target.value)}/>
@@ -128,7 +131,10 @@ const Upload = () => {
                     ))
                   }
                 </select>
+                <label>single
+
                 <input type="checkbox" disabled={sameAlbum} checked={e.isSingle} onChange={(ev:any) => changeKey('isSingle', ev.target.checked, i)}/>
+                </label>
                 <button className={styles.btnRemove} onClick={()=>removeItem(i)}></button>
               </div>
             ))

@@ -185,6 +185,19 @@
   border-radius: 5px;
   padding: 5px 10px;
 }
+.itemUpload > input[type=text]{
+  width: 50%;
+}
+.itemUpload > select{
+  width: 33%;
+}
+.itemUpload > label{
+  font-size: .7em;
+  opacity: .7;
+  display: inline;
+  width: 7%;
+  text-align: center;
+}
 .selectFiles{
   justify-self: start;
   position: absolute;

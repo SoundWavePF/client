@@ -161,6 +161,9 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px; */
     border-radius: 100%;
+    width: 50px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
 }
 
 .container>div:first-child>img:hover {
