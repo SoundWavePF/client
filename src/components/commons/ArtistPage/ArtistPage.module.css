@@ -165,4 +165,8 @@
   .donations{
     display: none;
   }
+
+.User > div:last-child > p{
+  display: none;
+}
 }
