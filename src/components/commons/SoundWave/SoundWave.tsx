@@ -9,6 +9,7 @@ const SoundWave: React.FunctionComponent = ()=>{
         <span className={style.bar}/>
         <span className={style.bar}/>
         <span className={style.bar}/>
+        <span className={style.bar}/>
     </div>
     )
 }
