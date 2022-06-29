@@ -6,7 +6,6 @@ import ListItem from '../../ListItemContainer/ListItem'
 const ArtistCardContainer = ({ props }: any) => {
   const artist = useSelector((state: any) => state.artist)
   const artistTop = useSelector((state: any) => state.artistTop)
-  console.log(props)
   switch (props) {
     case 'Top':
       return (

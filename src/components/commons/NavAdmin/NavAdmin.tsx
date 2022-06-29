@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import style from './NavAdmin.module.css'
+import darkModeAdmin from '../../../assets/darkModeAdmin.png'
 
 const NavAdmin = ({option}:any)=>{
     const toggleMode = () => {
@@ -9,7 +9,6 @@ const NavAdmin = ({option}:any)=>{
     return (
     <div className={style.navbar}>
         <b >SoundWave's Admin Panel</b>
-        <button onClick={toggleMode}>tema</button>
     </div>
     )
 }

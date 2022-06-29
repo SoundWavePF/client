@@ -24,7 +24,7 @@ export default function AdminSideBar(){
         SoundWave
       </div>
       <button value="home" onClick={(e)=>onChange(e)} className={styles.button}>
-        <img src={trend} alt="Home" className={styles.img}/>
+        <img src={trend} alt="Home" className={document.querySelector('#appSW')?.classList[0]==='light-mode'?styles.img:styles.imgDark}/>
         Statistics
       </button>
       <button value='users' onClick={(e)=>onChange(e)} className={styles.button}>
