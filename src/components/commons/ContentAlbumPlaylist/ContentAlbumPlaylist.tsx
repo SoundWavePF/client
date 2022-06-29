@@ -7,7 +7,7 @@ import * as actionCreator from "../../../redux/actions/action_player";
 import * as actionCreator2 from "../../../redux/actions/action_user";
 import ListItemContainer from "../ListItemContainer/ListItemContainer";
 import Swal from "sweetalert2";
-import imgPlaylist from "../../../assets/coverPl.jpg";
+import imgPlaylist from "../../../assets/playlistFran2.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
