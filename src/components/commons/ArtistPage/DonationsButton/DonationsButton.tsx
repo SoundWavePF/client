@@ -28,7 +28,7 @@ const Button: React.FunctionComponent<btnProps > = (props)=>{
             Donate
           </button> */}
           <button onClick={handleClick}>Donate</button>
-          <p>Support your favorite creator.</p>
+          <span>Support your favorite creator.</span>
         </div>
   )
 }
