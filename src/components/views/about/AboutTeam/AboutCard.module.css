@@ -46,6 +46,14 @@
   width: 2.5vw;
   height: 2.5vw;
 }
+.containerAccounts > a > svg{
+  margin-left: .4vw;
+  margin-right: .4vw;
+  width: 2.5vw;
+  height: 2.5vw;
+  color: var(--text-primary);
+  fill: currentColor;
+}
 @media(max-width:500px){
   .AboutCard{
     width: 80vw;
@@ -66,5 +74,9 @@
     height: 7vh;
     margin: 3vh 2vh 0px 3vh;
   }
-
+  .containerAccounts>a>svg{
+    width: 7vh;
+    height: 7vh;
+    margin: 3vh 2vh 0px 3vh;
+  }
 }
