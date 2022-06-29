@@ -15,11 +15,16 @@ import AboutDesign from './AboutDesign/AboutDesign';
 
 
 const  About2=( )=> {
+  const toggleMode = () => {
+    document.querySelector('#appSW')?.classList.toggle('light-mode')
+    document.querySelector('#appSW')?.classList.toggle('dark-mode')
+  }
   return (
     <div className={Style.about}>
       <Link to={'/'} className={Style.buttonHome}><button >Back to page</button></Link>
       <div className={Style.divNav}>
         <h1>SoundWave</h1>
+        <button onClick={toggleMode}>tema</button>
       </div>
       <div className={Style.div1}>
         <img src={logo} alt="logo" />

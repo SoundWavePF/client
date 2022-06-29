@@ -34,11 +34,12 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
       if (playlistName) {
         Swal.fire({
           title:"Playlist created!",
+          html: `<span>Song added to <b>${playlistName}</b></span>`,
           icon: 'success',
           confirmButtonColor: '#ffee32',
         }
           );
-        newPlaylist(email, playlistName);
+        newPlaylist(email, playlistName, props.item.id);
       }
     }
   }
@@ -74,7 +75,7 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
                 id={`dropdown-button-drop-${direction}`}
                 drop={"end"}
                 variant="warning"
-                title="➕ Playlist"
+                title="♬ Playlist"
                 bsPrefix={styles.dropdrop}
               >
                 {playlists.length

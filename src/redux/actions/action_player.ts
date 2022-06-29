@@ -235,3 +235,20 @@ export const playAll = (data: swSong[]) => {
   };
 };
 
+export const setCurrentSongPosition = (data: number) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.SET_CURRENT_SONG_POSITION,
+      payload: data,
+    });
+  };
+};
+
+export const setPausePlay = (data: boolean) => {
+  return (dispatch: Dispatch<Actions>) => {
+    dispatch({
+      type: ActionType.SET_PAUSE_PLAY,
+      payload: data,
+    });
+  };
+};

@@ -46,7 +46,9 @@ export type Actions =
   | UploadMusic
   | UploadNewAlbum
   | DeleteSong
-  | DeleteAlbum;
+  | DeleteAlbum
+  | setCurrentSongPosition
+  | setPausePlay;
 
 export enum ActionType {
   CLEAN_GENRE = "CLEAN_GENRE",
@@ -99,6 +101,8 @@ export enum ActionType {
   DELETE_SONG = "DELETE_SONG",
   DELETE_ALBUM = "DELETE_ALBUM",
   UPDATE_LIBRARY = "UPDATE_LIBRARY",
+  SET_CURRENT_SONG_POSITION = 'SET_CURRENT_SONG_POSITION',
+  SET_PAUSE_PLAY = 'SET_PAUSE_PLAY',
 }
 
 export interface GetStats {
@@ -288,4 +292,12 @@ interface DeleteSong {
 interface DeleteAlbum {
   type: ActionType.DELETE_ALBUM | ActionType.UPDATE_LIBRARY;
   payload?: any;
+}
+interface setCurrentSongPosition {
+  type: ActionType.SET_CURRENT_SONG_POSITION;
+  payload: number 
+}
+interface setPausePlay {
+  type: ActionType.SET_PAUSE_PLAY;
+  payload: boolean
 }

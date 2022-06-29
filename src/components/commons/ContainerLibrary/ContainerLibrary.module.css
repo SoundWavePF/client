@@ -21,7 +21,7 @@
 .ToolBar {
     display: flex;
     justify-content: start;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.509);
+    border-bottom: 1px solid var(--text-primary);
     margin-bottom: 1em;
     margin-top: 1em;
 
@@ -32,6 +32,7 @@
     margin-left: 1.5em;
     padding-bottom: 7px;
     cursor: pointer;
+    color: var(--text-primary);
 }
 
 .ToolBar a {
@@ -134,5 +135,8 @@
     }
     .ToolBar{
         padding: 0%;
+    }
+    .Column h4{
+        display: none;
     }
 }

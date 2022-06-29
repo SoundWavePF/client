@@ -1,26 +1,23 @@
 .icon {
-    position: relative;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
     display: flex;
     justify-content: space-between;
-    width: 13px;
-    height: 13px;
-  }
-  .bar {
-    width: 3px;
-    height: 100%;
-    background-color: orange;
-    border-radius: 3px;
-    content: '';
+    width: 28px;
+  
+    height: 25px;
   }
 
   .bar {
-    width: 3px;
+    width: 4px;
     height: 100%;
-    background-color: orange;
+    background-color: var( --yellow-light);
     border-radius: 3px;
     transform-origin: bottom;
     animation: bounce 2.2s ease infinite alternate;
     content: '';
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
   }
 
  .bar:nth-of-type(2) {
@@ -54,11 +51,3 @@
     }
   }
   
-  .bar {
-    width: 3px;
-    height: 100%;
-    background-color: orange;
-    border-radius: 3px;
-    animation: bounce 2.2s ease infinite alternate;
-    content: '';
-  }

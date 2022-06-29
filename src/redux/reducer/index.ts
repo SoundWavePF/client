@@ -24,6 +24,7 @@ interface State {
   user_info: any;
   userAdmin: boolean;
   panel_artist: any;
+  player: any;
 }
 
 const initialState: State = {
@@ -59,6 +60,10 @@ const initialState: State = {
   user_info: {},
   userAdmin: false,
   panel_artist: { loaded_album: false, pop_up: {}, info: {}, updated: false},
+  player: {
+    currentSongPosition: 0,
+    isPlaying: false
+  }
 };
 
 const Reducer = (state: any = initialState, action: Actions) => {
@@ -375,7 +380,22 @@ const Reducer = (state: any = initialState, action: Actions) => {
         panel_artist: {
           ...state.panel_artist,
           updated: true
-        }
+        };
+    case ActionType.SET_CURRENT_SONG_POSITION:
+        return{
+          ...state,
+          player: {
+            ...state.player,
+            currentSongPosition: action.payload,
+          }
+      };
+    case ActionType.SET_PAUSE_PLAY:
+        return{
+          ...state,
+          player: {
+            ...state.player,
+            isPlaying: action.payload,
+          }
       };
     default:
       return state;

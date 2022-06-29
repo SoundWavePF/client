@@ -12,7 +12,7 @@ import volume1 from '../../../assets/volume1.png';
 import volume2 from '../../../assets/volume2.png';
 import volume3 from '../../../assets/volume3.png';
 import like from '../../../assets/likefull.png';
-import { likeSong, setRecentlyPlayed } from '../../../redux/actions/action_player';
+import { likeSong, setRecentlyPlayed, setCurrentSongPosition, setPausePlay  } from '../../../redux/actions/action_player';
 import { useAuth0 } from '@auth0/auth0-react';
 import styles from './Player.module.css';
 import QueuePanel from './QueuePanel';
@@ -26,13 +26,21 @@ export default function Player(){
   const { user } = useAuth0();
   const userId = user?.sub?.slice(6);
   const queue = useSelector(state => state.queue);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = [
+    useSelector(state => state.player.isPlaying), 
+    data => dispatch(setPausePlay(data))
+  ];
   const [currentTime, setCurrentTime] = useState(0);
-  const [pos, setPos] = useState(0);
+  const [pos, setPos] = [
+    useSelector(state => state.player.currentSongPosition), 
+    data => dispatch(setCurrentSongPosition(data))
+  ];
   const [volume, setVolume] = useState('20');
   const [loopPlaying, setLoopPlaying ] = useState(false)
   const [loopCurrentSong, setLoopCurrentSong ] = useState(false)
-  useEffect(() => setIsPlaying(true), [queue[0]])
+  useEffect(() =>{
+    if(queue.length) setIsPlaying(true); 
+  }, [queue[0]])
   useEffect(() => updatePos(), [queue]);
   function updatePos(){
     if(pos + 1 > queue.length){
