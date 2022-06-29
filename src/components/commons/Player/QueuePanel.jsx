@@ -11,12 +11,17 @@ import bintrash from '../../../assets/bintrash.png'
 import loopIcon from '../../../assets/looping-arrows.png'
 
 import style from './QueuePanel.module.css';
-
+import SoundWave from '../SoundWave/SoundWave';
 
 const Song = (props)=>{
     const {user} = useAuth0() 
     const dispatch = useDispatch()
     const {deleteFromQueue}  = bindActionCreators(actionCreator, dispatch);
+    const renderWave = useSelector( (state)=>{
+        const {currentSongPosition, isPlaying} = state.player
+        return state.queue[currentSongPosition]?.id === props.item.id && isPlaying
+      })
+    const queue = props.queue
 
     function handleClick(){
         props.setCurrentSong(props.index -1)
@@ -30,9 +35,10 @@ const Song = (props)=>{
             <div className={style.name}  onClick={handleClick}>
                 =
                 <img className={style.image} src={props.item.image_small} alt="" />
-                {props.index}. {props.item.name}
+                {props.index}. <span>{props.item.name}</span>
+                {renderWave? <SoundWave/>: null}
             </div>
-            <div onClick={handleDelete} className={style.info}><img width={'22px'} src={bintrash}/> </div>
+            <button onClick={handleDelete} className={style.delete}>✖</button>
         </div>
     )
 }
@@ -90,6 +96,7 @@ const QueuePanel = (props)=>{
                           index={index+1}
                           style={ props.songPosition === index? style.currentSong: style.song }
                           setCurrentSong={props.setSongPosition}
+                          queue={queue}
                         />
                         )}
                     </ReactSortable>
