@@ -8,6 +8,7 @@ import {useNavigate} from 'react-router-dom'
 //import { Button } from "react-bootstrap/lib/InputGroup";
 import Table from 'react-bootstrap/Table';
 
+import pencil from '../../../assets/pencil.svg'
 
 interface myProps {
   content?: any;
@@ -20,13 +21,9 @@ interface buttonProps {
 const EditButton: React.FunctionComponent<buttonProps>  = (props)=>{
   return (
     <button onClick={()=>props.action(!props.state)}  className={styles.button}>
-    <svg className="css-i6dzq1" stroke-linejoin="round" 
-      stroke-linecap="round" fill="gray" stroke-width="2" 
-      stroke="black" height="24" width="24" viewBox="0 0 24 24">
-        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-    </svg>
-    Edit
-</button>
+      <img src={pencil} width='22px' />
+        Edit
+    </button>
   )
 }
 
