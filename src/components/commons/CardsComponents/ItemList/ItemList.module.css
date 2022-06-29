@@ -114,9 +114,12 @@
 }
 
 .spanArtistName {
-    color: #1a1a1a;
+    color: black;
     padding-left: 12px;
     text-decoration: none;
+}
+.spanArtistName:hover{
+    color: black;
 }
 
 .likeBtn {
