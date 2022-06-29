@@ -42,11 +42,11 @@ function App() {
   return (
     <div id={"appSW"} className="light-mode">
       <Routes>
-        <Route path="/" element={<><Landing /><AdminButton/></>} />
+        <Route path="/" element={<><Landing /></>} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 
-        <Route path="/about" element={<><About2 /><AdminButton/></>} />
+        <Route path="/about" element={<><About2 /></>} />
         <Route
           path="/home"
           element={
@@ -123,7 +123,7 @@ function App() {
 
         <Route path="/settings" element={<UserSettings />} />
         <Route path="/panel_artist" element={isLoading?<LoadingPage/>:<><PanelArtist/><Player/></>} />
-        <Route path="/admin" element={<><AdminPanel /><AdminButton/></>} />
+        <Route path="/admin" element={<><AdminPanel /></>} />
         <Route path="/file" element={<FileUpload />} />
 
         <Route path="/*" element={<Error404 />} />
