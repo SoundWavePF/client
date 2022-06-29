@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 import imgPlaylist from "../../../assets/playlistFran2.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { user } from "../../../redux/actions/hc_data";
 
 const ContentAlbumPlaylist = () => {
   const { email } = useSelector((state: any) => state.user_info);
@@ -25,14 +26,17 @@ const ContentAlbumPlaylist = () => {
   const { id } = useParams();
   const path = useLocation().pathname;
   const isPlaylist = path.includes("playlist");
+  const [showEdit, setShowEdit] = useState<boolean>(false);
   useEffect(() => {
     isPlaylist
       ? getAlbumPlaylist(id, "playlist")
       : getAlbumPlaylist(id, "album");
+     
     return () => {
       getAlbumPlaylist("clean", "");
     };
   }, []);
+  
   const toggleEdit = async () => {
     if (edit) {
       if (newPlaylist.length === 0) {
@@ -55,6 +59,15 @@ const ContentAlbumPlaylist = () => {
       setEdit(true);
     }
   };
+  useEffect(() => {
+    if(item.user){
+      if(item.user.email !== email){
+        setShowEdit(false);
+      } else {
+        setShowEdit(true);
+      }
+    }
+  }, [item]);
   return Object.keys(item).length > 0 ? (
     <div className={styles.container}>
       <div className={styles.details}>
@@ -74,7 +87,7 @@ const ContentAlbumPlaylist = () => {
             Play all
           </button>
           {
-            isPlaylist && 
+            isPlaylist && showEdit && 
             <Link to={"/playlists"}>
               <button
                 onClick={() => email && id && deletePlaylist(id)}
@@ -85,7 +98,7 @@ const ContentAlbumPlaylist = () => {
             </Link>
           }
         </div>
-        {isPlaylist && (
+        {isPlaylist && showEdit && (
           <button
             className={edit ? `${styles.edit} ${styles.save}` : styles.edit}
             onClick={toggleEdit}
