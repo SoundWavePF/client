@@ -27,6 +27,7 @@
 }
 
 .contentContainer {
+
     margin-top: 15px;
     width: 84%;
     margin-right: 10px;
@@ -40,7 +41,7 @@
 .buttons {
     border:none;
     border-radius:  7px;
-    background-color:var(--yellow-light);
+    background-color:var(--background-accent);
     padding: 5px;
     padding-top: 2px;
     
@@ -70,7 +71,7 @@
 .subscriptionContainer div:first-letter {
     text-transform: uppercase;
     font-size: 1.2em;
-    color: var(--yellow-dark);
+    color: var(--background-accent-secundary);
     letter-spacing: 1px;
 }
 
@@ -82,20 +83,26 @@
 
 .inputsContainer {
     display: flex;
-    background-color: red;
     flex-direction: column;
+
 }
 
 .parent {
+
+  
+
     display: grid;
     grid-template-columns: repeat(3, 0.2fr);
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 0px;
-    grid-row-gap: 15px;
+    row-gap: 8px;
+
+
 }
 
 .div1 {
     grid-area: 1 / 1 / 2 / 2;
+
 }
 
 .div2 {
@@ -113,11 +120,13 @@
     display: flex;
     justify-content: end;
     margin-right: 0.2em;
+
 }
 
 .div5 {
     grid-area: 2 / 2 / 3 / 3;
     margin-right: 15px;
+
     
 }
 
@@ -127,6 +136,7 @@
 }
 
 .div7 {
+    
     grid-area: 3 / 1 / 4 / 2;
     display: flex;
     justify-content: end;
@@ -187,7 +197,7 @@
 
     border-radius: 10px 10px 5px 5px;
     border: none;
-    background-color: var(--yellow-light);
+    background-color: var(--background-accent);
    
 
     text-align: center;
@@ -202,7 +212,7 @@
     transform: scale(1.1);
     cursor: pointer;
     transition: ease-in 0.1s;
-    background-color: var(--yellow-light);
+    background-color: var(--background-accent);
 
 
 }
@@ -285,13 +295,86 @@
 }
 
 .confirmButton{
-    background-color: var(--yellow-ligth);
+    background-color: var(--background-accent);
 }
 
 .cancelButton{
     background-color: red;
 
 }
+
+.table{
+    
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table td,.table th{
+  padding:12px 15px;
+  border:1px solid #ddd;
+  text-align: center;
+  font-size:16px;
+}
+
+.table th{
+    background-color: var(--background-accent);
+}
+
+.table tbody tr:nth-child(even){
+	background-color: #f5f5f5;
+}
+.buttonContainer button{
+    background-color: var(--background-accent);
+}
+
+/*responsive*/
+
+@media(max-width: 400px){
+    .table{
+    visibility: hidden;
+
+    }
+	.table thead{
+		display: none;
+
+	}
+
+	.table, .table tbody, .table tr, .table td{
+		display: block;
+		width: 100%;
+
+	}
+	.table tr{
+		margin-bottom:15px;
+	}
+	.table td{
+
+		text-align: right;
+		padding-left: 50%;
+		text-align: right;
+		position: relative;
+	}
+	.table td::before{
+
+		content: attr(data-label);
+		position: absolute;
+		left:0;
+		width: 50%;
+		padding-left:15px;
+		font-size:15px;
+		font-weight: bold;
+		text-align: left;
+	}
+}
+
+
+
+
+
+
+
+
+
 
 /* Resposive */
 
@@ -329,7 +412,7 @@
         display: flex;
         width: 100%;
         height: 7em;
-        background-color: #ffee32;
+        background-color: var(--background-accent);
         justify-content: center;
         align-content: center;
         align-items: stretch;
@@ -348,6 +431,10 @@
     }
 
     .contentContainer{
+    overflow-y: scroll;
+
+    width: 100vw;
+
         grid-area: info;
 
         display: grid;
@@ -363,7 +450,7 @@
     }
     .title
     {
-    background-color: #ffee32;
+    background-color: var(--background-accent);
     display: flex;
     justify-content: center;
 
@@ -394,14 +481,20 @@
     .parent input:nth-child(1){
     }
     .parent button:nth-child(1){
-        background-color: #ffee32;
+        background-color: var(--background-accent);
        
     }
 .ContainerImage button{
 left: 170px;
-
+;
 }
   
- 
+.buttonContainer button{
+    background-color: var(--background-accent);
+}
+  
 
 }
+
+
+

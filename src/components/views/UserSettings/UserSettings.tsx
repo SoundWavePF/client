@@ -17,6 +17,7 @@ import { isConstructorDeclaration } from "typescript";
 import userDefault from '../../../assets/default-user.png'
 import Table from 'react-bootstrap/Table';
 import { log } from "console";
+import SearchResults from "../SearchResults/SearchResults";
 
 
 interface inputs {
@@ -27,6 +28,8 @@ interface inputs {
 }
 
 const UserSettings = () => {
+  const searchString = useSelector((state: any) => state.query);
+
 
   const [image,setImage]:any= useState()
   const user_info=useSelector((state:any)=>state.user_info)
@@ -277,9 +280,9 @@ const changeImage = async()=>{
 
   return (
     <div className={StylesC.container}>
-      <SearchBar />
+      <SearchBar  />
       <SideBar />
-{user ?
+{searchString ?<SearchResults />:user ?
       <div className={style.page}>
         <div className={style.container}>
         <div className={style.ContainerImage}>
@@ -328,9 +331,10 @@ const changeImage = async()=>{
               <div className={style.div9}> <button onClick={(e) => modalChangeUsername()} name='modalUsername' className={style.buttons}>Modify</button></div>
             </div>
             <br />
-            <Table striped bordered size="sm">
-            <thead>
-              <tr className={'table-secondary'}>
+            <div className={style.table}>
+            <table  className={style.table}>
+            <thead >
+              <tr >
                 <th>Donation ID</th>
                 <th>Arist</th>
                 <th>Amount</th>
@@ -340,27 +344,26 @@ const changeImage = async()=>{
             <tbody>
             {donations !== undefined && donations?.map((donation:any)=>{
                   return (
-                    <tr>
-                      <td>{donation.id}</td>
-                      <td>{donation.artist.name}</td>
-                      <td>${donation.amount}</td>
-                      <td>{donation.createdAt.split('T')[0]}</td>
+                    <tr >
+                      <td className={style.donation}>{donation.id}</td>
+                      <td className={style.artist}>{donation.artist.name}</td>
+                      <td className={style.amount}>${donation.amount}</td>
+                      <td className={style.date}>{donation.createdAt.split('T')[0]}</td>
                     </tr>
                   )
                 }
               )}
               {!donations.length && 
-                  <tr>
-                    <td>No donations</td>
+                  <tr >
+                    <td className={style.donation} >No donations</td>
                     <td></td>
                     <td></td>
                     <td></td>
                   </tr>
               }
             </tbody>
-          </Table>
-           
-            <div className={style.title} ><p>Disable my account</p></div>
+          </table>
+          </div>
           </div>
           </div>
 
@@ -371,7 +374,7 @@ const changeImage = async()=>{
         </div>
         </div>
       
-    : 
+    :
     <div className={style.Loading}>
     <div className="spinner-border"  role="status"></div>
     </div>
