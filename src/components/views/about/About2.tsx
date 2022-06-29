@@ -28,7 +28,10 @@ const  About2=( )=> {
         {/* <button onClick={toggleMode}>tema</button> */}
       </div>
       <div className={Style.div1}>
-        <img src={logo} alt="logo" />
+        {/* <img src={logo} alt="logo" /> */}
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 558.406 1107.061">
+            <path id="n" d="M776.1,1186.59l109.8-411.3c17.1,92.7,53.1,263.7,81.9,412.2,17.1,87.3,36,178.2,54.9,273.6l216.9-809.1H1146l-106.2,396c-22.5-113.4-43.2-217.8-62.1-312.3-33.3-160.2-66.6-333-73.8-377.1l-221.4,828h93.6Z" transform="translate(-681.844 -356.219)"/>
+        </svg>
         <div className={Style.divInfo}>
           <h3>Quienes Somos?</h3>
           <p> Somos un grupo de programadores de Argentina y Colombia que nos conocimos en la instancia de bootcamp de Henry. En donde desde Marzo de 2022 formamos un grupo de trabajo y humano muy integro, en el cual de forma remota hemos adquirido conocimientos técnicos entre nosotros y, además conocer un poco más sobre la culturas de cada uno de nuestros compañeros. </p>
