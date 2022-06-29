@@ -155,7 +155,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
     case ActionType.ADD_TO_QUEUE:
       return {
         ...state,
-        queue: [...state.queue, action.payload],
+        queue: [...state.queue.filter( (song: swSong)=>song?.id !== action.payload?.id), action.payload],
       };
     case ActionType.DELETE_FROM_QUEUE:
       return {
