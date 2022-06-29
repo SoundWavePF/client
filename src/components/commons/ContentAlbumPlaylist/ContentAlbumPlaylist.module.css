@@ -33,7 +33,7 @@
   cursor: pointer;
   width: fit-content;
   text-decoration: none;
-  color: black;
+  color: var(--text-primary);
 }
 .btnContainer {
   grid-area: 3 / 2 / 4 / 3;
