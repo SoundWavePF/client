@@ -37,7 +37,7 @@ const PanelArtistAlbums: React.FC<myProps> = ({ content }: myProps) => {
         <div className={styles.details}>
           <img src={data.image_medium} alt={data.name} />
           <span>{data.name}</span>
-          <button className={styles.btn} onClick={()=>launchPopUp('Upload')}>edit</button>
+          <button className={styles.btn} onClick={()=>launchPopUp('EditAlbum', data)}>edit</button>
         </div>
         {data.songs && (
           <ListItemContainerPanelArtist

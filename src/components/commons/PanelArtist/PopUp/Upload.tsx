@@ -7,12 +7,13 @@ import { useSelector } from "react-redux";
 
 const Upload = () => {
   const dispatch = useDispatch();
-  const { launchPopUp, uploadMusic } = bindActionCreators(actionCreator, dispatch);
+  const { launchPopUp, uploadMusic, uploadNewAlbum } = bindActionCreators(actionCreator, dispatch);
   const {albums} = useSelector((state: any) => state.panel_artist);
   const {email} = useSelector((state: any) => state.user_info);
   const [files, setFiles] = useState<any>([]);
   const [sameAlbum, setSameAlbum] = useState<boolean>(false);
   const [albumForAll, setAlbumForAll] = useState<string>('');
+  const [newAlbum, setNewAlbum] = useState<boolean>(false);
   // useEffect(()=>{
     
   // },[files])
@@ -33,7 +34,7 @@ const Upload = () => {
       [key]: value
     }
     setFiles(newFiles);
-    console.log(files)
+    // console.log(files)
   }
   const removeItem = (i:number) => {
     let newFiles = [...files];
@@ -41,20 +42,41 @@ const Upload = () => {
     setFiles(newFiles);
   }
   const saveMusic = async () => {
+
+    var sameAlbumId = albums.find((e:any)=>e.name===albumForAll)?.id
+    let songsAlbum = []
     for (let i = 0; i < files.length; i++) {
       const song = files[i];
       const data = new FormData();
       data.append("file", song.data);
       data.append("upload_preset", "new_songs");
-      uploadMusic({email, name:song.name}, data);
+      if (!sameAlbum){
+        let albumId = albums.find((e:any)=>e.name===song.album)?.id
+        let obj = {email, name:song.name, albumId}
+        console.log(`compo ${i}. `, obj)
+        if (song.isSingle){
+          uploadMusic({email, name:song.name}, data)
+        } else {
+          uploadMusic({email, name:song.name, albumId}, data)
+        }
+      } else if (!newAlbum) {
+        let obj = {email, name:song.name, albumId: sameAlbumId}
+        console.log(`compo ${i}. `, obj)
+        uploadMusic({email, name:song.name, albumId: sameAlbumId}, data);
+      } else {
+        let obj = {name:song.name, albumName: albumForAll}
+        console.log(`compo ${i}. `, obj)
+        songsAlbum.push({name:song.name, data})
+        // uploadMusic({email, name:song.name, albumName: albumForAll}, data);
+        // await new Promise(res => setTimeout(res,500));
+      }
     }
-    await new Promise(res => setTimeout(res,1500));
-    // getPanelInfo(artist?.id, email);
+    if (sameAlbum && newAlbum) uploadNewAlbum(email, albumForAll, songsAlbum);
     launchPopUp(false);
   }
   return (
     <div className={styles.background}>
-      <div className={styles.floating} style={{'width': '800px', 'height': 'auto'}}>
+      <div className={styles.floating} style={{'width': '800px', 'height': 'auto', 'minHeight':'350px'}}>
         <h3>Upload your music</h3>
         <div className={styles.uploadMusic}>
           <label className={styles.selectFiles}>Select files
@@ -75,14 +97,18 @@ const Upload = () => {
             <div className={styles.albumOptions}>
               <label>Same album</label>
               <input type="checkbox" checked={sameAlbum} onChange={(e:any) => setSameAlbum(e.target.checked)}/>    
-              <select value={sameAlbum?albumForAll:''} disabled={!sameAlbum} onChange={(e:any)=>setAlbumForAll(e.target.value)}>
-                  <option>{''}</option>
+              <select value={sameAlbum&&!newAlbum?albumForAll:''} disabled={newAlbum||!sameAlbum} onChange={(e:any)=>setAlbumForAll(e.target.value)}>
+                  <option value=''>{!sameAlbum?'':newAlbum?'':'select album'}</option>
                 {
                   albums?.map((e:any, i:number) => (
                     <option key={i} value={e.name}>{e.name}</option>
                   ))
                 }
               </select>
+              <label style={!sameAlbum?{'opacity':'50%'}:{}}>New album</label>
+              <input type="checkbox" checked={newAlbum} disabled={!sameAlbum} onClick={()=>setAlbumForAll('')} onChange={(e:any) => setNewAlbum(e.target.checked)}/>
+              <input type="text" value={newAlbum?albumForAll:''} placeholder={newAlbum?'Album title...':''} disabled={!newAlbum||!sameAlbum} 
+              onChange={(ev:any) => setAlbumForAll(ev.target.value)}/>
             </div>
           }
           <div>
@@ -93,9 +119,9 @@ const Upload = () => {
                   <audio key={i} src={e.audio} controls style={{"display":"none"}}></audio>
                 </button>
                 <input type="text" value={e.name} placeholder='Song title...' onChange={(ev:any) => changeKey('name', ev.target.value, i)}/>
-                <select value={!e.isSingle?e.album:e.name?.trim()?e.name+' - Single':''} disabled={sameAlbum || e.isSingle}
+                <select value={sameAlbum?'':!e.isSingle?e.album:e.name?.trim()?e.name+' - Single':''} disabled={sameAlbum || e.isSingle}
                 onChange={(ev:any) => changeKey('album', ev.target.value, i)}>
-                    <option>{!e.isSingle?'':e.name?.trim()?e.name+' - Single':''}</option>
+                    <option value=''>{sameAlbum?'':!e.isSingle?'select album':e.name?.trim()?e.name+' - Single':'Single'}</option>
                   {
                     albums?.map((e:any, i:number) => (
                       <option key={i} value={e.name}>{e.name}</option>
@@ -110,7 +136,7 @@ const Upload = () => {
           </div>
         </div>
         <div>
-          <button className={styles.btn} onClick={undefined}>Upload</button>
+          <button className={styles.btn} onClick={saveMusic}>Upload</button>
           <button className={styles.btn} style={{"backgroundColor":"orange"}} onClick={()=>launchPopUp(false)}>Cancel</button>
         </div>
       </div>

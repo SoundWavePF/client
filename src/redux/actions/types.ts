@@ -43,7 +43,10 @@ export type Actions =
   | deletePlaylist
   | SetFiltered
   | CreateAlbum
-  | UploadMusic;
+  | UploadMusic
+  | UploadNewAlbum
+  | DeleteSong
+  | DeleteAlbum;
 
 export enum ActionType {
   CLEAN_GENRE = "CLEAN_GENRE",
@@ -92,6 +95,10 @@ export enum ActionType {
   DISCOVER_SONGS = "DISCOVER_SONGS",
   CREATE_ALBUM = "CREATE_ALBUM",
   UPLOAD_MUSIC = "UPLOAD_MUSIC",
+  UPLOAD_NEW_ALBUM = "UPLOAD_NEW_ALBUM",
+  DELETE_SONG = "DELETE_SONG",
+  DELETE_ALBUM = "DELETE_ALBUM",
+  UPDATE_LIBRARY = "UPDATE_LIBRARY",
 }
 
 export interface GetStats {
@@ -268,5 +275,17 @@ interface CreateAlbum {
 }
 interface UploadMusic {
   type: ActionType.UPLOAD_MUSIC;
+  payload?: any;
+}
+interface UploadNewAlbum {
+  type: ActionType.UPLOAD_NEW_ALBUM;
+  payload?: any;
+}
+interface DeleteSong {
+  type: ActionType.DELETE_SONG | ActionType.UPDATE_LIBRARY;
+  payload?: any;
+}
+interface DeleteAlbum {
+  type: ActionType.DELETE_ALBUM | ActionType.UPDATE_LIBRARY;
   payload?: any;
 }

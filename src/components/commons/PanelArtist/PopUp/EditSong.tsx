@@ -12,8 +12,8 @@ interface myProps {
 
 const EditSong: React.FC<myProps> = ({ item }: myProps) => {
   const dispatch = useDispatch();
-  const { updateSong, launchPopUp, getPanelInfo } = bindActionCreators(actionCreator, dispatch)
-  const {albums, pop_up, songs} = useSelector((state: any) => state.panel_artist);
+  const { updateSong, launchPopUp, deleteSong } = bindActionCreators(actionCreator, dispatch)
+  const {albums, pop_up} = useSelector((state: any) => state.panel_artist);
   const {email, artist} = useSelector((state: any) => state.user_info);
   const [name, setName] = useState<string>(pop_up.item?.name);
   const [album, setAlbum] = useState<string>(pop_up.item?.album?.name);
@@ -28,11 +28,10 @@ const EditSong: React.FC<myProps> = ({ item }: myProps) => {
     }
     updateSong(info);
     launchPopUp(false);
-    // await new Promise(res => setTimeout(res,1500))
-    // getPanelInfo(artist?.id, email);
-    // let newSongs = [...songs]
-    // newSongs[newSongs.findIndex((e:any)=>e.name === name)].name = name;
-    // console.log('___---', newSongs)
+  }
+  const deleteBtn = async() => {
+    deleteSong(email, pop_up.item?.id);
+    launchPopUp(false);
   }
   return (
     <div className={styles.background}>
@@ -51,6 +50,7 @@ const EditSong: React.FC<myProps> = ({ item }: myProps) => {
           </select>
         </div>
         <div>
+          <button className={styles.btn} onClick={deleteBtn} style={{"backgroundColor":"red"}}>Delete</button>
           <button className={styles.btn} onClick={saveChanges}>Save</button>
           <button className={styles.btn} onClick={()=>launchPopUp(false)}>Cancel</button>
         </div>

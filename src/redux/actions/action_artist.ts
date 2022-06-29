@@ -146,6 +146,7 @@ export const uploadMusic = (info: any, data: any) => {
       songName: info.name,
       duration: remote.data?.duration,
       preview: remote.data?.secure_url,
+      albumId: info.albumId,
     };
     console.log('__send\n', obj);
     axios.post("https://www.javierochoa.me/artistpanel/song/create", obj)
@@ -160,3 +161,76 @@ export const uploadMusic = (info: any, data: any) => {
     .catch((error) => console.log(error));
   }
 }
+export const uploadNewAlbum = (email: string, name: string, songs: any) => {
+  return async function (dispatch: Dispatch<Actions>) {
+
+    //const remote = await axios.post("https://api.cloudinary.com/v1_1/dbi1xhzps/video/upload", data);
+    let promises = await Promise.all(songs.map((e:any) => axios.post("https://api.cloudinary.com/v1_1/dbi1xhzps/video/upload", e.data)))
+    let send = promises.map((e:any, i:number) => {return {duration:e.data?.duration, preview: e.data?.secure_url, songName:songs[i].name}})
+
+    const obj = {
+      userEmail: email,
+      albumName: name,
+      songs: send,
+    };
+    console.log('__send\n', obj);
+    axios.post("https://www.javierochoa.me/artistpanel/song/createAlbum", obj)
+    .then((response) =>
+      console.log('res of create ',response)
+    )
+    .then((response) => {
+        dispatch({
+          type: ActionType.UPLOAD_NEW_ALBUM,
+        })
+        dispatch({
+          type: ActionType.UPDATE_LIBRARY,
+        })
+      }
+    )
+    .catch((error) => console.log(error));
+  }
+}
+export const deleteSong = (email: string, id: string) => {
+  return (dispatch: Dispatch<Actions>) => {
+    console.log(email, id)
+    axios.post("https://www.javierochoa.me/artistpanel/song/delete",{
+      email: email,
+      songId: id,
+    })
+    .then((response) =>
+      console.log('res of update ',response)
+    )
+    .then((response) => {
+        dispatch({
+          type: ActionType.DELETE_SONG,
+        })
+        dispatch({
+          type: ActionType.UPDATE_LIBRARY,
+        })
+      }
+    )
+    .catch((error) => console.log(error));
+  };
+};
+export const deleteAlbum = (email: string, id: string) => {
+  return (dispatch: Dispatch<Actions>) => {
+    console.log(email, id)
+    axios.post("https://www.javierochoa.me/artistpanel/album/delete",{
+      email: email,
+      albumId: id,
+    })
+    .then((response) =>
+      console.log('res of update ',response)
+    )
+    .then((response) => {
+        dispatch({
+          type: ActionType.DELETE_ALBUM,
+        })
+        dispatch({
+          type: ActionType.UPDATE_LIBRARY,
+        })
+      }
+    )
+    .catch((error) => console.log(error));
+  };
+};

@@ -369,6 +369,14 @@ const Reducer = (state: any = initialState, action: Actions) => {
           updated: true
         }
       };
+    case ActionType.UPDATE_LIBRARY:
+      return{
+        ...state,
+        panel_artist: {
+          ...state.panel_artist,
+          updated: true
+        }
+      };
     default:
       return state;
   }
