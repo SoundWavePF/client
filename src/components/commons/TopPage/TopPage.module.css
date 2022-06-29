@@ -41,7 +41,6 @@
 }
     @media(max-width: 400px){
       .container{
-        
         padding: 30px;
       }
       
@@ -51,9 +50,13 @@
         align-items: center;
         min-height: 600px;
       }
-  
       .section{
-    display: flex;
-    text-align: center;
+        display: flex;
+        text-align: center;
+        margin-bottom: 3vh;
+      }
+      .section>h1{
+        font-size: 5vh;
+        margin-bottom: 0;
       }
     }

@@ -42,7 +42,7 @@ function App() {
   return (
     <div id={"appSW"} className="light-mode">
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<><Landing /><AdminButton/></>} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 

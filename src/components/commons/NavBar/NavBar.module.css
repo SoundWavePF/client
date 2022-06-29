@@ -1,6 +1,6 @@
 .container{
-  background-color: #fff;
-  border-bottom: 1px solid hsla(0, 0%, 0%, 0.1);
+  background-color: var(--background-primary);
+  border-bottom: 1px solid var(--background-intermediate);
   position: fixed;
   width: 100vw;
   height: 80px;
@@ -85,7 +85,7 @@
  }
  
 .icon {
-  background: white;
+  background: var(--background-primary);
   margin-left: 1em;
   position: absolute;
   display: flex;
@@ -102,7 +102,7 @@
 .icon svg {
   width: 1.1em;
   transition: transform 0.3s;
-  color: var(--gray-dark);
+  color: var(--text-primary);
  }
  .buttonLogin:hover .icon {
   width: calc(100% - 0.6em);

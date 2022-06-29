@@ -1,7 +1,7 @@
 .default > a :first-child {
   border-radius: 5px;
   width: 100%;
-  border: 1px solid lightgray;
+  border: 1px solid var(--background-intermediate);
   cursor: pointer;
   object-fit: cover;
   aspect-ratio: 1 / 1;
@@ -24,7 +24,7 @@
 .song > figure > img {
   border-radius: 5px;
   width: 100%;
-  border: 1px solid lightgray;
+  border: 1px solid var(--background-intermediate);
   cursor: pointer;
   -webkit-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
@@ -45,10 +45,10 @@
   font-family: sw-light;
   font-size: max(0.7rem, 0.9vw);
   text-decoration: none;
-  color: black;
+  color: var(--text-primary);
 }
 .song > a:hover {
-  color: black;
+  color: var(--text-primary);
 }
 
 .alt {
