@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
 
 export default function SideBar() {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth0();
   const dispatch = useDispatch();
   const { setQuery } = bindActionCreators(actionCreator, dispatch)
   const userAdmin = useSelector((state: any) => state.userAdmin)
@@ -68,7 +68,7 @@ export default function SideBar() {
             My favorites
           </div>
         </Link>
-        {!isAuthenticated && <p className={styles.signUp}>Sign up on Soundwave to enjoy all the features</p>}
+        {!isLoading && !isAuthenticated && <p className={styles.signUp}>Sign up on Soundwave to enjoy all the features</p>}
       </div>
     </div>
   )
