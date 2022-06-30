@@ -1,14 +1,15 @@
 .navbar>button{
-  position: fixed;
+  /* position: fixed;
   left: 20px;
-  top:90%;
+  top:90%; */
   background: none;
-  border: 2px solid var(--text-primary);
+  border: 3px solid var(--text-primary);
   border-radius: 15px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   color: var(--text-primary);
+  z-index: 20;
 }
 .navbar>button>img{
   width: 20px;
