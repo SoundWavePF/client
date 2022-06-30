@@ -21,11 +21,12 @@ import FloatButton from "../../commons/FloatButton/FloatButton";
 import PopUp from "../../commons/PanelArtist/PopUp/PopUp";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoadingPage from "../../commons/LoadingPage/LoadingPage";
+import LoadingSpinner from "../../commons/LoadingSpinner/LoadingSpinner";
 
 const PanelArtist = () => {
   const [page, setPage] = useState(1);
   const { email, rol, artist } = useSelector((state: any) => state.user_info);
-  const { updated } = useSelector((state: any) => state.panel_artist);
+  const { updated, info} = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
   const { getPanelInfo } = bindActionCreators(actionCreator, dispatch);
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -84,7 +85,12 @@ const PanelArtist = () => {
         { 
           page === 1 ?
           <div className={styles.content}>
-            <PanelArtistProfile/>
+            {
+              info.name ?
+              <PanelArtistProfile/>
+              :
+              <LoadingSpinner/>
+            }
           </div>
           : page === 2 ?
           <div className={styles.content}>

@@ -24,14 +24,24 @@ export const getArtistTop = (id:any)=>{
       )
   }
 }
-export const changeAbout = (email: string, description: string) => {
-  return(dispatch: Dispatch<Actions>) => {
-    axios.post('https://www.javierochoa.me/artistpanel/description', {email: email, description: description})
-    .then(response => 
-      dispatch({
-        type: ActionType.CHANGE_ABOUT,
-        payload: response
-      }))
+export const changeAbout = (email: string, description: string, name: string, img:string, data?:any) => {
+  return async (dispatch: Dispatch<Actions>) => {
+    let image = img;
+    if (data) {
+      const remote = await axios.post("https://api.cloudinary.com/v1_1/dbi1xhzps/image/upload", data);
+      image = remote.data?.secure_url
+    }
+    axios.post('https://www.javierochoa.me/artistpanel/profile/update', {email, description, name, image})
+    .then(response => {
+        dispatch({
+          type: ActionType.CHANGE_ABOUT,
+          payload: response
+        })
+        dispatch({
+          type: ActionType.UPDATE_LIBRARY,
+        })
+      }
+    )
   }
 }
 export const updateSong = (info: any) => {
@@ -134,6 +144,40 @@ export const createAlbum = (info: any, data: any) => {
       dispatch({
         type: ActionType.CREATE_ALBUM,
       })
+    )
+    .catch((error) => console.log(error));
+  };
+};
+export const updateAlbum = (info: any, data: any, img?:any) => {
+  return async (dispatch: Dispatch<Actions>) => {
+    let image = '';
+    if (!img) {
+    const remote = await axios.post("https://api.cloudinary.com/v1_1/dbi1xhzps/image/upload", data);
+    image = remote.data?.secure_url;
+    } else {
+      image = img;
+    }
+    const obj = {
+      email: info.email,
+      albumId: info.id,
+      albumName: info.name,
+      albumReleaseDate: info.date,
+      image,
+      genreId: info.genre,
+    };
+    console.log('__send\n', obj);
+    axios.post("https://www.javierochoa.me/artistpanel/album/update", obj)
+    .then((response) =>
+      console.log('res of create ',response)
+    )
+    .then((response) => {
+        dispatch({
+          type: ActionType.UPDATE_ALBUM,
+        })
+        dispatch({
+          type: ActionType.UPDATE_LIBRARY,
+        })
+      }
     )
     .catch((error) => console.log(error));
   };
