@@ -101,7 +101,10 @@ const Upload = () => {
               <label>Same album</label>
               <input type="checkbox" checked={sameAlbum} onChange={(e:any) => setSameAlbum(e.target.checked)}/>    
               <select value={sameAlbum&&!newAlbum?albumForAll:''} disabled={newAlbum||!sameAlbum} onChange={(e:any)=>setAlbumForAll(e.target.value)}>
+                {
+                  albums.length>0 &&
                   <option value=''>{!sameAlbum?'':newAlbum?'':'select album'}</option>
+                }
                 {
                   albums?.map((e:any, i:number) => (
                     <option key={i} value={e.name}>{e.name}</option>
@@ -124,7 +127,10 @@ const Upload = () => {
                 <input type="text" value={e.name} placeholder='Song title...' onChange={(ev:any) => changeKey('name', ev.target.value, i)}/>
                 <select value={sameAlbum?'':!e.isSingle?e.album:e.name?.trim()?e.name+' - Single':''} disabled={sameAlbum || e.isSingle}
                 onChange={(ev:any) => changeKey('album', ev.target.value, i)}>
+                  { 
+                    albums?.length>0 &&
                     <option value=''>{sameAlbum?'':!e.isSingle?'select album':e.name?.trim()?e.name+' - Single':'Single'}</option>
+                  }
                   {
                     albums?.map((e:any, i:number) => (
                       <option key={i} value={e.name}>{e.name}</option>
