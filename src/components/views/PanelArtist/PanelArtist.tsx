@@ -4,7 +4,7 @@ import admin from "../../../assets/admin.png";
 import music from "../../../assets/music.png";
 import info from "../../../assets/more-info.webp";
 import styles from "./PanelArtist.module.css";
-import sidebar from "./Sidebar.module.css";
+// import sidebar from "./Sidebar.module.css";
 import * as actionCreator from "../../../redux/actions/action_artist";
 import { bindActionCreators } from "redux";
 import { useDispatch } from "react-redux";
@@ -21,11 +21,13 @@ import FloatButton from "../../commons/FloatButton/FloatButton";
 import PopUp from "../../commons/PanelArtist/PopUp/PopUp";
 import { useAuth0 } from "@auth0/auth0-react";
 import LoadingPage from "../../commons/LoadingPage/LoadingPage";
+import sidebar from '../../commons/SideBar/SideBar.module.css';
+import LoadingSpinner from "../../commons/LoadingSpinner/LoadingSpinner";
 
 const PanelArtist = () => {
   const [page, setPage] = useState(1);
   const { email, rol, artist } = useSelector((state: any) => state.user_info);
-  const { updated } = useSelector((state: any) => state.panel_artist);
+  const { updated, info} = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
   const { getPanelInfo } = bindActionCreators(actionCreator, dispatch);
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -56,24 +58,24 @@ const PanelArtist = () => {
   if(isAuthenticated && rol==='artist'){
     return (
       <div className={styles.container}>
-        <div className={sidebar.container}>
-          <Link to={'/home'}>
+        <div className={sidebar.sidebarContainer}>
+          <Link className={sidebar.links} to={'/home'}>
             <img src={logo} alt="SoundWave logo" className={sidebar.logo} />
-            <span>SoundWave</span>
+            <span className={sidebar.span}>SoundWave</span>
           </Link>
-          <div className={sidebar.button} onClick={()=>handlePage(1)}>
+          <div className={sidebar.buttonArtistPanel} onClick={()=>handlePage(1)}>
             <img src={admin} alt="prof" className={sidebar.img} />
             Profile
           </div>
-          <div className={sidebar.button} onClick={()=>handlePage(2)}>
+          <div className={sidebar.buttonArtistPanel} onClick={()=>handlePage(2)}>
             <img src={music} alt="music" className={sidebar.img} />
             Songs
           </div>
-          <div className={sidebar.button} onClick={()=>handlePage(3)}>
+          <div className={sidebar.buttonArtistPanel} onClick={()=>handlePage(3)}>
             <img src={music} alt="music" className={sidebar.img} />
             Albums
           </div>
-          <div className={sidebar.button} onClick={()=>handlePage(4)}>
+          <div className={sidebar.buttonArtistPanel} onClick={()=>handlePage(4)}>
             <img src={info} alt="info" className={sidebar.img} />
             Stats
           </div>
@@ -84,7 +86,12 @@ const PanelArtist = () => {
         { 
           page === 1 ?
           <div className={styles.content}>
-            <PanelArtistProfile/>
+            {
+              info.name ?
+              <PanelArtistProfile/>
+              :
+              <LoadingSpinner/>
+            }
           </div>
           : page === 2 ?
           <div className={styles.content}>

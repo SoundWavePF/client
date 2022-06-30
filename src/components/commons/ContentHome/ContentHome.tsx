@@ -60,7 +60,7 @@ const ContentHome = () => {
           <CardContainer content={chart.slice(11)} slides={true}/>
         </div>
       }
-      { last?.length > 0 &&
+      { last?.length > 0 && last[0] &&
         <div className={styles.section}>
           <h1>Recently played</h1>
           <CardContainer content={last} slides={true}/>

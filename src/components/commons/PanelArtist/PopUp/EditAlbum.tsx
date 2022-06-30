@@ -16,18 +16,21 @@ const EditAlbum: React.FC<myProps> = ({ item }: myProps) => {
   const {genres} = useSelector((state: any) => state.home);
   const {pop_up} = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
-  const { launchPopUp, createAlbum, deleteAlbum } = bindActionCreators(actionCreator, dispatch);
+  const { launchPopUp, updateAlbum, deleteAlbum } = bindActionCreators(actionCreator, dispatch);
   const { getGenres } = bindActionCreators(actionCreatorPlayer, dispatch);
   const [name, setName] = useState<string>(pop_up.item?.name);
   const [date, setDate] = useState<any>(pop_up.item?.release_date);
   const [img, setImg] = useState<string>(pop_up.item?.image_medium);
   const [file, setFile] = useState<any>('');
   const [genre, setGenre] = useState<string>(pop_up.item?.genres[0]?.id);
-  const saveAlbum = async () => {
+  const editAlbum = async () => {
     const data = new FormData();
     data.append("file", file[0]);
     data.append("upload_preset", "album_image");
-    createAlbum({email, name, date, genre}, data);
+    file?
+    updateAlbum({email, id:pop_up.item?.id, name, date, genre}, data)
+    :
+    updateAlbum({email, id:pop_up.item?.id, name, date, genre}, data, img)
     // await new Promise(res => setTimeout(res,1500));
     // getPanelInfo(artist?.id, email);
     launchPopUp(false);
@@ -77,7 +80,7 @@ const EditAlbum: React.FC<myProps> = ({ item }: myProps) => {
         </div>
         <div>
           <button className={styles.btn} onClick={deleteBtn} style={{"backgroundColor":"red"}}>Delete</button>
-          <button className={styles.btn} onClick={undefined}>Save</button>
+          <button className={styles.btn} onClick={editAlbum}>Edit</button>
           <button className={styles.btn} onClick={()=>launchPopUp(false)}>Cancel</button>
         </div>
       </div>

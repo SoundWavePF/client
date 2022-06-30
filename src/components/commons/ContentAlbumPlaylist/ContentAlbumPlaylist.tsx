@@ -7,9 +7,10 @@ import * as actionCreator from "../../../redux/actions/action_player";
 import * as actionCreator2 from "../../../redux/actions/action_user";
 import ListItemContainer from "../ListItemContainer/ListItemContainer";
 import Swal from "sweetalert2";
-import imgPlaylist from "../../../assets/coverPl.jpg";
+import imgPlaylist from "../../../assets/playlistFran2.png";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { user } from "../../../redux/actions/hc_data";
 
 const ContentAlbumPlaylist = () => {
   const { email } = useSelector((state: any) => state.user_info);
@@ -26,14 +27,17 @@ const ContentAlbumPlaylist = () => {
   const { id } = useParams();
   const path = useLocation().pathname;
   const isPlaylist = path.includes("playlist");
+  const [showEdit, setShowEdit] = useState<boolean>(false);
   useEffect(() => {
     isPlaylist
       ? getAlbumPlaylist(id, "playlist")
       : getAlbumPlaylist(id, "album");
+     
     return () => {
       getAlbumPlaylist("clean", "");
     };
   }, []);
+  
   const toggleEdit = async () => {
     if (edit) {
       if (newPlaylist.length === 0) {
@@ -77,6 +81,16 @@ const ContentAlbumPlaylist = () => {
       }
     })
   }
+  
+  useEffect(() => {
+    if(item.user){
+      if(item.user.email !== email){
+        setShowEdit(false);
+      } else {
+        setShowEdit(true);
+      }
+    }
+  }, [item]);
 
   return Object.keys(item).length > 0 ? (
     <div className={styles.container}>
@@ -106,7 +120,7 @@ const ContentAlbumPlaylist = () => {
               </button>
           }
         </div>
-        {isPlaylist && (
+        {isPlaylist && showEdit && (
           <button
             className={edit ? `${styles.edit} ${styles.save}` : styles.edit}
             onClick={toggleEdit}
