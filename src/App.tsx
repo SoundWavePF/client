@@ -123,7 +123,7 @@ function App() {
 
         <Route path="/settings" element={<UserSettings />} />
         <Route path="/panel_artist" element={isLoading?<LoadingPage/>:<><PanelArtist/><Player/></>} />
-        <Route path="/admin" element={<><AdminPanel /></>} />
+        <Route path="/admin" element={isLoading?<LoadingPage/>:<AdminPanel />} />
         <Route path="/file" element={<FileUpload />} />
 
         <Route path="/*" element={<Error404 />} />
