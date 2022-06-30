@@ -148,7 +148,9 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
             <div className={styles.value}>${donations?.map((donation: any)=>Number(donation.amount)).reduce((a:number, b:number)=>a+b, 0)}</div>
         </div>
       </div>
-      <Table striped bordered size="sm">
+
+    <Table className={styles.tablita} striped bordered size="sm" style={{"backgroundColor":"transparent"}}>
+
       <thead>
         <tr className={'table-secondary'}>
           <th>Donation ID</th>
