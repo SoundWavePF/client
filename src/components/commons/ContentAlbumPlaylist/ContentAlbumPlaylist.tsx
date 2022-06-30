@@ -9,12 +9,13 @@ import ListItemContainer from "../ListItemContainer/ListItemContainer";
 import Swal from "sweetalert2";
 import imgPlaylist from "../../../assets/coverPl.jpg";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ContentAlbumPlaylist = () => {
   const { email } = useSelector((state: any) => state.user_info);
   const [edit, setEdit] = useState<boolean>(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { getAlbumPlaylist, updatePlaylist, playAll } = bindActionCreators(
     actionCreator,
     dispatch
@@ -55,6 +56,28 @@ const ContentAlbumPlaylist = () => {
       setEdit(true);
     }
   };
+
+  function borrar(p: any){
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#ffee32',
+      confirmButtonText: 'Delete'
+    }).then((result) => {
+      if (result.isConfirmed){
+        deletePlaylist(p)
+        Swal.fire(
+          'Deleted!',
+          'The playlist has been deleted.',
+          'success'
+        )
+     navigate("/playlists")
+      }
+    })
+  }
+
   return Object.keys(item).length > 0 ? (
     <div className={styles.container}>
       <div className={styles.details}>
@@ -75,14 +98,12 @@ const ContentAlbumPlaylist = () => {
           </button>
           {
             isPlaylist && 
-            <Link to={"/playlists"}>
               <button
-                onClick={() => email && id && deletePlaylist(id)}
+                onClick={() => email && id && borrar(id)}
                 className={styles.btn}
               >
                 Delete Playlist
               </button>
-            </Link>
           }
         </div>
         {isPlaylist && (
