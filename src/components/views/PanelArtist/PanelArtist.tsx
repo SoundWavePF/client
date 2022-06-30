@@ -75,10 +75,10 @@ const PanelArtist = () => {
             <img src={music} alt="music" className={sidebar.img} />
             Albums
           </div>
-          <div className={sidebar.buttonArtistPanel} onClick={()=>handlePage(4)}>
+          {/* <div className={sidebar.buttonArtistPanel} onClick={()=>handlePage(4)}>
             <img src={info} alt="info" className={sidebar.img} />
             Stats
-          </div>
+          </div> */}
         </div>
         <div className={styles.usermenu}>
           <UserMenu username={"username"}/>
@@ -97,14 +97,14 @@ const PanelArtist = () => {
           <div className={styles.content}>
             <PanelArtistSongs/>
           </div>
-          : page === 3 ?
+          :
           <div className={styles.content}>
             <PanelArtistAlbums/>
           </div>
-          :
-          <div className={styles.content}>
-            <ArtistProfile/>
-          </div>
+          // :
+          // <div className={styles.content}>
+          //   <ArtistProfile/>
+          // </div>
         }
         <FloatButton />
         <PopUp/>
