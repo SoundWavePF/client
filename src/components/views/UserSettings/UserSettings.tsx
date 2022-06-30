@@ -47,7 +47,6 @@ const UserSettings = () => {
       getUserInfo(user?.email)
       const donations = await axios.post(`https://www.javierochoa.me/order/history`, {email: user?.email})
       setDonations(donations.data)
-      console.log(donations.data)
     }
 
     user?.email && callInfouser()
@@ -56,6 +55,7 @@ const UserSettings = () => {
   useEffect(  () =>{
       setInfoUser(user_info)
 
+      
   },[user_info])
   
 
@@ -106,7 +106,7 @@ const UserSettings = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         
-        axios.post('https://www.javierochoa.me/requestArtistStatus',{email:user?.email})
+        axios.post('https://www.javierochoa.me/requestArtistStatus',{email:user_info?.email})
         .then(e=>console.log(e))
         
 
@@ -129,7 +129,7 @@ const UserSettings = () => {
       confirmButtonText: 'Confirm'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.post('https://www.javierochoa.me/deactivate',{email:user?.email})
+        axios.post('https://www.javierochoa.me/deactivate',{email:user_info?.email})
         .then(e=>console.log(e))
         
         Swal.fire({
@@ -147,9 +147,9 @@ const UserSettings = () => {
      
       html:
       '<label>Current password:</label>' +
-      '<input id="swal-input1" class="swal2-input">' +
+      '<input type="password" id="swal-input1" class="swal2-input">' +
       '<label>New password:</label>' +
-      '<input id="swal-input2" class="swal2-input">',
+      '<input type="password" id="swal-input2" class="swal2-input">',
 
 
       showCancelButton: true,
@@ -167,13 +167,23 @@ const UserSettings = () => {
 
   if(formValues['0'].value.length > 2){
 
+    let changepassword={
+      email:user_info?.email,
+      oldData: formValues['0'].value,
+      newData: formValues['1'].value,
+      field:'password'
+    }
+    
+
     setInputs({
-      email:user?.email,
+      email:user_info?.email,
       oldData: formValues['0'].value,
       newData: formValues['1'].value,
       field:'password'
     })
-    updateUser(inputs)
+
+
+    updateUser(changepassword)
 
     Swal.fire({
       title:'password was successfully changed',
@@ -211,13 +221,18 @@ const UserSettings = () => {
 
     if(formValues['0'].value.length > 2){
 
-      setInputs({
-        email:user?.email,
+      let changeusername={
+        email:user_info?.email,
         oldData: formValues['0'].value,
         newData: formValues['1'].value,
         field:'username'
-      })
-    updateUser(inputs)
+      }
+
+      
+
+
+      setInputs(changeusername)
+    updateUser(changeusername)
     
     Swal.fire({
       
@@ -290,8 +305,6 @@ const changeImage = async()=>{
         <img src={user_info.image_avatar?user_info.image_avatar:userDefault} alt="image" className={style.userImage} />
         </div>
  
-
-       
           
 
 
@@ -303,7 +316,7 @@ const changeImage = async()=>{
 
             {InfoUserA?  
               <div className={style.subscriptionContainer}>
-              <div>{`${user_info?.username} Currently you are an Artist`}</div>
+              <div>{`${user_info?.username} Currently you are an ${user_info?.rol && user_info?.rol}`}</div>
             </div>
             
             
@@ -331,15 +344,27 @@ const changeImage = async()=>{
               <div className={style.div9}> <button onClick={(e) => modalChangeUsername()} name='modalUsername' className={style.buttons}>Modify</button></div>
             </div>
             <br />
-            <div className={style.table}>
+          
+          </div>
+          </div>
+          
+
+          <div className={style.containertable}>
             <table  className={style.table}>
             <thead >
+            {!donations.length ?
+               <tr >
+               <th>Donation ID</th>
+              
+             </tr>:
+
               <tr >
                 <th>Donation ID</th>
                 <th>Arist</th>
                 <th>Amount</th>
                 <th>Date</th>
               </tr>
+          }
             </thead>
             <tbody>
             {donations !== undefined && donations?.map((donation:any)=>{
@@ -356,15 +381,10 @@ const changeImage = async()=>{
               {!donations.length && 
                   <tr >
                     <td className={style.donation} >No donations</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                   </tr>
               }
             </tbody>
           </table>
-          </div>
-          </div>
           </div>
 
         <div className={style.buttonContainer}>
