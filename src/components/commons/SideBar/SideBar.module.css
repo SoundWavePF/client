@@ -1,4 +1,4 @@
-.container{
+.container {
   /* position: relative; */
   /* left: 0px;
   width: 250px;
@@ -8,14 +8,39 @@
   font-size: 1.7em;
   /* border-right: 2px solid var(--gray-light);  */
 }
-.btnContainer{
+.links{
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 30px;
+  height: 100px;
+}
+.links:hover{
+  color: var(--text-primary);
+}
+.sidebarContainer{
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color:var(--background-accent);
+}
+.buttonArtistPanel{
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.buttonArtistPanel:hover{
+  cursor:pointer;
+}
+
+.btnContainer {
   margin-top: 20px;
 }
-.logo{
+
+.logo {
   width: 50px;
   margin: 10px;
 }
-.button{
+
+.button {
   width: 100%;
   height: 60px;
   font-size: 0.7em;
@@ -23,7 +48,8 @@
   display: flex;
   align-items: center;
 }
-.button>svg{
+
+.button>svg {
   width: 25px;
   height: 25px;
   margin-left: 15px;
@@ -31,30 +57,37 @@
   color: var(--text-primary);
   fill: currentColor;
 }
-.img{
+
+.img {
   width: 25px;
   height: 25px;
   margin-left: 15px;
   margin-right: 7px;
 }
-.button:hover{
+
+.button:hover {
   filter: brightness(1.10);
 }
-.link{
+
+.link {
   text-decoration: none;
   color: var(--text-primary);
 }
-.link:hover{
+
+.link:hover {
   color: var(--text-primary);
 }
-.linkLogo{
+
+.linkLogo {
   text-decoration: none;
   color: var(--text-primary);
 }
-.linkLogo:hover{
+
+.linkLogo:hover {
   color: var(--text-primary);
 }
-.buttonDis{
+
+.buttonDis {
   width: 100%;
   height: 60px;
   font-size: 0.7em;
@@ -64,7 +97,8 @@
   opacity: 0.3;
   cursor: default;
 }
-.buttonDis>svg{
+
+.buttonDis>svg {
   width: 25px;
   height: 25px;
   margin-left: 15px;
@@ -72,13 +106,34 @@
   color: var(--text-primary);
   fill: currentColor;
 }
-.signUp{
+
+.signUp {
   opacity: 0.3;
   font-size: 1rem;
   padding: 10px;
 }
-@media(max-width: 400px){
-  .container{
+
+@media(max-width: 400px) {
+  .sidebarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100vw;
+    height: 49px;
+    background-color: var(--background-accent);
+  }
+  .buttonArtistPanel{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-top: 6px;
+    width: 60px;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  .container {
     width: 100%;
     height: 100%;
     background-color: var(--background-accent);
@@ -90,7 +145,16 @@
     margin: 0%;
     padding: 0%;
   }
-  .btnContainer{
+
+  .logo {
+    display: none;
+  }
+
+  .span {
+    display: none;
+  }
+
+  .btnContainer {
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -98,10 +162,12 @@
     margin-top: 5px;
     padding: 0%;
   }
-  .linkLogo{
+
+  .linkLogo {
     display: none;
   }
-  .button{
+
+  .button {
     width: 100%;
     height: 100%;
     font-size: 0.7em;
@@ -110,29 +176,34 @@
     align-items: center;
     justify-content: center;
   }
-  
-  .button:hover{
+
+  .button:hover {
     filter: brightness(1.10);
   }
-  .link{
+
+  .link {
     display: flex;
     flex-direction: column;
     font-size: xx-small;
   }
-  .link>div{
+
+  .link>div {
     display: flex;
     flex-direction: column;
     font-size: x-small;
   }
-  .link:hover{
+
+  .link:hover {
     color: var(--text-primary);
   }
-  .img{
+
+  .img {
     width: 20px;
     height: 20px;
     /* margin-left: 15px; */
   }
-  .buttonDis{
+
+  .buttonDis {
     width: 100%;
     height: 100%;
     font-size: 0.7em;
@@ -142,7 +213,8 @@
     justify-content: center;
     opacity: 0.3;
   }
-  .signUp{
+
+  .signUp {
     display: none
   }
 }

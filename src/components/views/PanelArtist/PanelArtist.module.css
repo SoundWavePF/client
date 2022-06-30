@@ -9,6 +9,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .usermenu{
   position: fixed;
   top: 1rem;
@@ -33,4 +34,15 @@
 } */
 .container > div:nth-child(5){
   z-index: 20;
+}
+
+
+@media(max-width:400px){
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+  .usermenu{
+    margin-top: 30px;
+  }
 }

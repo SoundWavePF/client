@@ -58,8 +58,8 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
       {/* <button className={styles.button} onClick={()=>navigate('/home')}>
         <span>home</span>
       </button> */}
-      <img src={artist.image_medium} alt={username} />
-      <span>{artist.name}</span>
+      <img className={styles.imageProfile} src={artist.image_medium} alt={username} />
+      <div className={styles.spanProfile}>{artist.name}</div>
       {stripe_Id ? <p>(Donations enabled)</p> :  <button onClick={()=>handleEnableDonation()} className={styles.btn}>Enable Donations</button> }
       {/* stats harcodeadas */}
       <div className={styles.statContainer}>
@@ -101,7 +101,7 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
           <p>{about}</p>
           <EditButton action={setEdit} state={edit}/>
         </div>}
-      <Table striped bordered size="sm">
+      <Table className={styles.tablita} striped bordered size="sm">
       <thead>
         <tr className={'table-secondary'}>
           <th>Donation ID</th>

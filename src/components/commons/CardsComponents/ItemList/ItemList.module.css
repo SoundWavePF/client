@@ -1,7 +1,7 @@
 .itemListContainer {
     display: flex;
     align-items: center;
-    background-color: #d6d6d6;
+    background-color: var(--background-intermediate);
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
     border-top-right-radius: 5px;
