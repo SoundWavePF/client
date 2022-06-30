@@ -40,6 +40,8 @@
 }
 .details > div:last-child > input[type=text]{
   font-size: 3rem;
+  background-color: transparent;
+  color: var(--text-primary);
 }
 /* .container > img {
   width: 250px;
@@ -89,6 +91,8 @@
   min-height: 10em;
   height: fit-content;
   resize: none;
+  background-color: transparent;
+  color: var(--text-primary)
 }
 .btn{
   background-color: var(--yellow-light);
@@ -210,4 +214,4 @@
     .div4 { grid-area: 2 / 1 / 3 / 2; }
     .div5 { grid-area: 2 / 2 / 3 / 3; }
     .div6 { grid-area: 2 / 3 / 3 / 4; } */
-
+}
