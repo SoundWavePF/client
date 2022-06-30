@@ -1,5 +1,6 @@
 import styles from "./ContentHome.module.css";
 import CardContainer from "../CardContainer/CardContainer";
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { bindActionCreators } from "redux";
@@ -11,7 +12,7 @@ const ContentHome = () => {
   const email = user?.email;
   const dispatch = useDispatch();
   const { getGenres, getLastSongs, getChart, getTop, getDiscoverSongs } = bindActionCreators(actionCreator,dispatch);
-  const { last, genres, chart, discover, queue } = useSelector((state: any) => state.home);
+  const { last, genres, chart, discover, isLoading } = useSelector((state: any) => state.home);
   const top = useSelector((state: any) => state.top);
   const [windowSize, setWindowSize] = useState<number>(window.innerWidth)
   
@@ -41,6 +42,7 @@ const ContentHome = () => {
   },[])
   
   return (
+    (email && isLoading) || !discover.length? <LoadingSpinner/> : 
     <div className={styles.container}>
       { discover.length > 0 &&
         <div className={styles.section}>

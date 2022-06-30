@@ -29,10 +29,16 @@ const LoginButton: React.FunctionComponent = ()=>{
 
 const ToggleModeButton:React.FunctionComponent = ()=>{
   const [dark, setDark] = useState<boolean>(false)
+  useEffect( ()=>{
+    if( document.querySelector('#appSW')?.classList[0] === 'light-mode') {
+      setDark(false)
+    } else setDark(true)
+  }, [dark])
+
   const toggleMode = () => {
-    document.querySelector('#appSW')?.classList.toggle('light-mode')
-    document.querySelector('#appSW')?.classList.toggle('dark-mode')
-    setDark(!dark)
+      document.querySelector('#appSW')?.classList.toggle('dark-mode')
+      document.querySelector('#appSW')?.classList.toggle('light-mode')
+      setDark(!dark)
   }
 
   return (

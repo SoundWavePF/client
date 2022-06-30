@@ -19,4 +19,5 @@ export interface Home {
   discover?: swSong[],
   genres?: swGenre[],
   chart?: swSong[],
+  isLoading?: boolean
 }

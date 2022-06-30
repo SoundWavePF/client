@@ -48,6 +48,7 @@ const initialState: State = {
     discover: [],
     genres: [],
     chart: [],
+    isLoading: true
   },
   adminOption: { home: true, user: false },
   genre: [],
@@ -111,6 +112,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
         ...state,
         home: {
           ...state.home,
+          isLoading: false,
           last: Array.isArray(action.payload)? 
           action.payload : 
           [action.payload, ...state.home.last.filter( (song: any)=>action.payload?.id !== song?.id)],

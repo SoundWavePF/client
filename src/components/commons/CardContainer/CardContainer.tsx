@@ -55,6 +55,7 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
       }
   }
 
+  console.log(slidesContainer.current.children.length, numberOfSlidesToShow)
   return (
     <div className={styles.container} ref={carrusel}>
        {
