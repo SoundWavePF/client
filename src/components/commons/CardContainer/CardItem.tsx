@@ -21,10 +21,10 @@ const CardItem: React.FC<myProps> = (props: myProps) => {
   const { isAuthenticated } = useAuth0();
   const renderWave = useSelector( (state: any)=>{
     const {currentSongPosition, isPlaying} = state.player
-    return state.queue[currentSongPosition]?.id === props.item.id && isPlaying
+    return state.queue[currentSongPosition]?.id === props.item?.id && isPlaying
   })
   const queue = useSelector( (state: any)=>state.queue)
-  let IType = props.item.type;
+  let IType = props.item?.type;
   const { user } = useAuth0();
   const email = user?.email;
   const dispatch = useDispatch();

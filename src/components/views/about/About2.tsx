@@ -12,6 +12,7 @@ import sequelize from '../../../assets/about/sequelize.png'
 import express from '../../../assets/about/express.png'
 import AboutCardContainer from './AboutTeam/CardContainer';
 import AboutDesign from './AboutDesign/AboutDesign';
+import AdminButton from '../../commons/AdminSideBar/AdminButton';
 
 
 
@@ -24,8 +25,8 @@ const  About2=( )=> {
     <div className={Style.about}>
       <Link to={'/'} className={Style.buttonHome}><button >Back to page</button></Link>
       <div className={Style.divNav}>
-        <h1>SoundWave</h1>
-        
+        <h1>SoundWave</h1> 
+        <div className={Style.darkButton}><AdminButton/></div>
         {/* <button onClick={toggleMode}>tema</button> */}
       </div>
       <div className={Style.div1}>

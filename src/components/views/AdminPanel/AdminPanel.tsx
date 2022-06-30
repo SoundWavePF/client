@@ -13,8 +13,9 @@ import Error404 from '../error404/error404';
 import searchIcon from "../../../assets/search_icon.png";
 import AdminStats from './AdminStats';
 import LoadingSpinner from '../../commons/LoadingSpinner/LoadingSpinner';
+import AdminButton from '../../commons/AdminSideBar/AdminButton';
 
-
+/*
 interface user{
   request:boolean,
   id:string,
@@ -49,7 +50,7 @@ function filterUsers(state: any, filter:string){
   }
   return state.users
 }
-
+*/
 const AdminPanel = ()=>{
   const dispatch = useDispatch()
   const [option, setOption] = useState<string>('aproved')
@@ -69,11 +70,13 @@ const AdminPanel = ()=>{
     if(e.target.value === ''){
       setUserSearch(users)
     } else{
-      setUserSearch(users.filter((user:any)=> user.re &&user.name.toLowerCase().includes(e.target.value.toLowerCase())))
+      setUserSearch(users.filter((user:any)=> user.username.toLowerCase().includes(e.target.value.toLowerCase())))
     }
   }
   
-
+  useEffect(()=>{
+    setUserSearch(users)
+  },[users])
   useEffect(()=>{
     getAllUsers(ADMIN_EMAIL)
     getStats(ADMIN_EMAIL)
@@ -84,6 +87,7 @@ const AdminPanel = ()=>{
         <div className={m.container}>
           <NavAdmin option={true}/>
           <AdminSideBar/>
+          <div></div>
           <div>
             <div className={m.containerStats}>
                 { 
@@ -95,19 +99,21 @@ const AdminPanel = ()=>{
               <Link className={m.buttonBack} to='/'>Back to Landing</Link>
               </div>
           </div>
+          
         </div>
+        
       )
     } else {
       return(
         <div className={m.container}>
           <NavAdmin option={false}/>
           <AdminSideBar/>
+          <div className={m.inputSearch}>
+            {/* <img src={searchIcon} width="20px" /> */}
+            <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" ><g><path d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z" ></path></g></svg>
+            <input  onChange={searchUser} placeholder='Put user...' type="text" />
+          </div>
           <div>
-            <div className={m.inputSearch}>
-              {/* <img src={searchIcon} width="20px" /> */}
-              <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" ><g><path d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z" ></path></g></svg>
-              <input  onChange={searchUser} placeholder='Put user...' type="text" />
-            </div>
             <div className={m.containerCards}>
                 <div className={m.containerHeader}>
                   <div className={m.type}>type</div>

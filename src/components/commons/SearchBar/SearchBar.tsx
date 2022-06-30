@@ -27,6 +27,21 @@ const LoginButton: React.FunctionComponent = ()=>{
   )
 }
 
+const ToggleModeButton:React.FunctionComponent = ()=>{
+  const [dark, setDark] = useState<boolean>(false)
+  const toggleMode = () => {
+    document.querySelector('#appSW')?.classList.toggle('light-mode')
+    document.querySelector('#appSW')?.classList.toggle('dark-mode')
+    setDark(!dark)
+  }
+
+  return (
+    <div className={style.toggleWrapper} onClick={toggleMode} >
+      <div className={dark? style.toggleActive: style.toggle} ></div>
+    </div>
+  )
+}
+
 const SearchBar = () => {
   const [input, setInput] = useState('')
   const loadingState = useSelector((state: any) => state.loading)
@@ -62,11 +77,7 @@ const SearchBar = () => {
     searchAll(input);
     // setInput("");
   }
-  const toggleMode = () => {
 
-    document.querySelector('#appSW')?.classList.toggle('light-mode')
-    document.querySelector('#appSW')?.classList.toggle('dark-mode')
-  }
   return (
     <nav className={`${style.navbar}`}>
       <form onSubmit={handleSubmit} className={style.form}>
@@ -83,7 +94,7 @@ const SearchBar = () => {
         </div>
       </form>
       <div className={style.icons}>
-        <button onClick={toggleMode} style={{"height":"20px"}}></button>
+        <ToggleModeButton/>
         {isLoading ? <img src={swAnim} alt={'Loading...'} width={30} height={30}/>:isAuthenticated ? (<MenuUser username={"username"} />) :
           (<LoginButton/>)
         }

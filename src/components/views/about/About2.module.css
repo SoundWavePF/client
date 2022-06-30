@@ -4,6 +4,11 @@
   align-items: center;
   font-family: 'sw-medium';
 }
+.darkButton{
+  position: absolute;
+  right: 20px;
+  top: 140px;
+}
 .divNav{
   display: flex;
   flex-direction: column;
