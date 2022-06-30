@@ -111,7 +111,7 @@ const ContentAlbumPlaylist = () => {
             Play all
           </button>
           {
-            isPlaylist && 
+            isPlaylist && showEdit && 
               <button
                 onClick={() => email && id && borrar(id)}
                 className={styles.btn}
