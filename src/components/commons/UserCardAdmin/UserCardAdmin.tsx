@@ -48,7 +48,7 @@ const UserCardAdmin = (userP:any)=>{
   const changeRole = async(userC:any)=>{
 
     Swal.fire({
-      title: 'quieres aceptar su solicitud para ser artista?',
+      title: 'Do you want to accept the request?',
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: 'SI',
@@ -65,7 +65,7 @@ const UserCardAdmin = (userP:any)=>{
         .then(r=>{
           getAllUsers(ADMIN_EMAIL)
           Swal.fire({
-            title:'Aprobado!',
+            title:'Approved!',
             confirmButtonColor: '#ffd100',
           })
           })
@@ -75,7 +75,7 @@ const UserCardAdmin = (userP:any)=>{
           })
         // Swal.fire('Saved!', '', 'success')
       } else if (result.isDenied) {
-        Swal.fire('Desaprobado')
+        Swal.fire('Disapproved')
       }
     })
   }
@@ -166,8 +166,5 @@ const UserCardAdmin = (userP:any)=>{
         <h1>panel admin</h1>
       )
     }
-  
-
-  
 }
 export default UserCardAdmin
