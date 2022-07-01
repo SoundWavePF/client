@@ -20,12 +20,13 @@ const  AboutCardContainer=( )=> {
             group={'FrontEnd Developer'} 
             img={fran}      
             git={'https://github.com/FranciscoMansilla'} 
-            lin={'https://www.linkedin.com/in/francisco-mansilla-5a6667237/'}></AboutCard>
+            lin={'https://www.linkedin.com/in/FranciscoMansilla/'}></AboutCard>
           <AboutCard 
             name={'Cristian Vanegas'}           
             group={'BackEnd Developer'}  
             img={cris}                                                                                                                      
-            git={'https://github.com/cristian18u'}       lin={''} ></AboutCard>
+            git={'https://github.com/cristian18u'}       
+            lin={'https://www.linkedin.com/in/cristian-vanegas/'} ></AboutCard>
           <AboutCard 
             name={'Javier Ochoa'}              
             group={'BackEnd Developer'}  
