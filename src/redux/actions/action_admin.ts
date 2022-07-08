@@ -12,7 +12,7 @@ export const changeAdminOption = (userOption:any)=>{
 }
 export const getAllUsers = (email:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/admin/users`,{adminEmail:email})
+    axios.post('https://www.javierochoa.me/admin/users',{adminEmail:email})
     .then(response => 
       dispatch({
         type: ActionType.GET_ALL_USERS,
@@ -23,7 +23,7 @@ export const getAllUsers = (email:any)=>{
 };
 export const getStats = (email:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/admin/stats`,{adminEmail:email})
+    axios.post('https://www.javierochoa.me/admin/stats',{adminEmail:email})
     .then(response => 
       dispatch({
         type: ActionType.GET_STATS,
@@ -34,7 +34,7 @@ export const getStats = (email:any)=>{
 };
 export const userAdmin = (email:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/admin/validate`,{userEmail:email})
+    axios.post('https://www.javierochoa.me/admin/validate',{userEmail:email})
     .then(response => 
       dispatch({
         type: ActionType.USER_ADMIN,

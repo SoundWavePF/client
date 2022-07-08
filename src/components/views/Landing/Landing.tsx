@@ -26,7 +26,7 @@ export default function Landing() {
   const top = useSelector((state: any) => state.top);
   
   function userLogin() {
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/login/userRegister`, {
+    axios.post("https://www.javierochoa.me/login/userRegister", {
       name: user?.name,
       username: user?.nickname,
       email: user?.email,

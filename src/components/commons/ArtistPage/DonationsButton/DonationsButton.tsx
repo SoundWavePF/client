@@ -75,7 +75,7 @@ const DonationsButton = (props:any)=>{
               icon:'success',
               confirmButtonColor: '#ffee32',
             })
-            axios.post(`${process.env.REACT_APP_BACKEND_URL}/order`,donation)
+            axios.post('https://www.javierochoa.me/order',donation)
             .then(({data}:any)=>{
               window.location.href = data.url
             })

@@ -83,7 +83,7 @@ const Modal = (props: Modal) => {
 
             e.preventDefault()
 
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}/requestArtistStatus`,{email:props.email})
+        axios.post('https://www.javierochoa.me/requestArtistStatus',{email:props.email})
         .then(e=>console.log(e))
         props.handleModal(close)
 
@@ -94,7 +94,7 @@ const Modal = (props: Modal) => {
         {
             e.preventDefault()
 
-        axios.post(`${process.env.REACT_APP_BACKEND_URL}/deactivate`,{email:props.email})
+        axios.post('https://www.javierochoa.me/deactivate',{email:props.email})
         .then(e=>console.log(e))
         props.handleModal(close)
 

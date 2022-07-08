@@ -46,7 +46,7 @@ const ContentAlbumPlaylist = () => {
         return;
       } else {
         let newSongOrder = newPlaylist.map((song: any) => song.id);
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/playlist/update`, {
+        await axios.post("https://www.javierochoa.me/playlist/update", {
           playlistId: id,
           newSongOrder,
           field: "songOrder",
