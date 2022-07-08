@@ -1,4 +1,3 @@
-require('dotenv').config();
 import styles from "./PanelArtistProfile.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";

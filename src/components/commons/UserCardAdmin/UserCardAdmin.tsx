@@ -1,4 +1,3 @@
-require('dotenv').config();
 import m from './UserCardAdmin.module.css'
 import Swal from 'sweetalert2'
 import axios from 'axios'
