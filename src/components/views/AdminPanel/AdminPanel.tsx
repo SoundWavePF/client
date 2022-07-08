@@ -70,7 +70,7 @@ const AdminPanel = ()=>{
     if(e.target.value === ''){
       setUserSearch(users)
     } else{
-      setUserSearch(users.filter((user:any)=> user.username.toLowerCase().includes(e.target.value.toLowerCase())))
+      setUserSearch(users.filter((user:any)=> user.username?.toLowerCase().includes(e.target.value.toLowerCase())))
     }
   }
   

@@ -23,7 +23,7 @@ const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
       setFiltered(songs);
       // setSongsState(songs)
     } else {
-      let filter = songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase()))
+      let filter = songs.filter((song:any)=>song.name?.toLowerCase().includes(input.toLowerCase()))
       // console.log('________', filter)
       setFiltered(filter)
       // setSongsState(filter)
