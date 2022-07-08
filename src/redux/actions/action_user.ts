@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { Dispatch } from "react";
 import { ActionType, Actions } from "./types";
 import axios from "axios";
@@ -6,10 +7,10 @@ import useAuth0 from "@auth0/auth0-react";
 export const getLibrary = (email: string) => {
   //hay que poner el id del usuario creado hasta que se pueda haceder a el
   return (dispatch: Dispatch<Actions>) => {
-    const favorite = axios.post("https://www.javierochoa.me/favorite", {
+    const favorite = axios.post(`${process.env.BACKEND_URL}/favorite`, {
       email: email,
     });
-    const playlist = axios.post("https://www.javierochoa.me/playlist", {
+    const playlist = axios.post(`${process.env.BACKEND_URL}/playlist`, {
       email: email,
     });
     Promise.all([favorite, playlist])
@@ -28,7 +29,7 @@ export const getLibrary = (email: string) => {
 export const getPlaylist = (id: any) => {
   return (dispatch: Dispatch<Actions>) => {
     axios
-      .get(`https://www.javierochoa.me/playlist/${id}`)
+      .get(`${process.env.BACKEND_URL}/playlist/${id}`)
       .then((response) =>
         dispatch({
           type: ActionType.GET_PlaylistForId,
@@ -41,7 +42,7 @@ export const getPlaylist = (id: any) => {
 export const newPlaylist = (email: string, playlistName: string, firtsSongId: any) => {
   return (dispatch: Dispatch<Actions>) => {
     axios
-      .post("https://www.javierochoa.me/playlist/create", {
+      .post(`${process.env.BACKEND_URL}/playlist/create`, {
         email: email,
         playlistName: playlistName,
       })
@@ -51,7 +52,7 @@ export const newPlaylist = (email: string, playlistName: string, firtsSongId: an
           payload: response.data,
         })
         if(firtsSongId) {
-          axios.post('https://www.javierochoa.me/playlist/add', { playlistId: response.data.id, songId: firtsSongId })
+          axios.post(`${process.env.BACKEND_URL}/playlist/add`, { playlistId: response.data.id, songId: firtsSongId })
           .then(response => dispatch({
             type: ActionType.ADD_TO_PLAYLIST,
             payload: response.data
@@ -64,7 +65,7 @@ export const newPlaylist = (email: string, playlistName: string, firtsSongId: an
 export const deletePlaylist = (id: string) => {
   return (dispatch: Dispatch<Actions>) => {
     axios
-      .post("https://www.javierochoa.me/playlist/delete", {
+      .post(`${process.env.BACKEND_URL}/playlist/delete`, {
         playlistId: id,
       })
       .then((response) =>
@@ -80,7 +81,7 @@ export const updateUser = (payload: any) => {
   return async function (dispatch: Dispatch<Actions>) {
 
     const update = await axios.post(
-      "https://www.javierochoa.me/update",
+      `${process.env.BACKEND_URL}/update`,
       payload
     );
     return {
@@ -92,7 +93,7 @@ export const updateUser = (payload: any) => {
 export const getUserInfo = (email: any) => {
   //hay que poner el id del usuario creado hasta que se pueda haceder a el
   return  (dispatch: Dispatch<Actions>) => {
-    axios.post("https://www.javierochoa.me/info", {
+    axios.post(`${process.env.BACKEND_URL}/info`, {
       email: email,
     }).then((response) =>
 

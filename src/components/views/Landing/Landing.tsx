@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { Link } from 'react-router-dom';
 import styles from './Landing.module.css';
 import NavBar from '../../commons/NavBar/NavBar';
@@ -26,7 +27,7 @@ export default function Landing() {
   const top = useSelector((state: any) => state.top);
   
   function userLogin() {
-    axios.post("https://www.javierochoa.me/login/userRegister", {
+    axios.post(`${process.env.BACKEND_URL}/login/userRegister`, {
       name: user?.name,
       username: user?.nickname,
       email: user?.email,

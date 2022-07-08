@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { Dispatch } from "react";
 import { ActionType, Actions } from "./types";
 import axios from "axios";
@@ -12,7 +13,7 @@ export const changeAdminOption = (userOption:any)=>{
 }
 export const getAllUsers = (email:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.post('https://www.javierochoa.me/admin/users',{adminEmail:email})
+    axios.post(`${process.env.BACKEND_URL}/admin/users`,{adminEmail:email})
     .then(response => 
       dispatch({
         type: ActionType.GET_ALL_USERS,
@@ -23,7 +24,7 @@ export const getAllUsers = (email:any)=>{
 };
 export const getStats = (email:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.post('https://www.javierochoa.me/admin/stats',{adminEmail:email})
+    axios.post(`${process.env.BACKEND_URL}/admin/stats`,{adminEmail:email})
     .then(response => 
       dispatch({
         type: ActionType.GET_STATS,
@@ -34,7 +35,7 @@ export const getStats = (email:any)=>{
 };
 export const userAdmin = (email:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.post('https://www.javierochoa.me/admin/validate',{userEmail:email})
+    axios.post(`${process.env.BACKEND_URL}/admin/validate`,{userEmail:email})
     .then(response => 
       dispatch({
         type: ActionType.USER_ADMIN,

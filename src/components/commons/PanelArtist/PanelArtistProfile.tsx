@@ -1,3 +1,4 @@
+require('dotenv').config();
 import styles from "./PanelArtistProfile.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
@@ -61,7 +62,7 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
     setEdit(false);
   }
   async function handleEnableDonation(){
-    const {data} = await axios.post('https://www.javierochoa.me/linkPayment', {email: email})
+    const {data} = await axios.post(`${process.env.BACKEND_URL}/linkPayment`, {email: email})
     window.location.href = data.url;
   }
   return (

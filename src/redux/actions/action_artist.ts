@@ -1,10 +1,11 @@
+require('dotenv').config();
 import { Dispatch } from "react";
 import { ActionType, Actions } from "./types";
 import axios from "axios";
 
 export const getArtist = (id:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.get('https://www.javierochoa.me/artist/'+id)
+    axios.get(`${process.env.BACKEND_URL}/artist/`+id)
     .then(response => 
       dispatch({
         type: ActionType.GET_ARTIST,
@@ -15,7 +16,7 @@ export const getArtist = (id:any)=>{
 }
 export const getArtistTop = (id:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.get('https://www.javierochoa.me/artist/'+id+'/top')
+    axios.get(`${process.env.BACKEND_URL}/artist/`+id+`/top`)
     .then(response => 
       dispatch({
         type: ActionType.GET_ARTIST_TOP,
@@ -31,7 +32,7 @@ export const changeAbout = (email: string, description: string, name: string, im
       const remote = await axios.post("https://api.cloudinary.com/v1_1/dbi1xhzps/image/upload", data);
       image = remote.data?.secure_url
     }
-    axios.post('https://www.javierochoa.me/artistpanel/profile/update', {email, description, name, image})
+    axios.post(`${process.env.BACKEND_URL}/artistpanel/profile/update`, {email, description, name, image})
     .then(response => {
         dispatch({
           type: ActionType.CHANGE_ABOUT,
@@ -46,7 +47,7 @@ export const changeAbout = (email: string, description: string, name: string, im
 }
 export const updateSong = (info: any) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post("https://www.javierochoa.me/artistpanel/song/update",{
+    axios.post(`${process.env.BACKEND_URL}/artistpanel/song/update`,{
       email: info.email,
       songId: info.id,
       songName: info.name,
@@ -73,7 +74,7 @@ export const localLoadedAlbum = (id: string | boolean) => {
     };
   } else {
     return (dispatch: Dispatch<Actions>) => {
-      axios.get(`https://www.javierochoa.me/album/${id}`)
+      axios.get(`${process.env.BACKEND_URL}/album/${id}`)
         .then(response =>
         dispatch({
           type: ActionType.LOCAL_LOADED_ALBUM,
@@ -87,8 +88,7 @@ export const uploadSong = (payload: any) => {
   return async function (dispatch: Dispatch<Actions>) {
     console.log(payload);
     
-    const update = await axios.post("https://www.javierochoa.me/artistpanel/song/create", payload)
-    console.log("la actioooooooooooooooooooon", update);
+    const update = await axios.post(`${process.env.BACKEND_URL}/artistpanel/song/create`, payload)
     return {
       type: ActionType.UPLOAD_SONG,
       payload: update
@@ -97,10 +97,10 @@ export const uploadSong = (payload: any) => {
 }
 export const getPanelInfo = (id: string, email:string)=>{
   return(dispatch: Dispatch<any>)=>{
-    // let promiseContent = axios.get('https://www.javierochoa.me/artist/'+id);
-    // let promiseInfo = axios.post('https://www.javierochoa.me/artistpanel/stats', {email: email});
+    // let promiseContent = axios.get('${process.env.BACKEND_URL}/artist/'+id);
+    // let promiseInfo = axios.post('${process.env.BACKEND_URL}/artistpanel/stats', {email: email});
     // Promise.all([promiseContent, promiseInfo])
-    axios.post('https://www.javierochoa.me/artistpanel/stats', {email: email})
+    axios.post(`${process.env.BACKEND_URL}/artistpanel/stats`, {email: email})
     .then(response =>
       dispatch({
         type: ActionType.GET_PANEL_INFO,
@@ -136,7 +136,7 @@ export const createAlbum = (info: any, data: any) => {
       genreId: info.genre,
     };
     console.log('__send\n', obj);
-    axios.post("https://www.javierochoa.me/artistpanel/album/create", obj)
+    axios.post(`${process.env.BACKEND_URL}/artistpanel/album/create`, obj)
     .then((response) =>
       console.log('res of create ',response)
     )
@@ -166,7 +166,7 @@ export const updateAlbum = (info: any, data: any, img?:any) => {
       genreId: info.genre,
     };
     console.log('__send\n', obj);
-    axios.post("https://www.javierochoa.me/artistpanel/album/update", obj)
+    axios.post(`${process.env.BACKEND_URL}/artistpanel/album/update`, obj)
     .then((response) =>
       console.log('res of create ',response)
     )
@@ -193,7 +193,7 @@ export const uploadMusic = (info: any, data: any) => {
       albumId: info.albumId,
     };
     console.log('__send\n', obj);
-    axios.post("https://www.javierochoa.me/artistpanel/song/create", obj)
+    axios.post(`${process.env.BACKEND_URL}/artistpanel/song/create`, obj)
     .then((response) =>
       console.log('res of create ',response)
     )
@@ -218,7 +218,7 @@ export const uploadNewAlbum = (email: string, name: string, songs: any) => {
       songs: send,
     };
     console.log('__send\n', obj);
-    axios.post("https://www.javierochoa.me/artistpanel/song/createAlbum", obj)
+    axios.post(`${process.env.BACKEND_URL}/artistpanel/song/createAlbum`, obj)
     .then((response) =>
       console.log('res of create ',response)
     )
@@ -237,7 +237,7 @@ export const uploadNewAlbum = (email: string, name: string, songs: any) => {
 export const deleteSong = (email: string, id: string) => {
   return (dispatch: Dispatch<Actions>) => {
     console.log(email, id)
-    axios.post("https://www.javierochoa.me/artistpanel/song/delete",{
+    axios.post(`${process.env.BACKEND_URL}/artistpanel/song/delete`,{
       email: email,
       songId: id,
     })
@@ -259,7 +259,7 @@ export const deleteSong = (email: string, id: string) => {
 export const deleteAlbum = (email: string, id: string) => {
   return (dispatch: Dispatch<Actions>) => {
     console.log(email, id)
-    axios.post("https://www.javierochoa.me/artistpanel/album/delete",{
+    axios.post(`${process.env.BACKEND_URL}/artistpanel/album/delete`,{
       email: email,
       albumId: id,
     })

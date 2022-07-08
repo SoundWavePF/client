@@ -1,3 +1,4 @@
+require('dotenv').config();
 import styles from "./ContentAlbumPlaylist.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
@@ -46,7 +47,7 @@ const ContentAlbumPlaylist = () => {
         return;
       } else {
         let newSongOrder = newPlaylist.map((song: any) => song.id);
-        await axios.post("https://www.javierochoa.me/playlist/update", {
+        await axios.post(`${process.env.BACKEND_URL}/playlist/update`, {
           playlistId: id,
           newSongOrder,
           field: "songOrder",

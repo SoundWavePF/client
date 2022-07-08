@@ -1,3 +1,4 @@
+require('dotenv').config();
 import m from './UserCardAdmin.module.css'
 import Swal from 'sweetalert2'
 import axios from 'axios'
@@ -27,7 +28,7 @@ const UserCardAdmin = (userP:any)=>{
           adminEmail:ADMIN_EMAIL,
           userEmail:userC.email,
         }
-        axios.post('https://www.javierochoa.me/admin/deactivate',data)
+        axios.post(`${process.env.BACKEND_URL}/admin/deactivate`,data)
         .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
@@ -61,7 +62,7 @@ const UserCardAdmin = (userP:any)=>{
           adminEmail:ADMIN_EMAIL,
           userEmail:userC.email,
         }
-        axios.post('https://www.javierochoa.me/admin/accept',data)
+        axios.post('${process.env.BACKEND_URL}/admin/accept',data)
         .then(r=>{
           getAllUsers(ADMIN_EMAIL)
           Swal.fire({
@@ -98,7 +99,7 @@ const UserCardAdmin = (userP:any)=>{
         field:'username', 
         newData:text 
       }
-      axios.post('https://www.javierochoa.me/admin/update',data)
+      axios.post('${process.env.BACKEND_URL}/admin/update',data)
       .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
@@ -133,7 +134,7 @@ const UserCardAdmin = (userP:any)=>{
         field:'email', 
         newData:email 
       }
-      axios.post('https://www.javierochoa.me/admin/update',data)
+      axios.post('${process.env.BACKEND_URL}/admin/update',data)
       .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)

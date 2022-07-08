@@ -1,3 +1,4 @@
+require('dotenv').config();
 import React, { useState } from 'react'
 import style from './Modal.module.css'
 import { useAuth0 } from "@auth0/auth0-react";
@@ -83,7 +84,7 @@ const Modal = (props: Modal) => {
 
             e.preventDefault()
 
-        axios.post('https://www.javierochoa.me/requestArtistStatus',{email:props.email})
+        axios.post(`${process.env.BACKEND_URL}/requestArtistStatus`,{email:props.email})
         .then(e=>console.log(e))
         props.handleModal(close)
 
@@ -94,7 +95,7 @@ const Modal = (props: Modal) => {
         {
             e.preventDefault()
 
-        axios.post('https://www.javierochoa.me/deactivate',{email:props.email})
+        axios.post(`${process.env.BACKEND_URL}/deactivate`,{email:props.email})
         .then(e=>console.log(e))
         props.handleModal(close)
 

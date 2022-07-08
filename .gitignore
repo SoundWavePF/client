@@ -26,3 +26,4 @@ eslintrc.js
 /.idea
 pnpm-lock.yaml
 
+.env

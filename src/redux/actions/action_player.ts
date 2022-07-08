@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { Dispatch } from "react";
 import { ActionType, Actions } from "./types";
 import axios from "axios";
@@ -11,7 +12,7 @@ import * as hc from "./hc_data";
 
 export const getGenres = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get('https://www.javierochoa.me/genre/all')
+    axios.get(`${process.env.BACKEND_URL}/genre/all`)
       .then(response =>
         dispatch({
           type: ActionType.GET_GENRES,
@@ -22,7 +23,7 @@ export const getGenres = () => {
 }
 export const getChart = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get('https://www.javierochoa.me/top/10')
+    axios.get(`${process.env.BACKEND_URL}/top/10`)
       .then(response =>
         dispatch({
           type: ActionType.GET_CHART,
@@ -34,7 +35,7 @@ export const getChart = () => {
 
 export const getDiscoverSongs = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get("https://www.javierochoa.me/top/discover")
+    axios.get(`${process.env.BACKEND_URL}/top/discover`)
     .then((response) =>
       dispatch({
         type: ActionType.DISCOVER_SONGS,
@@ -46,7 +47,7 @@ export const getDiscoverSongs = () => {
 
 export const getLastSongs = (email:any) => {
   return (dispatch: Dispatch<any>) => {
-    axios.post("https://www.javierochoa.me/history", {email})
+    axios.post(`${process.env.BACKEND_URL}/history`, {email})
     .then((response) =>
       dispatch({
         type: ActionType.GET_LAST_SONGS,
@@ -57,7 +58,7 @@ export const getLastSongs = (email:any) => {
 };
 
 export const setRecentlyPlayed = (song: swSong, email: string) =>{
-  axios.post("https://www.javierochoa.me/play", {songId: song.id, userEmail:email})
+  axios.post(`${process.env.BACKEND_URL}/play`, {songId: song.id, userEmail:email})
   .then( res => console.log('set Recently Played', res))
   return {
     type: ActionType.GET_LAST_SONGS,
@@ -68,7 +69,7 @@ export const setRecentlyPlayed = (song: swSong, email: string) =>{
 export const searchAll = (input: string) => {
   //hasta que no halla back el axios queda comentado
   return (dispatch: Dispatch<Actions>) => {
-    axios.get(`https://www.javierochoa.me/search?all=${input}`)
+    axios.get(`${process.env.BACKEND_URL}/search?all=${input}`)
       .then((response) =>
         dispatch({
           type: ActionType.SEARCH_ALL,
@@ -83,7 +84,7 @@ export const searchAll = (input: string) => {
   };
 };
 export const playSong = (data: any, email:any) => {
-  axios.post("https://www.javierochoa.me/play", {songId: data.id, userEmail:email})
+  axios.post(`${process.env.BACKEND_URL}/play`, {songId: data.id, userEmail:email})
   return (dispatch: Dispatch<Actions>) => {
     dispatch({
       type: ActionType.PLAY_SONG,
@@ -117,7 +118,7 @@ export const sortQueue = (data: swSong[]) => {
 };
 export const addToPlaylist = (playlistId: string, songId: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post('https://www.javierochoa.me/playlist/add', { playlistId: playlistId, songId: songId })
+    axios.post(`${process.env.BACKEND_URL}/playlist/add`, { playlistId: playlistId, songId: songId })
       .then(response => dispatch({
         type: ActionType.ADD_TO_PLAYLIST,
         payload: response.data
@@ -126,7 +127,7 @@ export const addToPlaylist = (playlistId: string, songId: string) => {
 }
 export const getGenre = (id: any) => { // obtiene un genero para la ruta /genre/:id
   return (dispatch: Dispatch<any>) => {
-    axios.get('https://www.javierochoa.me/genre/' + id)
+    axios.get(`${process.env.BACKEND_URL}/genre/` + id)
       .then(response =>
         dispatch({
           type: ActionType.GET_GENRE,
@@ -151,7 +152,7 @@ export const getAlbumPlaylist = (id: any, type: string) => {
       }
   } else {
     return (dispatch: Dispatch<any>) => {
-      axios.get(`https://www.javierochoa.me/${type}/${id}`)
+      axios.get(`${process.env.BACKEND_URL}/${type}/${id}`)
         .then(response =>
           dispatch({
             type: ActionType.GET_ALBUM_PLAYLIST,
@@ -163,7 +164,7 @@ export const getAlbumPlaylist = (id: any, type: string) => {
 }
 export const getTop = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get("https://www.javierochoa.me/top/10").then((response) =>
+    axios.get(`${process.env.BACKEND_URL}/top/10`).then((response) =>
       dispatch({
         type: ActionType.GET_TOP,
         payload: response.data,
@@ -174,7 +175,7 @@ export const getTop = () => {
 
 export const likeSong = (songId: string, email: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post(`https://www.javierochoa.me/favorite/add/${songId}`, { email: email })
+    axios.post(`${process.env.BACKEND_URL}/favorite/add/${songId}`, { email: email })
       .then(response => dispatch({
         type: ActionType.LIKE_SONG,
         payload: response.data
@@ -184,7 +185,7 @@ export const likeSong = (songId: string, email: string) => {
 
 export const dislikeSong = (songId: string, email: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post(`https://www.javierochoa.me/favorite/remove/${songId}`, { email: email })
+    axios.post(`${process.env.BACKEND_URL}/favorite/remove/${songId}`, { email: email })
       .then(response => dispatch({
         type: ActionType.DISLIKE_SONG,
         payload: response.data

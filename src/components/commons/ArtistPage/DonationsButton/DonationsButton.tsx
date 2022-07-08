@@ -1,3 +1,4 @@
+require('dotenv').config();
 import Swal from 'sweetalert2'
 import style from './DonationsButton.module.css' 
 import axios from "axios";
@@ -75,7 +76,7 @@ const DonationsButton = (props:any)=>{
               icon:'success',
               confirmButtonColor: '#ffee32',
             })
-            axios.post('https://www.javierochoa.me/order',donation)
+            axios.post(`${process.env.BACKEND_URL}/order`,donation)
             .then(({data}:any)=>{
               window.location.href = data.url
             })

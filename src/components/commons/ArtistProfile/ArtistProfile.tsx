@@ -1,5 +1,5 @@
-import style from './ArtistProfile.module.css'
-
+require('dotenv').config();
+import style from './ArtistProfile.module.css';
 import React, {useState, useEffect} from 'react';
 import { NavLink, Outlet, Route } from "react-router-dom";
 import { ButtonGroup, ToggleButton  } from 'react-bootstrap';
@@ -189,7 +189,7 @@ const ArtistProfile: React.FunctionComponent = ()=>{
     const [searchWord, setSearchWord] = useState('')
 
     useEffect( ()=>{
-        axios.get('https://www.javierochoa.me/search?all=amor')
+        axios.get(`${process.env.BACKEND_URL}/search?all=amor`)
         .then( (res)=>res.data.songData)
         .then( songs => setSongs(songs))
     }, [])
