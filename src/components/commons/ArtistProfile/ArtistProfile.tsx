@@ -1,4 +1,3 @@
-require('dotenv').config();
 import style from './ArtistProfile.module.css';
 import React, {useState, useEffect} from 'react';
 import { NavLink, Outlet, Route } from "react-router-dom";
@@ -189,7 +188,7 @@ const ArtistProfile: React.FunctionComponent = ()=>{
     const [searchWord, setSearchWord] = useState('')
 
     useEffect( ()=>{
-        axios.get(`${process.env.BACKEND_URL}/search?all=amor`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/search?all=amor`)
         .then( (res)=>res.data.songData)
         .then( songs => setSongs(songs))
     }, [])

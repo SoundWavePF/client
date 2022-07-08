@@ -1,4 +1,3 @@
-require('dotenv').config();
 import Modal from "../../commons/Modal/Modal";
 // import styles from "../Home/Home.module.css";
 import StylesC from "./UserSettingContainer.module.css";
@@ -46,7 +45,7 @@ const UserSettings = () => {
     const callInfouser=async ()=>{
       // console.log(user?.email,"no hay")
       getUserInfo(user?.email)
-      const donations = await axios.post(`${process.env.BACKEND_URL}/order/history`, {email: user?.email})
+      const donations = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/order/history`, {email: user?.email})
       setDonations(donations.data)
     }
 
@@ -107,7 +106,7 @@ const UserSettings = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         
-        axios.post('${process.env.BACKEND_URL}/requestArtistStatus',{email:user_info?.email})
+        axios.post('${process.env.REACT_APP_BACKEND_URL}/requestArtistStatus',{email:user_info?.email})
         .then(e=>console.log(e))
         
 
@@ -130,7 +129,7 @@ const UserSettings = () => {
       confirmButtonText: 'Confirm'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.post('${process.env.BACKEND_URL}/deactivate',{email:user_info?.email})
+        axios.post('${process.env.REACT_APP_BACKEND_URL}/deactivate',{email:user_info?.email})
         .then(e=>console.log(e))
         
         Swal.fire({
@@ -288,7 +287,7 @@ const changeImage = async()=>{
         newData: fileupdate.secure_url
     }
 
-       axios.post("${process.env.BACKEND_URL}/update",newImage)
+       axios.post("${process.env.REACT_APP_BACKEND_URL}/update",newImage)
         .then(e=>getUserInfo(user?.email))      
         Swal.fire('Saved!', '', 'success')
     }}

@@ -27,7 +27,7 @@ const UserCardAdmin = (userP:any)=>{
           adminEmail:ADMIN_EMAIL,
           userEmail:userC.email,
         }
-        axios.post(`${process.env.BACKEND_URL}/admin/deactivate`,data)
+        axios.post(`${process.env.REACT_APP_BACKEND_URL}/admin/deactivate`,data)
         .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
@@ -61,7 +61,7 @@ const UserCardAdmin = (userP:any)=>{
           adminEmail:ADMIN_EMAIL,
           userEmail:userC.email,
         }
-        axios.post('${process.env.BACKEND_URL}/admin/accept',data)
+        axios.post('${process.env.REACT_APP_BACKEND_URL}/admin/accept',data)
         .then(r=>{
           getAllUsers(ADMIN_EMAIL)
           Swal.fire({
@@ -98,7 +98,7 @@ const UserCardAdmin = (userP:any)=>{
         field:'username', 
         newData:text 
       }
-      axios.post('${process.env.BACKEND_URL}/admin/update',data)
+      axios.post('${process.env.REACT_APP_BACKEND_URL}/admin/update',data)
       .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
@@ -133,7 +133,7 @@ const UserCardAdmin = (userP:any)=>{
         field:'email', 
         newData:email 
       }
-      axios.post('${process.env.BACKEND_URL}/admin/update',data)
+      axios.post('${process.env.REACT_APP_BACKEND_URL}/admin/update',data)
       .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
