@@ -26,7 +26,7 @@ export default function Landing() {
   const top = useSelector((state: any) => state.top);
   
   function userLogin() {
-    axios.post("https://www.javierochoa.me/login/userRegister", {
+    axios.post("https://api-production-b004.up.railway.app/login/userRegister", {
       name: user?.name,
       username: user?.nickname,
       email: user?.email,

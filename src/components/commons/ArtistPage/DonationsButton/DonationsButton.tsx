@@ -75,7 +75,7 @@ const DonationsButton = (props:any)=>{
               icon:'success',
               confirmButtonColor: '#ffee32',
             })
-            axios.post('https://www.javierochoa.me/order',donation)
+            axios.post('https://api-production-b004.up.railway.app/order',donation)
             .then(({data}:any)=>{
               window.location.href = data.url
             })
