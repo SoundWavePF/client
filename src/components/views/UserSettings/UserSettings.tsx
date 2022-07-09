@@ -45,7 +45,7 @@ const UserSettings = () => {
     const callInfouser=async ()=>{
       // console.log(user?.email,"no hay")
       getUserInfo(user?.email)
-      const donations = await axios.post(`https://www.javierochoa.me/order/history`, {email: user?.email})
+      const donations = await axios.post(`https://api-production-b004.up.railway.app/order/history`, {email: user?.email})
       setDonations(donations.data)
     }
 
@@ -106,7 +106,7 @@ const UserSettings = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         
-        axios.post('https://www.javierochoa.me/requestArtistStatus',{email:user_info?.email})
+        axios.post('https://api-production-b004.up.railway.app/requestArtistStatus',{email:user_info?.email})
         .then(e=>console.log(e))
         
 
@@ -129,7 +129,7 @@ const UserSettings = () => {
       confirmButtonText: 'Confirm'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.post('https://www.javierochoa.me/deactivate',{email:user_info?.email})
+        axios.post('https://api-production-b004.up.railway.app/deactivate',{email:user_info?.email})
         .then(e=>console.log(e))
         
         Swal.fire({
@@ -287,7 +287,7 @@ const changeImage = async()=>{
         newData: fileupdate.secure_url
     }
 
-       axios.post("https://www.javierochoa.me/update",newImage)
+       axios.post("https://api-production-b004.up.railway.app/update",newImage)
         .then(e=>getUserInfo(user?.email))      
         Swal.fire('Saved!', '', 'success')
     }}
