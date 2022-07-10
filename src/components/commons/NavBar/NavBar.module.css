@@ -1,0 +1,114 @@
+.container{
+  background-color: var(--background-primary);
+  border-bottom: 1px solid var(--background-intermediate);
+  position: fixed;
+  width: 100vw;
+  height: 80px;
+  padding: 0 30px;
+  font-family: sw-medium, Arial;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.container > ul:nth-child(1){
+  font-size: 1.2rem;
+  grid-column: 1 / 2;
+  grid-row: 1;
+  justify-self: start;
+}
+.container > ul:nth-child(1) :first-child a{
+  color: black;
+}
+.container > ul:nth-child(1) :first-child a:hover{
+  color: var(--yellow-light);
+}
+
+.container > a:nth-child(2) {
+  grid-column: 1 / 3;
+  grid-row: 1;
+  justify-self: center;
+}
+.container > a:nth-child(2) img{
+  height: 70px;
+}
+
+.container > div:nth-child(3){
+  grid-column: 2 / 3;
+  grid-row: 1;
+  justify-self: end;
+  display: flex;
+  gap: 10px;
+}
+/*
+.container > div:nth-child(3) :first-child {
+  background-color: var(--yellow-light);
+  border-color: var(--yellow-light);
+  padding: 0.5rem 2.5rem;
+  align-self: center;
+}
+.container > div:nth-child(3) :last-child {
+  color: black;
+  border-color: var(--yellow-light);
+  padding: 0.5rem 2.5rem;
+  align-self: center;
+}
+.container > div:nth-child(3) :last-child:hover {
+  background-color: var(--yellow-light);
+} */
+.picture{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+
+/***Login Button****/
+/* From uiverse.io by @adamgiebl */
+.buttonLogin {
+  background: var(--yellow-light);
+  color: var(--gray-dark);
+  font-family: sw-medium;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.5em;
+  border: none;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+ }
+ 
+.icon {
+  background: var(--background-primary);
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em rgba(0,0,0,0.1);
+  right: 0.3em;
+  transition: all 0.3s;
+ }
+ 
+.icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: var(--text-primary);
+ }
+ .buttonLogin:hover .icon {
+  width: calc(100% - 0.6em);
+ }
+ 
+ .buttonLogin:active .icon {
+  transform: scale(0.95);
+ }
+ 

@@ -1,0 +1,134 @@
+.card{
+  display: grid;
+  grid-template-columns: repeat(2, 10%) 70% 10%;
+  grid-template-rows: 1fr;
+  font-family: 'sw-medium';
+  border-bottom: 1px solid var(--gray-light);
+}
+.card:hover{
+  background-color: var(--gray-light);
+  color: black;
+}
+.likeImg {
+  width: 30px;
+  color: black;
+}
+
+.likeImgInclude {
+  width: 30px;
+  color: rgb(223, 19, 19);
+  filter: invert(14%) sepia(99%) saturate(4977%) hue-rotate(358deg)
+    brightness(92%) contrast(90%);
+}
+
+.likeBtn {
+  background-color: transparent;
+  width: 25px;
+  margin-left: 40px;
+  margin-right: 15px;
+  border: none;
+}
+.div1 { 
+  grid-area: 1 / 1 / 2 / 2; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+}
+.cover {
+  grid-area: 1 / 2 / 2 / 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cover > img{
+  margin-right: 25px;
+  margin-top: 16px;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.cover > img:hover{
+  opacity: 40%;
+  -webkit-filter: blur(1px);
+	filter: blur(1px);
+}
+.divNames { 
+  grid-area: 1 / 3 / 2 / 4; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none ;
+}
+.divNames > p {
+  font-size: x-large;
+}
+.artistName{
+  font-family: 'sw-light';
+  margin-right: 7px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+.artistName:hover{
+  color: var(--text-primary);
+}
+.likeIcon { 
+  grid-area: 1 / 4 / 2 / 5; 
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.likeIcon > img{
+  width: 35px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.noFav{
+  opacity: 15%;
+  cursor: pointer;
+}
+.time{
+  margin-left: 10px;
+  margin-right: 3px;
+}
+
+@media(max-width: 400px){
+  .likeIcon img{
+    display: none;
+  }
+  .time{
+    display: flex;
+  }
+  .card{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.082);
+    border-radius: 5px;
+    padding: 5px;
+    min-height: 400px;
+    text-align: center;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  .cover{
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+  }
+  .cover img{
+    margin-left: 25px;
+  }
+  .artistNameContainer{
+    padding-bottom: 15px;
+  }
+
+}
+
+@media(max-width: 1300px){
+.div1{
+  margin-right: 20px;
+}
+}

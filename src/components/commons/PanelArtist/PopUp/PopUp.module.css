@@ -1,0 +1,239 @@
+.background{
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-bottom: 90px;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.floating{
+  width: 500px;
+  height: 350px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  display: grid;
+  grid-template-rows: 40px auto 40px;
+  /* transition: all .3s; */
+}
+.floating > h3{
+  justify-self: center;
+}
+.floating > div:last-child{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn{
+  background-color: var(--yellow-light);
+  width: auto;
+  height: 30px;
+  border-radius: 5px;
+  padding: 0 1rem;
+  margin: 0 1rem;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+}
+/* .floating label{
+  margin: .5rem 0;
+} */
+.floating input{
+  padding: .75rem;
+  width: 100%;
+  margin-bottom: .5rem;
+}
+.floating select{
+  padding: .75rem;
+  width: 100%;
+  margin-bottom: .5rem;
+}
+.editSong{
+  display: flex;
+  flex-direction: column;
+}
+.upload{
+  height: 180px;
+  width: 180px;
+  border-radius: 5px;
+  grid-area: a;
+  position: relative;
+  align-self: center;
+}
+.upload > div:first-child{
+  width: 100%;
+  height: 100%;
+}
+.upload > div:first-child > img{
+  width: 100%;
+  height: 100%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  object-fit: cover;
+}
+.upload > label:last-child{
+  position: absolute;
+  top: 65px;
+  left: 65px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: ease-in-out .3s;
+  opacity: .6;
+}
+.upload > label:last-child:hover{
+  /* filter: brightness(1.2); */
+  opacity: 1;
+}
+.upload > label:last-child > input{
+  display: none;
+}
+.upload > label:last-child > span{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: var(--yellow-light) no-repeat center/40% url('../../../../assets/edit.png');
+}
+.createAlbum{
+  display: grid;
+  grid-template-areas: "a b" "a c" "a d";
+  column-gap: 1rem;
+  align-content: center;
+}
+.createAlbum > label:nth-child(2){
+  grid-area: b;
+}
+.createAlbum > label:nth-child(3){
+  grid-area: c;
+}
+.createAlbum > label:nth-child(4){
+  grid-area: d;
+}
+.uploadMusic{
+  margin: 1rem 0;
+  position: relative;
+}
+.uploadMusic > div:last-child{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.uploadMusic input[type=text] {
+  /* height: 2rem; */
+  border: none;
+  padding: 5px;
+  /* width: 100%; */
+  margin-bottom: 0;
+  background-color: transparent;
+}
+.uploadMusic input[type=checkbox] {
+  /* height: 2rem; */
+  border: none;
+  padding: 5px;
+  width: 60px;
+  margin-bottom: 0;
+  background-color: transparent;
+}
+.uploadMusic select {
+  /* height: 2rem; */
+  /* border: none; */
+  border: none;
+  padding: 5px;
+  /* width: 100%; */
+  margin-bottom: 0;
+}
+.btnPlay{
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 100%;
+  background: var(--yellow-light) no-repeat center/1rem url('../../../../assets/play.png');
+  padding: 1rem;
+}
+.btnPause{
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 100%;
+  background: var(--yellow-light) no-repeat center/1rem url('../../../../assets/pause.png');
+  padding: 1rem;
+}
+.btnRemove{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  border-radius: 100%;
+  background: red no-repeat center/.75rem url('../../../../assets/bintrash.png');
+  padding: .75rem;
+}
+.itemUpload{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  height: 50px;
+  /* border: 1px solid black; */
+  background-color: var(--gray-light);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+.itemUpload > input[type=text]{
+  width: 50%;
+}
+.itemUpload > select{
+  width: 33%;
+}
+.itemUpload > label{
+  font-size: .7em;
+  opacity: .7;
+  display: inline;
+  width: 7%;
+  text-align: center;
+}
+.selectFiles{
+  justify-self: start;
+  position: absolute;
+  top: -50px;
+  /* left: 65px; */
+  height: 30px;
+  width: max-content;
+  padding: .5rem .75rem;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: ease-in-out .3s;
+  /* overflow: hidden; */
+  background-color: var(--yellow-light);
+}
+.selectFiles:hover{
+  background-color: var(--yellow-dark);
+}
+.selectFiles > input{
+  display: none;
+}
+.albumOptions{
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  width: 100%;
+}
+.albumOptions > select{
+  background-color: transparent;
+  border: 1px solid lightgray;
+}
+.albumOptions > input[type=text]{
+  background-color: transparent;
+  border: 1px solid lightgray;
+}
+.albumOptions > label{
+  margin: 0 .5rem;
+}

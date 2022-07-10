@@ -1,0 +1,35 @@
+.container{
+  padding: 30px;
+
+}
+.form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+.search {
+  align-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  align-content: center;
+  padding-right: 20px;
+  border-top: 1px solid var(--gray-light);
+  border-bottom: 1px solid var(--gray-light);
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.search > input {
+  border: none;
+  height: 35px;
+  height: 100%;
+  padding: 1rem;
+  background-color: transparent; 
+  width: 100%;
+}
+
+.search > input:focus {
+  outline:none;
+}

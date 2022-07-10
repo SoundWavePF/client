@@ -1,0 +1,142 @@
+.ContainerLibrary {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+.ItemSpace {
+    margin-left: 1em;
+    max-width: 100%;
+}
+.ItemSpace div {
+    width: auto;
+}
+
+.Column {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2em;
+    margin-left: 1em;
+}
+
+.ToolBar {
+    display: flex;
+    justify-content: start;
+    border-bottom: 1px solid var(--text-primary);
+    margin-bottom: 1em;
+    margin-top: 1em;
+
+    max-height: 37px;
+}
+
+.ToolBar h4 {
+    margin-left: 1.5em;
+    padding-bottom: 7px;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.ToolBar a {
+    text-decoration: none;
+    color: black;
+}
+
+.actived {
+    color: var(--yellow-dark);
+    border-bottom: 1px solid var(--yellow-dark);
+}
+
+.ContainerFavorite div {
+    width: auto;
+}
+
+.ToolBar :link {
+    color: red;
+    background-color: red;
+}
+
+.ToolBar h4:hover {
+    color: var(--yellow-dark);
+
+    border-bottom: 1px solid var(--yellow-dark);
+}
+
+.ContainerPlaylist {
+    /*overflow: hidden;*/
+    /*position: relative;*/
+    height: 100%;
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    /*justify-content: space-evenly;*/
+    flex-wrap: wrap;
+    gap: 40px 40px;
+    /*grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));*/
+}
+
+/*.ContainerPlaylist div {
+    background-color: beige;
+    position: relative;
+    height: 15em;
+    width: 15em;
+}*/
+
+.User {
+    width: 70%;
+    height: 18vw;
+    display: flex;
+}
+.User img {
+    width: 15vw;
+    height: 15vw;
+    margin:1vw;
+    border-radius: 6px;
+}
+.User h1 {
+    font-size: 2.7vw;
+    display: flex;
+    align-items: center;
+}
+.Registerto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+}
+.Registerto p {
+    font-weight: bolder;
+    background-color: var(--yellow-light);
+    padding: 1em;
+    border-radius: 1em;
+}
+@media(max-width:400px){
+    .ContainerLibrary{
+        width: 100%;
+        margin: 0%;
+        padding: 0%;
+    }
+    .User{
+        width: 100%;
+        height: 30vh;
+        flex-direction: column;
+        align-items: center;
+    }
+    .User>img{
+        width: 40vw;
+        height: 40vw;
+        margin: 2vh;
+    }
+    .User>h1{
+        font-size: x-large;
+    }
+    .ToolBar>div>a>h4{
+        font-size: large;
+        margin: 0%;
+        margin-left: 10vw;
+    }
+    .ToolBar{
+        padding: 0%;
+    }
+    .Column h4{
+        display: none;
+    }
+}

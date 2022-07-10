@@ -1,0 +1,71 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.formCont {
+    padding: 10px;
+    margin-top: 30px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid rgba(255, 255, 255, 0.577);
+    background-color: rgba(0, 0, 0, 0.262);
+    border-radius: 10px;
+}
+
+.laberImage {
+    margin-top: 10px;
+}
+
+.sendButtonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    /* background-color: red; */
+}
+
+.sendButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    color: rgba(255, 255, 255, 0);
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Noun_project_Upload.svg/2048px-Noun_project_Upload.svg.png');
+    background-position: center;
+    background-size: cover;
+    border: none;
+}
+
+.reproductor {
+    width: 76%;
+    height: 45px;
+}
+
+.trash {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    color: rgba(240, 248, 255, 0);
+    background-image: url('https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/trash-circle-red-512.png');
+    background-position: center;    
+    background-size: cover;
+}
+
+
+@media (max-width: 400px) {
+    
+    .formCont{
+        width: 90vw;
+    }
+    .reproductor {
+        width: 70%;
+        height: 45px;
+    }
+
+}

@@ -1,0 +1,38 @@
+.container{
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section{
+  margin-bottom: 3rem;
+}
+.container > h1 {
+  color: var(--gray-black);
+  margin-bottom: 1.5rem;
+  font-family: sw-medium;
+  font-size: 140px;
+}
+.sectionLoading{
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+}
+@media(max-width:400px){
+  .container{
+    padding: 3vw;
+  }
+  .container>h1{
+    font-size: xx-large;
+    margin-bottom: 4vw;
+  }
+  .section{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+/* .genreSpinner{
+  width: 100px;
+  height: 100px;
+} */

@@ -1,0 +1,27 @@
+.link{
+  text-decoration: none;
+  color: black;
+}
+.link:hover{
+  color: black;
+}
+.dropdown{
+  background-color: transparent;
+  border: none;
+  color: var(--gray-dark);
+  font-size: 1.3em;
+}
+.dropdown:after{
+  content: none;
+}
+.dropdown:hover{
+  color: black;
+}
+.dropdrop{
+  background-color: white;
+  border: none;
+  padding: .25rem 1rem;
+}
+.dropdrop:hover{
+  background-color: #e9ecef;
+}

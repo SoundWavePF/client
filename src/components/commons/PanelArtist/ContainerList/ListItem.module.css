@@ -1,0 +1,101 @@
+.container {
+    /* border: 1px solid black; */
+    background-color: rgba(211, 211, 211, 0.5);
+    display: grid;
+    grid-template-columns: 1.5fr auto 150px;
+    height: 50px;
+    align-items: center;
+    padding-right: 1rem;
+    /* overflow: hidden; */
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    gap: 5px;
+}
+.editing{
+    background-color: var(--yellow-light) !important;
+}
+.container:hover {
+    background-color: var(--gray-light);
+}
+.container > div:first-child{
+    display: flex;
+    height: 100%;
+    /* background-color: #1a1a1a7a; */
+    justify-content: start;
+    align-items: center;
+}
+.container > div:first-child  > img{
+    max-height: 50px;
+    cursor: pointer;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+    border-radius: 100%;
+}
+.container > div:first-child  > img:hover{
+    opacity: .5;
+}
+.container > div:first-child > span {
+    margin-left: 1rem;
+    cursor: default;
+    max-height: 1.5rem;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.container > div:first-child > input {
+    margin-left: 1rem;
+    width: auto;
+    max-width: 500px;
+}
+
+.container > span {
+    width: 100%;
+    justify-self: center;
+    cursor: default;
+    max-height: 1.5rem;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.container > select {
+    width: 100%;
+    justify-self: center;
+    margin: 0 1rem;
+    cursor: default;
+}
+
+.container > div:last-child{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: end;
+    align-items: center;
+    gap: 5px;
+}
+.editBtn{
+    height: 20px;
+    cursor: pointer;
+    margin: 0 25px;
+}
+.container > div:last-child > div{
+    width: 75px;
+    gap: 5px;
+    display: flex;
+}
+.container > div:last-child > div > button{
+    width: 30px;
+    margin-left: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+.container > div:last-child > span {
+    cursor: default;
+    width: 50px;
+    text-align: center;
+}
+.container > div:last-child > img:last-child{
+    height: 15px;
+}
+    

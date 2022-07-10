@@ -1,0 +1,37 @@
+.cardContainer{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.cardContainer>div{
+  border: 1px solid var(--gray-light);
+  border-radius: 5px;
+  width: 30%;
+  height: 10vh;
+  padding: 2vh;
+  margin: 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cardContainer > div:hover{
+  border: none;
+  background-color:var(--yellow-light);
+  color: var(--black);
+}
+.cardContainer>div>h2{
+  font-size: 1.8vw;
+}
+
+
+@media(max-width: 900px){
+  .cardContainer>div>h2{
+    font-size: large;
+  }
+  .cardContainer>div{
+    width: 90%;
+  }
+}
+
+

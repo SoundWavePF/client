@@ -1,0 +1,218 @@
+.container{
+  padding: 40px;
+  font-family: var(sw-medium);
+}
+
+.tablita{
+  margin-bottom: 70px;
+}
+.container > span {
+  font-size: 4.5rem;
+  font-family: var(sw-bold);
+  margin-left: 3rem;
+}
+
+.container > p {
+  font-size: 1.5rem;
+  font-family: var(sw-light);
+  margin-top: 2rem;
+}
+.details {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+.details > div:first-child{
+  grid-column: 1 / 2;
+  width: 100%;
+  aspect-ratio: 1;
+  justify-items: center;
+  display: grid;
+  gap: 1rem;
+}
+.details > div:last-child{
+  grid-column: 2 / 3;
+}
+.details > div:last-child > h1{
+  font-size: 3rem;
+}
+.details > div:last-child > input[type=text]{
+  font-size: 3rem;
+  background-color: transparent;
+  color: var(--text-primary);
+}
+/* .container > img {
+  width: 250px;
+  border-radius: 5px;
+} */
+.container > div:nth-child(2) {
+  align-self: center;
+  height: 50px;
+  display: grid;
+  grid-auto-flow: column;
+  align-content: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.statContainer {
+  display: flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  justify-content: space-evenly;
+  padding: 5px 15px;
+  background-color: var(--background-intermediate);
+  border: 0.5px solid;
+  border-color: grey;
+  margin-top: 1rem;
+
+}
+.statInfo{
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-intermediate);
+  border: 1px solid;
+  border-color: var(--background-contrast);
+  padding: 10px 20px;
+  text-align: center;
+}
+.title {
+  font-family: sw-bold;
+  font-size: 13px;
+  font-family: sw-light;
+}
+.value {
+  font-size: 16px;
+}
+.textarea{
+  width: 100%;
+  min-height: 10em;
+  height: fit-content;
+  resize: none;
+  background-color: transparent;
+  color: var(--text-primary)
+}
+.btn{
+  background-color: var(--yellow-light);
+  border: 2px solid var(--yellow-light);
+  border-radius: 5px;
+  padding: 3px 5px;
+  width: 4rem;
+}
+.btn2{
+  background-color: white;
+  border: 2px solid var(--yellow-light);
+  border-radius: 5px;
+  padding: 3px 5px;
+  width: 4rem;
+}
+
+/*//////* Edit Button/
+/* From uiverse.io by @barisdogansutcu */
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--yellow-light);
+  border: solid 3px transparent;
+  margin: 20px 0;
+
+
+  color: black;
+  min-height: 43px;
+  padding: 0 13px 0 13px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all .5s ease;
+}
+
+.button:active {
+  transform: scale(.95);
+  transition: all 100ms ease;
+}
+
+.upload{
+  height: 250px;
+  width: 250px;
+  border-radius: 5px;
+  position: relative;
+  align-self: center;
+}
+.upload > img:first-child{
+  width: 100%;
+  height: 100%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+.upload > label:last-child{
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: ease-in-out .3s;
+  opacity: .6;
+}
+.upload > label:last-child:hover{
+  opacity: 1;
+}
+.upload > label:last-child > input{
+  display: none;
+}
+.upload > label:last-child > span{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: var(--yellow-light) no-repeat center/40% url('../../../assets/edit.png');
+}
+
+@media(max-width:400px){
+  .container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .tablita{
+    margin-bottom: 70px;
+    width: 100%;
+  }
+  .statContainer{
+    display: flex;
+    margin-bottom: 30px;
+  }
+
+  .spanProfile{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin-top: 20px;
+    width: 100vw;
+  }
+
+
+  /* .parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    .div1 { grid-area: 1 / 1 / 2 / 2; }
+    .div2 { grid-area: 1 / 2 / 2 / 3; }
+    .div3 { grid-area: 1 / 3 / 2 / 4; }
+    .div4 { grid-area: 2 / 1 / 3 / 2; }
+    .div5 { grid-area: 2 / 2 / 3 / 3; }
+    .div6 { grid-area: 2 / 3 / 3 / 4; } */
+}

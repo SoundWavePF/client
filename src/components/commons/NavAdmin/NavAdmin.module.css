@@ -1,0 +1,16 @@
+
+.navbar{
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar>b{
+  font-size: 5vw;
+}
+@media(max-width:400px){
+  .navbar{
+    background-color: var(--background-accent);
+  }
+}

@@ -1,0 +1,24 @@
+.navbar>button{
+  /* position: fixed;
+  left: 20px;
+  top:90%; */
+  background: none;
+  border: 3px solid var(--text-primary);
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--text-primary);
+  z-index: 20;
+}
+.navbar>button>img{
+  width: 20px;
+  height: 20px;
+}
+.navbar>button>svg{
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  color: var(--text-primary);
+  fill: currentColor;
+}

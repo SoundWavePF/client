@@ -1,0 +1,51 @@
+.container_as78{
+  display: flex;
+  align-content: center;
+  padding-top: 7%;
+  align-items: center;
+  justify-content: center;
+  font-family: 'sw-medium';
+}
+.containerform_98ajz{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 100px;
+}
+.inputGoogle_7fv8{
+  margin-top: 20px;
+  width: 300px;
+  background-color: #ffee32;
+  color: black;
+  padding: 7px 12px;
+  text-align: center;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.inputGoogle_7fv8:hover{
+  filter: brightness(1.04);
+}
+.button{
+  font-family: main-font;
+  background-color: #FFEE32;
+  color: black;
+  max-width: fit-content;
+  padding: 7px 12px;
+  text-align: center;
+  border-radius: 4px;
+  margin: 0 auto;
+  text-decoration: none;
+}
+.button:hover{
+  filter: brightness(1.04);
+}
+.h2SignUp_f8h3{
+  font-size: 50px;
+  width: 300px;
+}
+.linkTolanding_h8z6{
+  font-size: 18px;
+  margin-bottom:30px;
+}

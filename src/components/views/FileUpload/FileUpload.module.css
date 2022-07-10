@@ -1,0 +1,213 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.uploadContainer {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    border: 3px solid rgba(255, 255, 255, 0.577);
+    background-color: rgba(0, 0, 0, 0.262);
+    padding: 10px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.titleContainer img {
+    position: absolute;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+}
+
+.titleContainer img:hover {
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+}
+
+.title {
+    font-size: 50px;
+}
+
+
+.uploadContainer label {
+    font-family: 'sw-bold';
+    margin-right: 10px;
+    font-size: 20px;
+
+}
+
+.component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.formCont {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalInfo {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 700px;
+    height: 650px;
+    overflow-y: scroll;
+}
+
+.modalBackground {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: ease-in 1s;
+    background-color: rgba(0, 0, 0, 0.717);
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.titleCont {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.xButton {
+    position: absolute;
+    right: 0px;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    width: 30px;
+    height: 30px;
+}
+
+.moreInf {
+    position: absolute;
+    left: 30px;
+    border: none;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    background-image: url("https://e7.pngegg.com/pngimages/649/536/png-clipart-crop-supply-computer-icons-blog-info-infographic-text.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.index {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 5px;
+}
+
+.moreInfresponsive {
+    display: none;
+    position: absolute;
+    border: none;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    background-image: url("https://e7.pngegg.com/pngimages/649/536/png-clipart-crop-supply-computer-icons-blog-info-infographic-text.png");
+    background-position: center;
+    background-size: cover;
+}
+
+@media (max-width: 400px) {
+
+    .modalInfo {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .titleContainer {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+    }
+
+    .titleCont {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .titleCont div {
+        font-weight: bold;
+        font-size: 35px;
+    }
+
+    .xButton {
+        top: 0px;
+        right: 10px;
+    }
+
+    .xButton:active {
+        background-color: rgba(255, 0, 0, 0.705);
+    }
+
+    .title {
+        margin-top: 35px;
+        font-size: 40px;
+    }
+
+    .moreInf {
+        display: none;
+    }
+
+    .moreInfresponsive {
+        display: flex;
+        top: 11px;
+        right: 75px;
+        position: absolute;
+        border: none;
+        border-radius: 50px;
+        width: 30px;
+        height: 30px;
+        background-image: url("https://e7.pngegg.com/pngimages/169/913/png-clipart-penedes-wine-penedesenca-cava-do-info-tourism-culture-text-hand-thumbnail.png");
+        background-position: center;
+        background-size: cover;
+    }
+
+    .uploadContainer {
+        width: 90vw;
+    }
+
+    .index {width: 90vw;}
+
+    .instructionImage {width: 90vw;}
+}

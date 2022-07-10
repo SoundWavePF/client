@@ -1,0 +1,128 @@
+.container{
+  color: var(--text-primary);
+  text-align: center;
+  border-bottom: none;
+  display: flex;
+  width: 100%;
+  font-family: 'sw-italic';
+  font-size: 1.1vw;
+}
+.button{
+  background-color: var(--yellow-light);
+  border: none;
+  border: 1px solid black;
+}
+.buttonDelete{
+  background-color: var(--yellow-light);
+  border: 1px solid black;
+  width: 5%;
+}
+.buttonDelete:hover{
+  filter: brightness(1.10);
+}
+.button:hover{
+  filter: brightness(1.10);
+}
+.buttonUsername{
+  background-color: var(--yellow-light);
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  width: 25%;
+}
+.buttonUsername:hover{
+  filter: brightness(1.10);
+
+}
+.buttonEmail{
+  display: flex;
+  align-items: center;
+  background-color: var(--yellow-light);
+  border: none;
+  border: 1px solid var(--background-contrast);
+  width: 30%;  
+}
+.buttonEmail:hover{
+  filter: brightness(1.10);
+
+}
+.buttonRequestTrue{
+  background-color: var(--yellow-light);
+  border: none;
+  border: 1px solid var(--background-contrast);
+  width: 5%;
+}
+.buttonRequest{
+  background-color: var(--background-intermediate);
+  border: none;
+  border: 1px solid var(--background-contrast);
+  width: 5%;
+}
+.buttonRequestTrue:hover{
+  filter: brightness(1.10);
+
+}
+.img{
+  width: 20px;
+  height: 20px;
+}
+.divType{
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  width: 5%;
+  border: 1px solid var(--background-contrast);
+  background-color: var(--background-accent);
+
+}
+.divType:hover{
+  filter: brightness(1.10);
+
+}
+.divId{
+  display: flex;
+  padding: 4px;
+  width: 30%;
+  background-color: var(--background-intermediate);
+  border: 1px solid var(--background-contrast);
+}
+.divId:hover{
+  filter: brightness(1.10);
+
+}
+
+.divEmail{
+  display: flex;
+  padding: 4px;
+  width: 30%;
+  border: 1px solid var(--background-contrast);
+}
+.divEmail:hover{
+  filter: brightness(1.10);
+
+}
+.divSong{
+  display: flex;
+  padding: 4px;
+  width: 180px;
+  border: 1px solid var(--background-contrast);
+}
+.divSong:hover{
+  filter: brightness(1.10);
+}
+
+@media(max-width: 400px){
+  .container{
+    flex-direction: column;
+    font-size: medium;
+    margin-bottom: 4vw;
+    border: 2px solid var(--background-contrast);
+  }
+  .container>div{
+    width: 100%;
+  }
+  .container>button{
+    width: 100%;
+  }
+  
+}

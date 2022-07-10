@@ -1,0 +1,161 @@
+.modalContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: ease-in 1s;
+    background-color: rgba(0, 0, 0, 0.717);
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    font-family: sw-bold;
+
+}
+
+
+.modal {
+    position: relative;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 700px;
+    height: 450px;
+
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+}
+.close{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.close button{
+    border: 2px solid black;
+    border-radius: 5px;
+
+}
+.close button:hover{
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+
+}
+
+
+.description{
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    margin: 1em;
+    margin-top: 5em;
+
+    margin-right: 7em;
+
+    display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+
+}
+.div4{
+    display: flex;
+    justify-content: flex-end;
+    
+    
+
+
+}
+.div5 {
+    display: inline;
+}
+.div6{
+    display: flex;
+    justify-content: flex-end;
+    
+
+}
+
+
+.div7 {
+    display: inline;
+
+}
+
+.button {
+    display: absolute;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    height: 10em;
+    align-items: center;
+
+}
+.button button{
+    height: 2em;
+    width: 10em;
+    border-radius: 10px;
+}
+
+.button button:hover{
+   background-color: yellow;
+}
+
+.buttonSpecial{
+    display: flex;
+    justify-content: center;
+}
+.buttonSpecial button{
+
+    height: 4em;
+    width: 15em;
+
+    border-radius: 5px;
+}
+.buttonSpecial button:hover{
+background-color: yellow;
+
+}
+
+
+
+
+
+
+.errorstyle input{
+    display: inline;
+    border: 1px solid red;
+    animation: error 1s  alternate;
+    
+    
+}
+.errorstyle input:focus{
+
+    border: 1px solid red;
+
+}
+
+@keyframes error {
+    
+    10%{
+        transform: translateX(5px);
+        }
+        30%{
+            transform: translateX(-5px);
+            }
+}
+
+.errorText{
+    display: flex;
+    justify-content: center;
+    color: red;
+    
+}

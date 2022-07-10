@@ -1,0 +1,9 @@
+.listDiv{
+  margin-bottom: 5px;
+}
+@media(max-width:400px){
+  .descriptionContainer{
+    width: 85%;
+    margin-bottom: 3vh;
+  }
+}

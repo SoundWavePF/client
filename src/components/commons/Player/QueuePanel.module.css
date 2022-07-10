@@ -1,0 +1,119 @@
+
+.box {
+    position: absolute;
+    right: 2rem;
+    bottom: 6rem;
+
+    overflow: scroll;
+    padding: 10px;
+    max-height: 300px;
+
+    min-width: 460px;
+    max-width: 460px;
+
+    border: 1px solid var(--gray-light);
+    border-radius: 5px;
+
+    background-color: white;
+}
+
+.box::-webkit-scrollbar{
+    display: none;
+}
+
+.image {
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+/* .name:hover {
+    background-color: aqua;
+} */
+
+/* .image:hover {
+    background-color: aquamarine;
+} */
+
+.notification {
+    position: absolute;
+    right: 1.3rem;
+    bottom: 2.1rem;
+
+    font-size: 14px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: default;
+    background-color: var(--yellow-light);
+}
+
+.name {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    font-family: sw-medium;
+    cursor: default;
+    align-items: center;
+   
+    gap: 5px
+}
+
+.name > span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 20px;
+}
+
+.currentSong, .song {
+    display: flex;
+    flex-direction: row;
+    gap:5px;
+    justify-content: space-between;
+    border-radius: 3px;
+    box-shadow: -2px 0px 4px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+    padding: 0px 5px;
+}
+
+.song {
+    justify-content: space-between;
+    border-bottom: 1px solid var(--gray-light);
+ 
+}
+
+.currentSong {
+    border-bottom: 1px solid var(--gray-light);
+    background-color: rgb(255, 195, 0 , 0.5);
+  
+}
+
+.buttonLoopActive, .buttonLoop {
+    width: 30px;
+    border: none;
+    padding: 0;
+    transition: all 0.3 ease-in-out;
+    border-radius: 3px;
+}
+
+.buttonLoop {
+    background: var(--gray-light);
+}
+
+.buttonLoopActive {
+    background: var(--yellow-light);
+}
+.buttonLoop:active, .buttonLoopActive:active {
+    transform: scale(0.97);
+}
+
+.delete {
+    border: none;
+    background-color: transparent;
+}
+
+.loopIcon {
+    width: 100%;
+}
+

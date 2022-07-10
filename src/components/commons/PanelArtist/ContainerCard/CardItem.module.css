@@ -1,0 +1,38 @@
+.default{
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+}
+.default > img:first-child{
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid lightgray;
+  cursor: pointer;
+  grid-column: 1;
+  grid-row: 1;
+  object-fit: cover;
+  /* height: 100%; */
+  aspect-ratio: 1 / 1;
+}
+.default > img:first-child:hover{
+  opacity: 90%; 
+  transition-duration: .25s;
+  position: relative;
+}
+.default > p{
+  font-family: sw-medium;
+  font-size: max(1rem, 1.1vw);
+  margin-top: .5rem;
+  grid-column: 1;
+  grid-row: 2;
+  cursor: default;
+}
+.default > button{
+  height: 30px;
+  width: 50px;
+  font-size: 1rem;
+  grid-area: 1 / 1 / 2 / 2;
+  align-self: center;
+  justify-self: end;
+  z-index: 2;
+}

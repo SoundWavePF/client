@@ -1,0 +1,82 @@
+.AboutCard{
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  height: 29vw;
+  margin: 2vw;
+  border-radius: 8px;
+  background-color: var(--background-primary);
+  border: 2px solid var(--background-intermediate);
+  font-family: sw-medium;
+  color: var(--text-primary);
+}
+.AboutCard:hover{
+  background-color: #ffee32;
+  border: none;
+  color: black;
+}
+.AboutCard >img{
+  width: 12vw;
+  height: 12vw;
+  margin: 1vw;
+  border-radius: 3%;
+}
+.infoName{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.infoName>h4{
+  font-size: 1.5vw;
+}
+.infoName>label{
+  font-size: 1vw;
+}
+.containerAccounts{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 1.5vw
+}
+.containerAccounts > a > img{
+  margin-left: .4vw;
+  margin-right: .4vw;
+  width: 2.5vw;
+  height: 2.5vw;
+}
+.containerAccounts > a > svg{
+  margin-left: .4vw;
+  margin-right: .4vw;
+  width: 2.5vw;
+  height: 2.5vw;
+  color: var(--text-primary);
+  fill: currentColor;
+}
+@media(max-width:500px){
+  .AboutCard{
+    width: 80vw;
+    height: 60vh;
+  }
+  .AboutCard>img{
+    width: 30vh;
+    height: 30vh;
+  }
+  .infoName>h4{
+    font-size: x-large;
+  }
+  .infoName>label{
+    font-size: large;
+  }
+  .containerAccounts>a>img{
+    width: 7vh;
+    height: 7vh;
+    margin: 3vh 2vh 0px 3vh;
+  }
+  .containerAccounts>a>svg{
+    width: 7vh;
+    height: 7vh;
+    margin: 3vh 2vh 0px 3vh;
+  }
+}

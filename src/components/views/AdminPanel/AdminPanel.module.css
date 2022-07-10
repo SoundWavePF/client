@@ -1,0 +1,213 @@
+.container {
+  padding: 0px;
+  margin: 0px;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 186px 60px 1fr;
+}
+
+.container > div:nth-child(1) {
+  position: sticky;
+  /* top: 0; */
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  border-bottom: 1px solid var(--background-intermediate);
+  z-index: 2;
+}
+.container > div:nth-child(2) {
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+  border-right: 1px solid var(--background-intermediate);
+}
+.container > div:nth-child(4) {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /* hidde scrollbar firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 1;
+}
+  /* hidde scrollbar chrome */
+.container > div:nth-child(3)::-webkit-scrollbar {
+  display: none;
+}
+
+.containerStats{
+  font-family: 'sw-medium';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+.containerform_98ajz{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 100px; */
+}
+.buttonBack{
+  margin: 50px;
+  width: 300px;
+  background-color: var(--yellow-light);
+  color: black;
+  padding: 7px 12px;
+  text-align: center;
+  border-radius: 4px;
+  border: 2px solid black;
+  text-decoration: none;
+}
+.buttonBack:hover{
+  filter: brightness(1.10);
+  color: black;
+}
+.button{
+  font-family: main-font;
+  background-color: var(--yellow-light);
+  color: black;
+  max-width: fit-content;
+  padding: 7px 12px;
+  text-align: center;
+  border-radius: 4px;
+  margin: 0 auto;
+  text-decoration: none;
+}
+.h2SignUp_f8h3{
+  font-size: 50px;
+  width: 300px;
+}
+.linkTolanding_h8z6{
+  font-size: 18px;
+  margin-bottom:30px;
+}
+.containerCards{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  margin:0px;
+  padding-bottom: 7%;
+  font-family: 'sw-medium';
+}
+.containerHeader{
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  padding: 0px;
+  font-family: 'sw-medium';
+  width: 100%;
+  font-size: 1.1vw;
+}
+.containerHeader>div{
+  background-color: var(--background-accent-secundary);
+  color: var(--text-primary);
+  border: 1px solid var(--background-contrast);
+}
+.type{
+  width: 5%;
+}
+.request{
+  width: 5%;
+}
+.id{
+  width: 30%;
+  padding-left: 5px;
+
+}
+.username{
+  width: 25%;
+  padding-left: 5px;
+
+}
+.email{
+  width: 30%;
+  padding-left: 5px;
+
+}
+.account{
+  width: 5%;
+  padding-left: 5px;
+}
+.inputSearch{
+  position: sticky;
+  /* top: 0; */
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  align-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  align-content: center;
+  padding: 0px 20px 0px 20px;
+  border-bottom: 1px solid var(--gray-light);
+}
+.inputSearch>input{
+  width: 100%;
+  border: none;
+  height: 35px;
+  height: 100%;
+  padding: 1rem;
+  background-color: transparent;
+}
+.inputSearch>svg{
+  width: 20px;
+  height: 20px;
+  color: var(--text-primary);
+  fill: currentColor;
+}
+.inputSearch>input:focus{
+  outline: none;
+}
+
+@media(max-width: 400px){
+  .container {
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 60px 54px 1fr;
+  }
+  
+  .container > div:nth-child(1) {
+    position: sticky;
+    /* top: 0; */
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    z-index: 2;
+    border-bottom:none;
+  }
+  .container > div:nth-child(2) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+  .inputSearch{
+    position: sticky;
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+  }
+  .container > div:nth-child(4) {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* hidde scrollbar firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    z-index: 1;
+  }
+  .containerStats{
+    padding-top: 0%;
+  }
+    /* hidde scrollbar chrome */
+  .container > div:nth-child(3)::-webkit-scrollbar {
+    display: none;
+  }
+  .containerHeader{
+    display: none;
+  }
+}

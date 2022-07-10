@@ -1,38 +1,61 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'sw-light';
+  src: url(./assets/DefaultFont/IBMPlexSans-Light.ttf);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'sw-medium';
+  src: url(./assets/DefaultFont/IBMPlexSans-Medium.ttf);
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: 'sw-bold';
+  src: url(./assets/DefaultFont/IBMPlexSans-Bold.ttf);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@font-face {
+  font-family: 'sw-italic';
+  src: url(./assets/DefaultFont/IBMPlexSans-Italic.ttf);
 }
-
-.App-link {
-  color: #61dafb;
+/* body {
+  color: red;
+  background-color: var(--black);
+  
+} */
+:root {
+  --black: #202020;
+  --gray-light: #d6d6d6;
+  --gray-intermediate: #565656;
+  --gray-dark: #333533;
+  --yellow-light: #ffee32;
+  --yellow-dark: #ffd100;
+  
+  --background-primary: white;
+  --background-intermediate: var(--gray-light);
+  --background-secondary: var(--gray-dark);
+  --background-contrast: var(--black);
+  
+  --text-primary: black;
+  --text-secondary: var(--gray-dark);
+  --text-contrast: white;
+  
+  --background-accent: var(--yellow-light);
+  --background-accent-secundary: var(--yellow-dark);
 }
+.light-mode{
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+.dark-mode{
+  --background-primary: var(--black);
+  --background-intermediate: var(--gray-intermediate);
+  --background-secondary: var(--black);
+  --background-contrast: var(--black);
+  
+  --text-primary: white;
+  --text-secondary: var(--gray-light);
+  --text-contrast: black;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  --background-accent: var(--gray-dark);
+  --background-accent-secundary: var(--background-intermediate);
+
+  background-color: var(--background-primary);
+  color: var(--text-primary);
 }
