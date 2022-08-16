@@ -27,7 +27,7 @@ const UserCardAdmin = (userP:any)=>{
           adminEmail:ADMIN_EMAIL,
           userEmail:userC.email,
         }
-        axios.post('https://api-production-b004.up.railway.app/admin/deactivate',data)
+        axios.post(`https://${process.env.REACT_APP_BACK}/admin/deactivate`,data)
         .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
@@ -61,7 +61,7 @@ const UserCardAdmin = (userP:any)=>{
           adminEmail:ADMIN_EMAIL,
           userEmail:userC.email,
         }
-        axios.post('https://api-production-b004.up.railway.app/admin/accept',data)
+        axios.post(`https://${process.env.REACT_APP_BACK}/admin/accept`,data)
         .then(r=>{
           getAllUsers(ADMIN_EMAIL)
           Swal.fire({
@@ -98,7 +98,7 @@ const UserCardAdmin = (userP:any)=>{
         field:'username', 
         newData:text 
       }
-      axios.post('https://api-production-b004.up.railway.app/admin/update',data)
+      axios.post(`https://${process.env.REACT_APP_BACK}/admin/update`,data)
       .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
@@ -133,7 +133,7 @@ const UserCardAdmin = (userP:any)=>{
         field:'email', 
         newData:email 
       }
-      axios.post('https://api-production-b004.up.railway.app/admin/update',data)
+      axios.post(`https://${process.env.REACT_APP_BACK}/admin/update`,data)
       .then(r=>{
         console.log(r.data)
         getAllUsers(ADMIN_EMAIL)
