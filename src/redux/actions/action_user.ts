@@ -6,10 +6,10 @@ import useAuth0 from "@auth0/auth0-react";
 export const getLibrary = (email: string) => {
   //hay que poner el id del usuario creado hasta que se pueda haceder a el
   return (dispatch: Dispatch<Actions>) => {
-    const favorite = axios.post("https://api-production-b004.up.railway.app/favorite", {
+    const favorite = axios.post(`https://${process.env.REACT_APP_BACK}/favorite`, {
       email: email,
     });
-    const playlist = axios.post("https://api-production-b004.up.railway.app/playlist", {
+    const playlist = axios.post(`https://${process.env.REACT_APP_BACK}/playlist`, {
       email: email,
     });
     Promise.all([favorite, playlist])
@@ -28,7 +28,7 @@ export const getLibrary = (email: string) => {
 export const getPlaylist = (id: any) => {
   return (dispatch: Dispatch<Actions>) => {
     axios
-      .get(`https://api-production-b004.up.railway.app/playlist/${id}`)
+      .get(`https://${process.env.REACT_APP_BACK}/playlist/${id}`)
       .then((response) =>
         dispatch({
           type: ActionType.GET_PlaylistForId,
@@ -41,7 +41,7 @@ export const getPlaylist = (id: any) => {
 export const newPlaylist = (email: string, playlistName: string, firtsSongId: any) => {
   return (dispatch: Dispatch<Actions>) => {
     axios
-      .post("https://api-production-b004.up.railway.app/playlist/create", {
+      .post(`https://${process.env.REACT_APP_BACK}/playlist/create`, {
         email: email,
         playlistName: playlistName,
       })
@@ -51,7 +51,7 @@ export const newPlaylist = (email: string, playlistName: string, firtsSongId: an
           payload: response.data,
         })
         if(firtsSongId) {
-          axios.post('https://api-production-b004.up.railway.app/playlist/add', { playlistId: response.data.id, songId: firtsSongId })
+          axios.post(`https://${process.env.REACT_APP_BACK}/playlist/add`, { playlistId: response.data.id, songId: firtsSongId })
           .then(response => dispatch({
             type: ActionType.ADD_TO_PLAYLIST,
             payload: response.data
@@ -64,7 +64,7 @@ export const newPlaylist = (email: string, playlistName: string, firtsSongId: an
 export const deletePlaylist = (id: string) => {
   return (dispatch: Dispatch<Actions>) => {
     axios
-      .post("https://api-production-b004.up.railway.app/playlist/delete", {
+      .post(`https://${process.env.REACT_APP_BACK}/playlist/delete`, {
         playlistId: id,
       })
       .then((response) =>
@@ -80,7 +80,7 @@ export const updateUser = (payload: any) => {
   return async function (dispatch: Dispatch<Actions>) {
 
     const update = await axios.post(
-      "https://api-production-b004.up.railway.app/update",
+      `https://${process.env.REACT_APP_BACK}/update`,
       payload
     );
     return {
@@ -92,7 +92,7 @@ export const updateUser = (payload: any) => {
 export const getUserInfo = (email: any) => {
   //hay que poner el id del usuario creado hasta que se pueda haceder a el
   return  (dispatch: Dispatch<Actions>) => {
-    axios.post("https://api-production-b004.up.railway.app/info", {
+    axios.post(`https://${process.env.REACT_APP_BACK}/info`, {
       email: email,
     }).then((response) =>
 
