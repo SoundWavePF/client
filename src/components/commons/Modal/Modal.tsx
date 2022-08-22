@@ -83,7 +83,7 @@ const Modal = (props: Modal) => {
 
             e.preventDefault()
 
-        axios.post('https://api-production-b004.up.railway.app/requestArtistStatus',{email:props.email})
+        axios.post(`https://${process.env.REACT_APP_BACK}/requestArtistStatus`,{email:props.email})
         .then(e=>console.log(e))
         props.handleModal(close)
 
@@ -94,7 +94,7 @@ const Modal = (props: Modal) => {
         {
             e.preventDefault()
 
-        axios.post('https://api-production-b004.up.railway.app/deactivate',{email:props.email})
+        axios.post(`https://${process.env.REACT_APP_BACK}/deactivate`,{email:props.email})
         .then(e=>console.log(e))
         props.handleModal(close)
 

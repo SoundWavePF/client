@@ -11,7 +11,7 @@ import * as hc from "./hc_data";
 
 export const getGenres = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get('https://api-production-b004.up.railway.app/genre/all')
+    axios.get(`https://${process.env.REACT_APP_BACK}/genre/all`)
       .then(response =>
         dispatch({
           type: ActionType.GET_GENRES,
@@ -22,7 +22,7 @@ export const getGenres = () => {
 }
 export const getChart = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get('https://api-production-b004.up.railway.app/top/10')
+    axios.get(`https://${process.env.REACT_APP_BACK}/top/10`)
       .then(response =>
         dispatch({
           type: ActionType.GET_CHART,
@@ -34,7 +34,7 @@ export const getChart = () => {
 
 export const getDiscoverSongs = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get("https://api-production-b004.up.railway.app/top/discover")
+    axios.get(`https://${process.env.REACT_APP_BACK}/top/discover`)
     .then((response) =>
       dispatch({
         type: ActionType.DISCOVER_SONGS,
@@ -46,7 +46,7 @@ export const getDiscoverSongs = () => {
 
 export const getLastSongs = (email:any) => {
   return (dispatch: Dispatch<any>) => {
-    axios.post("https://api-production-b004.up.railway.app/history", {email})
+    axios.post(`https://${process.env.REACT_APP_BACK}/history`, {email})
     .then((response) =>
       dispatch({
         type: ActionType.GET_LAST_SONGS,
@@ -57,7 +57,7 @@ export const getLastSongs = (email:any) => {
 };
 
 export const setRecentlyPlayed = (song: swSong, email: string) =>{
-  axios.post("https://api-production-b004.up.railway.app/play", {songId: song.id, userEmail:email})
+  axios.post(`https://${process.env.REACT_APP_BACK}/play`, {songId: song.id, userEmail:email})
   .then( res => console.log('set Recently Played', res))
   return {
     type: ActionType.GET_LAST_SONGS,
@@ -68,7 +68,7 @@ export const setRecentlyPlayed = (song: swSong, email: string) =>{
 export const searchAll = (input: string) => {
   //hasta que no halla back el axios queda comentado
   return (dispatch: Dispatch<Actions>) => {
-    axios.get(`https://api-production-b004.up.railway.app/search?all=${input}`)
+    axios.get(`https://${process.env.REACT_APP_BACK}/search?all=${input}`)
       .then((response) =>
         dispatch({
           type: ActionType.SEARCH_ALL,
@@ -83,7 +83,7 @@ export const searchAll = (input: string) => {
   };
 };
 export const playSong = (data: any, email:any) => {
-  axios.post("https://api-production-b004.up.railway.app/play", {songId: data.id, userEmail:email})
+  axios.post(`https://${process.env.REACT_APP_BACK}/play`, {songId: data.id, userEmail:email})
   return (dispatch: Dispatch<Actions>) => {
     dispatch({
       type: ActionType.PLAY_SONG,
@@ -117,7 +117,7 @@ export const sortQueue = (data: swSong[]) => {
 };
 export const addToPlaylist = (playlistId: string, songId: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post('https://api-production-b004.up.railway.app/playlist/add', { playlistId: playlistId, songId: songId })
+    axios.post(`https://${process.env.REACT_APP_BACK}/playlist/add`, { playlistId: playlistId, songId: songId })
       .then(response => dispatch({
         type: ActionType.ADD_TO_PLAYLIST,
         payload: response.data
@@ -126,7 +126,7 @@ export const addToPlaylist = (playlistId: string, songId: string) => {
 }
 export const getGenre = (id: any) => { // obtiene un genero para la ruta /genre/:id
   return (dispatch: Dispatch<any>) => {
-    axios.get('https://api-production-b004.up.railway.app/genre/' + id)
+    axios.get(`https://${process.env.REACT_APP_BACK}/genre/` + id)
       .then(response =>
         dispatch({
           type: ActionType.GET_GENRE,
@@ -151,7 +151,7 @@ export const getAlbumPlaylist = (id: any, type: string) => {
       }
   } else {
     return (dispatch: Dispatch<any>) => {
-      axios.get(`https://api-production-b004.up.railway.app/${type}/${id}`)
+      axios.get(`https://${process.env.REACT_APP_BACK}/${type}/${id}`)
         .then(response =>
           dispatch({
             type: ActionType.GET_ALBUM_PLAYLIST,
@@ -163,7 +163,7 @@ export const getAlbumPlaylist = (id: any, type: string) => {
 }
 export const getTop = () => {
   return (dispatch: Dispatch<any>) => {
-    axios.get("https://api-production-b004.up.railway.app/top/10").then((response) =>
+    axios.get(`https://${process.env.REACT_APP_BACK}/top/10`).then((response) =>
       dispatch({
         type: ActionType.GET_TOP,
         payload: response.data,
@@ -174,7 +174,7 @@ export const getTop = () => {
 
 export const likeSong = (songId: string, email: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post(`https://api-production-b004.up.railway.app/favorite/add/${songId}`, { email: email })
+    axios.post(`https://${process.env.REACT_APP_BACK}/favorite/add/${songId}`, { email: email })
       .then(response => dispatch({
         type: ActionType.LIKE_SONG,
         payload: response.data
@@ -184,7 +184,7 @@ export const likeSong = (songId: string, email: string) => {
 
 export const dislikeSong = (songId: string, email: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post(`https://api-production-b004.up.railway.app/favorite/remove/${songId}`, { email: email })
+    axios.post(`https://${process.env.REACT_APP_BACK}/favorite/remove/${songId}`, { email: email })
       .then(response => dispatch({
         type: ActionType.DISLIKE_SONG,
         payload: response.data
