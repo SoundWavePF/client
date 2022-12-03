@@ -5,16 +5,17 @@ import { bindActionCreators } from "redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
 import * as actionCreator from "../../../redux/actions/action_player";
+import useAuth from "../../../utils/useAuth";
 
 function FavoriteIcon(props: any) {
-	// console.log(mar);
+	// 
 	const dispatch = useDispatch();
 	const [fav, setFav] = useState(0);
 	const { updateLike, likeSong, dislikeSong } = bindActionCreators(
 		actionCreator,
 		dispatch
 	);
-	const { user } = useAuth0();
+	const { user } = useAuth();
 	const email: string | undefined = user?.email;
 	// const type = props.item.type;
 	const likeSongUser = useSelector(
@@ -22,7 +23,7 @@ function FavoriteIcon(props: any) {
 	);
 	function like(item: any) {
 		if (email) likeSong(item.id, email);
-		const likeSongArr = likeSongUser;
+		let likeSongArr = likeSongUser;
 		likeSongArr.push(item);
 		updateLike(likeSongArr);
 		setFav(likeSongArr.length);

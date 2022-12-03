@@ -6,11 +6,14 @@ import { useNavigate } from "react-router-dom";
 import * as actionCreator from '../../../redux/actions/action_settings'
 import Swal from 'sweetalert2'
 import axios from 'axios';
+import useAuth from "../../../utils/useAuth";
+import { AuthResponse } from "../../../consts/authResponse";
 
 const SignUpForm = ()=>{
   const dispatch = useDispatch()
-  let navigate = useNavigate();
+  const {signup} = useAuth();
   const {postSignUp} = bindActionCreators(actionCreator, dispatch)
+  let navigate = useNavigate();
   const [form, setForm] = useState({
     email:'',
     username: '',
@@ -64,11 +67,8 @@ const SignUpForm = ()=>{
       title: `Successfully registered`,
       showConfirmButton: false,
     })
-    const {data} = await axios.post(`http://localhost:3001/register`, form)
-    console.log(data)
-    if(data.message === 'success'){
-      localStorage.setItem('sw-token', data.token)
-      postSignUp(form)
+    const response = await signup(form.username, form.email, form.password)
+    if(response?.success){
       Swal.close()
       navigate("/home", { replace: true });
     }

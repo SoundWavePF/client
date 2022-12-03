@@ -36,12 +36,12 @@
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
     "react-sortablejs": "^6.1.4",
-    "recharts": "^2.1.10",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1",
     "sortablejs": "^1.15.0",
     "sweetalert2": "^11.4.17",
     "typescript": "^4.7.3",
+    "typescript-cookie": "^1.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

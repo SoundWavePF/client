@@ -46,7 +46,7 @@ const ContentAlbumPlaylist = () => {
         return;
       } else {
         let newSongOrder = newPlaylist.map((song: any) => song.id);
-        await axios.post("https://api-production-b004.up.railway.app/playlist/update", {
+        await axios.post(`${process.env.REACT_APP_BACK}/playlist/update`, {
           playlistId: id,
           newSongOrder,
           field: "songOrder",

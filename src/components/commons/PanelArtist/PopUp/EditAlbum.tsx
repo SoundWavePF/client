@@ -57,7 +57,7 @@ const EditAlbum: React.FC<myProps> = ({ item }: myProps) => {
                 setFile(e.target.files);
                 let local = e.target.files;
                 if (local) {setImg(URL.createObjectURL(local[0]))};
-                // console.log('___subido',file)
+                // 
               }}/>
             </label>
           </div>
