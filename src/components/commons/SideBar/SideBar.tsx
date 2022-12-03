@@ -10,9 +10,10 @@ import * as actionCreator from '../../../redux/actions/action_player';
 import { bindActionCreators } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
+import useAuth from '../../../utils/useAuth';
 
 export default function SideBar() {
-  const { isAuthenticated, isLoading } = useAuth0();
+  const { isAuthenticated, isLoading } = useAuth();
   const dispatch = useDispatch();
   const { setQuery } = bindActionCreators(actionCreator, dispatch)
   const userAdmin = useSelector((state: any) => state.userAdmin)
@@ -64,7 +65,7 @@ export default function SideBar() {
         <Link to={isAuthenticated ? '/favorites' : ''} className={styles.link}>
           <div className={isAuthenticated ?  styles.button : styles.buttonDis} onClick={handleClick}>
             {/* <img src={music} alt="Music" className={styles.img} /> */}
-            <svg focusable="false" height="24" role="img" width="24" viewBox="0 0 24 24" aria-hidden="true"><path clip-rule="evenodd" fill-rule="evenodd" d="M21 2 8 4v12.9c-.635-.555-1.52-.9-2.5-.9C3.567 16 2 17.343 2 19s1.567 3 3.5 3S9 20.657 9 19V8.846l11-1.692V14.9c-.635-.555-1.52-.9-2.5-.9-1.933 0-3.5 1.343-3.5 3s1.567 3 3.5 3 3.5-1.343 3.5-3V2z"></path></svg>
+            <svg focusable="false" height="24" role="img" width="24" viewBox="0 0 24 24" aria-hidden="true"><path clipRule="evenodd" fillRule="evenodd" d="M21 2 8 4v12.9c-.635-.555-1.52-.9-2.5-.9C3.567 16 2 17.343 2 19s1.567 3 3.5 3S9 20.657 9 19V8.846l11-1.692V14.9c-.635-.555-1.52-.9-2.5-.9-1.933 0-3.5 1.343-3.5 3s1.567 3 3.5 3 3.5-1.343 3.5-3V2z"></path></svg>
             My favorites
           </div>
         </Link>

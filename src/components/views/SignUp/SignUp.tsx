@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 import SignUpForm from '../../commons/SignUpForm/SignUpForm';
 import m from './SignUp.module.css'
 import NavBar from '../../commons/NavBar/NavBar';
+import useAuth from '../../../utils/useAuth';
 
 const SignUp = ()=>{
+  const {googleLogin} = useAuth();
 
   return(
     <div>
@@ -13,7 +15,7 @@ const SignUp = ()=>{
         <div className={m.containerform_98ajz}>
           <Link className={m.linkTolanding_h8z6} to='/'>Back</Link>
           <h2 className={m.h2SignUp_f8h3}>Sign up for free to listen.</h2>
-          <button className={m.inputGoogle_7fv8 }>Sign Up with Google</button>
+          <button className={m.inputGoogle_7fv8 } onClick={()=>googleLogin()}>Sign Up with Google</button>
           <SignUpForm />
         </div>
       </div>

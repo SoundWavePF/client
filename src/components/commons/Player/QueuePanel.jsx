@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {ReactSortable} from "react-sortablejs";
 import { useAuth0 } from '@auth0/auth0-react';
-
+import useAuth from '../../../utils/useAuth';
 import * as actionCreator from '../../../redux/actions/action_player';
 import { bindActionCreators } from "redux";
 
@@ -14,7 +14,7 @@ import style from './QueuePanel.module.css';
 import SoundWave from '../SoundWave/SoundWave';
 
 const Song = (props)=>{
-    const {user} = useAuth0() 
+    const {user} = useAuth() 
     const dispatch = useDispatch()
     const {deleteFromQueue}  = bindActionCreators(actionCreator, dispatch);
     const renderWave = useSelector( (state)=>{
@@ -72,7 +72,7 @@ const QueuePanel = (props)=>{
 
     function setLoop(){
         props.setLoopPlaying(!props.loopPlaying)
-        console.log('QUeue loop',props.loopPlaying)
+        
     }
 
     return (

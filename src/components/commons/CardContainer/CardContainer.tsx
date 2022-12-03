@@ -25,7 +25,6 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
 
         if (arg === "forward") {
             const x = state + slideWidth + gap;
-            console.log('carrusel',x,  maxScroll, x <= maxScroll, carrusel.current.offsetWidth, (slideWidth + gap)*numberOfSlides)
             return x <= Math.abs(maxScroll)? x : 0;
         } else if (arg === "backward") {
             const x = state - slideWidth - gap;
@@ -55,7 +54,6 @@ const CardContainer: React.FC<myProps> = (props: myProps) => {
       }
   }
 
-  console.log(slidesContainer.current.children.length, numberOfSlidesToShow)
   return (
     <div className={styles.container} ref={carrusel}>
        {

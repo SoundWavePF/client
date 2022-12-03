@@ -14,6 +14,7 @@ import searchIcon from "../../../assets/search_icon.png";
 import AdminStats from './AdminStats';
 import LoadingSpinner from '../../commons/LoadingSpinner/LoadingSpinner';
 import AdminButton from '../../commons/AdminSideBar/AdminButton';
+import useAuth from '../../../utils/useAuth';
 
 /*
 interface user{
@@ -61,7 +62,7 @@ const AdminPanel = ()=>{
   const adminOption = useSelector((state:any)=>state.adminOption)
   const pageStats = useSelector((state:any)=>state.pageStats)
   const userAdmin = useSelector((state:any)=>state.userAdmin)
-  const {user, isAuthenticated} = useAuth0()
+  const {user, isAuthenticated} = useAuth()
   const ADMIN_EMAIL = user?.email
   
   const [userSearch, setUserSearch] = useState(users)

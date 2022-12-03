@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux';
 import { useAuth0 } from "@auth0/auth0-react";
 import Swal from 'sweetalert2';
-
+import useAuth from '../../../utils/useAuth';
 
 const FormUploadSong = (props: any) => {
 
@@ -29,7 +29,7 @@ const FormUploadSong = (props: any) => {
         }
     }
 
-    const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+    const { user } = useAuth();
     const { email }: any = user
 
     const dispatch = useDispatch()

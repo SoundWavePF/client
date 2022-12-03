@@ -18,13 +18,14 @@ import styles from './Player.module.css';
 import QueuePanel from './QueuePanel';
 import { Link } from 'react-router-dom';
 import FavoriteIcon from '../FavoriteIcon/FavoriteIcon';
-
+import useAuth from '../../../utils/useAuth';
 
 export default function Player(){
   const player = useRef();
   const dispatch = useDispatch();
-  const { user } = useAuth0();
-  const userId = user?.sub?.slice(6);
+  const { user } = useAuth();
+  //TODO: userID
+  const userId = user?.id;
   const queue = useSelector(state => state.queue);
   const [isPlaying, setIsPlaying] = [
     useSelector(state => state.player.isPlaying), 

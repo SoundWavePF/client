@@ -17,7 +17,7 @@ const EditSong: React.FC<myProps> = ({ item }: myProps) => {
   const {email, artist} = useSelector((state: any) => state.user_info);
   const [name, setName] = useState<string>(pop_up.item?.name);
   const [album, setAlbum] = useState<string>(pop_up.item?.album?.name);
-  // const { user } = useAuth0();
+  // const { user } = useAuth();
   // const email = user?.email;
   const saveChanges = async() => {
     let info = {

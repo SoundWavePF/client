@@ -41,7 +41,7 @@ export default function AdminSideBar(){
       </button>
       <button value='artist' onClick={(e)=>onChange(e)} className={styles.button}>
         {/* <img src={music} alt="artist" className={styles.img}/> */}
-        <svg focusable="false" height="24" role="img" width="24" viewBox="0 0 24 24" aria-hidden="true"><path clip-rule="evenodd" fill-rule="evenodd" d="M21 2 8 4v12.9c-.635-.555-1.52-.9-2.5-.9C3.567 16 2 17.343 2 19s1.567 3 3.5 3S9 20.657 9 19V8.846l11-1.692V14.9c-.635-.555-1.52-.9-2.5-.9-1.933 0-3.5 1.343-3.5 3s1.567 3 3.5 3 3.5-1.343 3.5-3V2z"></path></svg>
+        <svg focusable="false" height="24" role="img" width="24" viewBox="0 0 24 24" aria-hidden="true"><path clipRule="evenodd" fillRule="evenodd" d="M21 2 8 4v12.9c-.635-.555-1.52-.9-2.5-.9C3.567 16 2 17.343 2 19s1.567 3 3.5 3S9 20.657 9 19V8.846l11-1.692V14.9c-.635-.555-1.52-.9-2.5-.9-1.933 0-3.5 1.343-3.5 3s1.567 3 3.5 3 3.5-1.343 3.5-3V2z"></path></svg>
         Artist List
       </button>
       <div className={styles.darkButton}><AdminButton/></div>

@@ -24,7 +24,7 @@ const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
       // setSongsState(songs)
     } else {
       let filter = songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase()))
-      // console.log('________', filter)
+      // 
       setFiltered(filter)
       // setSongsState(filter)
     }
@@ -34,7 +34,7 @@ const PanelArtistSongs: React.FC<myProps> = ({ content }: myProps) => {
   //     setSongsState(songs)
   //   } else{
   //     setSongsState(songs.filter((song:any)=>song.name.toLowerCase().includes(input.toLowerCase())))
-  //     console.log(songsState)
+  //     
   //   }
   // }
   function handleChange(e: any): void {

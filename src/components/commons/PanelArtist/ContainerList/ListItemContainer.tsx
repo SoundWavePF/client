@@ -22,7 +22,7 @@ const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, 
   );
   const updateLocal = (playlist: any) => {
     //updateAlbum(playlist);
-    console.log('_update_');
+    
   }
 
   return (

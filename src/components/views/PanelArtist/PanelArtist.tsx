@@ -23,6 +23,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LoadingPage from "../../commons/LoadingPage/LoadingPage";
 import sidebar from '../../commons/SideBar/SideBar.module.css';
 import LoadingSpinner from "../../commons/LoadingSpinner/LoadingSpinner";
+import useAuth from "../../../utils/useAuth";
 
 const PanelArtist = () => {
   const [page, setPage] = useState(1);
@@ -30,7 +31,7 @@ const PanelArtist = () => {
   const { updated, info} = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
   const { getPanelInfo } = bindActionCreators(actionCreator, dispatch);
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth();
   // const [test, setTest] = useState(false)
   // const idTest = '63ab0aae-f562-4f5a-af65-97d14c8d5100';
   useEffect(()=>{
