@@ -189,7 +189,7 @@ const ArtistProfile: React.FunctionComponent = ()=>{
     const [searchWord, setSearchWord] = useState('')
 
     useEffect( ()=>{
-        axios.get(`https://${process.env.REACT_APP_BACK}/search?all=amor`)
+        axios.get(`${process.env.REACT_APP_BACK}/search?all=amor`)
         .then( (res)=>res.data.songData)
         .then( songs => setSongs(songs))
     }, [])

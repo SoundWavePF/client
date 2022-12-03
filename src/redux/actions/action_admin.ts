@@ -12,7 +12,7 @@ export const changeAdminOption = (userOption:any)=>{
 }
 export const getAllUsers = (email:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.post(`https://${process.env.REACT_APP_BACK}/admin/users`,{adminEmail:email})
+    axios.post(`${process.env.REACT_APP_BACK}/admin/users`,{adminEmail:email})
     .then(response => 
       dispatch({
         type: ActionType.GET_ALL_USERS,
@@ -23,7 +23,7 @@ export const getAllUsers = (email:any)=>{
 };
 export const getStats = (email:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.post(`https://${process.env.REACT_APP_BACK}/admin/stats`,{adminEmail:email})
+    axios.post(`${process.env.REACT_APP_BACK}/admin/stats`,{adminEmail:email})
     .then(response => 
       dispatch({
         type: ActionType.GET_STATS,
@@ -34,12 +34,13 @@ export const getStats = (email:any)=>{
 };
 export const userAdmin = (email:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.post(`https://${process.env.REACT_APP_BACK}/admin/validte`,{userEmail:email})
+    axios.post(`${process.env.REACT_APP_BACK}/admin/validate`,{userEmail:email})
     .then(response => 
       dispatch({
         type: ActionType.USER_ADMIN,
         payload: response.data.isAdmin,
       })
-    );
+    )
+    .catch(e => console.log('e'))
   };
 };

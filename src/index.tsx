@@ -11,15 +11,9 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <Auth0Provider
-    domain={`${process.env.REACT_APP_AUTH}`}
-    clientId={`${process.env.REACT_APP_AUTH_CLIENT}`}
-    redirectUri={window.location.origin}
-  >
     <Provider store={Store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
-  </Auth0Provider>
 );

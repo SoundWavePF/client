@@ -10,7 +10,7 @@ import ArtistCardContainer from './ArtistCardContainer/ArtistCardContainer';
 import DonationsButton from './DonationsButton/DonationsButton';
 import { useAuth0 } from '@auth0/auth0-react'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
-
+import useAuth from '../../../utils/useAuth';
 
 export const ArtistPage = () => {
   const { id } = useParams()
@@ -18,7 +18,7 @@ export const ArtistPage = () => {
   const dispatch = useDispatch();
   const { getArtist, getArtistTop } = bindActionCreators(actionCreator, dispatch);
   const [option, setOption] = useState('Top')
-  const { user, isAuthenticated } = useAuth0()
+  const { user, isAuthenticated } = useAuth()
 
   useEffect(() => {
     getArtist(id)

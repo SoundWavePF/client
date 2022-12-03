@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-
+import useAuth from "../../../utils/useAuth";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
 
@@ -31,7 +31,7 @@ const Menu: React.FunctionComponent<props> = (props) => {
     }
     const [username, setUsername] = useState('')
 
-    const { user, isAuthenticated, isLoading, logout } = useAuth0();
+    const { user, isAuthenticated, isLoading, logout } = useAuth();
 
     useEffect(() => {
         document.body.addEventListener('click', click);
@@ -42,7 +42,7 @@ const Menu: React.FunctionComponent<props> = (props) => {
 
     function toggle(event: any): void {
         setOpen(!open)
-        console.log(event)
+        
     }
 
     function handleSignUp(): void {
@@ -67,10 +67,10 @@ const Menu: React.FunctionComponent<props> = (props) => {
                         <div className={style.textContainer}>
                             <span>{username}</span>
                             <div className={style.buttonContainer}>
-                                <a>{user?.nickname}</a>
+                                <a>{user?.username}</a>
                                 <button onClick={() => handleClick('settings')} className={style.btn}>Settings</button>
                                 { rol === 'artist' && <button onClick={() => handleClick('panel_artist')} className={style.btn}>Artist Panel</button>}
-                                <button onClick={() => logout({ returnTo: window.location.origin })} className={style.btnPrimary}>Logout</button>
+                                <button onClick={() => logout()} className={style.btnPrimary}>Logout</button>
                             </div>
                         </div>
                     </div>

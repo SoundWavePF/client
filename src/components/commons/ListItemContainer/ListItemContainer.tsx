@@ -23,7 +23,7 @@ const ListItemContainer: React.FC<myProps> = ({ content, header=false, artist, n
   );
   const updateLocal = (playlist: any) => {
     updatePlaylist(playlist);
-    console.log('_update_');
+    
   }
   useEffect(()=>{
     updatePlaylist(state);

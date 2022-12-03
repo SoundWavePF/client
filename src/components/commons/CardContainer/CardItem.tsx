@@ -12,20 +12,21 @@ import papeleria from "../../../assets/papeleriaIcon.png";
 import Swal from "sweetalert2";
 import genres from '../../../assets/genres.png'
 import SoundWave from '../SoundWave/SoundWave'
+import useAuth from '../../../utils/useAuth'
 
 interface myProps {
   item: any;
 }
 
 const CardItem: React.FC<myProps> = (props: myProps) => {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth();
   const renderWave = useSelector( (state: any)=>{
     const {currentSongPosition, isPlaying} = state.player
     return state.queue[currentSongPosition]?.id === props.item?.id && isPlaying
   })
   const queue = useSelector( (state: any)=>state.queue)
   let IType = props.item?.type;
-  const { user } = useAuth0();
+  const { user } = useAuth();
   const email = user?.email;
   const dispatch = useDispatch();
   const { playSong } = bindActionCreators(actionCreator, dispatch);

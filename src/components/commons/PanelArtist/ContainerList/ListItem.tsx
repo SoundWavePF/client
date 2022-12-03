@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import Swal from "sweetalert2";
 import {useAuth0} from '@auth0/auth0-react';
-
+import useAuth from '../../../../utils/useAuth';
 
 interface myProps {
   item: any;
@@ -17,7 +17,7 @@ interface myProps {
 }
 
 const ItemListPanelArtist: React.FC<myProps> = (props: myProps) => {
-  const { user } = useAuth0();
+  const { user } = useAuth();
   const email = user?.email;
   // const [editing, setEditing] = useState<boolean>(false);
   // const [name, setName] = useState<string>(props.item.name);
@@ -68,7 +68,7 @@ const ItemListPanelArtist: React.FC<myProps> = (props: myProps) => {
           true ? 
           <span >{props.nb ? `${props.nb}. ${props.item.name}`: props.item.name}</span>
           :
-          <input type='text' value={props.nb ? `${props.nb}.`: ''} onChange={e=>console.log(e.target.value)}/>
+          <input type='text' value={props.nb ? `${props.nb}.`: ''}/>
         }
       </div>
       {/* <span>{props.item.artist}</span> */}
@@ -76,7 +76,7 @@ const ItemListPanelArtist: React.FC<myProps> = (props: myProps) => {
         true ?
         <span>{props.album?props.item.album?.name:''}</span>
       :
-        <select value={''} onChange={e=>console.log(e.target.value)}>
+        <select value={''}>
           {
             // albums?.map((e:any, i:number) => (
             //   props.item.album?.name === e.name ?

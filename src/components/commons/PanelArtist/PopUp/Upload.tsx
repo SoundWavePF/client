@@ -34,7 +34,7 @@ const Upload = () => {
       [key]: value
     }
     setFiles(newFiles);
-    // console.log(files)
+    // 
   }
   const removeItem = (i:number) => {
     let newFiles = [...files];
@@ -56,7 +56,7 @@ const Upload = () => {
       if (!sameAlbum){
         let albumId = albums.find((e:any)=>e.name===song.album)?.id
         let obj = {email, name:song.name, albumId}
-        console.log(`compo ${i}. `, obj)
+        
         if (song.isSingle){
           uploadMusic({email, name:song.name}, data)
         } else {
@@ -64,11 +64,11 @@ const Upload = () => {
         }
       } else if (!newAlbum) {
         let obj = {email, name:song.name, albumId: sameAlbumId}
-        console.log(`compo ${i}. `, obj)
+        
         uploadMusic({email, name:song.name, albumId: sameAlbumId}, data);
       } else {
         let obj = {name:song.name, albumName: albumForAll}
-        console.log(`compo ${i}. `, obj)
+        
         songsAlbum.push({name:song.name, data})
         // uploadMusic({email, name:song.name, albumName: albumForAll}, data);
         // await new Promise(res => setTimeout(res,500));
@@ -88,7 +88,7 @@ const Upload = () => {
               if (local?.length) {
                 let newFiles: any[] = [];
                 for (let i = 0; i < local.length || 0; i++) {
-                  console.log('a file ',local[i])
+                  
                   newFiles.push({audio: URL.createObjectURL(local[i]), album: '', name:local[i].name?.split('.mp3')[0], isSingle:false, data:local[i]});
                 }
                 setFiles([...files, ...newFiles]);

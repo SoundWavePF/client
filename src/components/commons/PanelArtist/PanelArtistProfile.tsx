@@ -61,7 +61,7 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
     setEdit(false);
   }
   async function handleEnableDonation(){
-    const {data} = await axios.post(`https://${process.env.REACT_APP_BACK}/linkPayment`, {email: email})
+    const {data} = await axios.post(`${process.env.REACT_APP_BACK}/linkPayment`, {email: email})
     window.location.href = data.url;
   }
   return (

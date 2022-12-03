@@ -10,20 +10,37 @@ import bellIcon from "../../../assets/bell.png";
 import swAnim from "../../../assets/loadinganimation.gif";
 import MenuUser from "./MenuUser";
 import { useAuth0 } from "@auth0/auth0-react";
+import useAuth from '../../../utils/useAuth';
+import { Link } from 'react-router-dom';
 
 const LoginButton: React.FunctionComponent = ()=>{
-  const { loginWithRedirect } = useAuth0()
   return (
-  <button className={style.buttonLogin} onClick={() => loginWithRedirect()}> Login
-    <div className={style.icon}>
-      <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0h24v24H0z" fill="none">
-        </path>
-        <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor">
-        </path>
-        </svg>
-    </div>
-  </button>
+    <>
+      <Link to='/signup' className={style.buttonL}>
+      <button className={style.buttonLogin}> SignUp
+        <div className={style.icon}>
+          <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none">
+            </path>
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor">
+            </path>
+            </svg>
+        </div>
+      </button>
+    </Link>
+    <Link to='/login' className={style.buttonL}>
+      <button className={style.buttonLogin}> Login
+        <div className={style.icon}>
+          <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0h24v24H0z" fill="none">
+            </path>
+            <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor">
+            </path>
+            </svg>
+        </div>
+      </button>
+    </Link>
+    </>
   )
 }
 
@@ -55,7 +72,7 @@ const SearchBar = () => {
   const {user_info}=useSelector((state:any)=>state)
 
   const dispatch = useDispatch();
-  const { user, isAuthenticated, isLoading, loginWithRedirect } = useAuth0()
+  const { user, isAuthenticated, isLoading } = useAuth()
   const { searchAll, setQuery, loading } = bindActionCreators(actionCreator, dispatch);
   const {  getUserInfo} = bindActionCreators(actionUser, dispatch)
 
@@ -76,7 +93,7 @@ const SearchBar = () => {
   }, [searchString]);
   function handleChange(e: any): void {
     setInput(e.target.value);
-    console.log(e)
+    
   }
   function handleSubmit(e: any) {
     e.preventDefault();
