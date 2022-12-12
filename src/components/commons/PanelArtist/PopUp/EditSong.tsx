@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import {useAuth0} from '@auth0/auth0-react';
 
 interface myProps {
   item?: any;
@@ -17,8 +16,6 @@ const EditSong: React.FC<myProps> = ({ item }: myProps) => {
   const {email, artist} = useSelector((state: any) => state.user_info);
   const [name, setName] = useState<string>(pop_up.item?.name);
   const [album, setAlbum] = useState<string>(pop_up.item?.album?.name);
-  // const { user } = useAuth0();
-  // const email = user?.email;
   const saveChanges = async() => {
     let info = {
       email,

@@ -1,18 +1,17 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
 import CardItem from "../CardContainer/CardItem";
 import ItemList from "../CardsComponents/ItemList/ItemList";
 import Styled from "../ContainerLibrary/ContainerLibrary.module.css";
 import * as actionUser from "../../../redux/actions/action_user";
-
+import useAuth from "../../../utils/useAuth";
 import { useSelector } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
 import { bindActionCreators } from "redux";
 import { useDispatch } from "react-redux";
 
 export const ContainerLibrary = () => {
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated } = useAuth();
   const dispatch = useDispatch();
 
   const { updateUser, getUserInfo } = bindActionCreators(actionUser, dispatch);

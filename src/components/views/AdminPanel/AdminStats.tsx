@@ -14,7 +14,7 @@ const AdminStats = ({pageStats}:any)=>{
           <h2>Total Regular Users: {pageStats.totalregularusers}</h2>
         </div>
         <div>
-          <h2>Total Users: {pageStats.totalusers}</h2>
+          <h2>Total Users: {Number(pageStats.totalregularusers) + Number(pageStats.totalartists)}</h2>
         </div>
         <div>
           <h2>Total Albums: {pageStats.totalalbums}</h2>
@@ -34,15 +34,6 @@ const AdminStats = ({pageStats}:any)=>{
       </div>
     </div>
   )
-
-//LIGHT MODE
-//--text-contrast-secundary:   black;
-
-//DARK MODE
-//--text-contrast-secundary:  var(--yellow-light);
-
-
-
 
 
 }

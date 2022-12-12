@@ -31,8 +31,6 @@ const EditAlbum: React.FC<myProps> = ({ item }: myProps) => {
     updateAlbum({email, id:pop_up.item?.id, name, date, genre}, data)
     :
     updateAlbum({email, id:pop_up.item?.id, name, date, genre}, data, img)
-    // await new Promise(res => setTimeout(res,1500));
-    // getPanelInfo(artist?.id, email);
     launchPopUp(false);
   }
   const deleteBtn = async() => {
@@ -57,7 +55,7 @@ const EditAlbum: React.FC<myProps> = ({ item }: myProps) => {
                 setFile(e.target.files);
                 let local = e.target.files;
                 if (local) {setImg(URL.createObjectURL(local[0]))};
-                // console.log('___subido',file)
+                // 
               }}/>
             </label>
           </div>

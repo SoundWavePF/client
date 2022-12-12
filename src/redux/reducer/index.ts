@@ -1,9 +1,5 @@
 import { Actions, ActionType } from "../actions/types";
-import * as types from "./types"; //tipos del state   NO BORRAR
-
-//tengo que importar las interfaces de las propiedades dentro de los objetos del initial state
-
-//necesito los actions types para seguir agregando switch cases
+import * as types from "./types";
 
 interface State {
   query: string;
@@ -31,12 +27,6 @@ const initialState: State = {
   query: "", //párametro de búsqueda : string
   queue: [], //cola de reproduccion : track[]
   searchResults: {},
-  // {
-  //   artistData: [],  //  artist[]
-  //   albumData: [],   //  album[]
-  //   songData: [],   //  track[]
-  //   playlistData: []
-  // },
   album_playlist: {},
   playlist_update: [],
   library_artist: {
@@ -140,12 +130,12 @@ const Reducer = (state: any = initialState, action: Actions) => {
         adminOption: action.payload,
       };
     case ActionType.POST_SIGN_UP:
-      console.log(action.payload); //hasta que no halla back solo consologea la info
+      
       return {
         ...state,
       };
     case ActionType.POST_LOGIN:
-      console.log(action.payload); //hasta que no halla back solo consologea la info
+      
       return {
         ...state,
       };
@@ -198,7 +188,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
         album_playlist: action.payload,
       };
     case ActionType.ADD_TO_PLAYLIST:
-      // console.log(action.payload);
+      // 
       return {
         ...state,
       };
@@ -211,7 +201,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
         },
       };
     case ActionType.DELETE_PLAYLIST:
-      console.log(action.payload);
+      
       return {
         ...state,
         library_artist: {
@@ -275,7 +265,7 @@ const Reducer = (state: any = initialState, action: Actions) => {
         queue: action.payload,
       };
     case ActionType.GET_USER_INFO:
-      console.log(action.payload,"action.payload")
+      
       return {
         ...state,
         user_info: action.payload,

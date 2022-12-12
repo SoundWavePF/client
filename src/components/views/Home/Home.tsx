@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const Home = () => {
   const searchString = useSelector((state: any) => state.query);
-
+  
   return (
     <div className={styles.container}>
       <SearchBar />

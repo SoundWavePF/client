@@ -1,24 +1,17 @@
-import Modal from "../../commons/Modal/Modal";
-// import styles from "../Home/Home.module.css";
 import StylesC from "./UserSettingContainer.module.css";
 import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";
 import style from './UserSettings.module.css'
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
-import { useAuth0 } from "@auth0/auth0-react";
 import * as actionCreator from '../../../redux/actions/action_user'
 import { bindActionCreators } from 'redux';
 import { useSelector } from "react-redux";
-import Player from "../../commons/Player/Player";
 import axios from "axios";
 import Swal from 'sweetalert2'
-import { isConstructorDeclaration } from "typescript";
 import userDefault from '../../../assets/default-user.png'
-import Table from 'react-bootstrap/Table';
-import { log } from "console";
 import SearchResults from "../SearchResults/SearchResults";
-
+import useAuth from '../../../utils/useAuth';
 
 interface inputs {
   email: any
@@ -37,15 +30,15 @@ const UserSettings = () => {
   const [InfoUserA,setInfoUserA]:any= useState(user_info.artist)
   const dispatch = useDispatch()
   const { updateUser ,getUserInfo} = bindActionCreators(actionCreator, dispatch)
-  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+  const { user, isAuthenticated } = useAuth();
   const [donations, setDonations]:any= useState([])
 
   
   useEffect(  () =>{
     const callInfouser=async ()=>{
-      // console.log(user?.email,"no hay")
+      // 
       getUserInfo(user?.email)
-      const donations = await axios.post(`https://${process.env.REACT_APP_BACK}/order/history`, {email: user?.email})
+      const donations = await axios.post(`${process.env.REACT_APP_BACK}/order/history`, {email: user?.email})
       setDonations(donations.data)
     }
 
@@ -58,13 +51,6 @@ const UserSettings = () => {
       
   },[user_info])
   
-
-  
-  
-
-  
-
-
 
   let [input, setInput] = useState<inputs>({
     email: user?.email,
@@ -106,19 +92,16 @@ const UserSettings = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         
-        axios.post(`https://${process.env.REACT_APP_BACK}/requestArtistStatus`,{email:user_info?.email})
-        .then(e=>console.log(e))
+        axios.post(`${process.env.REACT_APP_BACK}/requestArtistStatus`,{email:user_info?.email})
         
 
         Swal.fire(
           
-          'Congatulation',
-          'you are already an artist',
+          'Request sent',
+          'Please wait while we review your request',
 
           'success'
         )}})}
-
-
 
   const modalDisabled =  ()=>{
     Swal.fire({
@@ -129,15 +112,12 @@ const UserSettings = () => {
       confirmButtonText: 'Confirm'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.post(`https://${process.env.REACT_APP_BACK}/deactivate`,{email:user_info?.email})
-        .then(e=>console.log(e))
+        axios.post(`${process.env.REACT_APP_BACK}/deactivate`,{email:user_info?.email})
         
         Swal.fire({
           title:'Disabled  account',
           icon:'success' 
         })}})}
-
-
 
   const modalChangePassword:any = async ()=>{
 
@@ -191,8 +171,6 @@ const UserSettings = () => {
     
     })}}
 
-
-
   
   const modalChangeUsername = async ()=>{
 
@@ -227,9 +205,6 @@ const UserSettings = () => {
         newData: formValues['1'].value,
         field:'username'
       }
-
-      
-
 
       setInputs(changeusername)
     updateUser(changeusername)
@@ -272,10 +247,6 @@ const changeImage = async()=>{
     data.append("file", files);
     data.append("upload_preset", "songImage");
 
-    // for(let [name, value] of data) {
-    //   alert( `${name} = ${value}` ); // key1 = value1, then key2 = value2
-    // }
-
     const res:any = await axios.post(
       "https://api.cloudinary.com/v1_1/jonathanhortman/image/upload",data
       
@@ -287,123 +258,118 @@ const changeImage = async()=>{
         newData: fileupdate.secure_url
     }
 
-       axios.post(`https://${process.env.REACT_APP_BACK}/update`,newImage)
+       axios.post(`${process.env.REACT_APP_BACK}/update`,newImage)
         .then(e=>getUserInfo(user?.email))      
         Swal.fire('Saved!', '', 'success')
     }}
-
 
   return (
     <div className={StylesC.container}>
       <SearchBar  />
       <SideBar />
-{searchString ?<SearchResults />:user ?
-      <div className={style.page}>
-        <div className={style.container}>
-        <div className={style.ContainerImage}>
-        <button onClick={()=>changeImage()}></button>
-        <img src={user_info.image_avatar?user_info.image_avatar:userDefault} alt="image" className={style.userImage} />
-        </div>
- 
-          
+      {searchString ?<SearchResults />:user ?
+            <div className={style.page}>
+              <div className={style.container}>
+              <div className={style.ContainerImage}>
+              <button onClick={()=>changeImage()}></button>
+              <img src={user_info.image_avatar?user_info.image_avatar:userDefault} alt="image" className={style.userImage} />
+              </div>
+      
+                
 
 
-          <div className={style.contentContainer}>
-            
-            <div className={style.title} ><p>My status</p></div>
-            
-            <hr></hr>
+                <div className={style.contentContainer}>
+                  
+                  <div className={style.title} ><p>My status</p></div>
+                  
+                  <hr></hr>
 
-            {InfoUserA?  
-              <div className={style.subscriptionContainer}>
-              <div>{`${user_info?.username} Currently you are an ${user_info?.rol && user_info?.rol}`}</div>
-            </div>
-            
-            
-            : 
-            <div className={style.subscriptionContainer}>
-              <div>{`${user_info?.username} Currently you are an user`}</div>
-              <button onClick={(e) => modalArtist()} name='modalArtist' className={style.buttons}>
-              Request to be an artist
-              </button>
-            </div>
-}
+                  {InfoUserA?  
+                    <div className={style.subscriptionContainer}>
+                    <div>{`${user_info?.username} Currently you are an ${user_info?.rol && user_info?.rol}`}</div>
+                  </div>
+                  
+                  
+                  : 
+                  <div className={style.subscriptionContainer}>
+                    <div>{`${user_info?.username} Currently you are an user`}</div>
+                    <button onClick={(e) => modalArtist()} name='modalArtist' className={style.buttons}>
+                    Request to be an artist
+                    </button>
+                  </div>
+      }
 
-            <br />
+                  <br />
 
-            <div className={style.title} ><p>Log in</p></div>
+                  <div className={style.title} ><p>Log in</p></div>
 
-            <hr></hr>
+                  <hr></hr>
 
-            <div className={style.parent}>
-              <div className={style.div4}><label>Password:</label></div>
-              <div className={style.div5}><input  placeholder={'*****'} disabled={true} name="password" type="text" /></div>
-              <div className={style.div6}><button onClick={(e) => modalChangePassword()} name='modalPassword' className={style.buttons}>Modify</button></div>
-              <div className={style.div7}> <label>Username:</label></div>
-              <div className={style.div8}><input placeholder={user_info?.username}  disabled={true} name="username" type="text" /> </div>
-              <div className={style.div9}> <button onClick={(e) => modalChangeUsername()} name='modalUsername' className={style.buttons}>Modify</button></div>
-            </div>
-            <br />
-          
-          </div>
-          </div>
-          
+                  <div className={style.parent}>
+                    <div className={style.div4}><label>Password:</label></div>
+                    <div className={style.div5}><input  placeholder={'*****'} disabled={true} name="password" type="text" /></div>
+                    <div className={style.div6}><button onClick={(e) => modalChangePassword()} name='modalPassword' className={style.buttons}>Modify</button></div>
+                    <div className={style.div7}> <label>Username:</label></div>
+                    <div className={style.div8}><input placeholder={user_info?.username}  disabled={true} name="username" type="text" /> </div>
+                    <div className={style.div9}> <button onClick={(e) => modalChangeUsername()} name='modalUsername' className={style.buttons}>Modify</button></div>
+                  </div>
+                  <br />
+                
+                </div>
+                </div>
+                
 
-          <div className={style.containertable}>
-            <table  className={style.table}>
-            <thead >
-            {!donations.length ?
-               <tr >
-               <th>Donation ID</th>
-              
-             </tr>:
-
-              <tr >
-                <th>Donation ID</th>
-                <th>Arist</th>
-                <th>Amount</th>
-                <th>Date</th>
-              </tr>
-          }
-            </thead>
-            <tbody>
-            {donations !== undefined && donations?.map((donation:any)=>{
-                  return (
+                <div className={style.containertable}>
+                  <table  className={style.table}>
+                  <thead >
+                  {!donations.length ?
                     <tr >
-                      <td className={style.donation}>{donation.id}</td>
-                      <td className={style.artist}>{donation.artist.name}</td>
-                      <td className={style.amount}>${donation.amount}</td>
-                      <td className={style.date}>{donation.createdAt.split('T')[0]}</td>
+                    <th>Donation ID</th>
+                    
+                  </tr>:
+
+                    <tr >
+                      <th>Donation ID</th>
+                      <th>Arist</th>
+                      <th>Amount</th>
+                      <th>Date</th>
                     </tr>
-                  )
                 }
-              )}
-              {!donations.length && 
-                  <tr >
-                    <td className={style.donation} >No donations</td>
-                  </tr>
-              }
-            </tbody>
-          </table>
+                  </thead>
+                  <tbody>
+                  {donations !== undefined && donations?.map((donation:any)=>{
+                        return (
+                          <tr >
+                            <td className={style.donation}>{donation.id}</td>
+                            <td className={style.artist}>{donation.artist.name}</td>
+                            <td className={style.amount}>${donation.amount}</td>
+                            <td className={style.date}>{donation.createdAt.split('T')[0]}</td>
+                          </tr>
+                        )
+                      }
+                    )}
+                    {!donations.length && 
+                        <tr >
+                          <td className={style.donation} >No donations</td>
+                        </tr>
+                    }
+                  </tbody>
+                </table>
+                </div>
+
+              <div className={style.buttonContainer}>
+                <button onClick={(e) => modalDisabled()} name='modalArtist' className={style.deleteButton}>
+                Deactivate account 
+                    </button>
+              </div>
+              </div>
+            
+          :
+          <div className={style.Loading}>
+          <div className="spinner-border"  role="status"></div>
           </div>
 
-        <div className={style.buttonContainer}>
-          <button onClick={(e) => modalDisabled()} name='modalArtist' className={style.deleteButton}>
-          Deactivate account 
-              </button>
-        </div>
-        </div>
-      
-    :
-    <div className={style.Loading}>
-    <div className="spinner-border"  role="status"></div>
-    </div>
-
-}
-
-
-
-      
+      }
      
     </div>
   )

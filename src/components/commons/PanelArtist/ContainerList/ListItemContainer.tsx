@@ -21,8 +21,7 @@ const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, 
     dispatch
   );
   const updateLocal = (playlist: any) => {
-    //updateAlbum(playlist);
-    console.log('_update_');
+    
   }
 
   return (
@@ -31,7 +30,6 @@ const ListItemContainerPanelArtist: React.FC<myProps> = ({ content, album=true, 
       <div className={styles.header}>
         <span>Title</span>
         <span>{album ? 'Album' : ''}</span>
-        {/* <p>Album</p> */}
         <span>Duration</span>
       </div>
       {

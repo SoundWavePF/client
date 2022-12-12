@@ -23,10 +23,6 @@ const Button: React.FunctionComponent<btnProps > = (props)=>{
   }
   return (
         <div className={style.buttonContainer}>
-          {/* <h2>Donate</h2> */}
-          {/* <button className={clicked? style.bubblyButtonClicked: style.bubblyButton} onClick={handleClick}>
-            Donate
-          </button> */}
           <button onClick={handleClick}>Donate</button>
           <span>Support your favorite creator.</span>
         </div>
@@ -46,7 +42,6 @@ const DonationsButton = (props:any)=>{
       cancelButtonColor: '#dd6b55',
       showCancelButton: true,
       inputValidator: (value:any) => {
-        console.log('ACA value',value)
         if (!/^\s*-?[1-9]\d*(\.\d{1,2})?\s*$/.test(value)) {
           swal.fire({
             icon: 'error',
@@ -75,7 +70,7 @@ const DonationsButton = (props:any)=>{
               icon:'success',
               confirmButtonColor: '#ffee32',
             })
-            axios.post(`https://${process.env.REACT_APP_BACK}/order`,donation)
+            axios.post(`${process.env.REACT_APP_BACK}/order`,donation)
             .then(({data}:any)=>{
               window.location.href = data.url
             })

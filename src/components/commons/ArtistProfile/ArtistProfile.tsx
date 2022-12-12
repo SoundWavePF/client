@@ -3,7 +3,6 @@ import style from './ArtistProfile.module.css'
 import React, {useState, useEffect} from 'react';
 import { NavLink, Outlet, Route } from "react-router-dom";
 import { ButtonGroup, ToggleButton  } from 'react-bootstrap';
-//import {Line} from 'react-chartjs-2';
 import type { ChartData, ChartOptions } from 'chart.js';
 import axios from 'axios';
 
@@ -189,7 +188,7 @@ const ArtistProfile: React.FunctionComponent = ()=>{
     const [searchWord, setSearchWord] = useState('')
 
     useEffect( ()=>{
-        axios.get(`https://${process.env.REACT_APP_BACK}/search?all=amor`)
+        axios.get(`${process.env.REACT_APP_BACK}/search?all=amor`)
         .then( (res)=>res.data.songData)
         .then( songs => setSongs(songs))
     }, [])

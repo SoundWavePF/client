@@ -7,7 +7,7 @@ import * as actionCreator from "../../../redux/actions/action_player";
 import { bindActionCreators } from "redux";
 import FavoriteIcon from "../FavoriteIcon/FavoriteIcon";
 import { useDispatch } from "react-redux";
-import { useAuth0 } from '@auth0/auth0-react';
+import useAuth from '../../../utils/useAuth';
 
 interface myProps {
   item: any;
@@ -15,7 +15,7 @@ interface myProps {
 }
 
 const ListItem: React.FC<myProps> = (props: myProps) => {
-  const { user } = useAuth0();
+  const { user } = useAuth();
   const email = user?.email;
   const formatDuration = (duration: string): string => {
     const num = parseInt(duration);
@@ -104,7 +104,6 @@ const ListItem: React.FC<myProps> = (props: myProps) => {
     case "donation":
       return (
         <div className={s.itemListContainer}>
-          {/* <Link className={s.links} to={"/artist/:id"}> */}
           <div className={s.imageAndNameContainer}>
             <div>
               <div>
@@ -119,13 +118,12 @@ const ListItem: React.FC<myProps> = (props: myProps) => {
               <div className={s.songName}>{props.item.user.username} donated ${props.item.amount}</div>
             </div>
           </div>
-          {/* </Link> */}
           <div className={s.controllerContainer}></div>
         </div>
       );
 
     default:
-      return <>nada</>;
+      return <></>;
   }
 };
 export default ListItem;

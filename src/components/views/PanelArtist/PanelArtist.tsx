@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import admin from "../../../assets/admin.png";
 import music from "../../../assets/music.png";
-import info from "../../../assets/more-info.webp";
 import styles from "./PanelArtist.module.css";
-// import sidebar from "./Sidebar.module.css";
 import * as actionCreator from "../../../redux/actions/action_artist";
 import { bindActionCreators } from "redux";
 import { useDispatch } from "react-redux";
@@ -12,17 +10,16 @@ import { useSelector } from "react-redux";
 import Error404 from "../error404/error404";
 import UserMenu from "../../commons/SearchBar/MenuUser";
 import { useEffect, useState } from "react";
-import ArtistProfile from "../../commons/ArtistProfile/ArtistProfile";
 import PanelArtistProfile from "../../commons/PanelArtist/PanelArtistProfile";
 import PanelArtistSongs from "../../commons/PanelArtist/PanelArtistSongs";
 import PanelArtistAlbums from "../../commons/PanelArtist/PanelArtistAlbums";
 import Player from "../../commons/Player/Player";
 import FloatButton from "../../commons/FloatButton/FloatButton";
 import PopUp from "../../commons/PanelArtist/PopUp/PopUp";
-import { useAuth0 } from "@auth0/auth0-react";
 import LoadingPage from "../../commons/LoadingPage/LoadingPage";
 import sidebar from '../../commons/SideBar/SideBar.module.css';
 import LoadingSpinner from "../../commons/LoadingSpinner/LoadingSpinner";
+import useAuth from "../../../utils/useAuth";
 
 const PanelArtist = () => {
   const [page, setPage] = useState(1);
@@ -30,20 +27,13 @@ const PanelArtist = () => {
   const { updated, info} = useSelector((state: any) => state.panel_artist);
   const dispatch = useDispatch();
   const { getPanelInfo } = bindActionCreators(actionCreator, dispatch);
-  const { user, isAuthenticated, isLoading } = useAuth0();
-  // const [test, setTest] = useState(false)
-  // const idTest = '63ab0aae-f562-4f5a-af65-97d14c8d5100';
+  const { user, isAuthenticated, isLoading } = useAuth();
+
   useEffect(()=>{
     getPanelInfo(artist?.id, email);
-    // if(rol==='undefined'){
-    //   setTest(true)
-    // }
   },[]);
   useEffect(()=>{
     getPanelInfo(artist?.id, email);
-    // if(rol!=='undefined'){
-    //   setTest(false)
-    // }
   },[email])
   useEffect(()=>{
     updated && getPanelInfo(artist?.id, email);
@@ -51,9 +41,6 @@ const PanelArtist = () => {
   function handlePage(page: number) {
     setPage(page);
   }
-  // if(isLoading || rol === 'undefined'){
-  //   return <LoadingPage />
-  // }
   
   if(isAuthenticated && rol==='artist'){
     return (
@@ -75,10 +62,6 @@ const PanelArtist = () => {
             <img src={music} alt="music" className={sidebar.img} />
             Albums
           </div>
-          {/* <div className={sidebar.buttonArtistPanel} onClick={()=>handlePage(4)}>
-            <img src={info} alt="info" className={sidebar.img} />
-            Stats
-          </div> */}
         </div>
         <div className={styles.usermenu}>
           <UserMenu username={"username"}/>
@@ -101,10 +84,6 @@ const PanelArtist = () => {
           <div className={styles.content}>
             <PanelArtistAlbums/>
           </div>
-          // :
-          // <div className={styles.content}>
-          //   <ArtistProfile/>
-          // </div>
         }
         <FloatButton />
         <PopUp/>

@@ -61,24 +61,13 @@
 }
 
 .ContainerPlaylist {
-    /*overflow: hidden;*/
-    /*position: relative;*/
     height: 100%;
     width: 100%;
     padding: 1em;
     display: flex;
-    /*justify-content: space-evenly;*/
     flex-wrap: wrap;
     gap: 40px 40px;
-    /*grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));*/
 }
-
-/*.ContainerPlaylist div {
-    background-color: beige;
-    position: relative;
-    height: 15em;
-    width: 15em;
-}*/
 
 .User {
     width: 70%;

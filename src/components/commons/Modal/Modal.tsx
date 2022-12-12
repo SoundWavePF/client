@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import style from './Modal.module.css'
-import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from 'react-redux';
 import * as actionCreator from '../../../redux/actions/action_user'
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
+import useAuth from '../../../utils/useAuth';
 
 interface inputs {
     email: any
@@ -49,7 +49,7 @@ const Validate = (input:any,action:any)=>{
 const Modal = (props: Modal) => {
     const dispatch = useDispatch()
     
-    const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+    const { user } = useAuth();
     const { sub }: any = user
     
     const { updateUser } = bindActionCreators(actionCreator, dispatch)
@@ -69,7 +69,7 @@ const Modal = (props: Modal) => {
         })
 
     setError(Validate({...input,[e.target.name]:e.target.value},props.action))
-    console.log(error)
+    
     }
     
 
@@ -83,8 +83,7 @@ const Modal = (props: Modal) => {
 
             e.preventDefault()
 
-        axios.post(`https://${process.env.REACT_APP_BACK}/requestArtistStatus`,{email:props.email})
-        .then(e=>console.log(e))
+        axios.post(`${process.env.REACT_APP_BACK}/requestArtistStatus`,{email:props.email})
         props.handleModal(close)
 
 
@@ -94,8 +93,7 @@ const Modal = (props: Modal) => {
         {
             e.preventDefault()
 
-        axios.post(`https://${process.env.REACT_APP_BACK}/deactivate`,{email:props.email})
-        .then(e=>console.log(e))
+        axios.post(`${process.env.REACT_APP_BACK}/deactivate`,{email:props.email})
         props.handleModal(close)
 
 

@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import ItemList from '../../commons/CardsComponents/ItemList/ItemList';
-import s from './SongByGenre.module.css'
+import { useEffect, useState } from 'react'
 
 const initialState = [
     {
@@ -68,15 +66,6 @@ const SongsByGenre = () => {
     return (
         <>
         </>
-        // <div className={s.containerCard}>
-        //     <div>
-        //         {
-        //             info.map(song => {
-        //                 return <ItemList position={song.position} image={song.image} name={song.name} timeLapse={song.timeLapse} />
-        //             })
-        //         }
-        //     </div>
-        // </div>
     )
 }
 

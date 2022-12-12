@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const getArtist = (id:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.get(`https://${process.env.REACT_APP_BACK}/artist/`+id)
+    axios.get(`${process.env.REACT_APP_BACK}/artist/`+id)
     .then(response => 
       dispatch({
         type: ActionType.GET_ARTIST,
@@ -15,7 +15,7 @@ export const getArtist = (id:any)=>{
 }
 export const getArtistTop = (id:any)=>{
   return(dispatch: Dispatch<any>)=>{
-    axios.get(`https://${process.env.REACT_APP_BACK}/artist/`+id+'/top')
+    axios.get(`${process.env.REACT_APP_BACK}/artist/`+id+'/top')
     .then(response => 
       dispatch({
         type: ActionType.GET_ARTIST_TOP,
@@ -31,7 +31,7 @@ export const changeAbout = (email: string, description: string, name: string, im
       const remote = await axios.post("https://api.cloudinary.com/v1_1/dbi1xhzps/image/upload", data);
       image = remote.data?.secure_url
     }
-    axios.post(`https://${process.env.REACT_APP_BACK}/artistpanel/profile/update`, {email, description, name, image})
+    axios.post(`${process.env.REACT_APP_BACK}/artistpanel/profile/update`, {email, description, name, image})
     .then(response => {
         dispatch({
           type: ActionType.CHANGE_ABOUT,
@@ -46,7 +46,7 @@ export const changeAbout = (email: string, description: string, name: string, im
 }
 export const updateSong = (info: any) => {
   return (dispatch: Dispatch<Actions>) => {
-    axios.post(`https://${process.env.REACT_APP_BACK}/artistpanel/song/update`,{
+    axios.post(`${process.env.REACT_APP_BACK}/artistpanel/song/update`,{
       email: info.email,
       songId: info.id,
       songName: info.name,
@@ -73,7 +73,7 @@ export const localLoadedAlbum = (id: string | boolean) => {
     };
   } else {
     return (dispatch: Dispatch<Actions>) => {
-      axios.get(`https://${process.env.REACT_APP_BACK}/album/${id}`)
+      axios.get(`${process.env.REACT_APP_BACK}/album/${id}`)
         .then(response =>
         dispatch({
           type: ActionType.LOCAL_LOADED_ALBUM,
@@ -85,9 +85,9 @@ export const localLoadedAlbum = (id: string | boolean) => {
 };
 export const uploadSong = (payload: any) => {
   return async function (dispatch: Dispatch<Actions>) {
-    console.log(payload);
     
-    const update = await axios.post(`https://${process.env.REACT_APP_BACK}/artistpanel/song/create`, payload)
+    
+    const update = await axios.post(`${process.env.REACT_APP_BACK}/artistpanel/song/create`, payload)
     return {
       type: ActionType.UPLOAD_SONG,
       payload: update
@@ -96,10 +96,7 @@ export const uploadSong = (payload: any) => {
 }
 export const getPanelInfo = (id: string, email:string)=>{
   return(dispatch: Dispatch<any>)=>{
-    // let promiseContent = axios.get('https://${process.env.REACT_APP_BACK}/artist/'+id);
-    // let promiseInfo = axios.post('https://${process.env.REACT_APP_BACK}/artistpanel/stats', {email: email});
-    // Promise.all([promiseContent, promiseInfo])
-    axios.post(`https://${process.env.REACT_APP_BACK}/artistpanel/stats`, {email: email})
+    axios.post(`${process.env.REACT_APP_BACK}/artistpanel/stats`, {email: email})
     .then(response =>
       dispatch({
         type: ActionType.GET_PANEL_INFO,
@@ -134,8 +131,8 @@ export const createAlbum = (info: any, data: any) => {
       image: remote.data?.secure_url,
       genreId: info.genre,
     };
-    console.log('__send\n', obj);
-    axios.post(`https://${process.env.REACT_APP_BACK}/artistpanel/album/create`, obj)
+    
+    axios.post(`${process.env.REACT_APP_BACK}/artistpanel/album/create`, obj)
     .then((response) =>
       console.log('res of create ',response)
     )
@@ -164,8 +161,8 @@ export const updateAlbum = (info: any, data: any, img?:any) => {
       image,
       genreId: info.genre,
     };
-    console.log('__send\n', obj);
-    axios.post(`https://${process.env.REACT_APP_BACK}/artistpanel/album/update`, obj)
+    
+    axios.post(`${process.env.REACT_APP_BACK}/artistpanel/album/update`, obj)
     .then((response) =>
       console.log('res of create ',response)
     )
@@ -191,8 +188,8 @@ export const uploadMusic = (info: any, data: any) => {
       preview: remote.data?.secure_url,
       albumId: info.albumId,
     };
-    console.log('__send\n', obj);
-    axios.post(`https://${process.env.REACT_APP_BACK}/artistpanel/song/create`, obj)
+    
+    axios.post(`${process.env.REACT_APP_BACK}/artistpanel/song/create`, obj)
     .then((response) =>
       console.log('res of create ',response)
     )
@@ -207,7 +204,6 @@ export const uploadMusic = (info: any, data: any) => {
 export const uploadNewAlbum = (email: string, name: string, songs: any) => {
   return async function (dispatch: Dispatch<Actions>) {
 
-    //const remote = await axios.post("https://api.cloudinary.com/v1_1/dbi1xhzps/video/upload", data);
     let promises = await Promise.all(songs.map((e:any) => axios.post("https://api.cloudinary.com/v1_1/dbi1xhzps/video/upload", e.data)))
     let send = promises.map((e:any, i:number) => {return {duration:e.data?.duration, preview: e.data?.secure_url, songName:songs[i].name}})
 
@@ -216,8 +212,8 @@ export const uploadNewAlbum = (email: string, name: string, songs: any) => {
       albumName: name,
       songs: send,
     };
-    console.log('__send\n', obj);
-    axios.post(`https://${process.env.REACT_APP_BACK}/artistpanel/song/createAlbum`, obj)
+    
+    axios.post(`${process.env.REACT_APP_BACK}/artistpanel/song/createAlbum`, obj)
     .then((response) =>
       console.log('res of create ',response)
     )
@@ -235,8 +231,8 @@ export const uploadNewAlbum = (email: string, name: string, songs: any) => {
 }
 export const deleteSong = (email: string, id: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    console.log(email, id)
-    axios.post(`https://${process.env.REACT_APP_BACK}/artistpanel/song/delete`,{
+    
+    axios.post(`${process.env.REACT_APP_BACK}/artistpanel/song/delete`,{
       email: email,
       songId: id,
     })
@@ -257,14 +253,11 @@ export const deleteSong = (email: string, id: string) => {
 };
 export const deleteAlbum = (email: string, id: string) => {
   return (dispatch: Dispatch<Actions>) => {
-    console.log(email, id)
-    axios.post(`https://${process.env.REACT_APP_BACK}/artistpanel/album/delete`,{
+    
+    axios.post(`${process.env.REACT_APP_BACK}/artistpanel/album/delete`,{
       email: email,
       albumId: id,
     })
-    .then((response) =>
-      console.log('res of update ',response)
-    )
     .then((response) => {
         dispatch({
           type: ActionType.DELETE_ALBUM,

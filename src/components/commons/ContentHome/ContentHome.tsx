@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_player";
-import { useAuth0 } from "@auth0/auth0-react";
+import useAuth from "../../../utils/useAuth";
 
 const ContentHome = () => {
-  const { user } = useAuth0();
+  const { user } = useAuth();
   const email = user?.email;
   const dispatch = useDispatch();
   const { getGenres, getLastSongs, getChart, getTop, getDiscoverSongs } = bindActionCreators(actionCreator,dispatch);
@@ -30,7 +30,6 @@ const ContentHome = () => {
   useEffect(() => {
     if(email !== undefined) {
       getLastSongs(email);
-      console.log('ss');
     };
   }, [email]);
 

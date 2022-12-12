@@ -8,8 +8,7 @@ import * as actionCreator from '../../../redux/actions/action_admin'
 
 const UserCardAdmin = (userP:any)=>{
   const dispatch = useDispatch()
-  const {getAllUsers} = bindActionCreators(actionCreator,dispatch)
-  // console.log(admin)
+  const {getAllUsers} = bindActionCreators(actionCreator,dispatch) 
   const user = userP.user
   const ADMIN_EMAIL=userP.admin
   const deleteUser = (userC:any)=>{
@@ -27,9 +26,9 @@ const UserCardAdmin = (userP:any)=>{
           adminEmail:ADMIN_EMAIL,
           userEmail:userC.email,
         }
-        axios.post(`https://${process.env.REACT_APP_BACK}/admin/deactivate`,data)
+        axios.post(`${process.env.REACT_APP_BACK}/admin/deactivate`,data)
         .then(r=>{
-        console.log(r.data)
+        
         getAllUsers(ADMIN_EMAIL)
         Swal.fire({
           title: 'Deleted!',
@@ -39,7 +38,7 @@ const UserCardAdmin = (userP:any)=>{
         )
         })
         .catch(error=>{
-          console.log(error)
+          
           Swal.fire('Error paso algo :(')
         })
       }
@@ -61,7 +60,7 @@ const UserCardAdmin = (userP:any)=>{
           adminEmail:ADMIN_EMAIL,
           userEmail:userC.email,
         }
-        axios.post(`https://${process.env.REACT_APP_BACK}/admin/accept`,data)
+        axios.post(`${process.env.REACT_APP_BACK}/admin/accept`,data)
         .then(r=>{
           getAllUsers(ADMIN_EMAIL)
           Swal.fire({
@@ -70,10 +69,9 @@ const UserCardAdmin = (userP:any)=>{
           })
           })
           .catch(error=>{
-            console.log(error)
+            
             Swal.fire('Error paso algo :(')
           })
-        // Swal.fire('Saved!', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('Disapproved')
       }
@@ -98,9 +96,9 @@ const UserCardAdmin = (userP:any)=>{
         field:'username', 
         newData:text 
       }
-      axios.post(`https://${process.env.REACT_APP_BACK}/admin/update`,data)
+      axios.post(`${process.env.REACT_APP_BACK}/admin/update`,data)
       .then(r=>{
-        console.log(r.data)
+        
         getAllUsers(ADMIN_EMAIL)
         Swal.fire({
           title:'The user was successfully changed to "'+text+'"',
@@ -109,7 +107,7 @@ const UserCardAdmin = (userP:any)=>{
         )
       })
       .catch(error=>{
-        console.log(error)
+        
         Swal.fire('Error paso algo :(')
       })
     }else{
@@ -133,9 +131,9 @@ const UserCardAdmin = (userP:any)=>{
         field:'email', 
         newData:email 
       }
-      axios.post(`https://${process.env.REACT_APP_BACK}/admin/update`,data)
+      axios.post(`${process.env.REACT_APP_BACK}/admin/update`,data)
       .then(r=>{
-        console.log(r.data)
+        
         getAllUsers(ADMIN_EMAIL)
         Swal.fire({
           title:`The email was successfully changed to: ${email}`,
@@ -143,7 +141,7 @@ const UserCardAdmin = (userP:any)=>{
         })
       })
       .catch(error=>{
-        console.log(error)
+        
         Swal.fire('Error paso algo :(')
       })
     }

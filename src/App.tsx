@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Routes, Route } from "react-router";
-import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import "./App.css";
@@ -19,25 +18,26 @@ import FileUpload from "./components/views/FileUpload/FileUpload";
 import Player from "./components/commons/Player/Player";
 import Top from "./components/views/Top/Top";
 import About2 from "./components/views/about/About2";
-// import ArtistProfile from "./components/commons/ArtistProfile/ArtistProfile";
 import Artist from "./components/views/Artist/Artist";
 import PanelArtist from "./components/views/PanelArtist/PanelArtist";
 import * as actionCreator from "./redux/actions/action_user";
 import * as actionCreator2 from "./redux/actions/action_admin";
 import LoadingPage from "./components/commons/LoadingPage/LoadingPage";
-import AdminButton from "./components/commons/AdminSideBar/AdminButton";
+import useAuth from "./utils/useAuth";
 
 function App() {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth();
   const email = user?.email;
   const dispatch = useDispatch();
   const { getUserInfo, getLibrary } = bindActionCreators(actionCreator, dispatch);
   const { userAdmin } = bindActionCreators(actionCreator2, dispatch);
   useEffect(() => {
-    email && getUserInfo(email);
-    if (email) userAdmin(email);
-    if (email) getLibrary(email);
-  }, [isAuthenticated]);
+    if(email){
+      getUserInfo(email);
+      userAdmin(email);
+      getLibrary(email);
+    }
+  }, [email]);
 
   return (
     <div id={"appSW"} className="light-mode">
@@ -121,10 +121,11 @@ function App() {
           }
         />
 
-        <Route path="/settings" element={<UserSettings />} />
+        <Route path="/settings" element={isAuthenticated ? <><UserSettings/><Player/></>: <Error404 />} />
         <Route path="/panel_artist" element={isLoading?<LoadingPage/>:<><PanelArtist/><Player/></>} />
         <Route path="/admin" element={isLoading?<LoadingPage/>:<AdminPanel />} />
         <Route path="/file" element={<FileUpload />} />
+        <Route path="/OAUTH/:token" element={<LoadingPage/>}/>
 
         <Route path="/*" element={<Error404 />} />
       </Routes>

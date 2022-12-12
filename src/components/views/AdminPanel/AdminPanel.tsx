@@ -4,64 +4,25 @@ import AdminSideBar from './../../commons/AdminSideBar/AdminSideBar';
 import UserCardAdmin from '../../commons/UserCardAdmin/UserCardAdmin';
 import { useSelector } from 'react-redux';
 import NavAdmin from '../../commons/NavAdmin/NavAdmin';
-import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from "redux";
 import * as actionCreator from '../../../redux/actions/action_admin'
 import Error404 from '../error404/error404';
-import searchIcon from "../../../assets/search_icon.png";
 import AdminStats from './AdminStats';
 import LoadingSpinner from '../../commons/LoadingSpinner/LoadingSpinner';
-import AdminButton from '../../commons/AdminSideBar/AdminButton';
+import useAuth from '../../../utils/useAuth';
 
-/*
-interface user{
-  request:boolean,
-  id:string,
-  type:string,
-  username:string,
-  email:string,
-  songNumber:number
-}
-interface option {
-  setOption: any;
-  option: any
-}
-
-const options = ['aproved' , 'pendig', 'denegado']
-
-const MultiButtons: React.FunctionComponent<option> = (props)=>{
-
-  return (
-    <div className={m.multiButton}>
-      {
-        options.map( (_option: any) => (<button  className={props.option == _option? m.buttonOptionSelected: m.buttonOption } onClick={(e: any)=>props.setOption(_option)}  >{_option}</button>))
-      }
-    </div>
-  )
-}
-
-function filterUsers(state: any, filter:string){
-  if(filter==='aproved'){
-    return state.users.length? state.users.filter( (user: any)=>{
-      return !user.requested_artist
-    }): state.users
-  }
-  return state.users
-}
-*/
 const AdminPanel = ()=>{
   const dispatch = useDispatch()
   const [option, setOption] = useState<string>('aproved')
   const {getAllUsers, getStats} = bindActionCreators(actionCreator,dispatch)
-  //const users = useSelector((state:any)=>filterUsers(state, option))
   const users = useSelector((state:any)=>state.users)
   
   const adminOption = useSelector((state:any)=>state.adminOption)
   const pageStats = useSelector((state:any)=>state.pageStats)
   const userAdmin = useSelector((state:any)=>state.userAdmin)
-  const {user, isAuthenticated} = useAuth0()
+  const {user, isAuthenticated} = useAuth()
   const ADMIN_EMAIL = user?.email
   
   const [userSearch, setUserSearch] = useState(users)

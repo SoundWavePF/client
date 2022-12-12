@@ -5,9 +5,9 @@ import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_player";
 import * as actionCreatorUser from "../../../redux/actions/action_user";
 import Swal from "sweetalert2";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import styles from "./DropDownButton.module.css";
+import useAuth from '../../../utils/useAuth';
 
 interface myProps {
   item: any;
@@ -15,7 +15,7 @@ interface myProps {
 
 const DropDownButton: React.FC<myProps> = (props: myProps) => {
   const playlists = useSelector((state: any) => state.library_artist.card);
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated } = useAuth();
   const email: string | undefined = user?.email;
   const dispatch = useDispatch();
   const { addToQueue, addToPlaylist } = bindActionCreators(
@@ -79,9 +79,10 @@ const DropDownButton: React.FC<myProps> = (props: myProps) => {
                 bsPrefix={styles.dropdrop}
               >
                 {playlists.length
-                  ? playlists.map((p: any) => {
+                  ? playlists.map((p: any, i:number) => {
                       return (
                         <Dropdown.Item
+                          key={i}
                           onClick={() => addToPlaylist(p.id, props.item.id)}
                         >
                           {p.name}

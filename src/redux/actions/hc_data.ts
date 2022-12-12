@@ -29,8 +29,3 @@ export  {
   user,
   userList,
 }
-
-// export let req = require.context("./hc_data", false, /.*\.json$/);
-// req.keys().forEach(function(key: any){
-//     req(key);
-// });
