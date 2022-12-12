@@ -9,7 +9,6 @@ import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const GenrePage = () => {
   const {id} = useParams()
-  console.log(id)
   const dispatch = useDispatch();
   const { getGenre, cleanGenre } = bindActionCreators(actionCreator,dispatch);
   const genre = useSelector((state: any) => state.genre);

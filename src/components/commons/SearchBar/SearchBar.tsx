@@ -2,14 +2,9 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_player";
-import * as actionUser from "../../../redux/actions/action_user";
 import style from "./SearchBar.module.css";
-import searchIcon from "../../../assets/search_icon.png";
-import userIcon from "../../../assets/user_icon.png";
-import bellIcon from "../../../assets/bell.png";
 import swAnim from "../../../assets/loadinganimation.gif";
 import MenuUser from "./MenuUser";
-import { useAuth0 } from "@auth0/auth0-react";
 import useAuth from '../../../utils/useAuth';
 import { Link } from 'react-router-dom';
 
@@ -69,12 +64,10 @@ const SearchBar = () => {
   const [input, setInput] = useState('')
   const loadingState = useSelector((state: any) => state.loading)
   const searchString = useSelector((state: any) => state.query)
-  const {user_info}=useSelector((state:any)=>state)
 
   const dispatch = useDispatch();
-  const { user, isAuthenticated, isLoading } = useAuth()
+  const { isAuthenticated, isLoading } = useAuth()
   const { searchAll, setQuery, loading } = bindActionCreators(actionCreator, dispatch);
-  const {  getUserInfo} = bindActionCreators(actionUser, dispatch)
 
   useEffect(() => {
     if (!input) setQuery('');
@@ -98,14 +91,12 @@ const SearchBar = () => {
   function handleSubmit(e: any) {
     e.preventDefault();
     searchAll(input);
-    // setInput("");
   }
 
   return (
     <nav className={`${style.navbar}`}>
       <form onSubmit={handleSubmit} className={style.form}>
         <div className={style.search}>
-          {/* <img src={searchIcon} width="20px" /> */}
           <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" ><g><path d="M20.87,20.17l-5.59-5.59C16.35,13.35,17,11.75,17,10c0-3.87-3.13-7-7-7s-7,3.13-7,7s3.13,7,7,7c1.75,0,3.35-0.65,4.58-1.71 l5.59,5.59L20.87,20.17z M10,16c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S13.31,16,10,16z" ></path></g></svg>
           <input
             className={style.inputSearch}

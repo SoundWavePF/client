@@ -1,7 +1,4 @@
-
-import React from 'react'
 import s from './ArtistCard.module.css'
-import likefull from '../../../../assets/likefull.png'
 import { Link } from 'react-router-dom';
 
 interface Item {
@@ -24,13 +21,6 @@ const ArtistCard = ({ image, name }: Item) => {
                 </div>
             </div>
             </Link>
-
-
-            {/* <div className={s.controllerContainer}>
-                <div >
-                    <img className={name.length > 7 ? s.likeImg : s.likeImgAlt} src={likefull} alt="like icon" />
-                </div>
-            </div> */}
         </div>
     )
 }

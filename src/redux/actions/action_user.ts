@@ -1,10 +1,8 @@
 import { Dispatch } from "react";
 import { ActionType, Actions } from "./types";
 import axios from "axios";
-import useAuth0 from "@auth0/auth0-react";
 
 export const getLibrary = (email: string) => {
-  //hay que poner el id del usuario creado hasta que se pueda haceder a el
   return (dispatch: Dispatch<Actions>) => {
     const favorite = axios.post(`${process.env.REACT_APP_BACK}/favorite`, {
       email: email,
@@ -90,7 +88,6 @@ export const updateUser = (payload: any) => {
   };
 };
 export const getUserInfo = (email: any) => {
-  //hay que poner el id del usuario creado hasta que se pueda haceder a el
   return  (dispatch: Dispatch<Actions>) => {
     axios.post(`${process.env.REACT_APP_BACK}/info`, {
       email: email,

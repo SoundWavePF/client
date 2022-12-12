@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Artist.module.css";
 import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreator from "../../../redux/actions/action_artist";

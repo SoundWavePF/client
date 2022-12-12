@@ -27,8 +27,6 @@ const CreateAlbum: React.FC<myProps> = ({ item }: myProps) => {
     data.append("file", file[0]);
     data.append("upload_preset", "album_image");
     createAlbum({email, name, date, genre}, data);
-    // await new Promise(res => setTimeout(res,1500));
-    // getPanelInfo(artist?.id, email);
     launchPopUp(false);
   }
   useEffect(()=>{
@@ -49,7 +47,6 @@ const CreateAlbum: React.FC<myProps> = ({ item }: myProps) => {
                 setFile(e.target.files);
                 let local = e.target.files;
                 if (local) {setImg(URL.createObjectURL(local[0]))};
-                // 
               }}/>
             </label>
           </div>

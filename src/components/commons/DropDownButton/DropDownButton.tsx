@@ -5,7 +5,6 @@ import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_player";
 import * as actionCreatorUser from "../../../redux/actions/action_user";
 import Swal from "sweetalert2";
-import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 import styles from "./DropDownButton.module.css";
 import useAuth from '../../../utils/useAuth';

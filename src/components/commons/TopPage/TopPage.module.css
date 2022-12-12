@@ -10,7 +10,6 @@
 .section > h1 {
   margin-bottom: 1.5rem;
   font-family: sw-medium;
-  /* font-size: min(30px, 3vw); */
   font-size: 140px;
 }
 .sectionLoading{
@@ -18,10 +17,6 @@
   display: flex;
   justify-content: center;
 }
-/* .genreSpinner{
-  width: 100px;
-  height: 100px;
-} */
 .cardContainer{
   display: grid;
   grid-template-columns: 1fr;

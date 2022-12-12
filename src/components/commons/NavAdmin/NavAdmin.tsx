@@ -1,5 +1,4 @@
 import style from './NavAdmin.module.css'
-import darkModeAdmin from '../../../assets/darkModeAdmin.png'
 
 const NavAdmin = ({option}:any)=>{
     const toggleMode = () => {

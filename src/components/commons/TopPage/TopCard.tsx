@@ -1,13 +1,10 @@
 import styles from "./TopCard.module.css";
-// import { Link } from "react-router-dom";
 import * as actionCreator from "../../../redux/actions/action_player";
-// import * as actionCreatorUser from "../../../redux/actions/action_user";
 import time from "../../../../src/assets/time.png";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { useState } from "react";
 import likefull from "../../../../src/assets/likefull.png";
-import { useAuth0 } from "@auth0/auth0-react";
 import DropDownButton from "../DropDownButton/DropDownButton";
 import { Link } from 'react-router-dom';
 import useAuth from "../../../utils/useAuth";

@@ -1,4 +1,3 @@
-import React from 'react'
 import ArtistCard from '../../CardsComponents/ArtistCard/ArtistCard'
 import s from '../../../views/SearchResults/SearchResults.module.css'
 import test from '../../../views/SearchResults/test.json'

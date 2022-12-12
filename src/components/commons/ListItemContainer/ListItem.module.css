@@ -6,8 +6,6 @@
     border-bottom-left-radius: 40px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    /* width: 60vw;
-    margin-bottom: 10px; */
     justify-content: space-between;
 }
 
@@ -75,11 +73,9 @@
 
 
 .songName {
-    /* margin-left: 0.7em; */
     font-size: 20px;
     font-family: 'sw-medium';
     color: #000000;
-    /* text-shadow: 2px 0 0 rgba(255, 255, 255, 0.364), -2px 0 0 rgba(255, 255, 255, 0.392), 0 2px 0 rgba(255, 255, 255, 0.398), 0 -2px 0 rgba(255, 255, 255, 0.358), 1px 1px rgba(255, 255, 255, 0.415), -1px -1px 0 rgba(255, 255, 255, 0.307), 1px -1px 0 rgba(255, 255, 255, 0.37), -1px 1px 0 rgba(255, 255, 255, 0.387); */
     padding-left: 12px;
 }
 
@@ -125,14 +121,12 @@
 }
 
 .container {
-    /* border: 1px solid black; */
     background-color: rgba(211, 211, 211, 0.5);
     display: grid;
     grid-template-columns: 1.5fr auto 200px;
     height: 50px;
     align-items: center;
     padding-right: 1rem;
-    /* overflow: hidden; */
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
     border-top-right-radius: 5px;
@@ -146,7 +140,6 @@
 .container>div:first-child {
     display: flex;
     height: 100%;
-    /* background-color: #1a1a1a7a; */
     justify-content: start;
     align-items: center;
 }
@@ -156,10 +149,6 @@
     cursor: pointer;
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
-    /* border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px; */
     border-radius: 100%;
     width: 50px;
     object-fit: cover;
@@ -185,7 +174,6 @@
     display: flex;
     width: 100%;
     height: 100%;
-    /* background-color: #d2abab; */
     justify-content: end;
     align-items: center;
     gap: .5rem;

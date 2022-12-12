@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import Style from './About2.module.css'
-import logo from '../../../assets/logo-nbg.png'
 import ts from '../../../assets/about/typescript_logo.png'
 import html from '../../../assets/about/html.png'
 import css from '../../../assets/about/css.png'
@@ -27,10 +26,8 @@ const  About2=( )=> {
       <div className={Style.divNav}>
         <h1>SoundWave</h1> 
         <div className={Style.darkButton}><AdminButton/></div>
-        {/* <button onClick={toggleMode}>tema</button> */}
       </div>
       <div className={Style.div1}>
-        {/* <img src={logo} alt="logo" /> */}
         <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 558.406 1107.061">
             <path id="n" d="M776.1,1186.59l109.8-411.3c17.1,92.7,53.1,263.7,81.9,412.2,17.1,87.3,36,178.2,54.9,273.6l216.9-809.1H1146l-106.2,396c-22.5-113.4-43.2-217.8-62.1-312.3-33.3-160.2-66.6-333-73.8-377.1l-221.4,828h93.6Z" transform="translate(-681.844 -356.219)"/>
         </svg>
@@ -41,13 +38,6 @@ const  About2=( )=> {
       </div>
       <div className={Style.containerInfo}>
         <div className={Style.div2}>
-          {/* <div className={Style.divInfo}>
-            <h3>Retos de este proyecto</h3>
-            <p> Lorem ipsum dolor sit, amet consectetur 
-                adipisicing elit. Dolores atque sequi reprehenderit officiis
-                  veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
-                  tempore nisi aliquam a ea! Officia.</p>
-          </div> */}
           <div className={Style.divInfo}>
             <h3>Trabajo en equipo</h3>
             <p> Para llevar a cabo este proceso utilizamos la metodoligia Scrum con el objetivo principal de trabajar de manera colaborativa, y para fomentar el trabajo en equipo. Con este método de trabajo lo que se pretende es alcanzar el mejor resultado de un proyecto determinado.</p>
@@ -61,15 +51,6 @@ const  About2=( )=> {
           </div>
         </div>
         <AboutDesign/>
-        {/* <div className={Style.div2}>
-          <div className={Style.divInfo}>
-            <h3>Relaciones y rutas</h3>
-            <p> Lorem ipsum dolor sit, amet consectetur 
-                adipisicing elit. Dolores atque sequi reprehenderit officiis
-                  veritatis culpa soluta consequatur quo ex odit cumque at et, perspiciatis,
-                  tempore nisi aliquam a ea! Officia.</p>
-          </div>
-        </div> */}
       </div>
       <div className={Style.containerInfo2}>
         <h3>Tecnologias utilizadas</h3>

@@ -12,8 +12,7 @@ import volume1 from '../../../assets/volume1.png';
 import volume2 from '../../../assets/volume2.png';
 import volume3 from '../../../assets/volume3.png';
 import like from '../../../assets/likefull.png';
-import { likeSong, setRecentlyPlayed, setCurrentSongPosition, setPausePlay  } from '../../../redux/actions/action_player';
-import { useAuth0 } from '@auth0/auth0-react';
+import { setRecentlyPlayed, setCurrentSongPosition, setPausePlay  } from '../../../redux/actions/action_player';
 import styles from './Player.module.css';
 import QueuePanel from './QueuePanel';
 import { Link } from 'react-router-dom';
@@ -24,7 +23,6 @@ export default function Player(){
   const player = useRef();
   const dispatch = useDispatch();
   const { user } = useAuth();
-  //TODO: userID
   const userId = user?.id;
   const queue = useSelector(state => state.queue);
   const [isPlaying, setIsPlaying] = [

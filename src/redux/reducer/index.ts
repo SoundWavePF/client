@@ -1,9 +1,5 @@
 import { Actions, ActionType } from "../actions/types";
-import * as types from "./types"; //tipos del state   NO BORRAR
-
-//tengo que importar las interfaces de las propiedades dentro de los objetos del initial state
-
-//necesito los actions types para seguir agregando switch cases
+import * as types from "./types";
 
 interface State {
   query: string;
@@ -31,12 +27,6 @@ const initialState: State = {
   query: "", //párametro de búsqueda : string
   queue: [], //cola de reproduccion : track[]
   searchResults: {},
-  // {
-  //   artistData: [],  //  artist[]
-  //   albumData: [],   //  album[]
-  //   songData: [],   //  track[]
-  //   playlistData: []
-  // },
   album_playlist: {},
   playlist_update: [],
   library_artist: {
