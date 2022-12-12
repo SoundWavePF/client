@@ -8,8 +8,7 @@ import * as actionCreator from '../../../redux/actions/action_admin'
 
 const UserCardAdmin = (userP:any)=>{
   const dispatch = useDispatch()
-  const {getAllUsers} = bindActionCreators(actionCreator,dispatch)
-  // 
+  const {getAllUsers} = bindActionCreators(actionCreator,dispatch) 
   const user = userP.user
   const ADMIN_EMAIL=userP.admin
   const deleteUser = (userC:any)=>{
@@ -73,7 +72,6 @@ const UserCardAdmin = (userP:any)=>{
             
             Swal.fire('Error paso algo :(')
           })
-        // Swal.fire('Saved!', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('Disapproved')
       }

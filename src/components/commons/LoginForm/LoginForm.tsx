@@ -1,18 +1,12 @@
 import { useState } from "react"
 import m from'./LoginForm.module.css'
-import { useDispatch } from 'react-redux';
-import { bindActionCreators } from "redux";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import * as actionCreator from '../../../redux/actions/action_settings'
 import Swal from 'sweetalert2'
 import useAuth from "../../../utils/useAuth";
 
 const LoginForm = ()=>{
-  const dispatch = useDispatch();
   const {login} = useAuth();
   let navigate = useNavigate();
-  const {postLogin} = bindActionCreators(actionCreator,dispatch)
   const [form, setForm] = useState({
     email:'',
     password:''

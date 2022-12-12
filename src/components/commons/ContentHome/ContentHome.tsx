@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { bindActionCreators } from "redux";
 import * as actionCreator from "../../../redux/actions/action_player";
-import { useAuth0 } from "@auth0/auth0-react";
 import useAuth from "../../../utils/useAuth";
 
 const ContentHome = () => {

@@ -1,5 +1,5 @@
 import styles from "./PanelArtistAlbum.module.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import * as actionCreator from "../../../redux/actions/action_artist";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -13,8 +13,6 @@ interface myProps {
 }
 
 const PanelArtistAlbums: React.FC<myProps> = ({ content }: myProps) => {
-  const [open, setOpen] = useState<any>(false);
-  // const {} = useSelector((state: any) => state.artist);
   const {albums} = useSelector((state: any) => state.panel_artist);
   const {flag, data} = useSelector((state: any) => state.panel_artist.loaded_album);
   const dispatch = useDispatch();

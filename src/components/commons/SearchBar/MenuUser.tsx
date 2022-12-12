@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import jwt_decode from "jwt-decode";
 import useAuth from "../../../utils/useAuth";
-import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
 
 import style from './MenuUser.module.css';
@@ -21,8 +19,7 @@ const Menu: React.FunctionComponent<props> = (props) => {
     const {rol} = useSelector((state: any) => state.user_info);
     const {user_info} = useSelector((state: any) => state);
     const [open, setOpen] = useState<boolean>(false);
-    const container = useRef(document.getElementsByTagName('div')[0]); // obtiene da un nodo html como valor inicial 
-    //para que no de error cuando la referencia intente usar  el  metodo contains
+    const container = useRef(document.getElementsByTagName('div')[0]); 
     const navigate = useNavigate();
     function click(event: any) {
         if (!container.current.contains(event.target)) {

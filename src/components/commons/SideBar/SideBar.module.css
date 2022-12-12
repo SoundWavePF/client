@@ -1,12 +1,7 @@
 .container {
-  /* position: relative; */
-  /* left: 0px;
-  width: 250px;
-  height: 100vh; */
   background-color: var(--background-accent);
   font-family: sw-medium;
   font-size: 1.7em;
-  /* border-right: 2px solid var(--gray-light);  */
 }
 .links{
   text-decoration: none;
@@ -200,7 +195,6 @@
   .img {
     width: 20px;
     height: 20px;
-    /* margin-left: 15px; */
   }
 
   .buttonDis {

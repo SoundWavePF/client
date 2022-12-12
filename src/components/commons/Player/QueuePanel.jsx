@@ -1,13 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {ReactSortable} from "react-sortablejs";
-import { useAuth0 } from '@auth0/auth0-react';
 import useAuth from '../../../utils/useAuth';
 import * as actionCreator from '../../../redux/actions/action_player';
 import { bindActionCreators } from "redux";
 
 import playlist from '../../../assets/playlist.png'
-import bintrash from '../../../assets/bintrash.png'
 import loopIcon from '../../../assets/looping-arrows.png'
 
 import style from './QueuePanel.module.css';

@@ -14,9 +14,7 @@ const Upload = () => {
   const [sameAlbum, setSameAlbum] = useState<boolean>(false);
   const [albumForAll, setAlbumForAll] = useState<string>('');
   const [newAlbum, setNewAlbum] = useState<boolean>(false);
-  // useEffect(()=>{
-    
-  // },[files])
+
   const playPause = (e:any) => {
     e.classList.toggle(styles.btnPlay);
     e.classList.toggle(styles.btnPause);
@@ -34,7 +32,6 @@ const Upload = () => {
       [key]: value
     }
     setFiles(newFiles);
-    // 
   }
   const removeItem = (i:number) => {
     let newFiles = [...files];
@@ -70,8 +67,6 @@ const Upload = () => {
         let obj = {name:song.name, albumName: albumForAll}
         
         songsAlbum.push({name:song.name, data})
-        // uploadMusic({email, name:song.name, albumName: albumForAll}, data);
-        // await new Promise(res => setTimeout(res,500));
       }
     }
     if (sameAlbum && newAlbum) uploadNewAlbum(email, albumForAll, songsAlbum);
