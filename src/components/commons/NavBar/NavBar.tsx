@@ -2,8 +2,6 @@ import { Nav } from "react-bootstrap";
 import styles from "./NavBar.module.css";
 import logo from '../../../assets/logo.png';
 import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
-import MenuUser from "../SearchBar/MenuUser";
 import swAnim from "../../../assets/loadinganimation.gif";
 import { bindActionCreators } from "redux";
 import * as actionUser from '../../../redux/actions/action_user'
@@ -11,7 +9,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import useAuth from "../../../utils/useAuth";
 
-//TODO: to login page
 const LoginButton: React.FunctionComponent = ()=>{
   return (
     <>
