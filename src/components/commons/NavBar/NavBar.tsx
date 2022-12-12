@@ -44,7 +44,6 @@ const LoginButton: React.FunctionComponent = ()=>{
 const NavBar = () => {
   const dispatch = useDispatch()
   const { getUserInfo } = bindActionCreators(actionUser,dispatch);
-  // const [username, setUsername] = useState('')
   const { logout, isAuthenticated, user, isLoading } = useAuth();
   const user_info=useSelector((state:any)=>state.user_info)
   

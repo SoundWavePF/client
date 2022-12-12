@@ -72,7 +72,6 @@ const UserCardAdmin = (userP:any)=>{
             
             Swal.fire('Error paso algo :(')
           })
-        // Swal.fire('Saved!', '', 'success')
       } else if (result.isDenied) {
         Swal.fire('Disapproved')
       }
