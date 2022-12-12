@@ -7,7 +7,6 @@ import { bindActionCreators } from "redux";
 import playlistFran from "../../../assets/playlistFran2.png";
 import DropDownButton from "../DropDownButton/DropDownButton";
 import FavoriteIcon from "../FavoriteIcon/FavoriteIcon";
-import { useAuth0 } from "@auth0/auth0-react";
 import papeleria from "../../../assets/papeleriaIcon.png";
 import Swal from "sweetalert2";
 import genres from '../../../assets/genres.png'

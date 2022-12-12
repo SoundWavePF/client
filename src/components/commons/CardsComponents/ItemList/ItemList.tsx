@@ -8,7 +8,6 @@ import * as actionCreator from "../../../../redux/actions/action_player";
 import { bindActionCreators } from "redux";
 import FavoriteIcon from "../../FavoriteIcon/FavoriteIcon";
 import { useDispatch } from "react-redux";
-import { useAuth0 } from '@auth0/auth0-react';
 import useAuth from '../../../../utils/useAuth';
 
 interface myProps {

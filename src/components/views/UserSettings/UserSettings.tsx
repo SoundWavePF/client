@@ -1,22 +1,15 @@
-import Modal from "../../commons/Modal/Modal";
-// import styles from "../Home/Home.module.css";
 import StylesC from "./UserSettingContainer.module.css";
 import SearchBar from "../../commons/SearchBar/SearchBar";
 import SideBar from "../../commons/SideBar/SideBar";
 import style from './UserSettings.module.css'
 import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
-import { useAuth0 } from "@auth0/auth0-react";
 import * as actionCreator from '../../../redux/actions/action_user'
 import { bindActionCreators } from 'redux';
 import { useSelector } from "react-redux";
-import Player from "../../commons/Player/Player";
 import axios from "axios";
 import Swal from 'sweetalert2'
-import { isConstructorDeclaration } from "typescript";
 import userDefault from '../../../assets/default-user.png'
-import Table from 'react-bootstrap/Table';
-import { log } from "console";
 import SearchResults from "../SearchResults/SearchResults";
 import useAuth from '../../../utils/useAuth';
 
@@ -58,13 +51,6 @@ const UserSettings = () => {
       
   },[user_info])
   
-
-  
-  
-
-  
-
-
 
   let [input, setInput] = useState<inputs>({
     email: user?.email,
@@ -117,8 +103,6 @@ const UserSettings = () => {
           'success'
         )}})}
 
-
-
   const modalDisabled =  ()=>{
     Swal.fire({
       title:"Disabled your account?",
@@ -134,8 +118,6 @@ const UserSettings = () => {
           title:'Disabled  account',
           icon:'success' 
         })}})}
-
-
 
   const modalChangePassword:any = async ()=>{
 
@@ -189,8 +171,6 @@ const UserSettings = () => {
     
     })}}
 
-
-
   
   const modalChangeUsername = async ()=>{
 
@@ -225,9 +205,6 @@ const UserSettings = () => {
         newData: formValues['1'].value,
         field:'username'
       }
-
-      
-
 
       setInputs(changeusername)
     updateUser(changeusername)
@@ -269,10 +246,6 @@ const changeImage = async()=>{
     const data:any = new FormData();
     data.append("file", files);
     data.append("upload_preset", "songImage");
-
-    // for(let [name, value] of data) {
-    //   alert( `${name} = ${value}` ); // key1 = value1, then key2 = value2
-    // }
 
     const res:any = await axios.post(
       "https://api.cloudinary.com/v1_1/jonathanhortman/image/upload",data
@@ -397,10 +370,6 @@ const changeImage = async()=>{
           </div>
 
       }
-
-
-
-      
      
     </div>
   )

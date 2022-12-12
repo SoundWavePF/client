@@ -1,5 +1,3 @@
-import Reacct from 'react'
-
 import style from './SoundWave.module.css'
 
 const SoundWave: React.FunctionComponent = ()=>{

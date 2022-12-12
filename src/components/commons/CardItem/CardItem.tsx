@@ -1,10 +1,6 @@
 import styles from "./CardItem.module.css";
 import { Link } from "react-router-dom";
 import DefaultBackground from "../../../assets/backgroundDefaultPlaylist.png";
-import play from '../../../assets/play.png'
-import { useDispatch } from 'react-redux';
-import * as actionCreator from '../../../redux/actions/action_player';
-import { bindActionCreators } from "redux";
 import DropDownButton from '../DropDownButton/DropDownButton';
 
 interface myProps {
@@ -13,16 +9,9 @@ interface myProps {
 
 const CardItem: React.FC<myProps> = (props: myProps) => {
 
-  //const dispatch = useDispatch();
-  //const { playSong } = bindActionCreators(actionCreator, dispatch)
-
   let IType = props.item.type;
   let playSong: any
-  //const dispatch = useDispatch();
-  //const { playSong } = bindActionCreators(
-  //  actionCreator,
-  //  dispatch
-  //);
+
   switch (IType) {
     case 'genre':
       return(

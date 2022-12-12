@@ -1,6 +1,4 @@
 import s from './SearchResults.module.css'
-
-import { Link } from 'react-router-dom'
 import ItemList from '../../commons/CardsComponents/ItemList/ItemList';
 import { useSelector } from 'react-redux'
 import { useState } from 'react';

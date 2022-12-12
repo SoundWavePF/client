@@ -5,7 +5,6 @@ import * as actionCreator from '../../../redux/actions/action_artist';
 import { bindActionCreators } from "redux"; 
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
-//import { Button } from "react-bootstrap/lib/InputGroup";
 import Table from 'react-bootstrap/Table';
 
 import pencil from '../../../assets/pencil.svg'
@@ -33,9 +32,6 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
   const {name, image_medium, description, totalFavoriteCount, n_albums, n_songs, totalPlayCount, totalPlaylistCount, stripe_Id, donations} = useSelector((state: any) => state.panel_artist.info);
   const dispatch = useDispatch();
   const { changeAbout } = bindActionCreators(actionCreator, dispatch);
-  // const imageHC = 'https://e-cdns-images.dzcdn.net/images/artist/5e17a1209254de68d7edcf9cccccdf67/250x250-000000-80-0-0.jpg';
-  // const nameHC = 'Maluma';
-  // const textHC = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci animi placeat exercitationem vel sit maxime,\nab obcaecati architecto sint molestiae unde amet quasi harum iusto, beatae esse. Iste, quasi perferendis?. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla magnam perspiciatis impedit, nisi quasi provident,<br/> possimus repellat cupiditate totam mollitia non magni expedita? Aut quo vel sed cum, optio nisi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore animi aperiam ad consectetur saepe, vero expedita fugit, necessitatibus distinctio odio eum repellendus illum dolor eaque vitae libero eveniet! Iure, inventore. Lorem ipsum dolor, sit amet consectetur adipisicing elit.';
   const [edit, setEdit] = useState<boolean>(false);
   const [about, setAbout] = useState<string>(description);
   const [stateName, setStateName] = useState<string>(name);
@@ -66,9 +62,6 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
   }
   return (
     <div className={styles.container}>
-      {/* <button className={styles.button} onClick={()=>navigate('/home')}>
-        <span>home</span>
-      </button> */}
       <div className={styles.details}>
         <div>
           <div className={styles.upload}>
@@ -109,7 +102,6 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
           }
         </div>
       </div>
-      {/* <img src={stateImage} alt={username} /> */}
       {
         !edit ?
         <div>
@@ -121,7 +113,6 @@ const PanelArtistProfile: React.FC<myProps> = ({ content }: myProps) => {
           <button onClick={cancel} className={styles.btn2}>Cancel</button>
         </div>
       }
-      {/* stats harcodeadas */}
       <div className={styles.statContainer}>
         <div className={styles.statInfo}>
             <div className={styles.title}>Songs</div>

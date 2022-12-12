@@ -2,8 +2,6 @@ import { Nav } from "react-bootstrap";
 import styles from "./NavBar.module.css";
 import logo from '../../../assets/logo.png';
 import { Link } from "react-router-dom";
-// import { useEffect, useState } from "react";
-// import jwt_decode from "jwt-decode";
 import { useAuth0 } from "@auth0/auth0-react";
 import MenuUser from "../SearchBar/MenuUser";
 import swAnim from "../../../assets/loadinganimation.gif";
@@ -62,33 +60,6 @@ const NavBar = () => {
       getUserInfo(user?.email);
     }
   },[isAuthenticated, user])
-  // const useAuth: any = useAuth();
-  // const { user, isAuthenticated, isLoading } = useAuth
-  // const newUser: any = user
-  // 
-  // 
-  // 
-  // 
-  // const { logout } = useAuth();
-  // useEffect(() => {
-  //   const token = localStorage.getItem('sw-token') || '{}';
-  //   if (token !== '{}') {
-  //     const decoded:any = jwt_decode(token);
-  //     setUsername(decoded.username);
-  //     
-  //   } else{
-  //     setUsername('Unregistered')
-  //   }
-  // }, []);
-
-  // import React from 'react';
-  // import { useAuth0 } from '@auth0/auth0-react';
-
-  // export const LoginButton = () => {
-  // const { loginWithRedirect } = useAuth();
-  // 
-  //     return (<button onClick={() => loginWithRedirect()}>login</button>)
-  // }
 
   return (
     <div className={styles.container}>
@@ -100,25 +71,15 @@ const NavBar = () => {
       <Link to='/'>
         <img  src={logo} alt="logo" />
       </Link>
-      {/* {username === 'Unregistered' &&  */}
-
-      {/* <Link to='/signup' className="btn btn-warning">Sign Up</Link>
-    // <Link to='/login' className="btn btn-outline-warning">Log In</Link> */}
+      
       <div>
-        {/* <button onClick={() => loginWithRedirect()}className="btn btn-outline-warning" >Log In</button> */}
         {isLoading ? <img src={swAnim} alt={'Loading...'} width={30} height={30}/> : isAuthenticated ? (
                     
-                    //<MenuUser username={"username"}/>
                     (<div><img className={styles.picture} src={user_info?.image_avatar} alt={user?.name} /> 
                     <button className="btn btn-warning" style={buttonStyle} onClick={() => logout()}>Logout</button></div>)
                     )
                     : 
                     <LoginButton/>
-
-        // {
-
-        //   :
-        //   <button onClick={() => loginWithRedirect()} className="btn btn-warning" style={buttonStyle}>Log In</button>
         }
       </div>
 

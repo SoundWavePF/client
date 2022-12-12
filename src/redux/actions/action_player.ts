@@ -1,13 +1,6 @@
 import { Dispatch } from "react";
 import { ActionType, Actions } from "./types";
 import axios from "axios";
-import * as hc from "./hc_data";
-//ej    hc.albumSongs   album con sus canciones como lo enviaría el back
-//ej    hc.songList     un arreglo con 12 canciones
-//ej    hc.userList     un arreglo con 100 usuarios para el panel admin
-// manden un 
-
-
 
 export const getGenres = () => {
   return (dispatch: Dispatch<any>) => {
@@ -65,7 +58,6 @@ export const setRecentlyPlayed = (song: swSong, email: string) =>{
 }
 
 export const searchAll = (input: string) => {
-  //hasta que no halla back el axios queda comentado
   return (dispatch: Dispatch<Actions>) => {
     axios.get(`${process.env.REACT_APP_BACK}/search?all=${input}`)
       .then((response) =>
@@ -123,7 +115,7 @@ export const addToPlaylist = (playlistId: string, songId: string) => {
       }))
   }
 }
-export const getGenre = (id: any) => { // obtiene un genero para la ruta /genre/:id
+export const getGenre = (id: any) => {
   return (dispatch: Dispatch<any>) => {
     axios.get(`${process.env.REACT_APP_BACK}/genre/` + id)
       .then(response =>

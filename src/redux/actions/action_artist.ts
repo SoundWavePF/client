@@ -96,9 +96,6 @@ export const uploadSong = (payload: any) => {
 }
 export const getPanelInfo = (id: string, email:string)=>{
   return(dispatch: Dispatch<any>)=>{
-    // let promiseContent = axios.get('${process.env.REACT_APP_BACK}/artist/'+id);
-    // let promiseInfo = axios.post('${process.env.REACT_APP_BACK}/artistpanel/stats', {email: email});
-    // Promise.all([promiseContent, promiseInfo])
     axios.post(`${process.env.REACT_APP_BACK}/artistpanel/stats`, {email: email})
     .then(response =>
       dispatch({
@@ -207,7 +204,6 @@ export const uploadMusic = (info: any, data: any) => {
 export const uploadNewAlbum = (email: string, name: string, songs: any) => {
   return async function (dispatch: Dispatch<Actions>) {
 
-    //const remote = await axios.post("https://api.cloudinary.com/v1_1/dbi1xhzps/video/upload", data);
     let promises = await Promise.all(songs.map((e:any) => axios.post("https://api.cloudinary.com/v1_1/dbi1xhzps/video/upload", e.data)))
     let send = promises.map((e:any, i:number) => {return {duration:e.data?.duration, preview: e.data?.secure_url, songName:songs[i].name}})
 

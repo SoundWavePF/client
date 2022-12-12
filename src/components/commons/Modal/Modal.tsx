@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import style from './Modal.module.css'
-import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from 'react-redux';
 import * as actionCreator from '../../../redux/actions/action_user'
 import { bindActionCreators } from 'redux';

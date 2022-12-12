@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router'
+import { useEffect, useState } from 'react'
 import Styled from './ArtistPage.module.css'
 import { bindActionCreators } from 'redux'
 import { useDispatch } from 'react-redux'
@@ -8,7 +7,6 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import ArtistCardContainer from './ArtistCardContainer/ArtistCardContainer';
 import DonationsButton from './DonationsButton/DonationsButton';
-import { useAuth0 } from '@auth0/auth0-react'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import useAuth from '../../../utils/useAuth';
 
@@ -18,7 +16,7 @@ export const ArtistPage = () => {
   const dispatch = useDispatch();
   const { getArtist, getArtistTop } = bindActionCreators(actionCreator, dispatch);
   const [option, setOption] = useState('Top')
-  const { user, isAuthenticated } = useAuth()
+  const { user } = useAuth()
 
   useEffect(() => {
     getArtist(id)

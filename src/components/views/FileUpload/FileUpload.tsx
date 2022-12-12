@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import style from "./FileUpload.module.css"
-import moreinfo from '../../../assets/more-info.webp'
 import FormUploadSong from '../../commons/FormUploadSong/FormUploadSong';
 import i1 from '../../../assets/i1.png'
 import i2 from '../../../assets/i2.png'

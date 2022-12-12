@@ -8,8 +8,7 @@ import * as actionCreator from '../../../redux/actions/action_admin'
 
 const UserCardAdmin = (userP:any)=>{
   const dispatch = useDispatch()
-  const {getAllUsers} = bindActionCreators(actionCreator,dispatch)
-  // 
+  const {getAllUsers} = bindActionCreators(actionCreator,dispatch) 
   const user = userP.user
   const ADMIN_EMAIL=userP.admin
   const deleteUser = (userC:any)=>{

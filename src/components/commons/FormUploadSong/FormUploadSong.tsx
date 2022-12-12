@@ -3,7 +3,6 @@ import style from './FormUploadSong.module.css'
 import * as actionCreator from '../../../redux/actions/action_artist'
 import { bindActionCreators } from 'redux';
 import { useDispatch } from 'react-redux';
-import { useAuth0 } from "@auth0/auth0-react";
 import Swal from 'sweetalert2';
 import useAuth from '../../../utils/useAuth';
 

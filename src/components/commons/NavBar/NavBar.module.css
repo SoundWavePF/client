@@ -40,22 +40,7 @@
   display: flex;
   gap: 10px;
 }
-/*
-.container > div:nth-child(3) :first-child {
-  background-color: var(--yellow-light);
-  border-color: var(--yellow-light);
-  padding: 0.5rem 2.5rem;
-  align-self: center;
-}
-.container > div:nth-child(3) :last-child {
-  color: black;
-  border-color: var(--yellow-light);
-  padding: 0.5rem 2.5rem;
-  align-self: center;
-}
-.container > div:nth-child(3) :last-child:hover {
-  background-color: var(--yellow-light);
-} */
+
 .picture{
   width: 30px;
   height: 30px;
@@ -69,7 +54,6 @@
 }
 
 /***Login Button****/
-/* From uiverse.io by @adamgiebl */
 .buttonLogin {
   background: var(--yellow-light);
   color: var(--gray-dark);

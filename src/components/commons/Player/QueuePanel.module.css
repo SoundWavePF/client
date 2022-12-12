@@ -27,14 +27,6 @@
     position: relative;
 }
 
-/* .name:hover {
-    background-color: aqua;
-} */
-
-/* .image:hover {
-    background-color: aquamarine;
-} */
-
 .notification {
     position: absolute;
     right: 1.3rem;
